@@ -10,5 +10,5 @@ ${NAME} : ${NAME}.c
 	touch ${NAME}
 
 clean :
-	-rm -f ${NAME} *.o
+	-rm -f \= *.o
 
