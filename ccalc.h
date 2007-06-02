@@ -21,6 +21,7 @@ typedef enum{
 	errMemory,
 	errBadNumber,
 	errMismatchedBrackets,
+	errInvalidBracket,
 	errDuplicateNumber,
 	errDuplicateOperator,
 	errUnknownToken

@@ -58,7 +58,7 @@ int validate(tokenItem *tokenList, const char *line)
 				break;
 			case tkCloseBracket:
 				if(lastToken != tkNumber && lastToken != tkCloseBracket){
-					printError(line, currentPos, 102);
+					printError(line, currentPos-1, errInvalidBracket);
 					rc = 1;
 				}
 				closeBrackets++;
@@ -115,6 +115,9 @@ void printError(const char *line, int pos, errType error)
 			break;
 		case errDuplicateOperator:
 			printf(" duplicate operator\n");
+			break;
+		case errInvalidBracket:
+			printf(" invalid bracket\n");
 			break;
 		default:
 			printf(" unknown error (%d)\n", error);
