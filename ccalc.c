@@ -6,6 +6,48 @@
 #include "ccalc.h"
 #include "list.h"
 
+int assignPrecedence(tokenItem *tokenList)
+{
+	/*
+	 * Everything should start off with a precedence 
+	 * of zero when it is created.
+	 */
+	int maxPrecedence = 0;
+	int currentPrecedence = 0;
+
+	while(tokenList){
+		switch(tokenList->type){
+			case tkMultiply:
+			case tkDivide:
+			case tkPower:
+			case tkOpenBracket:
+			case tkExponent:
+				currentPrecedence++;
+				if(currentPrecedence > maxPrecedence){
+					maxPrecedence = currentPrecedence;
+				}
+				break;
+			case tkCloseBracket:
+				currentPrecedence--;
+				break;
+			case tkNumber:
+			case tkPlus:
+			case tkMinus:
+				// Leave with current precedence
+				break;
+			case tkEndToken:
+				break;
+		}
+		tokenList->precedence = currentPrecedence;
+		//printf("%d ", currentPrecedence);
+		tokenList = tokenList->next;
+	}
+	//printf("\n");
+
+	return maxPrecedence;
+}
+
+
 int validate(tokenItem *tokenList, const char *line)
 {
 	cToken lastToken;
@@ -252,8 +294,11 @@ errType process(tokenItem *tokenList, const char *line)
 	double result;
 	int firstNumber = 1;
 	cToken lastToken;
+	int maxPrecedence;
 
 	if(!tokenList) return errBadInput;
+
+	maxPrecedence = assignPrecedence(tokenList);
 
 	while(tokenList){
 		switch(tokenList->type){
@@ -349,6 +394,7 @@ int main(int argc, char *argv[])
 
 	}
 
+	assignPrecedence(tokenList.next);
 	if(!hasError && tokenList.next){
 		process(tokenList.next, line);
 	}
