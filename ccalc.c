@@ -13,6 +13,7 @@ int validate(tokenItem *tokenList, const char *line)
 	int openBrackets = 0;
 	int closeBrackets = 0;
 	int currentPos = 0;
+	int negateValue = 0;
 	errType err;
 	int rc = 0;
 
@@ -23,6 +24,8 @@ int validate(tokenItem *tokenList, const char *line)
 
 	while(list){
 		currentPos += list->length;
+		negateValue--; /* this allows us to detect when we have e.g. 4+-2 -> so we're looking backwards by two
+						* operators at once rather than just one. */
 		switch(list->type){
 			case tkNumber:
 				if(lastToken == tkCloseBracket){
@@ -34,10 +37,17 @@ int validate(tokenItem *tokenList, const char *line)
 				}else if(lastToken == tkNumber){
 					printError(line, currentPos, errDuplicateNumber);
 					rc = 1;
+				}else if(lastToken == tkMinus){
+					if(negateValue == 1){
+						// Negate the value
+						list->value *= -1;
+						// Delete the "-" from the token list
+						deletePreviousToken(tokenList, list);
+					}
 				}
 				break;
+				
 			case tkPlus:
-			case tkMinus:
 			case tkMultiply:
 			case tkDivide:
 			case tkPower:
@@ -46,6 +56,16 @@ int validate(tokenItem *tokenList, const char *line)
 					rc = 1;
 				}
 				break;
+			case tkMinus:
+				/* prevent an inappropriate number of "-" signs */
+				if(lastToken == tkMinus && negateValue == 1){
+					printError(line, currentPos-1, errInvalidOperator);
+					rc = 1;
+				}else if(lastToken != tkNumber && lastToken != tkCloseBracket){
+					negateValue = 2;
+				}
+				break;
+
 			case tkOpenBracket:
 				if(lastToken == tkCloseBracket){
 					err = insertAfterToken(list, tkMultiply);
@@ -56,6 +76,7 @@ int validate(tokenItem *tokenList, const char *line)
 				}
 				openBrackets++;
 				break;
+
 			case tkCloseBracket:
 				if(lastToken != tkNumber && lastToken != tkCloseBracket){
 					printError(line, currentPos-1, errInvalidBracket);
@@ -63,9 +84,11 @@ int validate(tokenItem *tokenList, const char *line)
 				}
 				closeBrackets++;
 				break;
+
 			default:
 				printError(line, currentPos, errUnknownToken);
 				rc = 1;
+				break;
 		}
 		lastToken = list->type;
 		list = list->next;

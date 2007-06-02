@@ -18,6 +18,7 @@ typedef enum{
 typedef enum{
 	errNoError,
 	errBadInput,
+	errNotFound,
 	errMemory,
 	errBadNumber,
 	errDuplicateNumber,

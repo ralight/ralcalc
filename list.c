@@ -23,6 +23,31 @@ errType insertAfterToken(tokenItem *tokenList, cToken token)
 }
 
 
+errType deletePreviousToken(tokenItem *tokenList, tokenItem *item)
+{
+	tokenItem *previousItem;
+	tokenItem *thisItem;
+
+	if(!tokenList || !item) return errBadInput;
+
+	previousItem = tokenList;
+	thisItem = tokenList->next;
+
+	while(thisItem){
+		if(thisItem->next == item){
+			previousItem->next = item;
+			free(thisItem);
+			return errNoError;
+		}
+
+		previousItem = thisItem;
+		thisItem = thisItem->next;
+	}
+
+	return errNotFound;
+}
+
+
 errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 {
 	tokenItem *newItem = NULL;
