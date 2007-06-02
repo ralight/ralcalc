@@ -29,6 +29,6 @@ typedef struct _tokenItem{
 } tokenItem;
 
 int validate(tokenItem *tokenList);
-int tokenise(tokenItem *tokenList, const char *line, char *errors);
+int tokenise(tokenItem *tokenList, const char *line);
 
 #endif

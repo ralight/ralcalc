@@ -32,6 +32,7 @@ int addToken(tokenItem *tokenList, cToken token, double value, int length)
 	while(list->next) list = list->next;
 
 	newItem = calloc(1, sizeof(tokenItem));
+	newItem->next = NULL;
 
 	switch(token){
 		case tkPlus:
@@ -44,14 +45,12 @@ int addToken(tokenItem *tokenList, cToken token, double value, int length)
 			newItem->type = token;
 			newItem->value = 0.0;
 			newItem->length = length;
-			newItem->next = NULL;
 			list->next = newItem;
 			break;
 		case tkNumber:
 			newItem->type = token;
 			newItem->value = value;
 			newItem->length = length;
-			newItem->next = NULL;
 			list->next = newItem;
 			break;
 		default:

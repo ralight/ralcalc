@@ -87,7 +87,7 @@ void printError(const char *line, int pos, errType error)
 }
 
 
-int tokenise(tokenItem *tokenList, const char *line, char *errors)
+int tokenise(tokenItem *tokenList, const char *line)
 {
 	int i;
 	cToken lastToken = tkEndToken;
@@ -159,7 +159,10 @@ int tokenise(tokenItem *tokenList, const char *line, char *errors)
 		}
 	}
 	if(inNumber){
-		if(addNumber(tokenList, buffer, bufferPos)) return i+1;
+		if(addNumber(tokenList, buffer, bufferPos)){
+			rc = 1;
+			printError(line, i, errBadNumber);
+		}
 		inNumber = 0;
 	}
 
@@ -170,7 +173,6 @@ int main(int argc, char *argv[])
 {
 	int i, j, k;
 	char *line = NULL;
-	char *errors = NULL;
 	int hasError = 0;
 	int len = 1;
 	int rc;
@@ -183,29 +185,23 @@ int main(int argc, char *argv[])
 	}
 
 	line = calloc(len, sizeof(char));
-	errors = calloc(len, sizeof(char));
 
 	i = 0;
 	for(j = 1; j < argc; j++){
 		for(k = 0; k < strlen(argv[j]); k++){
 			if(argv[j][k] != ' '){
 				line[i] = argv[j][k];
-				errors[i] = ' ';
 				i++;
 			}
 		}
 	}
 
-	printf("%s\n", line);
-
+	/* First element always defined and not dynamic for less hassle */
 	tokenList.next = NULL;
 	tokenList.type = tkEndToken;
-	rc = tokenise(&tokenList, line, errors);
-	if(!tokenList.next) return 0;
-	if(rc>0){
-		hasError = 1;
-		errors[rc+2] = '^';
-	}
+
+	rc = tokenise(&tokenList, line);
+	if(rc>0) hasError = 1;
 	rc = validate(&tokenList);
 	if(rc>0){
 		hasError = 1;
@@ -218,17 +214,10 @@ int main(int argc, char *argv[])
 			rc--;
 		}
 
-		errors[errorPos] = '^';
-	}
-
-	if(hasError){
-		printf("Error in input:\n%s\n%s\n", line, errors);
 	}
 
 	free(line);
-	if(tokenList.next){
-		freeList(tokenList.next);
-	}
+	if(tokenList.next) freeList(tokenList.next);
 
 	return 0;
 }
