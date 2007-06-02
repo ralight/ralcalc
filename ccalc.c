@@ -42,7 +42,7 @@ int validate(tokenItem *tokenList, const char *line)
 			case tkDivide:
 			case tkPower:
 				if(lastToken != tkNumber && lastToken != tkCloseBracket && lastToken != tkEndToken){
-					printError(line, currentPos-1, errDuplicateOperator);
+					printError(line, currentPos-1, errInvalidOperator);
 					rc = 1;
 				}
 				break;
@@ -77,8 +77,8 @@ int validate(tokenItem *tokenList, const char *line)
 	}
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkDivide \
-			|| lastToken == tkPower){
-		printError(line, currentPos, 103);
+			|| lastToken == tkPower || lastToken == tkOpenBracket){
+		printError(line, currentPos-1, errInvalidOperator);
 		rc = 1;
 	}
 	
@@ -113,8 +113,8 @@ void printError(const char *line, int pos, errType error)
 		case errDuplicateNumber:
 			printf(" duplicate number\n");
 			break;
-		case errDuplicateOperator:
-			printf(" duplicate operator\n");
+		case errInvalidOperator:
+			printf(" invalid operator\n");
 			break;
 		case errInvalidBracket:
 			printf(" invalid bracket\n");

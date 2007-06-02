@@ -20,10 +20,10 @@ typedef enum{
 	errBadInput,
 	errMemory,
 	errBadNumber,
+	errDuplicateNumber,
 	errMismatchedBrackets,
 	errInvalidBracket,
-	errDuplicateNumber,
-	errDuplicateOperator,
+	errInvalidOperator,
 	errUnknownToken
 } errType;
 
