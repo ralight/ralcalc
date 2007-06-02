@@ -193,3 +193,14 @@ int addSimpleToken(tokenItem *tokenList, cToken token)
 	return addToken(tokenList, token, 0.0, 1);
 }
 
+void freeList(tokenItem *tokenList)
+{
+	tokenItem *nextItem;
+
+	while(tokenList){
+		nextItem = tokenList->next;
+		free(tokenList);
+		tokenList = nextItem;
+	}
+}
+

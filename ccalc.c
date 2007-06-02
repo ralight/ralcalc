@@ -67,6 +67,26 @@ int validate(tokenItem *tokenList)
 }
 
 
+void printError(const char *line, int pos, errType error)
+{
+	int i;
+
+	printf("\nError: %s\n       ", line);
+	for(i = 0; i < pos - 1; i++){
+		printf(" ");
+	}
+	printf("^");
+	switch(error){
+		case errBadNumber:
+			printf(" bad number\n");
+			break;
+		default:
+			printf(" unknown error\n");
+			break;
+	}
+}
+
+
 int tokenise(tokenItem *tokenList, const char *line, char *errors)
 {
 	int i;
@@ -74,13 +94,13 @@ int tokenise(tokenItem *tokenList, const char *line, char *errors)
 	char buffer[100];
 	int bufferPos = 0;
 	int inNumber = 0;
+	int rc = 0;
 
 	if(!tokenList || !line) return -1;
 
 	memset(buffer, 0, 100);
 
 	for(i = 0; i < strlen(line); i++){
-		printf("%d %s.\n", i, buffer);
 		switch(line[i]){
 			case '0':
 			case '1':
@@ -121,52 +141,20 @@ int tokenise(tokenItem *tokenList, const char *line, char *errors)
 				break;
 
 			case '+':
-				if(inNumber){
-					if(addNumber(tokenList, buffer, bufferPos)) return i+1;
-					inNumber = 0;
-				}
-				if(addSimpleToken(tokenList, tkPlus)) return i+1;
-				lastToken = tkPlus;
-				break;
 			case '-':
-				if(inNumber){
-					if(addNumber(tokenList, buffer, bufferPos)) return i+1;
-					inNumber = 0;
-				}
-				if(addSimpleToken(tokenList, tkMinus)) return i+1;
-				lastToken = tkPlus;
-				break;
 			case 'x':
-				if(inNumber){
-					if(addNumber(tokenList, buffer, bufferPos)) return i+1;
-					inNumber = 0;
-				}
-				if(addSimpleToken(tokenList, tkMultiply)) return i+1;
-				lastToken = tkPlus;
-				break;
 			case '/':
-				if(inNumber){
-					if(addNumber(tokenList, buffer, bufferPos)) return i+1;
-					inNumber = 0;
-				}
-				if(addSimpleToken(tokenList, tkDivide)) return i+1;
-				lastToken = tkPlus;
-				break;
 			case '[':
-				if(inNumber){
-					if(addNumber(tokenList, buffer, bufferPos)) return i+1;
-					inNumber = 0;
-				}
-				if(addSimpleToken(tokenList, tkOpenBracket)) return i+1;
-				lastToken = tkPlus;
-				break;
 			case ']':
 				if(inNumber){
-					if(addNumber(tokenList, buffer, bufferPos)) return i+1;
+					if(addNumber(tokenList, buffer, bufferPos)){
+						rc = 1;
+						printError(line, i, errBadNumber);
+					}
 					inNumber = 0;
 				}
-				if(addSimpleToken(tokenList, tkCloseBracket)) return i+1;
-				lastToken = tkPlus;
+				if(addSimpleToken(tokenList, line[i])) return i+1;
+				lastToken = line[i];
 				break;
 		}
 	}
@@ -175,7 +163,7 @@ int tokenise(tokenItem *tokenList, const char *line, char *errors)
 		inNumber = 0;
 	}
 
-	return 0;
+	return rc;
 }
 
 int main(int argc, char *argv[])
@@ -187,7 +175,7 @@ int main(int argc, char *argv[])
 	int len = 1;
 	int rc;
 	tokenItem tokenList;
-	tokenItem *thisItem, *nextItem;
+	tokenItem *thisItem;
 	int errorPos;
 
 	for(i = 1; i < argc; i++){
@@ -236,17 +224,11 @@ int main(int argc, char *argv[])
 	if(hasError){
 		printf("Error in input:\n%s\n%s\n", line, errors);
 	}
+
 	free(line);
 	if(tokenList.next){
-		thisItem = tokenList.next;
-
-		while(thisItem){
-			nextItem = thisItem->next;
-			free(thisItem);
-			thisItem = nextItem;
-		}
+		freeList(tokenList.next);
 	}
-
 
 	return 0;
 }

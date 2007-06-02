@@ -3,19 +3,23 @@
 
 typedef enum{
 	tkNumber,
-	tkPlus,
-	tkMinus,
-	tkMultiply,
-	tkDivide,
-	tkPower,
-	tkOpenBracket,
-	tkCloseBracket,
+	tkPlus = '+',
+	tkMinus = '-',
+	tkMultiply = 'x',
+	tkDivide = '/',
+	tkPower = '^',
+	tkOpenBracket = '[',
+	tkCloseBracket = ']',
 	/* these below should be parsed as a number
 	tkExponent,
 	*/
 
 	tkEndToken
 } cToken;
+
+typedef enum{
+	errBadNumber
+} errType;
 
 typedef struct _tokenItem{
 	struct _tokenItem *next;
