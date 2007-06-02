@@ -25,15 +25,14 @@ int validate(tokenItem *tokenList, const char *line)
 		currentPos += list->length;
 		switch(list->type){
 			case tkNumber:
-				if(lastToken == tkOpenBracket){
+				if(lastToken == tkCloseBracket){
 					err = insertAfterToken(list, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err);
 						rc = 1;
 					}
 				}else if(lastToken == tkNumber){
-					/* FIXME - decide on error */
-					printError(line, currentPos, 100);
+					printError(line, currentPos, errDuplicateNumber);
 					rc = 1;
 				}
 				break;
@@ -42,8 +41,8 @@ int validate(tokenItem *tokenList, const char *line)
 			case tkMultiply:
 			case tkDivide:
 			case tkPower:
-				if(lastToken != tkNumber && lastToken != tkCloseBracket){
-					printError(line, currentPos, 101);
+				if(lastToken != tkNumber && lastToken != tkCloseBracket && lastToken != tkEndToken){
+					printError(line, currentPos-1, errDuplicateOperator);
 					rc = 1;
 				}
 				break;
@@ -58,7 +57,7 @@ int validate(tokenItem *tokenList, const char *line)
 				openBrackets++;
 				break;
 			case tkCloseBracket:
-				if(lastToken != tkNumber){
+				if(lastToken != tkNumber && lastToken != tkCloseBracket){
 					printError(line, currentPos, 102);
 					rc = 1;
 				}
@@ -110,6 +109,12 @@ void printError(const char *line, int pos, errType error)
 			break;
 		case errMismatchedBrackets:
 			printf(" mismatched brackets\n");
+			break;
+		case errDuplicateNumber:
+			printf(" duplicate number\n");
+			break;
+		case errDuplicateOperator:
+			printf(" duplicate operator\n");
 			break;
 		default:
 			printf(" unknown error (%d)\n", error);
@@ -268,6 +273,7 @@ errType process(tokenItem *tokenList, const char *line)
 	printf("%s = %g\n", line, result);
 	return errNoError;
 }
+
 
 int main(int argc, char *argv[])
 {

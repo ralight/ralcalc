@@ -3,16 +3,14 @@
 
 typedef enum{
 	tkNumber,
-	tkPlus = '+',
-	tkMinus = '-',
-	tkMultiply = 'x',
-	tkDivide = '/',
-	tkPower = '^',
-	tkOpenBracket = '[',
-	tkCloseBracket = ']',
-	/* these below should be parsed as a number
-	tkExponent,
-	*/
+	tkPlus = '+', // 43
+	tkMinus = '-', // 45
+	tkDivide = '/', // 47
+	tkOpenBracket = '[', // 91
+	tkCloseBracket = ']', // 93
+	tkPower = '^', // 94
+	tkExponent = 'e', // 101
+	tkMultiply = 'x', // 120
 
 	tkEndToken
 } cToken;
@@ -23,6 +21,8 @@ typedef enum{
 	errMemory,
 	errBadNumber,
 	errMismatchedBrackets,
+	errDuplicateNumber,
+	errDuplicateOperator,
 	errUnknownToken
 } errType;
 
@@ -31,6 +31,7 @@ typedef struct _tokenItem{
 	cToken type;
 	double value;
 	int length;
+	int precedence;
 } tokenItem;
 
 void printError(const char *line, int pos, errType error);

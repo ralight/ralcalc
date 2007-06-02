@@ -16,6 +16,7 @@ errType insertAfterToken(tokenItem *tokenList, cToken token)
 	newItem->type = token;
 	newItem->next = tokenList->next;
 	newItem->length = 1;
+	newItem->precedence = -1;
 	tokenList->next = newItem;
 
 	return errNoError;
@@ -34,6 +35,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 	newItem = calloc(1, sizeof(tokenItem));
 	if(!newItem) return errMemory;
 	newItem->next = NULL;
+	newItem->precedence = -1;
 
 	switch(token){
 		case tkPlus:
