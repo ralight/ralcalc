@@ -16,3 +16,8 @@ list.o : list.c list.h ccalc.h
 clean :
 	-rm -f ccalc *.o
 
+install : ccalc
+	install --strip ccalc /usr/local/bin/=
+
+uninstall :
+	rm -f /usr/local/bin/=

@@ -186,7 +186,7 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 
 	/* FIXME - should this be added to the list regardless of error? */
 	number = strtod(str, NULL);
-	return addToken(tokenList, tkNumber, number, bufferPos);
+	return addToken(tokenList, tkNumber, number*multiplier, bufferPos);
 }
 
 errType addSimpleToken(tokenItem *tokenList, cToken token)

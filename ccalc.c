@@ -5,27 +5,35 @@
 #include "ccalc.h"
 #include "list.h"
 
-int validate(tokenItem *tokenList)
+int validate(tokenItem *tokenList, const char *line)
 {
 	cToken lastToken;
 	tokenItem *list;
 	int openBrackets = 0;
 	int closeBrackets = 0;
-	int token = 1;
+	int currentPos = 0;
+	errType err;
+	int rc = 0;
 
 	if(!tokenList || !tokenList->next) return -1;
 
 	list = tokenList->next;
-	lastToken = list->type;
+	lastToken = tkEndToken;
 
-	while(list->next){
-		list = list->next;
+	while(list){
+		currentPos += list->length;
 		switch(list->type){
 			case tkNumber:
 				if(lastToken == tkOpenBracket){
-					if(insertAfterToken(list, tkMultiply)) return token;
+					err = insertAfterToken(list, tkMultiply);
+					if(err != errNoError){
+						printError(line, currentPos, err);
+						rc = 1;
+					}
 				}else if(lastToken == tkNumber){
-					return token;
+					/* FIXME - decide on error */
+					printError(line, currentPos, 100);
+					rc = 1;
 				}
 				break;
 			case tkPlus:
@@ -33,37 +41,48 @@ int validate(tokenItem *tokenList)
 			case tkMultiply:
 			case tkDivide:
 			case tkPower:
-				if(lastToken != tkNumber || lastToken != tkCloseBracket){
-					return token;
+				if(lastToken != tkNumber && lastToken != tkCloseBracket){
+					printError(line, currentPos, 101);
+					rc = 1;
 				}
 				break;
 			case tkOpenBracket:
 				if(lastToken == tkCloseBracket){
-					if(insertAfterToken(list, tkMultiply)) return token;
+					err = insertAfterToken(list, tkMultiply);
+					if(err != errNoError){
+						printError(line, currentPos, err);
+						rc = 1;
+					}
 				}
 				openBrackets++;
 				break;
 			case tkCloseBracket:
 				if(lastToken != tkNumber){
-					return token;
+					printError(line, currentPos, 102);
+					rc = 1;
 				}
 				closeBrackets++;
 				break;
 			default:
-				return token;
+				printError(line, currentPos, errUnknownToken);
+				rc = 1;
 		}
 		lastToken = list->type;
-		token++;
+		list = list->next;
 	}
 
-	if(openBrackets != closeBrackets) return -2;
+	if(openBrackets != closeBrackets){
+		printError(line, currentPos, errMismatchedBrackets);
+		rc = 1;
+	}
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkDivide \
 			|| lastToken == tkPower){
-		return token;
+		printError(line, currentPos, 103);
+		rc = 1;
 	}
 	
-	return 0;
+	return rc;
 }
 
 
@@ -88,8 +107,11 @@ void printError(const char *line, int pos, errType error)
 		case errBadNumber:
 			printf(" bad number\n");
 			break;
+		case errMismatchedBrackets:
+			printf(" mismatched brackets\n");
+			break;
 		default:
-			printf(" unknown error\n");
+			printf(" unknown error (%d)\n", error);
 			break;
 	}
 }
@@ -188,6 +210,59 @@ int tokenise(tokenItem *tokenList, const char *line)
 	return rc;
 }
 
+/* 
+ * Extremely simplistic left to right no operator precedent 
+ * processing
+ */
+errType process(tokenItem *tokenList, const char *line)
+{
+	double result;
+	int firstNumber = 1;
+	cToken lastToken;
+
+	if(!tokenList) return errBadInput;
+
+	while(tokenList){
+		switch(tokenList->type){
+			case tkNumber:
+				if(!firstNumber){
+					switch(lastToken){
+						case tkPlus:
+							result += tokenList->value;
+							break;
+						case tkMinus:
+							result -= tokenList->value;
+							break;
+						case tkMultiply:
+							result *= tokenList->value;
+							break;
+						case tkDivide:
+							result /= tokenList->value;
+							break;
+						default:
+							break;
+					}
+				}else{
+					result = tokenList->value;
+					firstNumber = 0;
+				}
+				break;
+			case tkPlus:
+			case tkMinus:
+			case tkMultiply:
+			case tkDivide:
+				lastToken = tokenList->type;
+				break;
+			default:
+				break;
+		}
+		tokenList = tokenList->next;
+	}
+
+	printf("%s = %g\n", line, result);
+	return errNoError;
+}
+
 int main(int argc, char *argv[])
 {
 	int i, j, k;
@@ -222,7 +297,7 @@ int main(int argc, char *argv[])
 	rc = tokenise(&tokenList, line);
 	if(rc>0) hasError = 1;
 
-	rc = validate(&tokenList);
+	rc = validate(&tokenList, line);
 	if(rc>0){
 		hasError = 1;
 		thisItem = tokenList.next;
@@ -234,6 +309,10 @@ int main(int argc, char *argv[])
 			rc--;
 		}
 
+	}
+
+	if(!hasError && tokenList.next){
+		process(tokenList.next, line);
 	}
 
 	free(line);
