@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-ggdb -Wall
-LDFLAGS=-nopie
+LDFLAGS=-nopie -lm
 
 all : ccalc
 

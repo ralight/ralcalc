@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "ccalc.h"
 #include "list.h"
@@ -177,6 +178,7 @@ int tokenise(tokenItem *tokenList, const char *line)
 			case '/':
 			case '[':
 			case ']':
+			case '^':
 				if(inNumber){
 					err = addNumber(tokenList, buffer, bufferPos);
 					if(err != errNoError){
@@ -239,6 +241,9 @@ errType process(tokenItem *tokenList, const char *line)
 						case tkDivide:
 							result /= tokenList->value;
 							break;
+						case tkPower:
+							result = pow(result, tokenList->value);
+							break;
 						default:
 							break;
 					}
@@ -251,6 +256,7 @@ errType process(tokenItem *tokenList, const char *line)
 			case tkMinus:
 			case tkMultiply:
 			case tkDivide:
+			case tkPower:
 				lastToken = tokenList->type;
 				break;
 			default:
