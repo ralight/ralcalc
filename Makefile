@@ -20,4 +20,4 @@ install : ccalc
 	install --strip ccalc /usr/local/bin/=
 
 uninstall :
-	rm -f /usr/local/bin/=
+	rm -f /usr/local/bin/= core

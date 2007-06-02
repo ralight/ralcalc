@@ -6,52 +6,11 @@
 #include "ccalc.h"
 #include "list.h"
 
-int assignPrecedence(tokenItem *tokenList)
-{
-	/*
-	 * Everything should start off with a precedence 
-	 * of zero when it is created.
-	 */
-	int maxPrecedence = 0;
-	int currentPrecedence = 0;
-
-	while(tokenList){
-		switch(tokenList->type){
-			case tkMultiply:
-			case tkDivide:
-			case tkPower:
-			case tkOpenBracket:
-			case tkExponent:
-				currentPrecedence++;
-				if(currentPrecedence > maxPrecedence){
-					maxPrecedence = currentPrecedence;
-				}
-				break;
-			case tkCloseBracket:
-				currentPrecedence--;
-				break;
-			case tkNumber:
-			case tkPlus:
-			case tkMinus:
-				// Leave with current precedence
-				break;
-			case tkEndToken:
-				break;
-		}
-		tokenList->precedence = currentPrecedence;
-		//printf("%d ", currentPrecedence);
-		tokenList = tokenList->next;
-	}
-	//printf("\n");
-
-	return maxPrecedence;
-}
-
 
 int validate(tokenItem *tokenList, const char *line)
 {
 	cToken lastToken;
-	tokenItem *list;
+	tokenItem *item;
 	int openBrackets = 0;
 	int closeBrackets = 0;
 	int currentPos = 0;
@@ -61,17 +20,17 @@ int validate(tokenItem *tokenList, const char *line)
 
 	if(!tokenList || !tokenList->next) return -1;
 
-	list = tokenList->next;
+	item = tokenList->next;
 	lastToken = tkEndToken;
 
-	while(list){
-		currentPos += list->length;
+	while(item){
+		currentPos += item->length;
 		negateValue--; /* this allows us to detect when we have e.g. 4+-2 -> so we're looking backwards by two
 						* operators at once rather than just one. */
-		switch(list->type){
+		switch(item->type){
 			case tkNumber:
 				if(lastToken == tkCloseBracket){
-					err = insertAfterToken(list, tkMultiply);
+					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err);
 						rc = 1;
@@ -82,9 +41,9 @@ int validate(tokenItem *tokenList, const char *line)
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
 						// Negate the value
-						list->value *= -1;
+						item->value *= -1;
 						// Delete the "-" from the token list
-						deletePreviousToken(tokenList, list);
+						deletePreviousToken(item);
 					}
 				}
 				break;
@@ -110,7 +69,7 @@ int validate(tokenItem *tokenList, const char *line)
 
 			case tkOpenBracket:
 				if(lastToken == tkCloseBracket){
-					err = insertAfterToken(list, tkMultiply);
+					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err);
 						rc = 1;
@@ -132,8 +91,8 @@ int validate(tokenItem *tokenList, const char *line)
 				rc = 1;
 				break;
 		}
-		lastToken = list->type;
-		list = list->next;
+		lastToken = item->type;
+		item = item->next;
 	}
 
 	if(openBrackets != closeBrackets){
@@ -285,65 +244,128 @@ int tokenise(tokenItem *tokenList, const char *line)
 	return rc;
 }
 
+
 /* 
- * Extremely simplistic left to right no operator precedent 
- * processing
+ * Recursive processing with nested brackets taking 
+ * precedent and left to right precedence within 
+ * brackets.
  */
-errType process(tokenItem *tokenList, const char *line)
+double process(tokenItem **tokenList, const char *line)
 {
-	double result;
-	int firstNumber = 1;
+	double value = 0.0;
+	double retval;
 	cToken lastToken;
-	int maxPrecedence;
+	int firstNumber = 1;
+	tokenItem *item;
 
-	if(!tokenList) return errBadInput;
+	if(!tokenList || !(*tokenList)) return 0.0;
 
-	maxPrecedence = assignPrecedence(tokenList);
+	item = (*tokenList);
+	while(item){
+		switch(item->type){
+			case tkOpenBracket:
+				retval = process(&(item->next), line);
+				if(!firstNumber){
+					switch(lastToken){
+						case tkPlus:
+							value += retval;
+							break;
+						case tkMinus:
+							value -= retval;
+							break;
+						case tkMultiply:
+							value *= retval;
+							break;
+						case tkDivide:
+							value /= retval;
+							break;
+						case tkPower:
+							value = pow(value, retval);
+							break;
+						case tkExponent:
+							/* FIXME */
+							break;
 
-	while(tokenList){
-		switch(tokenList->type){
+						case tkNumber:
+						case tkOpenBracket:
+						case tkCloseBracket:
+						case tkEndToken:
+							/* FIXME - error condition */
+							break;
+					}
+				}else{
+					value = retval;
+					firstNumber = 0;
+				}
+				break;
+
+			case tkCloseBracket:
+				while(item->prev->type != tkOpenBracket){
+					deletePreviousToken(item);
+				}
+				if(item->next){
+					item = item->next;
+					deletePreviousToken(item);
+				}else{
+					if(item->prev){
+						item->prev = NULL;
+					}
+					free(item);
+					item = NULL;
+				}
+				(*tokenList) = item;
+				return value;
+				break;
+
 			case tkNumber:
 				if(!firstNumber){
 					switch(lastToken){
 						case tkPlus:
-							result += tokenList->value;
+							value += item->value;
 							break;
 						case tkMinus:
-							result -= tokenList->value;
+							value -= item->value;
 							break;
 						case tkMultiply:
-							result *= tokenList->value;
+							value *= item->value;
 							break;
 						case tkDivide:
-							result /= tokenList->value;
+							value /= item->value;
 							break;
 						case tkPower:
-							result = pow(result, tokenList->value);
+							value = pow(value, item->value);
 							break;
 						default:
 							break;
 					}
 				}else{
-					result = tokenList->value;
+					value = item->value;
 					firstNumber = 0;
 				}
 				break;
+
 			case tkPlus:
 			case tkMinus:
 			case tkMultiply:
 			case tkDivide:
 			case tkPower:
-				lastToken = tokenList->type;
+				lastToken = item->type;
 				break;
-			default:
+
+			case tkExponent:
+				/* FIXME */
+				break;
+			case tkEndToken:
+				/* FIXME - error condition */
 				break;
 		}
-		tokenList = tokenList->next;
+		item = item->next;
 	}
 
-	printf("%s = %g\n", line, result);
-	return errNoError;
+	return value;
 }
+
+
 
 
 int main(int argc, char *argv[])
@@ -394,9 +416,8 @@ int main(int argc, char *argv[])
 
 	}
 
-	assignPrecedence(tokenList.next);
 	if(!hasError && tokenList.next){
-		process(tokenList.next, line);
+		printf("%s = %g\n", line, process(&(tokenList.next), line));
 	}
 
 	free(line);

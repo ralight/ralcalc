@@ -15,36 +15,33 @@ errType insertAfterToken(tokenItem *tokenList, cToken token)
 
 	newItem->type = token;
 	newItem->next = tokenList->next;
-	newItem->length = 1;
-	newItem->precedence = -1;
 	tokenList->next = newItem;
+	if(newItem->next){
+		newItem->next->prev = newItem;
+	}
+	newItem->prev = tokenList;
+	newItem->length = 1;
 
 	return errNoError;
 }
 
 
-errType deletePreviousToken(tokenItem *tokenList, tokenItem *item)
+errType deletePreviousToken(tokenItem *item)
 {
-	tokenItem *previousItem;
-	tokenItem *thisItem;
+	tokenItem *deleteItem;
 
-	if(!tokenList || !item) return errBadInput;
+	if(!item || !item->prev) return errBadInput;
 
-	previousItem = tokenList;
-	thisItem = tokenList->next;
-
-	while(thisItem){
-		if(thisItem->next == item){
-			previousItem->next = item;
-			free(thisItem);
-			return errNoError;
-		}
-
-		previousItem = thisItem;
-		thisItem = thisItem->next;
+	deleteItem = item->prev;
+	
+	item->prev = deleteItem->prev;
+	if(item->prev){
+		item->prev->next = item;
 	}
 
-	return errNotFound;
+	free(deleteItem);
+
+	return errNoError;
 }
 
 
@@ -60,7 +57,6 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 	newItem = calloc(1, sizeof(tokenItem));
 	if(!newItem) return errMemory;
 	newItem->next = NULL;
-	newItem->precedence = -1;
 
 	switch(token){
 		case tkPlus:
@@ -74,12 +70,14 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 			newItem->value = 0.0;
 			newItem->length = length;
 			list->next = newItem;
+			newItem->prev = list;
 			break;
 		case tkNumber:
 			newItem->type = token;
 			newItem->value = value;
 			newItem->length = length;
 			list->next = newItem;
+			newItem->prev = list;
 			break;
 		default:
 			printf("Unknown token (%d)\n", token);

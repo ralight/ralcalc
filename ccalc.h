@@ -30,13 +30,12 @@ typedef enum{
 
 typedef struct _tokenItem{
 	struct _tokenItem *next;
+	struct _tokenItem *prev;
 	cToken type;
 	double value;
 	int length;
-	int precedence;
 } tokenItem;
 
-int assignPrecedence(tokenItem *tokenList);
 void printError(const char *line, int pos, errType error);
 int validate(tokenItem *tokenList, const char *line);
 int tokenise(tokenItem *tokenList, const char *line);
