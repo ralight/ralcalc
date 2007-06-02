@@ -72,11 +72,19 @@ void printError(const char *line, int pos, errType error)
 	int i;
 
 	printf("\nError: %s\n       ", line);
-	for(i = 0; i < pos - 1; i++){
+	for(i = 0; i < pos; i++){
 		printf(" ");
 	}
 	printf("^");
 	switch(error){
+		case errMemory:
+			printf(" out of memory\n");
+			break;
+		case errBadInput:
+			printf(" bad input to function (internal)\n");
+		case errUnknownToken:
+			printf(" unknown token\n");
+			break;
 		case errBadNumber:
 			printf(" bad number\n");
 			break;
@@ -95,6 +103,7 @@ int tokenise(tokenItem *tokenList, const char *line)
 	int bufferPos = 0;
 	int inNumber = 0;
 	int rc = 0;
+	errType err;
 
 	if(!tokenList || !line) return -1;
 
@@ -147,21 +156,31 @@ int tokenise(tokenItem *tokenList, const char *line)
 			case '[':
 			case ']':
 				if(inNumber){
-					if(addNumber(tokenList, buffer, bufferPos)){
+					err = addNumber(tokenList, buffer, bufferPos);
+					if(err != errNoError){
 						rc = 1;
-						printError(line, i, errBadNumber);
+						printError(line, i-1, err);
 					}
 					inNumber = 0;
 				}
-				if(addSimpleToken(tokenList, line[i])) return i+1;
+				err = addSimpleToken(tokenList, line[i]);
+				if(err != errNoError){
+					rc = 1;
+					printError(line, i, err);
+				}
 				lastToken = line[i];
+				break;
+			default:
+				rc = 1;
+				printError(line, i, errUnknownToken);
 				break;
 		}
 	}
 	if(inNumber){
-		if(addNumber(tokenList, buffer, bufferPos)){
+		err = addNumber(tokenList, buffer, bufferPos);
+		if(err != errNoError){
 			rc = 1;
-			printError(line, i, errBadNumber);
+			printError(line, i-2, err);
 		}
 		inNumber = 0;
 	}
@@ -202,6 +221,7 @@ int main(int argc, char *argv[])
 
 	rc = tokenise(&tokenList, line);
 	if(rc>0) hasError = 1;
+
 	rc = validate(&tokenList);
 	if(rc>0){
 		hasError = 1;

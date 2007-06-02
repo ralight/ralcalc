@@ -18,7 +18,11 @@ typedef enum{
 } cToken;
 
 typedef enum{
-	errBadNumber
+	errNoError,
+	errBadInput,
+	errMemory,
+	errBadNumber,
+	errUnknownToken
 } errType;
 
 typedef struct _tokenItem{

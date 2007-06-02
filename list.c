@@ -4,27 +4,27 @@
 
 #include "ccalc.h"
 
-int insertAfterToken(tokenItem *tokenList, cToken token)
+errType insertAfterToken(tokenItem *tokenList, cToken token)
 {
 	tokenItem *newItem;
 
-	if(!tokenList) return 1;
+	if(!tokenList) return errBadInput;
 
 	newItem = calloc(1, sizeof(tokenItem));
-	if(!newItem) return 1;
+	if(!newItem) return errMemory;
 
 	newItem->type = token;
 	newItem->next = tokenList->next;
 	newItem->length = 1;
 	tokenList->next = newItem;
 
-	return 0;
+	return errNoError;
 }
 
 
-int addToken(tokenItem *tokenList, cToken token, double value, int length)
+errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 {
-	tokenItem *newItem;
+	tokenItem *newItem = NULL;
 	tokenItem *list;
 
 	/* Find tail */
@@ -32,6 +32,7 @@ int addToken(tokenItem *tokenList, cToken token, double value, int length)
 	while(list->next) list = list->next;
 
 	newItem = calloc(1, sizeof(tokenItem));
+	if(!newItem) return errMemory;
 	newItem->next = NULL;
 
 	switch(token){
@@ -56,14 +57,14 @@ int addToken(tokenItem *tokenList, cToken token, double value, int length)
 		default:
 			printf("Unknown token (%d)\n", token);
 			free(newItem);
-			return 1;
+			return errUnknownToken;
 			break;
 	}
 
-	return 0;
+	return errNoError;
 }
 
-int addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
+errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 {
 	int i;
 	char str[bufferPos+2];
@@ -72,6 +73,8 @@ int addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 	int multiplierPos = -1;
 	double multiplier = 1.0;
 	double number = 0.0;
+
+	if(!tokenList || !buffer || bufferPos < 0) return errBadInput;
 
 	strncpy(str, buffer, bufferPos+2);
 
@@ -178,16 +181,15 @@ int addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 		}
 	}
 
-	if(haveMultiplier > 1 || haveDecimalPoint > 1) return 1;
-	if(haveMultiplier && multiplierPos != bufferPos - 1) return 1;
+	if(haveMultiplier > 1 || haveDecimalPoint > 1) return errBadNumber;
+	if(haveMultiplier && multiplierPos != bufferPos - 1) return errBadNumber;
 
+	/* FIXME - should this be added to the list regardless of error? */
 	number = strtod(str, NULL);
-	if(addToken(tokenList, tkNumber, number, bufferPos)) return 1;
-
-	return 0;
+	return addToken(tokenList, tkNumber, number, bufferPos);
 }
 
-int addSimpleToken(tokenItem *tokenList, cToken token)
+errType addSimpleToken(tokenItem *tokenList, cToken token)
 {
 	return addToken(tokenList, token, 0.0, 1);
 }
