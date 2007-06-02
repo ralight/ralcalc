@@ -1,6 +1,6 @@
 COMPILE=gcc
 NAME=ccalc
-CFLAGS=-ggdb
+CFLAGS=-ggdb -Wall
 LDFLAGS=-nopie
 
 all : ${NAME}
