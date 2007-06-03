@@ -35,3 +35,6 @@ dist :
 	mkdir -p ralcalc-${VERSION}
 	cp LICENCE.txt Makefile calculation.c calculation.h datatypes.h output.c output.h ralcalc.c readme.txt tokens.c tokens.h ralcalc-${VERSION}/
 	tar -jcf ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}/
+
+sign : dist
+	gpg --detach-sign -a ralcalc-${VERSION}.tar.bz2
