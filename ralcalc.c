@@ -4,7 +4,6 @@
 #include <math.h>
 
 #include "calculation.h"
-#include "ccalc.h"
 #include "datatypes.h"
 #include "tokens.h"
 #include "output.h"
