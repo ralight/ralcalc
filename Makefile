@@ -4,8 +4,11 @@ LDFLAGS=-nopie -lm
 
 all : ccalc
 
-ccalc : ccalc.o list.o output.o
+ccalc : calculation.o ccalc.o list.o output.o
 	$(CC) $(LDFLAGS) -o $@ $^
+
+calculation.o : calculation.c calculation.h datatypes.h
+	$(CC) ${CFLAGS} -c -o $@ $<
 
 ccalc.o : ccalc.c ccalc.h datatypes.h
 	$(CC) ${CFLAGS} -c -o $@ $<
