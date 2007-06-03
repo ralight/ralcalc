@@ -31,6 +31,7 @@ double doCalculation(double valueOne, double valueTwo, cToken lastToken)
 			break;
 
 		case tkNumber:
+		case tkLastResult:
 		case tkOpenBracket:
 		case tkCloseBracket:
 		case tkEndToken:
@@ -89,6 +90,7 @@ double process(tokenItem **tokenList, const char *line)
 				break;
 
 			case tkNumber:
+			case tkLastResult:
 				if(!firstNumber){
 					value = doCalculation(value, item->value, lastToken);
 				}else{

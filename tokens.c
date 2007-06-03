@@ -27,13 +27,14 @@ int validate(tokenItem *tokenList, const char *line)
 						* operators at once rather than just one. */
 		switch(item->type){
 			case tkNumber:
+			case tkLastResult:
 				if(lastToken == tkCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err);
 						rc = 1;
 					}
-				}else if(lastToken == tkNumber){
+				}else if(lastToken == tkNumber || lastToken == tkLastResult){
 					printError(line, currentPos, errDuplicateNumber);
 					rc = 1;
 				}else if(lastToken == tkMinus){
@@ -51,7 +52,7 @@ int validate(tokenItem *tokenList, const char *line)
 			case tkMultiplyX:
 			case tkDivide:
 			case tkPower:
-				if(lastToken != tkNumber && lastToken != tkCloseBracket && lastToken != tkEndToken){
+				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkEndToken){
 					printError(line, currentPos-1, errInvalidOperator);
 					rc = 1;
 				}
@@ -63,7 +64,7 @@ int validate(tokenItem *tokenList, const char *line)
 				if(lastToken == tkMinus && negateValue == 1){
 					printError(line, currentPos-1, errInvalidOperator);
 					rc = 1;
-				}else if(lastToken != tkNumber && lastToken != tkCloseBracket){
+				}else if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket){
 					negateValue = 2;
 				}
 				break;
@@ -80,7 +81,7 @@ int validate(tokenItem *tokenList, const char *line)
 				break;
 
 			case tkCloseBracket:
-				if(lastToken != tkNumber && lastToken != tkCloseBracket){
+				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket){
 					printError(line, currentPos-1, errInvalidBracket);
 					rc = 1;
 				}
@@ -111,7 +112,7 @@ int validate(tokenItem *tokenList, const char *line)
 }
 
 
-int tokenise(tokenItem *tokenList, const char *line)
+int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 {
 	int i;
 	cToken lastToken = tkEndToken;
@@ -188,6 +189,16 @@ int tokenise(tokenItem *tokenList, const char *line)
 				}
 				lastToken = line[i];
 				break;
+
+			case '_':
+				err = addToken(tokenList, tkLastResult, lastResult, 1);
+				if(err != errNoError){
+					rc = 1;
+					printError(line, i, err);
+				}
+				lastToken = '_';
+				break;
+
 			default:
 				rc = 1;
 				printError(line, i, errUnknownToken);
@@ -277,6 +288,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 			newItem->prev = list;
 			break;
 		case tkNumber:
+		case tkLastResult:
 			newItem->type = token;
 			newItem->value = value;
 			newItem->length = length;

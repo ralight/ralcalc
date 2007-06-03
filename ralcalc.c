@@ -30,6 +30,10 @@ int main(int argc, char *argv[])
 	tokenItem *thisItem;
 	int errorPos;
 	char resultStr[100];
+	double result;
+	double lastResult = 0.0;
+	char rcpath[100];
+	FILE *rcptr;
 	
 	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v"))){
 		print_usage();
@@ -40,7 +44,18 @@ int main(int argc, char *argv[])
 		len += strlen(argv[i]);
 	}
 
+	if(getenv("HOME")){
+		snprintf(rcpath, 100, "%s/.ralcalc_result", getenv("HOME"));
+
+		rcptr = fopen(rcpath, "rb");
+		if(rcptr){
+			fread(&lastResult, sizeof(double), 1, rcptr);
+			fclose(rcptr);
+		}
+	}
+
 	line = calloc(len, sizeof(char));
+	if(!line) return 1;
 
 	i = 0;
 	for(j = 1; j < argc; j++){
@@ -56,7 +71,7 @@ int main(int argc, char *argv[])
 	tokenList.next = NULL;
 	tokenList.type = tkEndToken;
 
-	rc = tokenise(&tokenList, line);
+	rc = tokenise(&tokenList, line, lastResult);
 	if(rc>0) hasError = 1;
 
 	rc = validate(&tokenList, line);
@@ -74,8 +89,17 @@ int main(int argc, char *argv[])
 	}
 
 	if(!hasError && tokenList.next){
-		doubleToString(process(&(tokenList.next), line), resultStr, 100);
+		result = process(&(tokenList.next), line);
+		doubleToString(result, resultStr, 100);
 		printf("%s = %s\n", line, resultStr);
+
+		if(getenv("HOME")){
+			rcptr = fopen(rcpath, "wb");
+			if(rcptr){
+				fwrite(&result, sizeof(double), 1, rcptr);
+				fclose(rcptr);
+			}
+		}
 	}
 
 	free(line);

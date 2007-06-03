@@ -10,6 +10,7 @@ typedef enum{
 	tkOpenBracket = '[', // 91
 	tkCloseBracket = ']', // 93
 	tkPower = '^', // 94
+	tkLastResult = '_', // 95 (result of last ralcalc run - functionally equivalent to tkNumber)
 	tkExponent = 'e', // 101
 	tkMultiplyX = 'x', // 120
 
