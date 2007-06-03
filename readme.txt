@@ -55,18 +55,6 @@ behaviour.
 1+[2^.5] = 2.41421 (correct)
 
 
-Problems
---------
-
-Negation of values is only carried out on numbers, not on brackets.
-
-= -3^3
--3^3 = -27 (correct)
-
-= -[3^3]
--[3^3] = 27 (incorrect)
-
-
 To Do
 -----
 
