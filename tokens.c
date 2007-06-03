@@ -62,7 +62,6 @@ int validate(tokenItem *tokenList, const char *line)
 		negateValue--; /* this allows us to detect when we have e.g. 4+-2 -> so we're looking backwards by two
 						* operators at once rather than just one. */
 
-		printf("nv: %d\n", negateValue);
 		switch(item->type){
 			case tkNumber:
 			case tkLastResult:
@@ -113,6 +112,20 @@ int validate(tokenItem *tokenList, const char *line)
 					if(err != errNoError){
 						printError(line, currentPos, err);
 						rc = 1;
+					}
+				}else if(lastToken == tkMinus){
+					if(negateValue == 1){
+						deletePreviousToken(item);
+						err = insertBeforeToken(item, tkNumber, -1.0, 1);
+						if(err != errNoError){
+							printError(line, currentPos, err);
+							rc = 1;
+						}
+						err = insertBeforeToken(item, tkMultiply, 0.0, 1);
+						if(err != errNoError){
+							printError(line, currentPos, err);
+							rc = 1;
+						}
 					}
 				}
 				openBrackets++;
@@ -260,26 +273,54 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 
 
 /*
- * Insert a simple token in the middle of the list.
+ * Insert a simple token in the middle of the list after the current item.
  * This is used to turn (1+2)(3+4) into (1+2)*(3+4).
  */
-errType insertAfterToken(tokenItem *tokenList, cToken token)
+errType insertAfterToken(tokenItem *item, cToken token)
 {
 	tokenItem *newItem;
 
-	if(!tokenList) return errBadInput;
+	if(!item) return errBadInput;
 
 	newItem = calloc(1, sizeof(tokenItem));
 	if(!newItem) return errMemory;
 
 	newItem->type = token;
-	newItem->next = tokenList->next;
-	tokenList->next = newItem;
+	newItem->next = item->next;
+	item->next = newItem;
 	if(newItem->next){
 		newItem->next->prev = newItem;
 	}
-	newItem->prev = tokenList;
+	newItem->prev = item;
 	newItem->length = 1;
+
+	return errNoError;
+}
+
+
+/*
+ * Insert a complex token in the middle of the list before the current item.
+ * This is used to turn -(1+2) into -1.0*(1+2).
+ */
+errType insertBeforeToken(tokenItem *item, cToken token, double value, int length)
+{
+	tokenItem *newItem;
+
+	if(!item) return errBadInput;
+
+	newItem = calloc(1, sizeof(tokenItem));
+	if(!newItem) return errMemory;
+
+	newItem->type = token;
+	newItem->value = value;
+	newItem->length = length;
+
+	newItem->next = item;
+	newItem->prev = item->prev;
+	if(newItem->prev){
+		newItem->prev->next = newItem;
+	}
+	item->prev = newItem;
 
 	return errNoError;
 }
