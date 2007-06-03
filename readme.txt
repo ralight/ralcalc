@@ -48,6 +48,13 @@ Negation of values is only carried out on numbers, not on brackets.
 -[3^3] = 27 (incorrect)
 
 
+Licence
+-------
+
+This code is licensed under a BSD-style licence. See LICENCE.txt for more
+information.
+
+
 Author
 ------
 
