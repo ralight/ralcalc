@@ -38,8 +38,8 @@
 void print_usage()
 {
 	printf("ralcalc  version %s\n", VERSION);
-	printf("Copyright (C) 2007 by Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n");
-	printf("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the readme.txt distributed with this file.\n\n");
+	printf("Copyright (C) 2007 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n");
+	printf("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the LICENCE.txt distributed with this file.\n\n");
 	printf("ralcalc is a simple command line calculator. \n\n");
 	printf("Usage: ralcalc -h   (display this help)\n");
 	printf("       ralcalc <an equation>\n");

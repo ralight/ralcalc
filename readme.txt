@@ -14,6 +14,11 @@ http://en.wikipedia.org/wiki/SI_prefix ) for easier input and reading of
 results. Only the common engineering prefixes that are powers a multiple of
 three are used, so G, M, k, m, u, n, etc.
 
+Version information can be shown with:
+
+= -h
+ralcalc -h
+
 
 Operators
 ---------
