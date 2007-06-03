@@ -32,6 +32,15 @@
 #include "output.h"
 #include "tokens.h"
 
+
+/* 
+ * Work through all tokens making sure that all brackets match
+ * and that no illegal combinations of tokens exist: 9++2 for 
+ * example.
+ *
+ * Also negates numbers where necessary: 9+-2.
+ * This should probably be dealt with somewhere else.
+ */
 int validate(tokenItem *tokenList, const char *line)
 {
 	cToken lastToken;
@@ -52,6 +61,8 @@ int validate(tokenItem *tokenList, const char *line)
 		currentPos += item->length;
 		negateValue--; /* this allows us to detect when we have e.g. 4+-2 -> so we're looking backwards by two
 						* operators at once rather than just one. */
+
+		printf("nv: %d\n", negateValue);
 		switch(item->type){
 			case tkNumber:
 			case tkLastResult:
@@ -139,6 +150,9 @@ int validate(tokenItem *tokenList, const char *line)
 }
 
 
+/*
+ * Process the line input and convert it into a list of tokens
+ */
 int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 {
 	int i;
@@ -245,6 +259,10 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 }
 
 
+/*
+ * Insert a simple token in the middle of the list.
+ * This is used to turn (1+2)(3+4) into (1+2)*(3+4).
+ */
 errType insertAfterToken(tokenItem *tokenList, cToken token)
 {
 	tokenItem *newItem;
@@ -267,6 +285,11 @@ errType insertAfterToken(tokenItem *tokenList, cToken token)
 }
 
 
+/*
+ * Delete the previous token in the list.
+ * This is used to delete the negation token
+ * when a number has been negated.
+ */
 errType deletePreviousToken(tokenItem *item)
 {
 	tokenItem *deleteItem;
@@ -286,6 +309,9 @@ errType deletePreviousToken(tokenItem *item)
 }
 
 
+/*
+ * Add a token to the end of the list.
+ */
 errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 {
 	tokenItem *newItem = NULL;
@@ -332,6 +358,10 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 	return errNoError;
 }
 
+
+/*
+ * Parse a number and add it to the end of the token list.
+ */
 errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 {
 	int i;
@@ -457,11 +487,19 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 	return addToken(tokenList, tkNumber, number*multiplier, bufferPos);
 }
 
+
+/*
+ * Add a simple token (no value) to the end of the list.
+ */
 errType addSimpleToken(tokenItem *tokenList, cToken token)
 {
 	return addToken(tokenList, token, 0.0, 1);
 }
 
+
+/*
+ * Clean up the memory associated with the token list.
+ */
 void freeList(tokenItem *tokenList)
 {
 	tokenItem *nextItem;

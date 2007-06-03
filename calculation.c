@@ -34,6 +34,9 @@
 #include "tokens.h"
 
 
+/*
+ * Do actual maths based on the previous operator.
+ */
 double doCalculation(double valueOne, double valueTwo, cToken lastToken)
 {
 	switch(lastToken){

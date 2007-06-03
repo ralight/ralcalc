@@ -31,6 +31,10 @@
 #include "datatypes.h"
 
 
+/*
+ * Output an error with the line and a marker to where the
+ * error is (probably).
+ */
 void printError(const char *line, int pos, errType error)
 {
 	int i;
@@ -71,6 +75,10 @@ void printError(const char *line, int pos, errType error)
 }
 
 
+/*
+ * Convert a double into a string with SI prefixes.
+ * "string" is a preallocated char array of length len.
+ */
 void doubleToString(double value, char *string, int len)
 {
 	double absval;
