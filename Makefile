@@ -1,22 +1,23 @@
 CC=gcc
 CFLAGS=-ggdb -Wall -O2
 LDFLAGS=-nopie -lm
+VERSION=20070603
 
 all : ccalc
 
-ccalc : calculation.o ccalc.o list.o output.o
+ccalc : calculation.o ccalc.o output.o tokens.o
 	$(CC) $(LDFLAGS) -o $@ $^
 
 calculation.o : calculation.c calculation.h datatypes.h
 	$(CC) ${CFLAGS} -c -o $@ $<
 
 ccalc.o : ccalc.c ccalc.h datatypes.h
-	$(CC) ${CFLAGS} -c -o $@ $<
-
-list.o : list.c list.h datatypes.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) -DVERSION=\"${VERSION}\" ${CFLAGS} -c -o $@ $<
 
 output.o : output.c output.h datatypes.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+tokens.o : tokens.c tokens.h datatypes.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean :

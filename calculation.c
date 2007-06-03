@@ -4,7 +4,7 @@
 
 #include "datatypes.h"
 #include "calculation.h"
-#include "list.h"
+#include "tokens.h"
 
 
 double doCalculation(double valueOne, double valueTwo, cToken lastToken)
