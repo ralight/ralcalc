@@ -62,6 +62,14 @@ Negation of values is only carried out on numbers, not on brackets.
 -[3^3] = 27 (incorrect)
 
 
+To Do
+-----
+
+Fix precedence.
+Add support for e.g. 3e-3 style numbers.
+Function support sin[2]
+
+
 Licence
 -------
 
