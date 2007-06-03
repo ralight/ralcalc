@@ -25,6 +25,14 @@ Operators
 /		- Division
 ^		- Power
 []		- Brackets - increase the precedence of anything within the brackets.
+_		- The result of the last ralcalc run (stored in $HOME/.ralcalc_result)
+
+
+= 2^.5
+2^.5 = 1.41421
+
+= 1/_
+1/_ = 707.107m
 
 
 Precedence
@@ -34,6 +42,12 @@ The equations are processed left to right, which breaks traditional operator
 precedence. This is regarded as a bug and will be fixed! Anything within
 brackets [] is processed first, so this can be used to work around the bad
 behaviour.
+
+= 1+2^.5
+1+2^.5 = 1.73205 (incorrect)
+
+= 1+[2^.5]
+1+[2^.5] = 2.41421 (correct)
 
 
 Problems
