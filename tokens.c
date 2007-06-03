@@ -40,7 +40,7 @@ int validate(tokenItem *tokenList, const char *line)
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
 						// Negate the value
-						item->value *= -1;
+						item->value *= -1.0;
 						// Delete the "-" from the token list
 						deletePreviousToken(item);
 					}
