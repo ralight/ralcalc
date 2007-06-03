@@ -62,6 +62,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 		case tkPlus:
 		case tkMinus:
 		case tkMultiply:
+		case tkMultiplyX:
 		case tkDivide:
 		case tkPower:
 		case tkOpenBracket:

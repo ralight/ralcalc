@@ -50,6 +50,7 @@ int validate(tokenItem *tokenList, const char *line)
 				
 			case tkPlus:
 			case tkMultiply:
+			case tkMultiplyX:
 			case tkDivide:
 			case tkPower:
 				if(lastToken != tkNumber && lastToken != tkCloseBracket && lastToken != tkEndToken){
@@ -57,6 +58,8 @@ int validate(tokenItem *tokenList, const char *line)
 					rc = 1;
 				}
 				break;
+
+			/* FIXME - negation shouldn't take precedent over other things */
 			case tkMinus:
 				/* prevent an inappropriate number of "-" signs */
 				if(lastToken == tkMinus && negateValue == 1){
@@ -100,7 +103,7 @@ int validate(tokenItem *tokenList, const char *line)
 		rc = 1;
 	}
 	if(lastToken == tkPlus || lastToken == tkMinus \
-			|| lastToken == tkMultiply || lastToken == tkDivide \
+			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
 			|| lastToken == tkPower || lastToken == tkOpenBracket){
 		printError(line, currentPos-1, errInvalidOperator);
 		rc = 1;
@@ -207,6 +210,7 @@ int tokenise(tokenItem *tokenList, const char *line)
 			case '+':
 			case '-':
 			case 'x':
+			case '*':
 			case '/':
 			case '[':
 			case ']':
@@ -274,6 +278,7 @@ double process(tokenItem **tokenList, const char *line)
 							value -= retval;
 							break;
 						case tkMultiply:
+						case tkMultiplyX:
 							value *= retval;
 							break;
 						case tkDivide:
@@ -327,6 +332,7 @@ double process(tokenItem **tokenList, const char *line)
 							value -= item->value;
 							break;
 						case tkMultiply:
+						case tkMultiplyX:
 							value *= item->value;
 							break;
 						case tkDivide:
@@ -347,6 +353,7 @@ double process(tokenItem **tokenList, const char *line)
 			case tkPlus:
 			case tkMinus:
 			case tkMultiply:
+			case tkMultiplyX:
 			case tkDivide:
 			case tkPower:
 				lastToken = item->type;
