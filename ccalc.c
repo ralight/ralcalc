@@ -382,22 +382,22 @@ void doubleToString(double value, char *string, int len)
 		snprintf(string, len, "%gM", value / 1000000.0);
 	}else if(value > 1000.0){
 		snprintf(string, len, "%gk", value / 1000.0);
-	}else if(value < 0.001){
-		snprintf(string, len, "%gm", value * 1000.0);
-	}else if(value < 0.000001){
-		snprintf(string, len, "%gu", value * 1000000.0);
-	}else if(value < 0.000000001){
-		snprintf(string, len, "%gn", value * 1000000000.0);
-	}else if(value < 0.000000000001){
-		snprintf(string, len, "%gp", value * 1000000000000.0);
-	}else if(value < 0.000000000000001){
-		snprintf(string, len, "%gf", value * 1000000000000000.0);
-	}else if(value < 0.000000000000000001){
-		snprintf(string, len, "%ga", value * 1000000000000000000.0);
 	}else if(value < 0.000000000000000000001){
-		snprintf(string, len, "%gz", value * 1000000000000000000000.0);
-	}else if(value < 0.000000000000000000000001){
 		snprintf(string, len, "%gy", value * 1000000000000000000000000.0);
+	}else if(value < 0.000000000000000001){
+		snprintf(string, len, "%gz", value * 1000000000000000000000.0);
+	}else if(value < 0.000000000000001){
+		snprintf(string, len, "%ga", value * 1000000000000000000.0);
+	}else if(value < 0.000000000001){
+		snprintf(string, len, "%gf", value * 1000000000000000.0);
+	}else if(value < 0.000000001){
+		snprintf(string, len, "%gp", value * 1000000000000.0);
+	}else if(value < 0.000001){
+		snprintf(string, len, "%gn", value * 1000000000.0);
+	}else if(value < 0.001){
+		snprintf(string, len, "%gu", value * 1000000.0);
+	}else if(value < 1.0){
+		snprintf(string, len, "%gm", value * 1000.0);
 	}else{
 		snprintf(string, len, "%g", value);
 	}
