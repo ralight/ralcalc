@@ -47,21 +47,21 @@ void doubleToString(double value, char *string, int len)
 {
 	memset(string, 0, len);
 
-	if(value > 1000000000000000000000000.0){
-		snprintf(string, len, "%gG", value / 1000000000000000000000000.0);
-	}else if(value > 1000000000000000000000.0){
-		snprintf(string, len, "%gG", value / 1000000000000000000000.0);
-	}else if(value > 1000000000000000000.0){
-		snprintf(string, len, "%gG", value / 1000000000000000000.0);
-	}else if(value > 1000000000000000.0){
-		snprintf(string, len, "%gG", value / 1000000000000000.0);
-	}else if(value > 1000000000000.0){
-		snprintf(string, len, "%gG", value / 1000000000000.0);
-	}else if(value > 1000000000.0){
+	if(value >= 1000000000000000000000000.0){
+		snprintf(string, len, "%gY", value / 1000000000000000000000000.0);
+	}else if(value >= 1000000000000000000000.0){
+		snprintf(string, len, "%gZ", value / 1000000000000000000000.0);
+	}else if(value >= 1000000000000000000.0){
+		snprintf(string, len, "%gE", value / 1000000000000000000.0);
+	}else if(value >= 1000000000000000.0){
+		snprintf(string, len, "%gP", value / 1000000000000000.0);
+	}else if(value >= 1000000000000.0){
+		snprintf(string, len, "%gT", value / 1000000000000.0);
+	}else if(value >= 1000000000.0){
 		snprintf(string, len, "%gG", value / 1000000000.0);
-	}else if(value > 1000000.0){
+	}else if(value >= 1000000.0){
 		snprintf(string, len, "%gM", value / 1000000.0);
-	}else if(value > 1000.0){
+	}else if(value >= 1000.0){
 		snprintf(string, len, "%gk", value / 1000.0);
 	}else if(value < 0.000000000000000000001){
 		snprintf(string, len, "%gy", value * 1000000000000000000000000.0);
