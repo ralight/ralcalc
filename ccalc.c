@@ -366,6 +366,46 @@ double process(tokenItem **tokenList, const char *line)
 }
 
 
+void doubleToString(double value, char *string, int len)
+{
+	memset(string, 0, len);
+
+	if(value > 1000000000000000000000000.0){
+		snprintf(string, len, "%gG", value / 1000000000000000000000000.0);
+	}else if(value > 1000000000000000000000.0){
+		snprintf(string, len, "%gG", value / 1000000000000000000000.0);
+	}else if(value > 1000000000000000000.0){
+		snprintf(string, len, "%gG", value / 1000000000000000000.0);
+	}else if(value > 1000000000000000.0){
+		snprintf(string, len, "%gG", value / 1000000000000000.0);
+	}else if(value > 1000000000000.0){
+		snprintf(string, len, "%gG", value / 1000000000000.0);
+	}else if(value > 1000000000.0){
+		snprintf(string, len, "%gG", value / 1000000000.0);
+	}else if(value > 1000000.0){
+		snprintf(string, len, "%gM", value / 1000000.0);
+	}else if(value > 1000.0){
+		snprintf(string, len, "%gk", value / 1000.0);
+	}else if(value < 0.001){
+		snprintf(string, len, "%gm", value * 1000.0);
+	}else if(value < 0.000001){
+		snprintf(string, len, "%gu", value * 1000000.0);
+	}else if(value < 0.000000001){
+		snprintf(string, len, "%gn", value * 1000000000.0);
+	}else if(value < 0.000000000001){
+		snprintf(string, len, "%gp", value * 1000000000000.0);
+	}else if(value < 0.000000000000001){
+		snprintf(string, len, "%gf", value * 1000000000000000.0);
+	}else if(value < 0.000000000000000001){
+		snprintf(string, len, "%ga", value * 1000000000000000000.0);
+	}else if(value < 0.000000000000000000001){
+		snprintf(string, len, "%gz", value * 1000000000000000000000.0);
+	}else if(value < 0.000000000000000000000001){
+		snprintf(string, len, "%gy", value * 1000000000000000000000000.0);
+	}else{
+		snprintf(string, len, "%g", value);
+	}
+}
 
 
 int main(int argc, char *argv[])
@@ -378,6 +418,7 @@ int main(int argc, char *argv[])
 	tokenItem tokenList;
 	tokenItem *thisItem;
 	int errorPos;
+	char resultStr[100];
 
 	for(i = 1; i < argc; i++){
 		len += strlen(argv[i]);
@@ -417,7 +458,8 @@ int main(int argc, char *argv[])
 	}
 
 	if(!hasError && tokenList.next){
-		printf("%s = %g\n", line, process(&(tokenList.next), line));
+		doubleToString(process(&(tokenList.next), line), resultStr, 100);
+		printf("%s = %s\n", line, resultStr);
 	}
 
 	free(line);
