@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-ggdb -Wall
+CFLAGS=-ggdb -Wall -O2
 LDFLAGS=-nopie -lm
 
 all : ccalc

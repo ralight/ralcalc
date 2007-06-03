@@ -249,6 +249,41 @@ int tokenise(tokenItem *tokenList, const char *line)
 }
 
 
+double doCalculation(double valueOne, double valueTwo, cToken lastToken)
+{
+	switch(lastToken){
+		case tkPlus:
+			return valueOne + valueTwo;
+			break;
+		case tkMinus:
+			return valueOne - valueTwo;
+			break;
+		case tkMultiply:
+		case tkMultiplyX:
+			return valueOne * valueTwo;
+			break;
+		case tkDivide:
+			return valueOne / valueTwo;
+			break;
+		case tkPower:
+			return pow(valueOne, valueTwo);
+			break;
+		case tkExponent:
+			/* FIXME */
+			break;
+
+		case tkNumber:
+		case tkOpenBracket:
+		case tkCloseBracket:
+		case tkEndToken:
+			return valueTwo;
+			/* FIXME - error condition */
+			break;
+	}
+
+	return 0.0;
+}
+
 /* 
  * Recursive processing with nested brackets taking 
  * precedent and left to right precedence within 
@@ -258,7 +293,7 @@ double process(tokenItem **tokenList, const char *line)
 {
 	double value = 0.0;
 	double retval;
-	cToken lastToken;
+	cToken lastToken = tkEndToken;
 	int firstNumber = 1;
 	tokenItem *item;
 
@@ -270,34 +305,7 @@ double process(tokenItem **tokenList, const char *line)
 			case tkOpenBracket:
 				retval = process(&(item->next), line);
 				if(!firstNumber){
-					switch(lastToken){
-						case tkPlus:
-							value += retval;
-							break;
-						case tkMinus:
-							value -= retval;
-							break;
-						case tkMultiply:
-						case tkMultiplyX:
-							value *= retval;
-							break;
-						case tkDivide:
-							value /= retval;
-							break;
-						case tkPower:
-							value = pow(value, retval);
-							break;
-						case tkExponent:
-							/* FIXME */
-							break;
-
-						case tkNumber:
-						case tkOpenBracket:
-						case tkCloseBracket:
-						case tkEndToken:
-							/* FIXME - error condition */
-							break;
-					}
+					value = doCalculation(value, retval, lastToken);
 				}else{
 					value = retval;
 					firstNumber = 0;
@@ -324,26 +332,7 @@ double process(tokenItem **tokenList, const char *line)
 
 			case tkNumber:
 				if(!firstNumber){
-					switch(lastToken){
-						case tkPlus:
-							value += item->value;
-							break;
-						case tkMinus:
-							value -= item->value;
-							break;
-						case tkMultiply:
-						case tkMultiplyX:
-							value *= item->value;
-							break;
-						case tkDivide:
-							value /= item->value;
-							break;
-						case tkPower:
-							value = pow(value, item->value);
-							break;
-						default:
-							break;
-					}
+					value = doCalculation(value, item->value, lastToken);
 				}else{
 					value = item->value;
 					firstNumber = 0;
