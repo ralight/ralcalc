@@ -102,21 +102,21 @@ void doubleToString(double value, char *string, int len)
 		snprintf(string, len, "%gM", value / 1000000.0);
 	}else if(absval >= 1000.0){
 		snprintf(string, len, "%gk", value / 1000.0);
-	}else if(absval < 0.000000000000000000001){
+	}else if(absval < 0.00000000000000000001){
 		snprintf(string, len, "%gy", value * 1000000000000000000000000.0);
-	}else if(absval < 0.000000000000000001){
+	}else if(absval < 0.00000000000000001){
 		snprintf(string, len, "%gz", value * 1000000000000000000000.0);
-	}else if(absval < 0.000000000000001){
+	}else if(absval < 0.00000000000001){
 		snprintf(string, len, "%ga", value * 1000000000000000000.0);
-	}else if(absval < 0.000000000001){
+	}else if(absval < 0.00000000001){
 		snprintf(string, len, "%gf", value * 1000000000000000.0);
-	}else if(absval < 0.000000001){
+	}else if(absval < 0.00000001){
 		snprintf(string, len, "%gp", value * 1000000000000.0);
-	}else if(absval < 0.000001){
+	}else if(absval < 0.00001){
 		snprintf(string, len, "%gn", value * 1000000000.0);
-	}else if(absval < 0.001){
+	}else if(absval < 0.01){
 		snprintf(string, len, "%gu", value * 1000000.0);
-	}else if(absval < 1.0){
+	}else if(absval < 0.1){
 		snprintf(string, len, "%gm", value * 1000.0);
 	}else{
 		snprintf(string, len, "%g", value);
