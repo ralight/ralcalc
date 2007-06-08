@@ -1,4 +1,4 @@
-20070607
+20070608
 ========
 
 - Changed output format for numbers <0 so that it they are displayed as
@@ -8,3 +8,5 @@
   1/100   = 10m
   1/1000  = 1m
   1/10000 = 0.1m
+
+- Allow use of () brackets as well as [], directly equivalent to each other.

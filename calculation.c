@@ -64,6 +64,8 @@ double doCalculation(double valueOne, double valueTwo, cToken lastToken)
 		case tkLastResult:
 		case tkOpenBracket:
 		case tkCloseBracket:
+		case tkCOpenBracket:
+		case tkCCloseBracket:
 		case tkEndToken:
 			return valueTwo;
 			/* FIXME - error condition */
@@ -92,6 +94,7 @@ double process(tokenItem **tokenList, const char *line)
 	while(item){
 		switch(item->type){
 			case tkOpenBracket:
+			case tkCOpenBracket:
 				retval = process(&(item->next), line);
 				if(!firstNumber){
 					value = doCalculation(value, retval, lastToken);
@@ -102,7 +105,8 @@ double process(tokenItem **tokenList, const char *line)
 				break;
 
 			case tkCloseBracket:
-				while(item->prev->type != tkOpenBracket){
+			case tkCCloseBracket:
+				while(item->prev->type != tkOpenBracket && item->prev->type != tkCOpenBracket){
 					deletePreviousToken(item);
 				}
 				if(item->next){

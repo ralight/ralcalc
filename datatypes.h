@@ -30,6 +30,8 @@
 
 typedef enum{
 	tkNumber,
+	tkCOpenBracket = '(', // 40
+	tkCCloseBracket = ')', // 41
 	tkMultiply = '*', // 42
 	tkPlus = '+', // 43
 	tkMinus = '-', // 45

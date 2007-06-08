@@ -30,6 +30,8 @@ Operators
 /		- Division
 ^		- Power
 []		- Brackets - increase the precedence of anything within the brackets.
+()		  Both sets of brackets are directly equivalent, so = (3+2]/2 is
+          valid.
 _		- The result of the last ralcalc run (stored in $HOME/.ralcalc_result)
 
 

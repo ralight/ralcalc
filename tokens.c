@@ -65,7 +65,7 @@ int validate(tokenItem *tokenList, const char *line)
 		switch(item->type){
 			case tkNumber:
 			case tkLastResult:
-				if(lastToken == tkCloseBracket){
+				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err);
@@ -89,7 +89,7 @@ int validate(tokenItem *tokenList, const char *line)
 			case tkMultiplyX:
 			case tkDivide:
 			case tkPower:
-				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkEndToken){
+				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket && lastToken != tkEndToken){
 					printError(line, currentPos-1, errInvalidOperator);
 					rc = 1;
 				}
@@ -101,13 +101,14 @@ int validate(tokenItem *tokenList, const char *line)
 				if(lastToken == tkMinus && negateValue == 1){
 					printError(line, currentPos-1, errInvalidOperator);
 					rc = 1;
-				}else if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket){
+				}else if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket){
 					negateValue = 2;
 				}
 				break;
 
 			case tkOpenBracket:
-				if(lastToken == tkCloseBracket){
+			case tkCOpenBracket:
+				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err);
@@ -132,7 +133,8 @@ int validate(tokenItem *tokenList, const char *line)
 				break;
 
 			case tkCloseBracket:
-				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket){
+			case tkCCloseBracket:
+				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket){
 					printError(line, currentPos-1, errInvalidBracket);
 					rc = 1;
 				}
@@ -154,7 +156,7 @@ int validate(tokenItem *tokenList, const char *line)
 	}
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
-			|| lastToken == tkPower || lastToken == tkOpenBracket){
+			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket){
 		printError(line, currentPos-1, errInvalidOperator);
 		rc = 1;
 	}
@@ -227,6 +229,8 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 			case '/':
 			case '[':
 			case ']':
+			case '(':
+			case ')':
 			case '^':
 				if(inNumber){
 					err = addNumber(tokenList, buffer, bufferPos);
@@ -375,6 +379,8 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 		case tkPower:
 		case tkOpenBracket:
 		case tkCloseBracket:
+		case tkCOpenBracket:
+		case tkCCloseBracket:
 			newItem->type = token;
 			newItem->value = 0.0;
 			newItem->length = length;

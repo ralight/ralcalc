@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <arpa/inet.h>
 
 #include "calculation.h"
 #include "datatypes.h"
@@ -123,6 +124,7 @@ int main(int argc, char *argv[])
 		if(getenv("HOME")){
 			rcptr = fopen(rcpath, "wb");
 			if(rcptr){
+				
 				fwrite(&result, sizeof(double), 1, rcptr);
 				fclose(rcptr);
 			}
