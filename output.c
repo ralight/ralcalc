@@ -32,8 +32,13 @@
 
 
 /*
+ * printError()
+ *
  * Output an error with the line and a marker to where the
- * error is (probably).
+ * error is (probably). This works when checking that the
+ * characters and numbers are all valid, however has more
+ * problems getting the correct marker position when the 
+ * error involves incorrect token order.
  */
 void printError(const char *line, int pos, errType error)
 {
@@ -76,6 +81,8 @@ void printError(const char *line, int pos, errType error)
 
 
 /*
+ * doubleToString()
+ *
  * Convert a double into a string with SI prefixes.
  * "string" is a preallocated char array of length len.
  */

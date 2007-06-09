@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
 	}
 
 	if(!hasError && tokenList.next){
-		result = process(&(tokenList.next), line);
+		result = process(&(tokenList.next));
 		doubleToString(result, resultStr, 100);
 		printf("%s = %s\n", line, resultStr);
 

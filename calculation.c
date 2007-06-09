@@ -35,7 +35,9 @@
 
 
 /*
- * Do actual maths based on the previous operator.
+ * doCalculation()
+ *
+ * Do actual maths based on an operator.
  */
 double doCalculation(double valueOne, double valueTwo, cToken lastToken)
 {
@@ -76,11 +78,24 @@ double doCalculation(double valueOne, double valueTwo, cToken lastToken)
 }
 
 /* 
+ * process()
+ *
  * Recursive processing with nested brackets taking 
  * precedent and left to right precedence within 
  * brackets.
+ *
+ * When it reaches an end bracket then all of the previous tokens
+ * are deleted up to the open bracket. As process() only gets called
+ * after it has been validated that the brackets match up, and it
+ * calls itself whenever it meets a new open bracket, this means that
+ * only tokens within the current pair of brackets get deleted.
+ *
+ * As the recursion ensures that the most nested pair of brackets for
+ * a given set is processed first, this function must only also ensure
+ * that the tokens within a set of brackets are processed with the
+ * correct precedence.
  */
-double process(tokenItem **tokenList, const char *line)
+double process(tokenItem **tokenList)
 {
 	double value = 0.0;
 	double retval;
@@ -95,7 +110,7 @@ double process(tokenItem **tokenList, const char *line)
 		switch(item->type){
 			case tkOpenBracket:
 			case tkCOpenBracket:
-				retval = process(&(item->next), line);
+				retval = process(&(item->next));
 				if(!firstNumber){
 					value = doCalculation(value, retval, lastToken);
 				}else{
