@@ -30,7 +30,7 @@
 
 #include "datatypes.h"
 
-void printError(const char *line, int pos, errType error);
 void doubleToString(double value, char *string, int len);
+void printError(const char *line, int pos, errType error);
 
 #endif

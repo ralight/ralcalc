@@ -88,6 +88,7 @@ typedef struct _tokenItem{
 	cToken type;
 	double value;
 	int length;
+	int precedence;
 } tokenItem;
 
 #endif

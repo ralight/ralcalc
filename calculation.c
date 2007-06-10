@@ -38,10 +38,18 @@
  * doCalculation()
  *
  * Do actual maths based on an operator.
+ *
+ * Arguments:
+ * 		valueOne - double value on left hand side of operator.
+ * 		valueTwo - double value on right hand side of operator.
+ * 		operator - operation to carry out.
+ *
+ * Returns:
+ * 		Double result of the calculation or 0.0 on error.
  */
-double doCalculation(double valueOne, double valueTwo, cToken lastToken)
+double doCalculation(double valueOne, double valueTwo, cToken operator)
 {
-	switch(lastToken){
+	switch(operator){
 		case tkPlus:
 			return valueOne + valueTwo;
 			break;
@@ -99,72 +107,100 @@ double process(tokenItem **tokenList)
 {
 	double value = 0.0;
 	double retval;
-	cToken lastToken = tkEndToken;
-	int firstNumber = 1;
 	tokenItem *item;
+	int precedence;
+	double valueOne;
+	double valueTwo;
+	int firstValue;
+	cToken operator = tkEndToken;
+	int tokenPrecedence = 0;
 
 	if(!tokenList || !(*tokenList)) return 0.0;
 
-	item = (*tokenList);
-	while(item){
-		switch(item->type){
-			case tkOpenBracket:
-			case tkCOpenBracket:
-				retval = process(&(item->next));
-				if(!firstNumber){
-					value = doCalculation(value, retval, lastToken);
-				}else{
-					value = retval;
-					firstNumber = 0;
-				}
-				break;
-
-			case tkCloseBracket:
-			case tkCCloseBracket:
-				while(item->prev->type != tkOpenBracket && item->prev->type != tkCOpenBracket){
-					deletePreviousToken(item);
-				}
-				if(item->next){
-					item = item->next;
-					deletePreviousToken(item);
-				}else{
-					if(item->prev){
-						item->prev = NULL;
+	for(precedence = 3; precedence >= 0; precedence--){
+		firstValue = 1;
+		valueOne = 0.0;
+		valueTwo = 0.0;
+		item = (*tokenList);
+		while(item){
+			switch(item->type){
+				case tkOpenBracket:
+				case tkCOpenBracket:
+					/* FIXME - this should be inserted as a new number token */
+					if(item->next){
+						retval = process(&(item->next));
+						insertNumberAfterToken(item, retval);
+						item = (*tokenList); /* Reset to the beginning */
+						precedence = 3;
 					}
-					free(item);
-					item = NULL;
-				}
-				(*tokenList) = item;
-				return value;
-				break;
+					break;
 
-			case tkNumber:
-			case tkLastResult:
-				if(!firstNumber){
-					value = doCalculation(value, item->value, lastToken);
-				}else{
-					value = item->value;
-					firstNumber = 0;
-				}
-				break;
+				case tkCloseBracket:
+				case tkCCloseBracket:
+					if(!precedence){
+						while(item->prev->type != tkOpenBracket && item->prev->type != tkCOpenBracket){
+							deletePreviousToken(item); // delete contents of brackets
+						}
+						deletePreviousToken(item); // delete '['
+						if(item->next){
+							item = item->next;
+							deletePreviousToken(item);
+						}else{
+							if(item->prev){
+								item->prev = NULL;
+							}
+							free(item);
+							item = NULL;
+						}
+						(*tokenList) = item;
+						return value;
+					}
+					break;
 
-			case tkPlus:
-			case tkMinus:
-			case tkMultiply:
-			case tkMultiplyX:
-			case tkDivide:
-			case tkPower:
-				lastToken = item->type;
-				break;
+				case tkNumber:
+				case tkLastResult:
+					if(firstValue){
+						valueOne = item->value;
+						firstValue = 0;
+						value = valueOne;
+					}else{
+						//firstValue = 1;
+						valueTwo = item->value;
+						if(operator != tkEndToken && tokenPrecedence == precedence){
+							retval = doCalculation(valueOne, valueTwo, operator);
+							insertNumberAfterToken(item, retval);
+							deletePreviousToken(item); /* Delete operator */
+							deletePreviousToken(item); /* Delete number */
+							deletePreviousToken(item->next); /* deletes the old number */
+							item = (*tokenList); /* Reset to the beginning */
+							precedence++;
+							value = 0.0;
+							retval = 0.0;
+						}
+						valueOne = valueTwo;
+						operator = tkEndToken;
+					}
+					break;
 
-			case tkExponent:
-				/* FIXME */
-				break;
-			case tkEndToken:
-				/* FIXME - error condition */
-				break;
+				case tkPlus:
+				case tkMinus:
+				case tkMultiply:
+				case tkMultiplyX:
+				case tkDivide:
+				case tkPower:
+					operator = item->type;
+					tokenPrecedence = item->precedence;
+					break;
+
+				case tkExponent:
+					/* FIXME */
+					break;
+				case tkEndToken:
+					/* FIXME - error condition */
+					break;
+			}
+			item = item->next;
 		}
-		item = item->next;
 	}
 
 	return value;

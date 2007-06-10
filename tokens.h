@@ -30,14 +30,16 @@
 
 #include "datatypes.h"
 
-int validate(tokenItem *tokenList, const char *line);
-int tokenise(tokenItem *tokenList, const char *line, double lastResult);
-errType insertAfterToken(tokenItem *tokenList, cToken token);
-errType insertBeforeToken(tokenItem *item, cToken token, double value, int length);
-errType addToken(tokenItem *tokenList, cToken token, double value, int length);
 errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos);
 errType addSimpleToken(tokenItem *tokenList, cToken token);
+errType addToken(tokenItem *tokenList, cToken token, double value, int length);
+int assignPrecedence(tokenItem *tokenList);
 errType deletePreviousToken(tokenItem *item);
 void freeList(tokenItem *tokenList);
+errType insertAfterToken(tokenItem *tokenList, cToken token);
+errType insertBeforeToken(tokenItem *item, cToken token, double value, int length);
+errType insertNumberAfterToken(tokenItem *item, double value);
+int tokenise(tokenItem *tokenList, const char *line, double lastResult);
+int validate(tokenItem *tokenList, const char *line);
 
 #endif

@@ -100,10 +100,10 @@ int main(int argc, char *argv[])
 	tokenList.type = tkEndToken;
 
 	rc = tokenise(&tokenList, line, lastResult);
-	if(rc>0) hasError = 1;
+	if(rc > 0) hasError = 1;
 
 	rc = validate(&tokenList, line);
-	if(rc>0){
+	if(rc > 0){
 		hasError = 1;
 		thisItem = tokenList.next;
 		errorPos = 0;
@@ -116,6 +116,9 @@ int main(int argc, char *argv[])
 
 	}
 
+	rc = assignPrecedence(&tokenList);
+	if(rc > 0) hasError = 1;
+
 	if(!hasError && tokenList.next){
 		result = process(&(tokenList.next));
 		doubleToString(result, resultStr, 100);
@@ -124,7 +127,6 @@ int main(int argc, char *argv[])
 		if(getenv("HOME")){
 			rcptr = fopen(rcpath, "wb");
 			if(rcptr){
-				
 				fwrite(&result, sizeof(double), 1, rcptr);
 				fclose(rcptr);
 			}

@@ -32,55 +32,6 @@
 
 
 /*
- * printError()
- *
- * Output an error with the line and a marker to where the
- * error is (probably). This works when checking that the
- * characters and numbers are all valid, however has more
- * problems getting the correct marker position when the 
- * error involves incorrect token order.
- */
-void printError(const char *line, int pos, errType error)
-{
-	int i;
-
-	printf("\nError: %s\n       ", line);
-	for(i = 0; i < pos; i++){
-		printf(" ");
-	}
-	printf("^");
-	switch(error){
-		case errMemory:
-			printf(" out of memory\n");
-			break;
-		case errBadInput:
-			printf(" bad input to function (internal)\n");
-		case errUnknownToken:
-			printf(" unknown token\n");
-			break;
-		case errBadNumber:
-			printf(" bad number\n");
-			break;
-		case errMismatchedBrackets:
-			printf(" mismatched brackets\n");
-			break;
-		case errDuplicateNumber:
-			printf(" duplicate number\n");
-			break;
-		case errInvalidOperator:
-			printf(" invalid operator\n");
-			break;
-		case errInvalidBracket:
-			printf(" invalid bracket\n");
-			break;
-		default:
-			printf(" unknown error (%d)\n", error);
-			break;
-	}
-}
-
-
-/*
  * doubleToString()
  *
  * Convert a double into a string with SI prefixes.
@@ -127,6 +78,60 @@ void doubleToString(double value, char *string, int len)
 		snprintf(string, len, "%gm", value * 1000.0);
 	}else{
 		snprintf(string, len, "%g", value);
+	}
+}
+
+
+/*
+ * printError()
+ *
+ * Output an error with the line and a marker to where the
+ * error is (probably). This works when checking that the
+ * characters and numbers are all valid, however has more
+ * problems getting the correct marker position when the 
+ * error involves incorrect token order.
+ *
+ * Arguments:
+ * 		line - string containing the user input (no spaces).
+ * 		pos - integer with the position of the error.
+ * 		error - the error to report.
+ */
+void printError(const char *line, int pos, errType error)
+{
+	int i;
+
+	printf("\nError: %s\n       ", line);
+	for(i = 0; i < pos; i++){
+		printf(" ");
+	}
+	printf("^");
+	switch(error){
+		case errMemory:
+			printf(" out of memory\n");
+			break;
+		case errBadInput:
+			printf(" bad input to function (internal)\n");
+		case errUnknownToken:
+			printf(" unknown token\n");
+			break;
+		case errBadNumber:
+			printf(" bad number\n");
+			break;
+		case errMismatchedBrackets:
+			printf(" mismatched brackets\n");
+			break;
+		case errDuplicateNumber:
+			printf(" duplicate number\n");
+			break;
+		case errInvalidOperator:
+			printf(" invalid operator\n");
+			break;
+		case errInvalidBracket:
+			printf(" invalid bracket\n");
+			break;
+		default:
+			printf(" unknown error (%d)\n", error);
+			break;
 	}
 }
 
