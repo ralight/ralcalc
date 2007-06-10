@@ -1,4 +1,4 @@
-20070608
+20070610
 ========
 
 - Changed output format for numbers <0 so that it they are displayed as
@@ -10,3 +10,6 @@
   1/10000 = 0.1m
 
 - Allow use of () brackets as well as [], directly equivalent to each other.
+
+- Fix operator precedence: (), ^, */, +_. Negation of single number is still
+  considered first.

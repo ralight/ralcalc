@@ -88,9 +88,8 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 /* 
  * process()
  *
- * Recursive processing with nested brackets taking 
- * precedent and left to right precedence within 
- * brackets.
+ * Recursive processing with nested brackets taking precedent and 
+ * ^, * /, + - precedence for the other operators.
  *
  * When it reaches an end bracket then all of the previous tokens
  * are deleted up to the open bracket. As process() only gets called
@@ -101,7 +100,7 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
  * As the recursion ensures that the most nested pair of brackets for
  * a given set is processed first, this function must only also ensure
  * that the tokens within a set of brackets are processed with the
- * correct precedence.
+ * correct precedence. Seems fine so far.
  */
 double process(tokenItem **tokenList)
 {
@@ -126,12 +125,12 @@ double process(tokenItem **tokenList)
 			switch(item->type){
 				case tkOpenBracket:
 				case tkCOpenBracket:
-					/* FIXME - this should be inserted as a new number token */
 					if(item->next){
 						retval = process(&(item->next));
 						insertNumberAfterToken(item, retval);
+						deletePreviousToken(item->next); // delete open bracket
 						item = (*tokenList); /* Reset to the beginning */
-						precedence = 3;
+						precedence = 3; /* Always start with new precedence after brackets have been found */
 					}
 					break;
 
@@ -141,7 +140,6 @@ double process(tokenItem **tokenList)
 						while(item->prev->type != tkOpenBracket && item->prev->type != tkCOpenBracket){
 							deletePreviousToken(item); // delete contents of brackets
 						}
-						deletePreviousToken(item); // delete '['
 						if(item->next){
 							item = item->next;
 							deletePreviousToken(item);
@@ -154,6 +152,11 @@ double process(tokenItem **tokenList)
 						}
 						(*tokenList) = item;
 						return value;
+					}else{
+						/* If we see a close bracket, the loop should decrement
+						 * rather than carry on. Simulate end of list.
+						 */
+						item = NULL;
 					}
 					break;
 
@@ -199,7 +202,7 @@ double process(tokenItem **tokenList)
 					/* FIXME - error condition */
 					break;
 			}
-			item = item->next;
+			if(item) item = item->next;
 		}
 	}
 

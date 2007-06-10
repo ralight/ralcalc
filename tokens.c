@@ -323,7 +323,9 @@ errType deletePreviousToken(tokenItem *item)
 
 	deleteItem = item->prev;
 
+#ifdef DEBUG
 	printf("Deleting '%c' (%g)\n", deleteItem->type, deleteItem->value);
+#endif
 	
 	item->prev = deleteItem->prev;
 	if(item->prev){
@@ -424,7 +426,9 @@ errType insertNumberAfterToken(tokenItem *item, double value)
 
 	if(!item) return errBadInput;
 
+#ifdef DEBUG
 	printf("Inserting %g\n", value);
+#endif
 
 	newItem = calloc(1, sizeof(tokenItem));
 	if(!newItem) return errMemory;
