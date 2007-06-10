@@ -106,6 +106,7 @@ Error: 3.14.159x2.8^2
 
 .PP
 If the number of open and close brackets do not match up, a "mismatched brackets" error will be generated. The error marker position has no significance.
+.PP
 .RS
 = 5/[[2+3]*9
 
@@ -116,6 +117,7 @@ Error: 5/[[2+3]*9
 
 .PP
 If an operator appears in an invalid position, an "invalid operator" error will be generated. Examples of this include duplicated operators "++" and operators next to closed brackets "+)". The error marker indicates the invalid operator.
+.PP
 .RS
 = 3^^7
 
@@ -125,6 +127,7 @@ Error: 3^^7
 
 .PP
 If a bracket appears in an invalid position, an "invalid bracket" error will be generated. This type of error often overlaps with other errors, so there will be a number of messages written to the screen. It is best to fix this error first as it will likely be the root cause of the problem. The error marker indicates the invalid bracket.
+.PP
 .RS
 = [2+]3
  
@@ -154,12 +157,14 @@ Internal error: If an unknown error code is passed to the error output function,
 
 .SH BUGS
 Brackets aren't matched correctly, so the following is treated as valid:
+.PP
 .RS
 = 2]+[3
 .RE
 This particular example causes an infinite loop.
 .PP
 Negation of a number is given the highest precedent:
+.PP
 .RS
 = -3^2
 -3^2 = 9
