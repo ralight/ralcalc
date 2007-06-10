@@ -11,5 +11,10 @@
 
 - Allow use of () brackets as well as [], directly equivalent to each other.
 
-- Fix operator precedence: (), ^, */, +_. Negation of single number is still
+- Fixed operator precedence: (), ^, */, +_. Negation of single number is still
   considered first.
+ 
+- Added support for the "," as a decimal point - this is handled by strtod()
+  so it is locale dependent whether "." or "," is accepted as valid.
+
+- Added man pages.

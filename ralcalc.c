@@ -42,7 +42,7 @@ void print_usage()
 	printf("Copyright (C) 2007 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n");
 	printf("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the LICENCE.txt distributed with this file.\n\n");
 	printf("ralcalc is a simple command line calculator. \n\n");
-	printf("Usage: ralcalc -h   (display this help)\n");
+	printf("Usage: ralcalc -h   (display this text)\n");
 	printf("       ralcalc <an equation>\n");
 	printf("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n");
 }
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 	char rcpath[100];
 	FILE *rcptr;
 	
-	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v"))){
+	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))){
 		print_usage();
 		return 0;
 	}
@@ -136,6 +136,6 @@ int main(int argc, char *argv[])
 	free(line);
 	if(tokenList.next) freeList(tokenList.next);
 
-	return 0;
+	return rc;
 }
 

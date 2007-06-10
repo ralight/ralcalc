@@ -151,6 +151,7 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 				str[i] = ' ';
 				break;
 			case '.':
+			case ',':
 				haveDecimalPoint++;
 		}
 	}
@@ -479,6 +480,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 			case '8':
 			case '9':
 			case '.':
+			case ',':
 			case 'Y':
 			case 'Z':
 			case 'E':
