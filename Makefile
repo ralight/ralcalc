@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-ggdb -Wall -O2
 LDFLAGS=-nopie -lm
-VERSION=20070610
+VERSION=20070613
 
 PREFIX=/usr/local
 MANDIR=/usr/local/man

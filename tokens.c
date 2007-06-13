@@ -44,6 +44,7 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 	char str[bufferPos+2];
 	int haveMultiplier = 0;
 	int haveDecimalPoint = 0;
+	int haveExponent = 0;
 	int multiplierPos = -1;
 	double multiplier = 1.0;
 	double number = 0.0;
@@ -153,10 +154,14 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 			case '.':
 			case ',':
 				haveDecimalPoint++;
+				break;
+			case 'e':
+				haveExponent++;
+				break;
 		}
 	}
 
-	if(haveMultiplier > 1 || haveDecimalPoint > 1) return errBadNumber;
+	if(haveMultiplier > 1 || haveDecimalPoint > 1 || haveExponent > 1) return errBadNumber;
 	if(haveMultiplier && multiplierPos != bufferPos - 1) return errBadNumber;
 
 	/* FIXME - should this be added to the list regardless of error? */
@@ -458,6 +463,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 	int i;
 	cToken lastToken = tkEndToken;
 	char buffer[100];
+	char lastchar = '\0';
 	int bufferPos = 0;
 	int inNumber = 0;
 	int rc = 0;
@@ -481,6 +487,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 			case '9':
 			case '.':
 			case ',':
+			case 'e':
 			case 'Y':
 			case 'Z':
 			case 'E':
@@ -519,19 +526,30 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 			case ')':
 			case '^':
 				if(inNumber){
-					err = addNumber(tokenList, buffer, bufferPos);
+					if(lastchar == 'e' && line[i] == '-'){
+						buffer[bufferPos] = line[i];
+						bufferPos++;
+					}else{
+						err = addNumber(tokenList, buffer, bufferPos);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err);
+						}
+						inNumber = 0;
+					}
+				}
+				if(!inNumber || lastchar != 'e' || line[i] != '-'){ 
+					/* 
+					 * If we're at the "-" of an "1e-3", then don't
+					 * add the "-" as a token.
+					 */
+					err = addSimpleToken(tokenList, line[i]);
 					if(err != errNoError){
 						rc = 1;
-						printError(line, i-1, err);
+						printError(line, i, err);
 					}
-					inNumber = 0;
+					lastToken = line[i];
 				}
-				err = addSimpleToken(tokenList, line[i]);
-				if(err != errNoError){
-					rc = 1;
-					printError(line, i, err);
-				}
-				lastToken = line[i];
 				break;
 
 			case '_':
@@ -548,6 +566,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 				printError(line, i, errUnknownToken);
 				break;
 		}
+		lastchar = line[i];
 	}
 	if(inNumber){
 		err = addNumber(tokenList, buffer, bufferPos);

@@ -1,3 +1,9 @@
+20070613
+========
+
+- Added support for 1e3, 3e-6 style numbers.
+
+
 20070610
 ========
 

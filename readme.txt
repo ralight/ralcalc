@@ -14,6 +14,14 @@ http://en.wikipedia.org/wiki/SI_prefix ) for easier input and reading of
 results. Only the common engineering prefixes that are powers a multiple of
 three are used, so G, M, k, m, u, n, etc.
 
+Numbers can be input using an "e" to indicate a power of ten, so
+
+= 1e-3*1000
+1e-3*1000 = 1
+
+ralcalc expects the SI prefixes to be at the end of a number, so 1e-3n is
+valid but 1ne-3 is not. Basically, I'd avoid mixing the two.
+
 Version information can be shown with:
 
 = -h
@@ -49,10 +57,9 @@ The equations are processed in order of ^, * /, + -. Anything within
 brackets [] is processed first.
 
 
-To Do
------
+Possible To Do
+--------------
 
-Add support for e.g. 3e-3 style numbers.
 Function support sin[2]
 
 
