@@ -1,7 +1,8 @@
 CC=gcc
 CFLAGS=-ggdb -Wall -O2
 LDFLAGS=-nopie -lm
-VERSION=20070613
+VERSION=20070614
+INSTALL=install
 
 PREFIX=/usr/local
 MANDIR=/usr/local/man
@@ -27,19 +28,21 @@ clean :
 	-rm -f ralcalc *.o
 
 install : ralcalc
-	install --strip ralcalc ${PREFIX}/bin/ralcalc
+	$(INSTALL) -d ${PREFIX}/bin/
+	$(INSTALL) -s ralcalc ${PREFIX}/bin/ralcalc
 	ln -sf ${PREFIX}/bin/ralcalc ${PREFIX}/bin/=
-	install ralcalc.1 ${MANDIR}/man1/ralcalc.1
-	install =.1 ${MANDIR}/man1/=.1
+	$(INSTALL) -d $(MANDIR)/man1
+	$(INSTALL) ralcalc.1 ${MANDIR}/man1/ralcalc.1
+	$(INSTALL) =.1 ${MANDIR}/man1/=.1
 
 uninstall :
 	rm -f ${PREFIX}/bin/= ${PREFIX}/bin/ralcalc
-	rm -f ${MANDIR}/ralcalc.1 ${MANDIR}/man1/=.1
+	rm -f ${MANDIR}/man1/ralcalc.1 ${MANDIR}/man1/=.1
 
 
 dist :
 	mkdir -p ralcalc-${VERSION}
-	cp LICENCE.txt Makefile calculation.c calculation.h changes.txt datatypes.h output.c output.h ralcalc.c ralcalc.1 readme.txt tokens.c tokens.h ralcalc-${VERSION}/
+	cp =.1 LICENCE.txt Makefile calculation.c calculation.h changes.txt datatypes.h output.c output.h ralcalc.c ralcalc.1 readme.txt tokens.c tokens.h ralcalc-${VERSION}/
 	tar -jcf ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}/
 
 sign : dist

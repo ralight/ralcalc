@@ -1,3 +1,11 @@
+20070614
+========
+
+- Fixed Makefile for Mac OS X.
+- Included missing "=.1" to dist target.
+- Fixed uninstall target.
+
+
 20070613
 ========
 
