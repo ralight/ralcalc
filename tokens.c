@@ -689,6 +689,11 @@ int validate(tokenItem *tokenList, const char *line)
 					rc = 1;
 				}
 				closeBrackets++;
+
+				if(closeBrackets > openBrackets){
+					printError(line, currentPos-1, errInvalidBracket);
+					rc = 1;
+				}
 				break;
 
 			default:

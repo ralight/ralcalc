@@ -49,6 +49,9 @@
  */
 double doCalculation(double valueOne, double valueTwo, cToken operator)
 {
+#ifdef DEBUG
+	printf("doCalculation(%g, %g, %d)\n", valueOne, valueTwo, operator);
+#endif
 	switch(operator){
 		case tkPlus:
 			return valueOne + valueTwo;
@@ -117,6 +120,21 @@ double process(tokenItem **tokenList)
 	if(!tokenList || !(*tokenList)) return 0.0;
 
 	for(precedence = 3; precedence >= 0; precedence--){
+
+#ifdef DEBUG
+		item = (*tokenList);
+		printf("Tokens:");
+		while(item){
+			if(item->type == tkNumber){
+				printf(" (%g)", item->value);
+			}else{
+				printf(" %c", item->type);
+			}
+			item = item->next;
+		}
+		printf("\n");
+#endif
+
 		firstValue = 1;
 		valueOne = 0.0;
 		valueTwo = 0.0;
@@ -130,7 +148,7 @@ double process(tokenItem **tokenList)
 						insertNumberAfterToken(item, retval);
 						deletePreviousToken(item->next); // delete open bracket
 						item = (*tokenList); /* Reset to the beginning */
-						precedence = 3; /* Always start with new precedence after brackets have been found */
+						precedence = 4; /* Always start with new precedence after brackets have been found */
 					}
 					break;
 

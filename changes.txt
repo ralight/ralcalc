@@ -1,3 +1,14 @@
+20070616
+========
+
+- Precedence is now reset correctly after processing brackets. Previously it
+  was being set one value too low, so the power (^) operator was being missed
+  out for e.g. "= [1+2]^3", which would return the answer "3".
+
+- Bracket matching has been improved, so if there are more close brackets than
+  open it is detected.
+
+
 20070614
 ========
 

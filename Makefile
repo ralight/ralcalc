@@ -1,7 +1,8 @@
 CC=gcc
+# Add "-DDEBUG" to CFLAGS for verbose debug output
 CFLAGS=-ggdb -Wall -O2
 LDFLAGS=-nopie -lm
-VERSION=20070614
+VERSION=20070616
 INSTALL=install
 
 PREFIX=/usr/local
@@ -44,6 +45,9 @@ dist :
 	mkdir -p ralcalc-${VERSION}
 	cp =.1 LICENCE.txt Makefile calculation.c calculation.h changes.txt datatypes.h output.c output.h ralcalc.c ralcalc.1 readme.txt tokens.c tokens.h ralcalc-${VERSION}/
 	tar -jcf ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}/
+
+dist-clean : clean
+	rm -rf ralcalc-${VERSION}*
 
 sign : dist
 	gpg --detach-sign -a ralcalc-${VERSION}.tar.bz2
