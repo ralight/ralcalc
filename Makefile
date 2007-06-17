@@ -51,3 +51,6 @@ dist-clean : clean
 
 sign : dist
 	gpg --detach-sign -a ralcalc-${VERSION}.tar.bz2
+
+copy : sign
+	scp ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}.tar.bz2.asc atchoo:atchoo.org/tools/ralcalc/files/
