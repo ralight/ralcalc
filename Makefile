@@ -1,8 +1,8 @@
 CC=gcc
 # Add "-DDEBUG" to CFLAGS for verbose debug output
-CFLAGS=-ggdb -Wall -O2
+CFLAGS=-ggdb -Wall -O2 -DDEBUG
 LDFLAGS=-nopie -lm
-VERSION=20070616
+VERSION=20070617
 INSTALL=install
 
 PREFIX=/usr/local

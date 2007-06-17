@@ -1,3 +1,9 @@
+20070617
+========
+
+- Negation now has the correct precedence.
+
+
 20070616
 ========
 

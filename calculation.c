@@ -59,6 +59,9 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 		case tkMinus:
 			return valueOne - valueTwo;
 			break;
+		case tkNegation:
+			return valueOne * -1.0;
+			break;
 		case tkMultiply:
 		case tkMultiplyX:
 			return valueOne * valueTwo;
@@ -68,9 +71,6 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 			break;
 		case tkPower:
 			return pow(valueOne, valueTwo);
-			break;
-		case tkExponent:
-			/* FIXME */
 			break;
 
 		case tkNumber:
@@ -213,9 +213,23 @@ double process(tokenItem **tokenList)
 					tokenPrecedence = item->precedence;
 					break;
 
-				case tkExponent:
-					/* FIXME */
+				case tkNegation:
+					if(precedence == item->precedence){
+						item = item->next;
+						if(item && (item->type == tkNumber || item->type == tkLastResult)){
+							item->value *= -1.0;
+							deletePreviousToken(item); /* Delete negation */
+							item = (*tokenList);
+							precedence++;
+							value = 0.0;
+							retval = 0.0;
+							operator = tkEndToken;
+						}else{
+							/* FIXME - could do with an error code here */
+						}
+					}
 					break;
+
 				case tkEndToken:
 					/* FIXME - error condition */
 					break;

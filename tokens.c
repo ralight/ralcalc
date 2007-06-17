@@ -216,6 +216,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 	switch(token){
 		case tkPlus:
 		case tkMinus:
+		case tkNegation:
 		case tkMultiply:
 		case tkMultiplyX:
 		case tkDivide:
@@ -276,6 +277,7 @@ int assignPrecedence(tokenItem *tokenList)
 		switch(item->type){
 			case tkPlus:
 			case tkMinus:
+			case tkNegation:
 				precedence = 1;
 				break;
 			case tkMultiply:
@@ -297,7 +299,6 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkCCloseBracket:
 			case tkNumber:
 			case tkLastResult:
-			case tkExponent:
 			case tkEndToken:
 				precedence = 0;
 				break;
@@ -622,14 +623,17 @@ int validate(tokenItem *tokenList, const char *line)
 						rc = 1;
 					}
 				}else if(lastToken == tkNumber || lastToken == tkLastResult){
+					/* Should never happen because tokenise() will produce
+					 * an "invalid number" error.
+					 */
 					printError(line, currentPos, errDuplicateNumber);
 					rc = 1;
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
-						// Negate the value
-						item->value *= -1.0;
-						// Delete the "-" from the token list
-						deletePreviousToken(item);
+						/* Negate the value by changing the 
+						 * previous tkMinus to a tkNegation.
+						 */
+						item->prev->type = tkNegation;
 					}
 				}
 				break;
@@ -645,7 +649,6 @@ int validate(tokenItem *tokenList, const char *line)
 				}
 				break;
 
-			/* FIXME - negation shouldn't take precedent over other things */
 			case tkMinus:
 				/* prevent an inappropriate number of "-" signs */
 				if(lastToken == tkMinus && negateValue == 1){
