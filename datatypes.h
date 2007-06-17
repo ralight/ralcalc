@@ -54,6 +54,7 @@ typedef enum{
 	tkLastResult = '_', // 95 (result of last ralcalc run - functionally equivalent to tkNumber)
 	tkExponent = 'e', // 101
 	tkMultiplyX = 'x', // 120
+	tkNegation = '~', // 126
 
 	tkEndToken
 } cToken;

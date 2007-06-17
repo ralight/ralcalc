@@ -705,10 +705,13 @@ int validate(tokenItem *tokenList, const char *line)
 		item = item->next;
 	}
 
+	/* Check for bracket count mismatch */
 	if(openBrackets != closeBrackets){
 		printError(line, currentPos, errMismatchedBrackets);
 		rc = 1;
 	}
+
+	/* Check that we haven't ended on an invalid operator, e.g. "= 1+2/"  */
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
 			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket){
