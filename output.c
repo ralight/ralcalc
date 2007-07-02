@@ -96,9 +96,11 @@ void doubleToString(double value, char *string, int len)
  * 		pos - integer with the position of the error.
  * 		error - the error to report.
  */
-void printError(const char *line, int pos, errType error)
+void printError(const char *line, int pos, errType error, int quiet)
 {
 	int i;
+
+	if(quiet) return;
 
 	printf("\nError: %s\n       ", line);
 	for(i = 0; i < pos; i++){

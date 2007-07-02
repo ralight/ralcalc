@@ -27,6 +27,12 @@ Version information can be shown with:
 = -h
 ralcalc -h
 
+The -q option causes the input and any error messages to be not printed to the
+screen.
+
+The -e option causes the result to be display in the "1e-3" form rather than
+with SI prefixes.
+
 
 Operators
 ---------

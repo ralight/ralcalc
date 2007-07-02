@@ -459,7 +459,7 @@ errType insertNumberAfterToken(tokenItem *item, double value)
  *
  * Process the line input and convert it into a list of tokens
  */
-int tokenise(tokenItem *tokenList, const char *line, double lastResult)
+int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quiet)
 {
 	int i;
 	cToken lastToken = tkEndToken;
@@ -534,7 +534,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 						err = addNumber(tokenList, buffer, bufferPos);
 						if(err != errNoError){
 							rc = 1;
-							printError(line, i-1, err);
+							printError(line, i-1, err, quiet);
 						}
 						inNumber = 0;
 					}
@@ -547,7 +547,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 					err = addSimpleToken(tokenList, line[i]);
 					if(err != errNoError){
 						rc = 1;
-						printError(line, i, err);
+						printError(line, i, err, quiet);
 					}
 					lastToken = line[i];
 				}
@@ -557,14 +557,14 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 				err = addToken(tokenList, tkLastResult, lastResult, 1);
 				if(err != errNoError){
 					rc = 1;
-					printError(line, i, err);
+					printError(line, i, err, quiet);
 				}
 				lastToken = '_';
 				break;
 
 			default:
 				rc = 1;
-				printError(line, i, errUnknownToken);
+				printError(line, i, errUnknownToken, quiet);
 				break;
 		}
 		lastchar = line[i];
@@ -573,7 +573,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
 		err = addNumber(tokenList, buffer, bufferPos);
 		if(err != errNoError){
 			rc = 1;
-			printError(line, i-2, err);
+			printError(line, i-2, err, quiet);
 		}
 		inNumber = 0;
 	}
@@ -592,7 +592,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult)
  * Also negates numbers where necessary: 9+-2.
  * This should probably be dealt with somewhere else.
  */
-int validate(tokenItem *tokenList, const char *line)
+int validate(tokenItem *tokenList, const char *line, int quiet)
 {
 	cToken lastToken;
 	tokenItem *item;
@@ -619,14 +619,14 @@ int validate(tokenItem *tokenList, const char *line)
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
-						printError(line, currentPos, err);
+						printError(line, currentPos, err, quiet);
 						rc = 1;
 					}
 				}else if(lastToken == tkNumber || lastToken == tkLastResult){
 					/* Should never happen because tokenise() will produce
 					 * an "invalid number" error.
 					 */
-					printError(line, currentPos, errDuplicateNumber);
+					printError(line, currentPos, errDuplicateNumber, quiet);
 					rc = 1;
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
@@ -644,7 +644,7 @@ int validate(tokenItem *tokenList, const char *line)
 			case tkDivide:
 			case tkPower:
 				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket && lastToken != tkEndToken){
-					printError(line, currentPos-1, errInvalidOperator);
+					printError(line, currentPos-1, errInvalidOperator, quiet);
 					rc = 1;
 				}
 				break;
@@ -652,7 +652,7 @@ int validate(tokenItem *tokenList, const char *line)
 			case tkMinus:
 				/* prevent an inappropriate number of "-" signs */
 				if(lastToken == tkMinus && negateValue == 1){
-					printError(line, currentPos-1, errInvalidOperator);
+					printError(line, currentPos-1, errInvalidOperator, quiet);
 					rc = 1;
 				}else if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket){
 					negateValue = 2;
@@ -664,7 +664,7 @@ int validate(tokenItem *tokenList, const char *line)
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
-						printError(line, currentPos, err);
+						printError(line, currentPos, err, quiet);
 						rc = 1;
 					}
 				}else if(lastToken == tkMinus){
@@ -672,12 +672,12 @@ int validate(tokenItem *tokenList, const char *line)
 						deletePreviousToken(item);
 						err = insertBeforeToken(item, tkNumber, -1.0, 1);
 						if(err != errNoError){
-							printError(line, currentPos, err);
+							printError(line, currentPos, err, quiet);
 							rc = 1;
 						}
 						err = insertBeforeToken(item, tkMultiply, 0.0, 1);
 						if(err != errNoError){
-							printError(line, currentPos, err);
+							printError(line, currentPos, err, quiet);
 							rc = 1;
 						}
 					}
@@ -688,19 +688,19 @@ int validate(tokenItem *tokenList, const char *line)
 			case tkCloseBracket:
 			case tkCCloseBracket:
 				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket){
-					printError(line, currentPos-1, errInvalidBracket);
+					printError(line, currentPos-1, errInvalidBracket, quiet);
 					rc = 1;
 				}
 				closeBrackets++;
 
 				if(closeBrackets > openBrackets){
-					printError(line, currentPos-1, errInvalidBracket);
+					printError(line, currentPos-1, errInvalidBracket, quiet);
 					rc = 1;
 				}
 				break;
 
 			default:
-				printError(line, currentPos, errUnknownToken);
+				printError(line, currentPos, errUnknownToken, quiet);
 				rc = 1;
 				break;
 		}
@@ -710,7 +710,7 @@ int validate(tokenItem *tokenList, const char *line)
 
 	/* Check for bracket count mismatch */
 	if(openBrackets != closeBrackets){
-		printError(line, currentPos, errMismatchedBrackets);
+		printError(line, currentPos, errMismatchedBrackets, quiet);
 		rc = 1;
 	}
 
@@ -718,7 +718,7 @@ int validate(tokenItem *tokenList, const char *line)
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
 			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket){
-		printError(line, currentPos-1, errInvalidOperator);
+		printError(line, currentPos-1, errInvalidOperator, quiet);
 		rc = 1;
 	}
 	

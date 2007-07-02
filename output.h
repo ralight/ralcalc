@@ -31,6 +31,6 @@
 #include "datatypes.h"
 
 void doubleToString(double value, char *string, int len);
-void printError(const char *line, int pos, errType error);
+void printError(const char *line, int pos, errType error, int quiet);
 
 #endif

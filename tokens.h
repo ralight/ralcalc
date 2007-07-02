@@ -39,7 +39,7 @@ void freeList(tokenItem *tokenList);
 errType insertAfterToken(tokenItem *tokenList, cToken token);
 errType insertBeforeToken(tokenItem *item, cToken token, double value, int length);
 errType insertNumberAfterToken(tokenItem *item, double value);
-int tokenise(tokenItem *tokenList, const char *line, double lastResult);
-int validate(tokenItem *tokenList, const char *line);
+int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quiet);
+int validate(tokenItem *tokenList, const char *line, int quiet);
 
 #endif

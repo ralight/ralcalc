@@ -1,3 +1,15 @@
+20070702
+========
+
+- Added the "-q" option which causes ralcalc to only display the result rather
+  than the input and the result (or the input and errors).
+
+- Added the "-e" option which causes the output to be of the form "1e-3"
+  rather than using SI prefixes.
+
+- Return code is set correctly on error.
+
+
 20070617
 ========
 

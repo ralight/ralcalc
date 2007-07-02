@@ -43,9 +43,13 @@ void print_usage()
 	printf("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the LICENCE.txt distributed with this file.\n\n");
 	printf("ralcalc is a simple command line calculator. \n\n");
 	printf("Usage: ralcalc -h   (display this text)\n");
-	printf("       ralcalc <an equation>\n");
+	printf("       ralcalc [-q] [-e] <an equation>\n\n");
+	printf("Options\n");
+	printf(" -q	   Only display the answer.\n");
+	printf(" -e	   Use the '1e-3' form of display for the answer rather than SI prefixes.\n");
 	printf("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n");
 }
+
 
 int main(int argc, char *argv[])
 {
@@ -62,10 +66,22 @@ int main(int argc, char *argv[])
 	double lastResult = 0.0;
 	char rcpath[100];
 	FILE *rcptr;
+	int quiet = 0;
+	int exponentDisplay = 0;
 	
 	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))){
 		print_usage();
 		return 0;
+	}
+
+	for(i = 1; i < argc; i++){
+		if(!strcmp(argv[i], "-q")){
+			quiet = 1;
+			argv[i][0] = '\0';
+		}else if(!strcmp(argv[i], "-e")){
+			exponentDisplay = 1;
+			argv[i][0] = '\0';
+		}
 	}
 
 	for(i = 1; i < argc; i++){
@@ -99,10 +115,10 @@ int main(int argc, char *argv[])
 	tokenList.next = NULL;
 	tokenList.type = tkEndToken;
 
-	rc = tokenise(&tokenList, line, lastResult);
+	rc = tokenise(&tokenList, line, lastResult, quiet);
 	if(rc > 0) hasError = 1;
 
-	rc = validate(&tokenList, line);
+	rc = validate(&tokenList, line, quiet);
 	if(rc > 0){
 		hasError = 1;
 		thisItem = tokenList.next;
@@ -121,8 +137,16 @@ int main(int argc, char *argv[])
 
 	if(!hasError && tokenList.next){
 		result = process(&(tokenList.next));
-		doubleToString(result, resultStr, 100);
-		printf("%s = %s\n", line, resultStr);
+		if(!exponentDisplay){
+			doubleToString(result, resultStr, 100);
+		}else{
+			snprintf(resultStr, 100, "%g", result);
+		}
+		if(!quiet){
+			printf("%s = %s\n", line, resultStr);
+		}else{
+			printf("%s\n", resultStr);
+		}
 
 		if(getenv("HOME")){
 			rcptr = fopen(rcpath, "wb");
@@ -136,6 +160,6 @@ int main(int argc, char *argv[])
 	free(line);
 	if(tokenList.next) freeList(tokenList.next);
 
-	return rc;
+	return hasError;
 }
 
