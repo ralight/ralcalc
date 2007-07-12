@@ -1,3 +1,10 @@
+20070712
+========
+
+- Added the "-r" option which causes the output to use neither SI prefixes nor
+  exponents.
+
+
 20070702
 ========
 

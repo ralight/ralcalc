@@ -36,6 +36,12 @@
 #include "tokens.h"
 #include "output.h"
 
+typedef enum {
+	dmSI,
+	dmExponent,
+	dmRaw
+} displayMode;
+
 void print_usage()
 {
 	printf("ralcalc  version %s\n", VERSION);
@@ -43,10 +49,11 @@ void print_usage()
 	printf("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the LICENCE.txt distributed with this file.\n\n");
 	printf("ralcalc is a simple command line calculator. \n\n");
 	printf("Usage: ralcalc -h   (display this text)\n");
-	printf("       ralcalc [-q] [-e] <an equation>\n\n");
+	printf("       ralcalc [-q] [-e] [-r] <an equation>\n\n");
 	printf("Options\n");
-	printf(" -q	   Only display the answer.\n");
+	printf(" -q	   Only display the answer (quiet).\n");
 	printf(" -e	   Use the '1e-3' form of display for the answer rather than SI prefixes.\n");
+	printf(" -r    Display the answer without prefixes or exponents.\n");
 	printf("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n");
 }
 
@@ -67,7 +74,7 @@ int main(int argc, char *argv[])
 	char rcpath[100];
 	FILE *rcptr;
 	int quiet = 0;
-	int exponentDisplay = 0;
+	displayMode dm = dmSI;
 	
 	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))){
 		print_usage();
@@ -79,7 +86,10 @@ int main(int argc, char *argv[])
 			quiet = 1;
 			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-e")){
-			exponentDisplay = 1;
+			dm = dmExponent;
+			argv[i][0] = '\0';
+		}else if(!strcmp(argv[i], "-r")){
+			dm = dmRaw;
 			argv[i][0] = '\0';
 		}
 	}
@@ -137,11 +147,19 @@ int main(int argc, char *argv[])
 
 	if(!hasError && tokenList.next){
 		result = process(&(tokenList.next));
-		if(!exponentDisplay){
-			doubleToString(result, resultStr, 100);
-		}else{
-			snprintf(resultStr, 100, "%g", result);
+
+		switch(dm){
+			case dmSI:
+				doubleToString(result, resultStr, 100);
+				break;
+			case dmExponent:
+				snprintf(resultStr, 100, "%g", result);
+				break;
+			case dmRaw:
+				snprintf(resultStr, 100, "%f", result);
+				break;
 		}
+
 		if(!quiet){
 			printf("%s = %s\n", line, resultStr);
 		}else{

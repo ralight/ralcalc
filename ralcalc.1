@@ -1,4 +1,4 @@
-.TH "ralcalc" "1" "2nd July 2007" "" ""
+.TH "ralcalc" "1" "12th July 2007" "" ""
 .SH NAME
 ralcalc \- a simple command line calculator
 
@@ -7,12 +7,12 @@ ralcalc \- a simple command line calculator
 ralcalc -h
 .PP
 ralcalc
-.I [-q] [-e] equation
+.I [-q] [-e] [-r] equation
 .PP
 = -h
 .PP
 =
-.I [-q] [-e] equation
+.I [-q] [-e] [-r] equation
 
 .SH DESCRIPTION
 .B ralcalc
@@ -30,6 +30,8 @@ Display version and contact details.
 Only display the result (so hide the input and any errors).
 .IP -e
 Display the result in the "1e-3" form rather than using SI prefixes.
+.IP -r
+Display the result in decimal format with neither SI prefixes nor exponent.
 
 .SH NUMBER FORMAT
 Numbers should be input using the "." or "," as a decimal point (this is locale dependent so both may not work in your locale), with no thousands separators.
