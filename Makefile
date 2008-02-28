@@ -6,7 +6,7 @@ VERSION=20070712
 INSTALL=install
 
 PREFIX=/usr/local
-MANDIR=/usr/local/man
+MANDIR=${PREFIX}/man
 
 all : ralcalc
 
