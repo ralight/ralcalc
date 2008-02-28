@@ -139,7 +139,6 @@ int main(int argc, char *argv[])
 			thisItem = thisItem->next;
 			rc--;
 		}
-
 	}
 
 	rc = assignPrecedence(&tokenList);
