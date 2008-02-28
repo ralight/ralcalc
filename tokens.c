@@ -56,97 +56,97 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 	for(i = bufferPos-1; i >= 0; i--){
 		switch(str[i]){
 			case 'Y':
-				multiplier = 1000000000000000000000000.0;
+				multiplier = 1.0e24;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'Z':
-				multiplier = 1000000000000000000000.0;
+				multiplier = 1.0e21;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'E':
-				multiplier = 1000000000000000000.0;
+				multiplier = 1.0e18;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'P':
-				multiplier = 1000000000000000.0;
+				multiplier = 1.0e15;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'T':
-				multiplier = 1000000000000.0;
+				multiplier = 1.0e12;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'G':
-				multiplier = 1000000000.0;
+				multiplier = 1.0e9;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'M':
-				multiplier = 1000000.0;
+				multiplier = 1.0e6;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'k':
-				multiplier = 1000.0;
+				multiplier = 1.0e3;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'm':
-				multiplier = 0.001;
+				multiplier = 1.0e-3;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'u':
-				multiplier = 0.000001;
+				multiplier = 1.0e-6;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'n':
-				multiplier = 0.000000001;
+				multiplier = 1.0e-9;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'p':
-				multiplier = 0.000000000001;
+				multiplier = 1.0e-12;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'f':
-				multiplier = 0.000000000000001;
+				multiplier = 1.0e-15;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'a':
-				multiplier = 0.000000000000000001;
+				multiplier = 1.0e-18;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'z':
-				multiplier = 0.000000000000000000001;
+				multiplier = 1.0e-21;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
 				break;
 			case 'y':
-				multiplier = 0.000000000000000000000001;
+				multiplier = 1.0e-24;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';

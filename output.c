@@ -44,38 +44,38 @@ void doubleToString(double value, char *string, int len)
 
 	absval = fabs(value);
 
-	if(absval >= 1000000000000000000000000.0){
-		snprintf(string, len, "%gY", value / 1000000000000000000000000.0);
-	}else if(absval >= 1000000000000000000000.0){
-		snprintf(string, len, "%gZ", value / 1000000000000000000000.0);
-	}else if(absval >= 1000000000000000000.0){
-		snprintf(string, len, "%gE", value / 1000000000000000000.0);
-	}else if(absval >= 1000000000000000.0){
-		snprintf(string, len, "%gP", value / 1000000000000000.0);
-	}else if(absval >= 1000000000000.0){
-		snprintf(string, len, "%gT", value / 1000000000000.0);
-	}else if(absval >= 1000000000.0){
-		snprintf(string, len, "%gG", value / 1000000000.0);
-	}else if(absval >= 1000000.0){
-		snprintf(string, len, "%gM", value / 1000000.0);
-	}else if(absval >= 1000.0){
-		snprintf(string, len, "%gk", value / 1000.0);
-	}else if(absval < 0.00000000000000000001){
-		snprintf(string, len, "%gy", value * 1000000000000000000000000.0);
-	}else if(absval < 0.00000000000000001){
-		snprintf(string, len, "%gz", value * 1000000000000000000000.0);
-	}else if(absval < 0.00000000000001){
-		snprintf(string, len, "%ga", value * 1000000000000000000.0);
-	}else if(absval < 0.00000000001){
-		snprintf(string, len, "%gf", value * 1000000000000000.0);
-	}else if(absval < 0.00000001){
-		snprintf(string, len, "%gp", value * 1000000000000.0);
-	}else if(absval < 0.00001){
-		snprintf(string, len, "%gn", value * 1000000000.0);
-	}else if(absval < 0.01){
-		snprintf(string, len, "%gu", value * 1000000.0);
+	if(absval >= 1.0e24){
+		snprintf(string, len, "%gY", value / 1.0e24);
+	}else if(absval >= 1.0e21){
+		snprintf(string, len, "%gZ", value / 1.0e21);
+	}else if(absval >= 1.0e18){
+		snprintf(string, len, "%gE", value / 1.0e18);
+	}else if(absval >= 1.0e15){
+		snprintf(string, len, "%gP", value / 1.0e15);
+	}else if(absval >= 1.0e12){
+		snprintf(string, len, "%gT", value / 1.0e12);
+	}else if(absval >= 1.0e9){
+		snprintf(string, len, "%gG", value / 1.0e9);
+	}else if(absval >= 1.0e6){
+		snprintf(string, len, "%gM", value / 1.0e6);
+	}else if(absval >= 1.0e3){
+		snprintf(string, len, "%gk", value / 1.0e3);
+	}else if(absval < 1.0e-20){
+		snprintf(string, len, "%gy", value * 1.0e24);
+	}else if(absval < 1.0e-17){
+		snprintf(string, len, "%gz", value * 1.0e21);
+	}else if(absval < 1.0e-14){
+		snprintf(string, len, "%ga", value * 1.0e18);
+	}else if(absval < 1.0e-11){
+		snprintf(string, len, "%gf", value * 1.0e15);
+	}else if(absval < 1.0e-8){
+		snprintf(string, len, "%gp", value * 1.0e12);
+	}else if(absval < 1.0e-5){
+		snprintf(string, len, "%gn", value * 1.0e9);
+	}else if(absval < 1.0e-2){
+		snprintf(string, len, "%gu", value * 1.0e6);
 	}else if(absval < 0.1){
-		snprintf(string, len, "%gm", value * 1000.0);
+		snprintf(string, len, "%gm", value * 1.0e3);
 	}else{
 		snprintf(string, len, "%g", value);
 	}
