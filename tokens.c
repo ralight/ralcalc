@@ -161,8 +161,12 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos)
 		}
 	}
 
-	if(haveMultiplier > 1 || haveDecimalPoint > 1 || haveExponent > 1) return errBadNumber;
-	if(haveMultiplier && multiplierPos != bufferPos - 1) return errBadNumber;
+	if(haveMultiplier > 1 || haveDecimalPoint > 1 || haveExponent > 1){
+		return errBadNumber;
+	}
+	if(haveMultiplier && multiplierPos != bufferPos - 1){
+		return errBadNumber;
+	}
 
 	/* FIXME - should this be added to the list regardless of error? */
 	number = strtod(str, NULL);
