@@ -2,7 +2,7 @@ include ../config.mk
 
 POFILES=$(wildcard *.po)
 MOFILES=$(POFILES:.po=.mo)
-POSOURCES=$(wildcard ../*.c)
+POSOURCES=$(wildcard ../src/*.c)
 
 .PHONY : all clean install uninstall
 

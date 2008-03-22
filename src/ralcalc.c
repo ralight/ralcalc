@@ -49,7 +49,7 @@ void print_usage()
 	printf(_("Options\n"));
 	printf(_(" -q	   Only display the answer (quiet).\n"));
 	printf(_(" -e	   Use the '1e-3' form of display for the answer rather than SI prefixes.\n"));
-	printf(_(" -r    Display the answer without prefixes or exponents.\n"));
+	printf(_(" -r    Display the answer with neither SI prefixes nor exponents.\n"));
 	printf(_("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n"));
 }
 

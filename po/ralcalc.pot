@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-22 13:22+0000\n"
+"POT-Creation-Date: 2008-03-22 14:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,52 +16,122 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../output.c:115
+#: ../src/output.c:109
 #, c-format
 msgid " out of memory\n"
 msgstr ""
 
-#: ../output.c:118
+#: ../src/output.c:112
 #, c-format
 msgid " bad input to function (internal)\n"
 msgstr ""
 
-#: ../output.c:120
+#: ../src/output.c:114
 #, c-format
 msgid " unknown token\n"
 msgstr ""
 
-#: ../output.c:123
+#: ../src/output.c:117
 #, c-format
 msgid " bad number\n"
 msgstr ""
 
-#: ../output.c:126
+#: ../src/output.c:120
 #, c-format
 msgid " mismatched brackets\n"
 msgstr ""
 
-#: ../output.c:129
+#: ../src/output.c:123
 #, c-format
 msgid " duplicate number\n"
 msgstr ""
 
-#: ../output.c:132
+#: ../src/output.c:126
 #, c-format
 msgid " invalid operator\n"
 msgstr ""
 
-#: ../output.c:135
+#: ../src/output.c:129
 #, c-format
 msgid " invalid bracket\n"
 msgstr ""
 
-#: ../output.c:138
+#: ../src/output.c:132
 #, c-format
 msgid " unknown error (%d)\n"
 msgstr ""
 
-#: ../tokens.c:249
+#: ../src/ralcalc.c:43
+#, c-format
+msgid "ralcalc  version %s (build date: %s)\n"
+msgstr ""
+
+#: ../src/ralcalc.c:44
+#, c-format
+msgid ""
+"Copyright (C) 2007,2008 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
+msgstr ""
+
+#: ../src/ralcalc.c:45
+#, c-format
+msgid ""
+"ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc "
+"freely\n"
+"as described in the COPYING file distributed with this program.\n"
+"\n"
+msgstr ""
+
+#: ../src/ralcalc.c:46
+#, c-format
+msgid ""
+"ralcalc is a simple command line calculator. \n"
+"\n"
+msgstr ""
+
+#: ../src/ralcalc.c:47
+#, c-format
+msgid "Usage: ralcalc -h   (display this text)\n"
+msgstr ""
+
+#: ../src/ralcalc.c:48
+#, c-format
+msgid ""
+"       ralcalc [-q] [-e] [-r] <an equation>\n"
+"\n"
+msgstr ""
+
+#: ../src/ralcalc.c:49
+#, c-format
+msgid "Options\n"
+msgstr ""
+
+#: ../src/ralcalc.c:50
+#, c-format
+msgid " -q\t   Only display the answer (quiet).\n"
+msgstr ""
+
+#: ../src/ralcalc.c:51
+#, c-format
+msgid ""
+" -e\t   Use the '1e-3' form of display for the answer rather than SI "
+"prefixes.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:52
+#, c-format
+msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:53
+#, c-format
+msgid ""
+"\n"
+"See http://atchoo.org/tools/ralcalc/ for updates.\n"
+msgstr ""
+
+#: ../src/tokens.c:243
 #, c-format
 msgid "Unknown token (%d)\n"
 msgstr ""
