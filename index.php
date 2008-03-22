@@ -4,6 +4,9 @@ require("/home/oojah/includes/main/logging.php");
 dolog();
 print("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n");
 
+$version = "1.0";
+$builddate = "20080322";
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
 <html><head><title>ralcalc</title>
@@ -11,7 +14,12 @@ print("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n");
 </head><body>
 
 <div>
-<h1>ralcalc version 20070603</h1>
+<?php
+
+print("<h1>ralcalc version $version</h1>\n");
+
+$builddate = "20080322";
+?>
 <h2>What is ralcalc?</h2>
 <p>ralcalc is a simple command line calculator designed to take a single line input and produce a result. I also have it installed as the "=" command for even quicker access.</p>
 
@@ -23,6 +31,7 @@ print("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n");
 </pre>
 
 <p>Both the input and output make use of SI prefixes (see <a href="http://en.wikipedia.org/wiki/SI_prefix">http://en.wikipedia.org/wiki/SI_prefix</a>) for easier input and reading of results. Only the common engineering prefixes that are powers a multiple of three are used, so G, M, k, m, u, n, etc.</p>
+<p>Numbers of the style 1e-3 are also supported for input.</p>
 
 <p>Version information can be shown with:</p>
 
@@ -31,11 +40,19 @@ print("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n");
 ralcalc -h
 </pre>
 
+<p>See also the <a href="ralcalc.html">man page</a>.</p>
 
 <h2>Downloads</h2>
 <ul>
-<li><a href="ralcalc-20070603.tar.bz2">ralcalc-20070603.tar.bz2</a> (7.4kB) (<a href="ralcalc-20070603.tar.bz2.asc">GPG Signature</a>)</li>
+<?php
+
+print("<li><a href=\"files/ralcalc-$version.tar.bz2\">ralcalc-$version.tar.bz2</a> (11kB) (<a href=\"files/ralcalc-$version.tar.bz2.asc\">GPG Signature</a>)</li>\n");
+
+?>
+<li><a href="files/">Old versions</a></li>
 </ul>
+
+<p>The source is also available as a <a href="http://www.selenic.com/mercurial/">Mercurial</a> repository at <a href="http://hg.atchoo.org/ralcalc">http://hg.atchoo.org/ralcalc</a>. To get a copy use "hg pull http://hg-home.atchoo.org/ralcalc".</p>
 
 <h2>Operators</h2>
 
@@ -60,31 +77,75 @@ ralcalc -h
 
 <h2>Precedence</h2>
 
-<p>The equations are processed left to right, which breaks traditional operator
-precedence. This is regarded as a bug and will be fixed! Anything within
-brackets [] is processed first, so this can be used to work around the bad
-behaviour.</p>
+<p>Anything within brackets [] or () is processed first. Within brackets, the order or precedence is ^, * /, + -.</p>
 
-<pre>
-= 1+2^.5
-1+2^.5 = 1.73205 (incorrect)
+<h2>Bugs / Requests</h2>
+<p>Either contact me directly (see the bottom of the page), or else head to <a href="https://launchpad.net/ralcalc/">launchpad</a> to submit a new bug report or see existing ones.</p>
 
-= 1+[2^.5]
-1+[2^.5] = 2.41421 (correct)
-</pre>
+<h2>Changes</h2>
+
+<p>1.0 (20080322)</p>
+<ul>
+<li>Internationalisation and localisation support (want to help translate? Go to <a href="https://translations.launchpad.net/ralcalc">Launchpad</a>).</li>
+<li>Build tools improvements.</li>
+<li>Change of licence to GPL.</li>
+</ul>
+
+<p>20070712</p>
+<ul>
+<li>Added the "-r" option to cause the result to use neither SI prefixes nor exponents.</li>
+</ul>
+
+<p>20070702</p>
+<ul>
+<li>Added the "-q" option to produce a quiet output.</li>
+<li>Added the "-e" option to cause the result to be of the form "1e-3" rather than use SI prefixes.</li>
+<li>Fixed the return code on error.</li>
+</ul>
+
+<p></p>
+<ul>
+<li>Fixed negation precedence. No outstanding problems.</li>
+</ul>
+
+<p>20070616</p>
+<ul>
+<li>Precedence is now reset correctly after processing a pair of brackets. Previously, the power in e.g. "= [1+2]^3" was being ignored.</li>
+<li>Brackets are matched better, so "= ]1+2[" is detected as being invalid.</li>
+</ul>
+
+<p>20070614</p>
+<ul>
+<li>Fixed Makefiles on Mac OS X.</li>
+<li>Included missing "=.1" file in download.</li>
+<li>Fixed uninstall target.</li>
+</ul>
+
+<p>20070613</p>
+<ul>
+<li>Added support for 1e3 style numbers.</li>
+</ul>
+
+<p>20070610</p>
+<ul>
+<li>Changed number output format slightly so that we get 0.1 instead of 100m.</li>
+<li>Allow () brackets as well as [].</li>
+<li>Allow "," as a decimal point, depending on locale.</li>
+<li>Fixed operator precedence, number negation excluded.</li>
+<li>Added a man page.</li>
+</ul>
 
 <h2>To Do</h2>
 
 <ul>
-<li>Fix precedence.</li>
-<li>Add support for e.g. 3e-3 style numbers.</li>
+<li>Fix negation precedence.</li>
 <li>Function support sin[2]</li>
 </ul>
 
 
 <h2>Licence</h2>
 
-<p>This code is licensed under the GPL licence. See the COPYING file in the download for more
+<p>This code is licensed under GPL licence. See the COPYING file in the download for more
 information.</p>
 
 
