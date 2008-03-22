@@ -20,7 +20,7 @@ uninstall :
 
 dist : clean
 	mkdir -p ralcalc-${VERSION}
-	cp -r man po src COPYING Makefile changes.txt readme.txt ralcalc-${VERSION}/
+	cp -r man po src COPYING Makefile changes.txt config.mk readme.txt ralcalc-${VERSION}/
 	tar -jcf ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}/
 
 dist-clean : clean

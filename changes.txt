@@ -1,3 +1,9 @@
+1.01 (20080322)
+==============
+
+- Fixed missing config.mk from distributed tarball.
+
+
 1.0 (20080322)
 ==============
 

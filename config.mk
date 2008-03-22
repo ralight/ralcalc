@@ -1,4 +1,4 @@
-VERSION=1.0
+VERSION=1.0.1
 BUILDDATE=20080322
 
 # Add "-DDEBUG" to CFLAGS for verbose debug output

@@ -38,5 +38,5 @@ uninstall :
 	done
 
 clean :
-	-rm  -f $(MOFILES)
+	-rm  -f $(MOFILES) *~
 
