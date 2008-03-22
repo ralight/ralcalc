@@ -75,7 +75,7 @@ Function support sin[2]
 Licence
 -------
 
-This code is licensed under a BSD-style licence. See LICENCE.txt for more
+This code is licensed under GPL licence. See the COPYING file for more
 information.
 
 

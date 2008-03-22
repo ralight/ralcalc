@@ -1,3 +1,13 @@
+1.0 (20080322)
+==============
+
+- i18n / L10n support.
+- Big cleanup of directory structure.
+- Makefile improvements - including use of DESTDIR.
+- Change license to GPL - many of the Makefile improvements come from a GPL
+  project.
+
+
 20070712
 ========
 

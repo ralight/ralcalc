@@ -1,36 +1,32 @@
 /*
- * Copyright (c) 2007, Roger Light
- * All rights reserved.
+ * File: ralcalc.c Author: Roger Light
+ * Project: ralcalc
+ * Desc: Main program.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the author nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
+ * Copyright (C) 2007,2008 Roger Light.
  *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED 
- * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO 
- * EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
- * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation; either version 3 of the License, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 #include <arpa/inet.h>
+#include <libintl.h>
 
+#include "config.h"
 #include "calculation.h"
 #include "datatypes.h"
 #include "tokens.h"
@@ -44,17 +40,17 @@ typedef enum {
 
 void print_usage()
 {
-	printf("ralcalc  version %s\n", VERSION);
-	printf("Copyright (C) 2007 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n");
-	printf("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the LICENCE.txt distributed with this file.\n\n");
-	printf("ralcalc is a simple command line calculator. \n\n");
-	printf("Usage: ralcalc -h   (display this text)\n");
-	printf("       ralcalc [-q] [-e] [-r] <an equation>\n\n");
-	printf("Options\n");
-	printf(" -q	   Only display the answer (quiet).\n");
-	printf(" -e	   Use the '1e-3' form of display for the answer rather than SI prefixes.\n");
-	printf(" -r    Display the answer without prefixes or exponents.\n");
-	printf("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n");
+	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
+	printf(_("Copyright (C) 2007,2008 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
+	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
+	printf(_("ralcalc is a simple command line calculator. \n\n"));
+	printf(_("Usage: ralcalc -h   (display this text)\n"));
+	printf(_("       ralcalc [-q] [-e] [-r] <an equation>\n\n"));
+	printf(_("Options\n"));
+	printf(_(" -q	   Only display the answer (quiet).\n"));
+	printf(_(" -e	   Use the '1e-3' form of display for the answer rather than SI prefixes.\n"));
+	printf(_(" -r    Display the answer without prefixes or exponents.\n"));
+	printf(_("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n"));
 }
 
 
@@ -76,6 +72,10 @@ int main(int argc, char *argv[])
 	int quiet = 0;
 	displayMode dm = dmSI;
 	
+	setlocale(LC_ALL, "");
+	bindtextdomain("ralcalc", LOCALEDIR);
+	textdomain("ralcalc");
+
 	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))){
 		print_usage();
 		return 0;

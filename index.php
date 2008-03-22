@@ -84,7 +84,7 @@ behaviour.</p>
 
 <h2>Licence</h2>
 
-<p>This code is licensed under a BSD-style licence. See LICENCE.txt in the download for more
+<p>This code is licensed under the GPL licence. See the COPYING file in the download for more
 information.</p>
 
 

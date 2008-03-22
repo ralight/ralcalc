@@ -1,0 +1,67 @@
+# ralcalc 1.0
+# Copyright (C) 2007,2008 Roger Light
+# This file is distributed under the same license as the ralcalc package.
+# Roger Light <roger@atchoo.org>, 2007-2008
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-22 13:22+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../output.c:115
+#, c-format
+msgid " out of memory\n"
+msgstr ""
+
+#: ../output.c:118
+#, c-format
+msgid " bad input to function (internal)\n"
+msgstr ""
+
+#: ../output.c:120
+#, c-format
+msgid " unknown token\n"
+msgstr ""
+
+#: ../output.c:123
+#, c-format
+msgid " bad number\n"
+msgstr ""
+
+#: ../output.c:126
+#, c-format
+msgid " mismatched brackets\n"
+msgstr ""
+
+#: ../output.c:129
+#, c-format
+msgid " duplicate number\n"
+msgstr ""
+
+#: ../output.c:132
+#, c-format
+msgid " invalid operator\n"
+msgstr ""
+
+#: ../output.c:135
+#, c-format
+msgid " invalid bracket\n"
+msgstr ""
+
+#: ../output.c:138
+#, c-format
+msgid " unknown error (%d)\n"
+msgstr ""
+
+#: ../tokens.c:249
+#, c-format
+msgid "Unknown token (%d)\n"
+msgstr ""
