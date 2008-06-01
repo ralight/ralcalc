@@ -1,4 +1,4 @@
-1.1.0 (2008xxxx)
+1.1.0 (20080601)
 ==============
 
 - Added the "-f filename" option. This will process each line of "filename" as
