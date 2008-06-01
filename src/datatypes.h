@@ -30,15 +30,12 @@
 
 /* cToken
  *
- * The different types of token that are valid.
- * This does not mean the different characters that
- * are valid, although for the single character tokens
- * the identifier matches the ascii value for the 
- * character. tkNumber on the other hand includes
- * all numbers, the decimal point and the SI-prefix
+ * The different types of token that are valid.  This does not mean the
+ * different characters that are valid, although for the single character
+ * tokens the identifier matches the ascii value for the character. tkNumber on
+ * the other hand includes all numbers, the decimal point and the SI-prefix
  * characters as well.
- * tkNumber *may* also include "e" in the future for
- * numbers of the form 1e-3.
+ * tkNumber may also include "e" for numbers of the form 1e-3.
  */
 typedef enum{
 	tkNumber,
@@ -79,8 +76,8 @@ typedef enum{
 
 /* tokenItem
  *
- * Token struct containing all information about a particular
- * token, implemented as a doubly linked list.
+ * Token struct containing all information about a particular token,
+ * implemented as a doubly linked list.
  */
 typedef struct _tokenItem{
 	struct _tokenItem *next;
