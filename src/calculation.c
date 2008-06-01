@@ -70,7 +70,7 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 			return log(valueTwo);
 			break;
 		case tkLog:
-			return log(valueTwo) / 2.303;
+			return log(valueTwo) / 2.3025850929940456840179914546844;
 			break;
 
 		case tkNumber:
