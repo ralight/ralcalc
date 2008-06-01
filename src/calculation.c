@@ -88,16 +88,16 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
  * Recursive processing with nested brackets taking precedent and 
  * ^, * /, + - precedence for the other operators.
  *
- * When it reaches an end bracket then all of the previous tokens
- * are deleted up to the open bracket. As process() only gets called
- * after it has been validated that the brackets match up, and it
- * calls itself whenever it meets a new open bracket, this means that
- * only tokens within the current pair of brackets get deleted.
+ * When it reaches an end bracket then all of the previous tokens are deleted
+ * up to the open bracket. As process() only gets called after it has been
+ * validated that the brackets match up, and it calls itself whenever it meets
+ * a new open bracket, this means that only tokens within the current pair of
+ * brackets get deleted.
  *
- * As the recursion ensures that the most nested pair of brackets for
- * a given set is processed first, this function must only also ensure
- * that the tokens within a set of brackets are processed with the
- * correct precedence. Seems fine so far.
+ * As the recursion ensures that the most nested pair of brackets for a given
+ * set is processed first, this function must only also ensure that the tokens
+ * within a set of brackets are processed with the correct precedence. Seems
+ * fine so far.
  */
 double process(tokenItem **tokenList)
 {

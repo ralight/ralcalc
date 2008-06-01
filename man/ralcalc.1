@@ -7,24 +7,12 @@ ralcalc \- a simple command line calculator
 ralcalc -h
 .PP
 ralcalc
-.I [-q] [-e] [-r] equation
-.PP
-ralcalc
-.I [-q] [-e] [-r] -f input file
-.PP
-ralcalc
-.I [-q] [-e] [-r] -i
+.I [-e] [-f input file] [-i] [-q] [-r] equation
 .PP
 = -h
 .PP
 =
-.I [-q] [-e] [-r] equation
-.PP
-=
-.I [-q] [-e] [-r] -f input file
-.PP
-=
-.I [-q] [-e] [-r] -i
+.I [-e] [-f input file] [-i] [-q] [-r] equation
 
 .SH DESCRIPTION
 .B ralcalc
@@ -39,11 +27,11 @@ command to make using it even quicker.
 .IP -e
 Display the result in the "1e-3" form rather than using SI prefixes.
 .IP -f
-Process a list of calculations from a file.
+Process a list of calculations from a file. See the FILE INPUT section below for more information.
 .IP -h
 Display version and contact details.
 .IP -i
-Process a list of calculations from stdin. This takes precedence over -f if both are specified.
+Process a list of calculations from stdin. See the FILE INPUT section below for more information.
 .IP -q
 Only display the result (so hide the input and any errors).
 .IP -r
@@ -93,6 +81,21 @@ ralcalc stores the result of the calculation so that it can be used in the next 
 .br
 1/_ = 0.707107
 .RE
+
+.SH FILE INPUT
+A list of calculations can be processed at once by placing them in a file. Each line of the file will be processed exactly the same as if ralcalc had been run with those arguments. The file could look like the following (note the lack of the command "=" or "ralcalc"):
+.PP
+.RS
+2^0.5
+.br
+1/_
+.br
+238/1064x100
+.RE
+.PP
+File input is also possible using stdin, i.e. reading interactively directly from the terminal with each line being calculated as normal. To quit, type "q" or "quit" on a new line, or use Ctrl-D to indicate the end of file, or Ctrl-C to cause ralcalc to be terminated.
+.PP
+If either of the file input options are given on the command line, then any calculation given on the command line will be calculated first. If both of the file input options are given, then the calculations from the -f option will be carried out first, followed by from stdin.
 
 .SH FILES
 .I ~/.ralcalc_result
@@ -176,6 +179,9 @@ Internal error: If an unknown error code is passed to the error output function,
 .TP
 .B 1
 .I At least one error occurred.
+
+.SH BUGS
+Only a single "-f filename" can be passed at once.
 
 .SH AUTHOR
 Roger Light <roger@atchoo.org>

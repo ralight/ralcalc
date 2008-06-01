@@ -38,6 +38,7 @@ typedef enum {
 	dmRaw
 } displayMode;
 
+
 void printUsage()
 {
 	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
@@ -45,9 +46,7 @@ void printUsage()
 	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
 	printf(_("ralcalc is a simple command line calculator. \n\n"));
 	printf(_("Usage: ralcalc -h   (display this text)\n"));
-	printf(_("       ralcalc [-q] [-e] [-r] <an equation>\n"));
-	printf(_("       ralcalc [-q] [-e] [-r] -f input file\n"));
-	printf(_("       ralcalc [-q] [-e] [-r] -i\n\n"));
+	printf(_("       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"));
 	printf(_("Options\n"));
 	printf(_(" -e    Use the '1e-3' form of display for the answer rather than SI prefixes.\n"));
 	printf(_(" -f    Process a list of calculations from a file.\n"));
@@ -58,6 +57,12 @@ void printUsage()
 }
 
 
+/*
+ * processLine()
+ *
+ * Take a string, tokenise it, validate it and pass it on for calculation. This
+ * is the glue function of ralcalc really.
+ */
 int processLine(const char *line, int quiet, displayMode dm)
 {
 	tokenItem tokenList;
@@ -140,11 +145,85 @@ int processLine(const char *line, int quiet, displayMode dm)
 }
 
 
+/*
+ * doFileInput()
+ *
+ * Get lines from a file (be that a file on disk or stdin) and pass the lines
+ * to processLine() for calculation.
+ */
+int doFileInput(FILE *fptr, int quiet, displayMode dm)
+{
+	char *line;
+	int rc = 0;
+
+	line = calloc(1024, sizeof(char));
+	if(!line){
+		printf(_("Error: Out of memory\n"));
+		return 1;
+	}
+	fgets(line, 1024, fptr);
+	while(!feof(fptr)){
+		if(line[strlen(line)-1] == 10 || line[strlen(line)-1] == 13){
+			line[strlen(line)-1] = '\0';
+		}
+		/* Quit if "q" (or "quit" etc.) is an input */
+		if(line[0] == 'q' || line[0] == 'Q'){
+			rc = 0;
+			break;
+		}
+		if(processLine(line, quiet, dm)){
+			rc = 1;
+		}
+		fgets(line, 1024, fptr);
+	}
+	free(line);
+
+	return rc;
+}
+
+
+/*
+ * doLineCalculation()
+ *
+ * Convert argc and argv into a single string and pass them to processLine for
+ * calculation.
+ */
+int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
+{
+	char *line;
+	int i, j, k;
+	int len = 0;
+	int rc = 0;
+
+	for(i = 1; i < argc; i++){
+		len += strlen(argv[i]);
+	}
+
+	line = calloc(len, sizeof(char));
+	if(!line){
+		printf(_("Error: Out of memory\n"));
+		return 1;
+	}
+
+	i = 0;
+	for(j = 1; j < argc; j++){
+		for(k = 0; k < strlen(argv[j]); k++){
+			if(argv[j][k] != ' '){
+				line[i] = argv[j][k];
+				i++;
+			}
+		}
+	}
+	rc = processLine(line, quiet, dm);
+	free(line);
+
+	return rc;
+}
+
+
 int main(int argc, char *argv[])
 {
-	int i, j, k;
-	char *line = NULL;
-	int len = 1;
+	int i;
 	int quiet = 0;
 	displayMode dm = dmSI;
 	int rc = 0;
@@ -170,7 +249,9 @@ int main(int argc, char *argv[])
 			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-f")){
 			if(i < argc - 1){
-				ifile = argv[i+1];
+				ifile = strdup(argv[i+1]);
+				argv[i][0] = '\0';
+				argv[i+1][0] = '\0';
 				i++;
 			}else{
 				printUsage();
@@ -178,65 +259,30 @@ int main(int argc, char *argv[])
 			}
 		}else if(!strcmp(argv[i], "-i")){
 			usestdin = 1;
+			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-r")){
 			dm = dmRaw;
 			argv[i][0] = '\0';
 		}
 	}
 
-	if(usestdin || ifile){
-		if(usestdin){
-			iptr = stdin;
-		}else{
-			iptr = fopen(ifile, "rt");
-			if(!iptr){
-				printf(_("Error: Unable to open file \"%s\"\n"), ifile);
-				return 1;
-			}
-		}
-		
-		line = calloc(1024, sizeof(char));
-		if(!line){
-			printf(_("Error: Out of memory\n"));
-			fclose(iptr);
+	/* Do calculation based on input arguments first */
+	if(doLineCalculation(argc, argv, quiet, dm)) rc = 1;
+	
+	/* Do calculations from a disk file */
+	if(ifile){
+		iptr = fopen(ifile, "rt");
+		if(!iptr){
+			printf(_("Error: Unable to open file \"%s\"\n"), ifile);
 			return 1;
 		}
-		fgets(line, 1024, iptr);
-		while(!feof(iptr)){
-			if(line[strlen(line)-1] == 10 || line[strlen(line)-1] == 13){
-				line[strlen(line)-1] = '\0';
-			}
-			if(processLine(line, quiet, dm)){
-				rc = 1;
-			}
-			fgets(line, 1024, iptr);
-		}
-		free(line);
+		if(doFileInput(iptr, quiet, dm)) rc = 1;
 		fclose(iptr);
-	}else{
-		for(i = 1; i < argc; i++){
-			len += strlen(argv[i]);
-		}
+	}
 
-		line = calloc(len, sizeof(char));
-		if(!line){
-			printf(_("Error: Out of memory\n"));
-			return 1;
-		}
-
-		i = 0;
-		for(j = 1; j < argc; j++){
-			for(k = 0; k < strlen(argv[j]); k++){
-				if(argv[j][k] != ' '){
-					line[i] = argv[j][k];
-					i++;
-				}
-			}
-		}
-
-		rc = processLine(line, quiet, dm);
-
-		free(line);
+	/* Read calculations from stdin */
+	if(usestdin){
+		if(doFileInput(stdin, quiet, dm)) rc = 1;
 	}
 
 	return rc;
