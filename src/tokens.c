@@ -567,6 +567,18 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				/* End of line - ignore */
 				break;
 
+			case 'l':
+				if(i < strlen(line) - 2){
+					if(line[i+1] == 'o' && line[i+2] == 'g'){
+						err = addToken(tokenList, tkLog, last
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i, err, quiet);
+						}
+					}
+				}
+				break;
+
 			default:
 				rc = 1;
 				printError(line, i, errUnknownToken, quiet);
