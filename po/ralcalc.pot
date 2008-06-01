@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-22 14:51+0000\n"
+"POT-Creation-Date: 2008-06-01 01:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,11 @@ msgstr ""
 
 #: ../src/output.c:132
 #, c-format
+msgid " unable to open file\n"
+msgstr ""
+
+#: ../src/output.c:134
+#, c-format
 msgid " unknown error (%d)\n"
 msgstr ""
 
@@ -97,38 +102,68 @@ msgstr ""
 
 #: ../src/ralcalc.c:48
 #, c-format
-msgid ""
-"       ralcalc [-q] [-e] [-r] <an equation>\n"
-"\n"
+msgid "       ralcalc [-q] [-e] [-r] <an equation>\n"
 msgstr ""
 
 #: ../src/ralcalc.c:49
 #, c-format
-msgid "Options\n"
+msgid "       ralcalc [-q] [-e] [-r] -f input file\n"
 msgstr ""
 
 #: ../src/ralcalc.c:50
 #, c-format
-msgid " -q\t   Only display the answer (quiet).\n"
+msgid ""
+"       ralcalc [-q] [-e] [-r] -i\n"
+"\n"
 msgstr ""
 
 #: ../src/ralcalc.c:51
 #, c-format
-msgid ""
-" -e\t   Use the '1e-3' form of display for the answer rather than SI "
-"prefixes.\n"
+msgid "Options\n"
 msgstr ""
 
 #: ../src/ralcalc.c:52
 #, c-format
-msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgid ""
+" -e    Use the '1e-3' form of display for the answer rather than SI "
+"prefixes.\n"
 msgstr ""
 
 #: ../src/ralcalc.c:53
 #, c-format
+msgid " -f    Process a list of calculations from a file.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:54
+#, c-format
+msgid " -i    Process a list of calculations from stdin.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:55
+#, c-format
+msgid " -q    Only display the answer (quiet).\n"
+msgstr ""
+
+#: ../src/ralcalc.c:56
+#, c-format
+msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:57
+#, c-format
 msgid ""
 "\n"
 "See http://atchoo.org/tools/ralcalc/ for updates.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:193
+#, c-format
+msgid "Error: Unable to open file \"%s\"\n"
+msgstr ""
+
+#: ../src/ralcalc.c:200 ../src/ralcalc.c:223
+#, c-format
+msgid "Error: Out of memory\n"
 msgstr ""
 
 #: ../src/tokens.c:243

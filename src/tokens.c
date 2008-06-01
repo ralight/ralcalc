@@ -562,6 +562,11 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				lastToken = '_';
 				break;
 
+			case 10:
+			case 13:
+				/* End of line - ignore */
+				break;
+
 			default:
 				rc = 1;
 				printError(line, i, errUnknownToken, quiet);

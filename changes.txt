@@ -1,5 +1,13 @@
-1.01 (20080322)
+1.1.0 (2008xxxx)
 ==============
+
+- Added the "-f filename" option. This will process each line of "filename" as
+  though it was typed in at the command line.
+- Added the "-i" option which does the same as "-f" but for stdin.
+
+
+1.0.1 (20080322)
+===============
 
 - Fixed missing config.mk from distributed tarball.
 

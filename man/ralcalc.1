@@ -9,10 +9,22 @@ ralcalc -h
 ralcalc
 .I [-q] [-e] [-r] equation
 .PP
+ralcalc
+.I [-q] [-e] [-r] -f input file
+.PP
+ralcalc
+.I [-q] [-e] [-r] -i
+.PP
 = -h
 .PP
 =
 .I [-q] [-e] [-r] equation
+.PP
+=
+.I [-q] [-e] [-r] -f input file
+.PP
+=
+.I [-q] [-e] [-r] -i
 
 .SH DESCRIPTION
 .B ralcalc
@@ -24,12 +36,16 @@ is also installed as the
 command to make using it even quicker.
 
 .SH OPTIONS
-.IP -h
-Display version and contact details.
-.IP -q
-Only display the result (so hide the input and any errors).
 .IP -e
 Display the result in the "1e-3" form rather than using SI prefixes.
+.IP -f
+Process a list of calculations from a file.
+.IP -h
+Display version and contact details.
+.IP -i
+Process a list of calculations from stdin. This takes precedence over -f if both are specified.
+.IP -q
+Only display the result (so hide the input and any errors).
 .IP -r
 Display the result in decimal format with neither SI prefixes nor exponent.
 

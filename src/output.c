@@ -128,6 +128,8 @@ void printError(const char *line, int pos, errType error, int quiet)
 		case errInvalidBracket:
 			printf(_(" invalid bracket\n"));
 			break;
+		case errBadFile:
+			printf(_(" unable to open file\n"));
 		default:
 			printf(_(" unknown error (%d)\n"), error);
 			break;
