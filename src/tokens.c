@@ -225,6 +225,8 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 		case tkCloseBracket:
 		case tkCOpenBracket:
 		case tkCCloseBracket:
+		case tkLog:
+		case tkLn:
 			newItem->type = token;
 			newItem->value = 0.0;
 			newItem->length = length;
@@ -283,6 +285,8 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkMultiply:
 			case tkMultiplyX:
 			case tkDivide:
+			case tkLog:
+			case tkLn:
 				precedence = 2;
 				break;
 			case tkPower:
@@ -568,14 +572,35 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				break;
 
 			case 'l':
-				if(i < strlen(line) - 2){
-					if(line[i+1] == 'o' && line[i+2] == 'g'){
-						err = addToken(tokenList, tkLog, last
+				if(inNumber){
+					if(lastchar == 'e' && line[i] == '-'){
+						buffer[bufferPos] = line[i];
+						bufferPos++;
+					}else{
+						err = addNumber(tokenList, buffer, bufferPos);
 						if(err != errNoError){
 							rc = 1;
-							printError(line, i, err, quiet);
+							printError(line, i-1, err, quiet);
 						}
+						inNumber = 0;
 					}
+				}
+				if((i < strlen(line) - 1) && line[i+1] == 'n'){
+					err = addToken(tokenList, tkLn, 0.0, 2);
+					if(err != errNoError){
+						rc = 1;
+						printError(line, i, err, quiet);
+					}
+					i++;
+				}else if((i < strlen(line) - 2) && line[i+1] == 'o' && line[i+2] == 'g'){
+					err = addToken(tokenList, tkLog, 0.0, 3);
+					if(err != errNoError){
+						rc = 1;
+						printError(line, i, err, quiet);
+					}
+					i += 2;
+				}else{
+					printError(line, i, errUnknownToken, quiet);
 				}
 				break;
 
@@ -654,7 +679,18 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 					}
 				}
 				break;
-				
+
+			case tkLog:
+			case tkLn:
+				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket || lastToken == tkNumber || lastToken == tkLastResult){
+					err = insertBeforeToken(item, tkMultiply, 0.0, 1);
+					if(err != errNoError){
+						printError(line, currentPos, err, quiet);
+						rc = 1;
+					}
+				}
+				break;
+
 			case tkPlus:
 			case tkMultiply:
 			case tkMultiplyX:
@@ -734,11 +770,12 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	/* Check that we haven't ended on an invalid operator, e.g. "= 1+2/"  */
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
-			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket){
+			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket \
+			|| lastToken == tkLog || lastToken == tkLn){
 		printError(line, currentPos-1, errInvalidOperator, quiet);
 		rc = 1;
 	}
-	
+
 	return rc;
 }
 

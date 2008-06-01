@@ -66,6 +66,12 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 		case tkPower:
 			return pow(valueOne, valueTwo);
 			break;
+		case tkLn:
+			return log(valueTwo);
+			break;
+		case tkLog:
+			return log(valueTwo) / 2.303;
+			break;
 
 		case tkNumber:
 		case tkLastResult:
@@ -179,18 +185,29 @@ double process(tokenItem **tokenList)
 						firstValue = 0;
 						value = valueOne;
 					}else{
-						//firstValue = 1;
 						valueTwo = item->value;
-						if(operator != tkEndToken && tokenPrecedence == precedence){
+				
+						if((operator == tkLog || operator == tkLn) && tokenPrecedence == precedence){
 							retval = doCalculation(valueOne, valueTwo, operator);
 							insertNumberAfterToken(item, retval);
 							deletePreviousToken(item); /* Delete operator */
-							deletePreviousToken(item); /* Delete number */
-							deletePreviousToken(item->next); /* deletes the old number */
+							deletePreviousToken(item->next); /* Delete the old number */
 							item = (*tokenList); /* Reset to the beginning */
 							precedence++;
 							value = 0.0;
 							retval = 0.0;
+						}else{
+							if(operator != tkEndToken && tokenPrecedence == precedence){
+								retval = doCalculation(valueOne, valueTwo, operator);
+								insertNumberAfterToken(item, retval);
+								deletePreviousToken(item); /* Delete operator */
+								deletePreviousToken(item); /* Delete number */
+								deletePreviousToken(item->next); /* deletes the old number */
+								item = (*tokenList); /* Reset to the beginning */
+								precedence++;
+								value = 0.0;
+								retval = 0.0;
+							}
 						}
 						valueOne = valueTwo;
 						operator = tkEndToken;
@@ -203,6 +220,14 @@ double process(tokenItem **tokenList)
 				case tkMultiplyX:
 				case tkDivide:
 				case tkPower:
+					operator = item->type;
+					tokenPrecedence = item->precedence;
+					break;
+
+				case tkLog:
+				case tkLn:
+					valueOne = 1.0;
+					firstValue = 0;
 					operator = item->type;
 					tokenPrecedence = item->precedence;
 					break;

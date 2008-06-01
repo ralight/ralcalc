@@ -39,6 +39,9 @@ typedef enum{
 	tkMultiplyX = 'x', // 120
 	tkNegation = '~', // 126
 
+	tkLog = 1000,
+	tkLn = 1001,
+
 	tkEndToken
 } cToken;
 
