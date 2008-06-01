@@ -52,12 +52,16 @@ Numbers of the form 1e-3 are also supported, where the "e" indicates a power of 
 
 .SH OPERATORS
 
-The simple mathematical operators for addition (+), subtraction (-), multiplication (*, x), division (/) and power (^) are supported, with addition and subtraction having the lowest precedence and power having the highest.
+The simple mathematical operators for addition (+), subtraction (-), multiplication (*, x), division (/) and power (^) are supported, with addition and subtraction having the lowest precedence and power having the highest. The functions log (base 10 logarithm) and ln (natural logarithm) are also supported.
 .PP
 .RS
 = 1+2x3
 .br
 1+2x3 = 7
+.PP
+= 10log 0.5
+.br
+10log 0.5 = -3.00976
 .RE
 .PP
 Brackets ( (), [] ) can be used to control the order in which statements are processed:
@@ -76,7 +80,7 @@ ralcalc stores the result of the calculation so that it can be used in the next 
 = 2^0.5
 .br
 2^0.5 = 1.41421
-.br
+.PP
 = 1/_
 .br
 1/_ = 0.707107
