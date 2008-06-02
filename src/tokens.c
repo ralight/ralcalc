@@ -221,6 +221,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 		case tkMultiplyX:
 		case tkDivide:
 		case tkPower:
+		case tkMod:
 		case tkOpenBracket:
 		case tkCloseBracket:
 		case tkCOpenBracket:
@@ -285,6 +286,7 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkMultiply:
 			case tkMultiplyX:
 			case tkDivide:
+			case tkMod:
 			case tkLog:
 			case tkLn:
 				precedence = 2;
@@ -530,6 +532,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case '(':
 			case ')':
 			case '^':
+			case '%':
 				if(inNumber){
 					if(lastchar == 'e' && line[i] == '-'){
 						buffer[bufferPos] = line[i];
@@ -696,6 +699,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkMultiplyX:
 			case tkDivide:
 			case tkPower:
+			case tkMod:
 				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket && lastToken != tkEndToken){
 					printError(line, currentPos-1, errInvalidOperator, quiet);
 					rc = 1;
@@ -714,6 +718,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 
 			case tkOpenBracket:
 			case tkCOpenBracket:
+				/* Insert * between )( */
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
@@ -771,7 +776,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
 			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket \
-			|| lastToken == tkLog || lastToken == tkLn){
+			|| lastToken == tkMod || lastToken == tkLog || lastToken == tkLn){
 		printError(line, currentPos-1, errInvalidOperator, quiet);
 		rc = 1;
 	}

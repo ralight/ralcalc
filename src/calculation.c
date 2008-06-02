@@ -66,6 +66,9 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 		case tkPower:
 			return pow(valueOne, valueTwo);
 			break;
+		case tkMod:
+			return fmod(valueOne, valueTwo);
+			break;
 		case tkLn:
 			return log(valueTwo);
 			break;
@@ -220,6 +223,7 @@ double process(tokenItem **tokenList)
 				case tkMultiplyX:
 				case tkDivide:
 				case tkPower:
+				case tkMod:
 					operator = item->type;
 					tokenPrecedence = item->precedence;
 					break;

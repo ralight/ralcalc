@@ -26,6 +26,7 @@
  */
 typedef enum{
 	tkNumber,
+	tkMod = '%', // 37
 	tkCOpenBracket = '(', // 40
 	tkCCloseBracket = ')', // 41
 	tkMultiply = '*', // 42
@@ -41,6 +42,15 @@ typedef enum{
 
 	tkLog = 1000,
 	tkLn = 1001,
+	/*
+	tkExp = 1002,
+	tkSin = 1003,
+	tkCos = 1004,
+	tkTan = 1005,
+	tkASin = 1006,
+	tkACos = 1007,
+	tkATan = 1008,
+	*/
 
 	tkEndToken
 } cToken;
