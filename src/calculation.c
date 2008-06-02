@@ -75,6 +75,15 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 		case tkLog:
 			return log(valueTwo) / 2.3025850929940456840179914546844;
 			break;
+		case tkSin:
+			return sin(valueTwo);
+			break;
+		case tkCos:
+			return cos(valueTwo);
+			break;
+		case tkTan:
+			return tan(valueTwo);
+			break;
 
 		case tkNumber:
 		case tkLastResult:
@@ -230,6 +239,9 @@ double process(tokenItem **tokenList)
 
 				case tkLog:
 				case tkLn:
+				case tkSin:
+				case tkCos:
+				case tkTan:
 					valueOne = 1.0;
 					firstValue = 0;
 					operator = item->type;
