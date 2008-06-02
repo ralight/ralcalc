@@ -1,5 +1,12 @@
+1.1.1 (20080602)
+================
+
+- Included Hebrew translations thanks to Yaron and a start at Spanish
+  translations thanks to Eduardo Ruiz.
+
+
 1.1.0 (20080601)
-==============
+================
 
 - Added the "-f filename" option. This will process each line of "filename" as
   though it was typed in at the command line.
@@ -8,7 +15,7 @@
 
 
 1.0.1 (20080322)
-===============
+================
 
 - Fixed missing config.mk from distributed tarball.
 
