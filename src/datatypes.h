@@ -41,14 +41,17 @@ typedef enum{
 	tkNegation = '~', // 126
 
 	tkLog = 1000,
-	tkLn = 1001,
-//	tkExp = 1002,
-	tkSin = 1003,
-	tkCos = 1004,
-	tkTan = 1005,
-//	tkASin = 1006,
-//	tkACos = 1007,
-//	tkATan = 1008,
+	tkLn,
+//	tkExp,
+	tkSin,
+	tkCos,
+	tkTan,
+//	tkASin,
+//	tkACos,
+//	tkATan,
+
+/* Constants */
+	tkPi,
 
 	tkEndToken
 } cToken;

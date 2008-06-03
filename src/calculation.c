@@ -199,7 +199,8 @@ double process(tokenItem **tokenList)
 					}else{
 						valueTwo = item->value;
 				
-						if((operator == tkLog || operator == tkLn) && tokenPrecedence == precedence){
+						if((operator == tkLog || operator == tkLn || operator == tkSin || operator == tkCos \
+									|| operator == tkTan) && tokenPrecedence == precedence){
 							retval = doCalculation(valueOne, valueTwo, operator);
 							insertNumberAfterToken(item, retval);
 							deletePreviousToken(item); /* Delete operator */

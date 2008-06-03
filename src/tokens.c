@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <libintl.h>
+#include <math.h>
 
 #include "config.h"
 #include "output.h"
@@ -239,6 +240,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 			break;
 		case tkNumber:
 		case tkLastResult:
+		case tkPi:
 			newItem->type = token;
 			newItem->value = value;
 			newItem->length = length;
@@ -311,6 +313,7 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkCCloseBracket:
 			case tkNumber:
 			case tkLastResult:
+			case tkPi:
 			case tkEndToken:
 				precedence = 0;
 				break;
@@ -517,14 +520,29 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case 'a':
 			case 'z':
 			case 'y':
-				if(inNumber){
-					buffer[bufferPos] = line[i];
-					bufferPos++;
+				if(i < strlen(line)-1 && line[i+1] == 'i'){
+					/* pi */
+					if(inNumber){
+						err = addNumber(tokenList, buffer, bufferPos);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+						inNumber = 0;
+					}else{
+						err = addToken(tokenList, tkNumber, M_PI, 2);
+					}
+					i++;
 				}else{
-					memset(buffer, 0, 100);
-					buffer[0] = line[i];
-					bufferPos = 1;
-					inNumber = 1;
+					if(inNumber){
+						buffer[bufferPos] = line[i];
+						bufferPos++;
+					}else{
+						memset(buffer, 0, 100);
+						buffer[0] = line[i];
+						bufferPos = 1;
+						inNumber = 1;
+					}
 				}
 				break;
 
@@ -577,7 +595,8 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 
 			case 10:
 			case 13:
-				/* End of line - ignore */
+			case ' ':
+				/* End of line, space - ignore */
 				break;
 
 			case 'l':

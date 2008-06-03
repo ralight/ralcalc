@@ -117,7 +117,7 @@ int processLine(const char *line, int quiet, displayMode dm)
 				doubleToString(result, resultStr, 100);
 				break;
 			case dmExponent:
-				snprintf(resultStr, 100, "%g", result);
+				snprintf(resultStr, 100, "%lg", result);
 				break;
 			case dmRaw:
 				snprintf(resultStr, 100, "%f", result);
