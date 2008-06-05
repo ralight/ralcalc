@@ -862,7 +862,8 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
 			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket \
-			|| lastToken == tkMod || lastToken == tkLog || lastToken == tkLn){
+			|| lastToken == tkMod || lastToken == tkLog || lastToken == tkLn || lastToken == tkSin \
+			|| lastToken == tkCos || lastToken == tkTan){
 		printError(line, currentPos-1, errInvalidOperator, quiet);
 		rc = 1;
 	}
