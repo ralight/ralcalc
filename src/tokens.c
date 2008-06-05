@@ -316,6 +316,7 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkNumber:
 			case tkLastResult:
 			case tkPi:
+			case tkExp:
 			case tkEndToken:
 				precedence = 0;
 				break;
@@ -522,7 +523,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case 'a':
 			case 'z':
 			case 'y':
-				if(i < strlen(line)-1 && line[i+1] == 'i'){
+				if(i < strlen(line)-1 && line[i] == 'p' && line[i+1] == 'i'){
 					/* pi */
 					if(inNumber){
 						err = addNumber(tokenList, buffer, bufferPos);
@@ -535,6 +536,19 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						err = addToken(tokenList, tkNumber, M_PI, 2);
 					}
 					i++;
+				}else if(i < strlen(line)-2 && line[i] == 'e' && line[i+1] == 'x' && line[i+2] == 'p'){
+					/* exp */
+					if(inNumber){
+						err = addNumber(tokenList, buffer, bufferPos);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+						inNumber = 0;
+					}else{
+						err = addToken(tokenList, tkNumber, M_E, 3);
+					}
+					i+=2;
 				}else{
 					if(inNumber){
 						buffer[bufferPos] = line[i];
@@ -746,6 +760,8 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 		switch(item->type){
 			case tkNumber:
 			case tkLastResult:
+			case tkPi:
+			case tkExp:
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){

@@ -87,6 +87,8 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 
 		case tkNumber:
 		case tkLastResult:
+		case tkPi:
+		case tkExp:
 		case tkOpenBracket:
 		case tkCloseBracket:
 		case tkCOpenBracket:
@@ -192,6 +194,8 @@ double process(tokenItem **tokenList)
 
 				case tkNumber:
 				case tkLastResult:
+				case tkPi:
+				case tkExp:
 					if(firstValue){
 						valueOne = item->value;
 						firstValue = 0;

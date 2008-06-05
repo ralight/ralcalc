@@ -52,6 +52,7 @@ typedef enum{
 
 /* Constants */
 	tkPi,
+	tkExp,
 
 	tkEndToken
 } cToken;
