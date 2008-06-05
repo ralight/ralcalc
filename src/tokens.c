@@ -288,19 +288,21 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkNegation:
 				precedence = 1;
 				break;
-			case tkMultiply:
-			case tkMultiplyX:
-			case tkDivide:
-			case tkMod:
 			case tkLog:
 			case tkLn:
 			case tkSin:
 			case tkCos:
 			case tkTan:
-				precedence = 2;
+				precedence = 3;
+				break;
+			case tkMultiply:
+			case tkMultiplyX:
+			case tkDivide:
+			case tkMod:
+				precedence = 3;
 				break;
 			case tkPower:
-				precedence = 3;
+				precedence = 4;
 				break;
 
 			/* 
