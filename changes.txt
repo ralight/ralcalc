@@ -1,8 +1,10 @@
-1.1.1 (20080602)
+1.2.0 (20080602)
 ================
 
 - Included Hebrew translations thanks to Yaron and a start at Spanish
   translations thanks to Eduardo Ruiz.
+- Support for % (modulus) operator, sin/cos/tan/asin/acos/atan functions and
+  pi/exp constants.
 
 
 1.1.0 (20080601)

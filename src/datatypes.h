@@ -42,13 +42,12 @@ typedef enum{
 
 	tkLog = 1000,
 	tkLn,
-//	tkExp,
 	tkSin,
 	tkCos,
 	tkTan,
-//	tkASin,
-//	tkACos,
-//	tkATan,
+	tkASin,
+	tkACos,
+	tkATan,
 
 /* Constants */
 	tkPi,

@@ -232,6 +232,9 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 		case tkSin:
 		case tkCos:
 		case tkTan:
+		case tkASin:
+		case tkACos:
+		case tkATan:
 			newItem->type = token;
 			newItem->value = 0.0;
 			newItem->length = length;
@@ -293,6 +296,9 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkSin:
 			case tkCos:
 			case tkTan:
+			case tkASin:
+			case tkACos:
+			case tkATan:
 				precedence = 3;
 				break;
 			case tkMultiply:
@@ -534,6 +540,10 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						inNumber = 0;
 					}else{
 						err = addToken(tokenList, tkNumber, M_PI, 2);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
 					}
 					i++;
 				}else if(i < strlen(line)-2 && line[i] == 'e' && line[i+1] == 'x' && line[i+2] == 'p'){
@@ -547,8 +557,63 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						inNumber = 0;
 					}else{
 						err = addToken(tokenList, tkNumber, M_E, 3);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
 					}
 					i+=2;
+				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 's' && line[i+2] == 'i' && line[i+3] == 'n'){
+					/* asin */
+					if(inNumber){
+						err = addNumber(tokenList, buffer, bufferPos);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+						inNumber = 0;
+					}else{
+						err = addToken(tokenList, tkASin, 0.0, 4);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+					}
+					i+=3;
+				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 'c' && line[i+2] == 'o' && line[i+3] == 's'){
+					/* acos */
+					if(inNumber){
+						err = addNumber(tokenList, buffer, bufferPos);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+						inNumber = 0;
+					}else{
+						err = addToken(tokenList, tkACos, 0.0, 4);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+					}
+					i+=3;
+				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 't' && line[i+2] == 'a' && line[i+3] == 'n'){
+					/* atan */
+					if(inNumber){
+						err = addNumber(tokenList, buffer, bufferPos);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+						inNumber = 0;
+					}else{
+						err = addToken(tokenList, tkATan, 0.0, 4);
+						if(err != errNoError){
+							rc = 1;
+							printError(line, i-1, err, quiet);
+						}
+					}
+					i+=3;
 				}else{
 					if(inNumber){
 						buffer[bufferPos] = line[i];
@@ -789,6 +854,9 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkSin:
 			case tkCos:
 			case tkTan:
+			case tkASin:
+			case tkACos:
+			case tkATan:
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket || lastToken == tkNumber || lastToken == tkLastResult){
 					err = insertBeforeToken(item, tkMultiply, 0.0, 1);
 					if(err != errNoError){
@@ -880,8 +948,9 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	if(lastToken == tkPlus || lastToken == tkMinus \
 			|| lastToken == tkMultiply || lastToken == tkMultiplyX || lastToken == tkDivide \
 			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket \
-			|| lastToken == tkMod || lastToken == tkLog || lastToken == tkLn || lastToken == tkSin \
-			|| lastToken == tkCos || lastToken == tkTan){
+			|| lastToken == tkMod || lastToken == tkLog || lastToken == tkLn \
+			|| lastToken == tkSin || lastToken == tkCos || lastToken == tkTan \
+			|| lastToken == tkASin || lastToken == tkACos || lastToken == tkATan){
 		printError(line, currentPos-1, errInvalidOperator, quiet);
 		rc = 1;
 	}

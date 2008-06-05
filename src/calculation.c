@@ -85,6 +85,16 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 			return tan(valueTwo);
 			break;
 
+		case tkASin:
+			return asin(valueTwo);
+			break;
+		case tkACos:
+			return acos(valueTwo);
+			break;
+		case tkATan:
+			return atan(valueTwo);
+			break;
+
 		case tkNumber:
 		case tkLastResult:
 		case tkPi:
@@ -247,6 +257,9 @@ double process(tokenItem **tokenList)
 				case tkSin:
 				case tkCos:
 				case tkTan:
+				case tkASin:
+				case tkACos:
+				case tkATan:
 					valueOne = 1.0;
 					firstValue = 0;
 					operator = item->type;
