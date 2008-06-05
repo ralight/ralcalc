@@ -86,6 +86,24 @@ ralcalc stores the result of the calculation so that it can be used in the next 
 1/_ = 0.707107
 .RE
 
+.SH FUNCTIONS
+
+The functions sin, cos, tan, log (base 10 logarithm) and ln (natural logarithm) are supported. The trigonometric functions work on radians. The use of brackets is not necessary, but is recommended where precedence may be confusing. The functions have equal precedence to multiplication/division so care must be taken:
+.PP
+.RS
+= sin2x2
+.br
+sin2x2 = 1.81859
+.PP
+= sin[2x2]
+.br
+sin[2x2] = -0.756802
+.RE
+
+.SH CONSTANTS
+
+The constants pi (3.14159) and exp (2.71828) can be used and are treated the same as any other number.
+
 .SH FILE INPUT
 A list of calculations can be processed at once by placing them in a file. Each line of the file will be processed exactly the same as if ralcalc had been run with those arguments. The file could look like the following (note the lack of the command "=" or "ralcalc"):
 .PP
