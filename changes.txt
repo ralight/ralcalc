@@ -1,4 +1,4 @@
-1.2.0 (20080602)
+1.2.0 (20080609)
 ================
 
 - Included Hebrew translations thanks to Yaron and a start at Spanish
