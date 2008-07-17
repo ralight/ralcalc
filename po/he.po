@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-03-22 14:51+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-09 21:16+0100\n"
 "PO-Revision-Date: 2008-05-23 05:45+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -59,15 +59,20 @@ msgstr " סוגר שגוי\n"
 
 #: ../src/output.c:132
 #, c-format
+msgid " unable to open file\n"
+msgstr ""
+
+#: ../src/output.c:134
+#, c-format
 msgid " unknown error (%d)\n"
 msgstr " שגיאה לא ידועה (%d)\n"
 
-#: ../src/ralcalc.c:43
+#: ../src/ralcalc.c:44
 #, c-format
 msgid "ralcalc  version %s (build date: %s)\n"
 msgstr "גירסת ralcalc %s (תאריך הבניה: %s)\n"
 
-#: ../src/ralcalc.c:44
+#: ../src/ralcalc.c:45
 #, c-format
 msgid ""
 "Copyright (C) 2007,2008 Roger Light\n"
@@ -78,7 +83,7 @@ msgstr ""
 "http://atchoo.org/tools/ralcalc/\n"
 "\n"
 
-#: ../src/ralcalc.c:45
+#: ../src/ralcalc.c:46
 #, c-format
 msgid ""
 "ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc "
@@ -91,7 +96,7 @@ msgstr ""
 "המושק יחד עם תוכנית זו.\n"
 "\n"
 
-#: ../src/ralcalc.c:46
+#: ../src/ralcalc.c:47
 #, c-format
 msgid ""
 "ralcalc is a simple command line calculator. \n"
@@ -100,43 +105,51 @@ msgstr ""
 "ralcalc הינו מחשבון פשוט לשורת הפקודה. \n"
 "\n"
 
-#: ../src/ralcalc.c:47
+#: ../src/ralcalc.c:48
 #, c-format
 msgid "Usage: ralcalc -h   (display this text)\n"
 msgstr "שימוש: ralcalc -h   (הצגת טקסט זה)\n"
 
-#: ../src/ralcalc.c:48
-#, c-format
-msgid ""
-"       ralcalc [-q] [-e] [-r] <an equation>\n"
-"\n"
+#: ../src/ralcalc.c:49
+#, fuzzy, c-format
+msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
 msgstr ""
 "       ralcalc [-q] [-e] [-r] <משוואה>\n"
 "\n"
 
-#: ../src/ralcalc.c:49
+#: ../src/ralcalc.c:50
 #, c-format
 msgid "Options\n"
 msgstr "אפשרויות\n"
 
-#: ../src/ralcalc.c:50
-#, c-format
-msgid " -q\t   Only display the answer (quiet).\n"
-msgstr " -q\t   הצג את התשובה בלבד (שקט).\n"
-
 #: ../src/ralcalc.c:51
-#, c-format
+#, fuzzy, c-format
 msgid ""
-" -e\t   Use the '1e-3' form of display for the answer rather than SI "
+" -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
 msgstr " -e\t   השתמש בצורה '1e-3' להצגת התשובה מאשר קידומות SI.\n"
 
 #: ../src/ralcalc.c:52
 #, c-format
+msgid " -f    Process a list of calculations from a file.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:53
+#, c-format
+msgid " -i    Process a list of calculations from stdin.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:54
+#, fuzzy, c-format
+msgid " -q    Only display the answer (quiet).\n"
+msgstr " -q\t   הצג את התשובה בלבד (שקט).\n"
+
+#: ../src/ralcalc.c:55
+#, c-format
 msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
 msgstr " -r    הצג את התשובה בלי קידומות SI או מעריכחפ.\n"
 
-#: ../src/ralcalc.c:53
+#: ../src/ralcalc.c:56
 #, c-format
 msgid ""
 "\n"
@@ -145,7 +158,17 @@ msgstr ""
 "\n"
 "בקרו באתר http://atchoo.org/tools/ralcalc/ לעדכונים.\n"
 
-#: ../src/tokens.c:243
+#: ../src/ralcalc.c:161 ../src/ralcalc.c:204
+#, fuzzy, c-format
+msgid "Error: Out of memory\n"
+msgstr " חריגה מהזיכרון\n"
+
+#: ../src/ralcalc.c:276
+#, c-format
+msgid "Error: Unable to open file \"%s\"\n"
+msgstr ""
+
+#: ../src/tokens.c:254
 #, c-format
 msgid "Unknown token (%d)\n"
 msgstr "אסימון לא ידוע (%d)\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-01 14:43+0100\n"
+"POT-Creation-Date: 2008-06-09 21:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr ""
 
-#: ../src/tokens.c:245
+#: ../src/tokens.c:254
 #, c-format
 msgid "Unknown token (%d)\n"
 msgstr ""

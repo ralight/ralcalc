@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-03-22 14:51+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-09 21:16+0100\n"
 "PO-Revision-Date: 2008-05-03 22:25+0000\n"
 "Last-Translator: Eduardo Ruiz <eduardo.ruizcarrillo@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -59,15 +59,20 @@ msgstr ""
 
 #: ../src/output.c:132
 #, c-format
+msgid " unable to open file\n"
+msgstr ""
+
+#: ../src/output.c:134
+#, c-format
 msgid " unknown error (%d)\n"
 msgstr ""
 
-#: ../src/ralcalc.c:43
+#: ../src/ralcalc.c:44
 #, c-format
 msgid "ralcalc  version %s (build date: %s)\n"
 msgstr ""
 
-#: ../src/ralcalc.c:44
+#: ../src/ralcalc.c:45
 #, c-format
 msgid ""
 "Copyright (C) 2007,2008 Roger Light\n"
@@ -75,7 +80,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../src/ralcalc.c:45
+#: ../src/ralcalc.c:46
 #, c-format
 msgid ""
 "ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc "
@@ -84,55 +89,73 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../src/ralcalc.c:46
+#: ../src/ralcalc.c:47
 #, c-format
 msgid ""
 "ralcalc is a simple command line calculator. \n"
 "\n"
 msgstr ""
 
-#: ../src/ralcalc.c:47
+#: ../src/ralcalc.c:48
 #, c-format
 msgid "Usage: ralcalc -h   (display this text)\n"
 msgstr ""
 
-#: ../src/ralcalc.c:48
-#, c-format
-msgid ""
-"       ralcalc [-q] [-e] [-r] <an equation>\n"
-"\n"
-msgstr ""
-
 #: ../src/ralcalc.c:49
 #, c-format
-msgid "Options\n"
+msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
 msgstr ""
 
 #: ../src/ralcalc.c:50
 #, c-format
-msgid " -q\t   Only display the answer (quiet).\n"
+msgid "Options\n"
 msgstr ""
 
 #: ../src/ralcalc.c:51
 #, c-format
 msgid ""
-" -e\t   Use the '1e-3' form of display for the answer rather than SI "
+" -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
 msgstr ""
 
 #: ../src/ralcalc.c:52
 #, c-format
-msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgid " -f    Process a list of calculations from a file.\n"
 msgstr ""
 
 #: ../src/ralcalc.c:53
+#, c-format
+msgid " -i    Process a list of calculations from stdin.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:54
+#, c-format
+msgid " -q    Only display the answer (quiet).\n"
+msgstr ""
+
+#: ../src/ralcalc.c:55
+#, c-format
+msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:56
 #, c-format
 msgid ""
 "\n"
 "See http://atchoo.org/tools/ralcalc/ for updates.\n"
 msgstr ""
 
-#: ../src/tokens.c:243
+#: ../src/ralcalc.c:161 ../src/ralcalc.c:204
+#, c-format
+msgid "Error: Out of memory\n"
+msgstr ""
+
+#: ../src/ralcalc.c:276
+#, c-format
+msgid "Error: Unable to open file \"%s\"\n"
+msgstr ""
+
+#: ../src/tokens.c:254
 #, c-format
 msgid "Unknown token (%d)\n"
 msgstr ""
