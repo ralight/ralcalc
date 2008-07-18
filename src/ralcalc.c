@@ -199,7 +199,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
 		len += strlen(argv[i]);
 	}
 
-	line = calloc(len, sizeof(char));
+	line = calloc(len + 1, sizeof(char));
 	if(!line){
 		printf(_("Error: Out of memory\n"));
 		return 1;
