@@ -1,3 +1,10 @@
+1.2.1 (20080718)
+================
+
+- Fixed a string buffer that was being allocated one byte too small and would
+  occasionally lead to spurious "invalid operator" errors.
+
+
 1.2.0 (20080609)
 ================
 
