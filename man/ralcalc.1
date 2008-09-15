@@ -1,4 +1,4 @@
-.TH "ralcalc" "1" "18th July 2008" "" ""
+.TH "ralcalc" "1" "15th September 2008" "" ""
 .SH NAME
 ralcalc \- a simple command line calculator
 
@@ -6,10 +6,14 @@ ralcalc \- a simple command line calculator
 .PP
 ralcalc -h
 .PP
+ralcalc -a
+.PP
 ralcalc
 .I [-e] [-f input file] [-i] [-q] [-r] equation
 .PP
 = -h
+.PP
+= -a
 .PP
 =
 .I [-e] [-f input file] [-i] [-q] [-r] equation
@@ -24,6 +28,8 @@ is also installed as the
 command to make using it even quicker.
 
 .SH OPTIONS
+.IP -a
+Print out all of the available operators, functions and constants.
 .IP -e
 Display the result in the "1e-3" form rather than using SI prefixes.
 .IP -f

@@ -46,6 +46,7 @@ void printUsage()
 	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
 	printf(_("ralcalc is a simple command line calculator. \n\n"));
 	printf(_("Usage: ralcalc -h   (display this text)\n"));
+	printf(_("       ralcalc -a   (display all available operators)\n"));
 	printf(_("       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"));
 	printf(_("Options\n"));
 	printf(_(" -e    Use the '1e-3' form of display for the answer rather than SI prefixes.\n"));
@@ -54,6 +55,40 @@ void printUsage()
 	printf(_(" -q    Only display the answer (quiet).\n"));
 	printf(_(" -r    Display the answer with neither SI prefixes nor exponents.\n"));
 	printf(_("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n"));
+}
+
+
+/*
+ * printTokens()
+ *
+ * Print out all of the possible tokens and their description.
+ */
+void printTokens()
+{
+	printf(_("Numbers:\n"));
+	printf(_("  1.0 : example number\n"));
+	printf(_("  1.0e-3 : example number\n"));
+	printf(_("  1.0m : example number\n"));
+	printf(_("  _ : previous result\n"));
+	printf(_("  y, z, a, f, p, n, u, m : SI prefixes\n"));
+	printf(_("  k, M, G, T, P, E, Z, Y : SI prefixes\n"));
+	printf(_("\nOperators:\n"));
+	printf(_("  + : addition\n"));
+	printf(_("  - : subtraction\n"));
+	printf(_("  * x : multiplication\n"));
+	printf(_("  / : division\n"));
+	printf(_("  %% : modulus\n"));
+	printf(_("  ^ : power\n"));
+	printf(_("  () [] : brackets increase precedence\n"));
+	printf(_("\nFunctions:\n"));
+	printf(_("  log X : logarithm to base 10 of X\n"));
+	printf(_("  ln X : natural logarithm of X\n"));
+	printf(_("  sin X, asin X : sine, arcsin of X\n"));
+	printf(_("  cos X, acos X : cosine, arccos of X\n"));
+	printf(_("  tan X, atan X : tangent, arctan of X\n"));
+	printf(_("\nConstants:\n"));
+	printf(_("  pi : 3.14159\n"));
+	printf(_("  exp : 2.71828\n"));
 }
 
 
@@ -237,6 +272,11 @@ int main(int argc, char *argv[])
 
 	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))){
 		printUsage();
+		return 1;
+	}
+
+	if(argc==2 && (!strcmp(argv[1], "-a") || !strcmp(argv[1], "--all"))){
+		printTokens();
 		return 1;
 	}
 

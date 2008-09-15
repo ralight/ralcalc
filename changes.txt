@@ -1,3 +1,10 @@
+1.2.2 (20080915)
+================
+
+- Added support for the "-a" option which prints out all of the available
+  operators, functions and constants.
+
+
 1.2.1 (20080718)
 ================
 
