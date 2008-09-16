@@ -48,6 +48,7 @@ typedef enum{
 	tkASin,
 	tkACos,
 	tkATan,
+	tkSqrt,
 
 /* Constants */
 	tkPi,

@@ -66,28 +66,29 @@ void printUsage()
 void printTokens()
 {
 	printf(_("Numbers:\n"));
-	printf(_("  1.0 : example number\n"));
+	printf(_("  1.0    : example number\n"));
 	printf(_("  1.0e-3 : example number\n"));
-	printf(_("  1.0m : example number\n"));
-	printf(_("  _ : previous result\n"));
+	printf(_("  1.0m   : example number\n"));
+	printf(_("  _      : previous result\n"));
 	printf(_("  y, z, a, f, p, n, u, m : SI prefixes\n"));
 	printf(_("  k, M, G, T, P, E, Z, Y : SI prefixes\n"));
 	printf(_("\nOperators:\n"));
-	printf(_("  + : addition\n"));
-	printf(_("  - : subtraction\n"));
-	printf(_("  * x : multiplication\n"));
-	printf(_("  / : division\n"));
-	printf(_("  %% : modulus\n"));
-	printf(_("  ^ : power\n"));
+	printf(_("  +     : addition\n"));
+	printf(_("  -     : subtraction\n"));
+	printf(_("  * x   : multiplication\n"));
+	printf(_("  /     : division\n"));
+	printf(_("  %%     : modulus\n"));
+	printf(_("  ^     : power\n"));
 	printf(_("  () [] : brackets increase precedence\n"));
 	printf(_("\nFunctions:\n"));
-	printf(_("  log X : logarithm to base 10 of X\n"));
-	printf(_("  ln X : natural logarithm of X\n"));
+	printf(_("  log X         : logarithm to base 10 of X\n"));
+	printf(_("  ln X          : natural logarithm of X\n"));
 	printf(_("  sin X, asin X : sine, arcsin of X\n"));
 	printf(_("  cos X, acos X : cosine, arccos of X\n"));
 	printf(_("  tan X, atan X : tangent, arctan of X\n"));
+	printf(_("  sqrt X        : square root of X\n"));
 	printf(_("\nConstants:\n"));
-	printf(_("  pi : 3.14159\n"));
+	printf(_("  pi  : 3.14159\n"));
 	printf(_("  exp : 2.71828\n"));
 }
 

@@ -47,53 +47,25 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 	printf("doCalculation(%g, %g, %d)\n", valueOne, valueTwo, operator);
 #endif
 	switch(operator){
-		case tkPlus:
-			return valueOne + valueTwo;
-			break;
-		case tkMinus:
-			return valueOne - valueTwo;
-			break;
-		case tkNegation:
-			return valueOne * -1.0;
-			break;
-		case tkMultiply:
-		case tkMultiplyX:
-			return valueOne * valueTwo;
-			break;
-		case tkDivide:
-			return valueOne / valueTwo;
-			break;
-		case tkPower:
-			return pow(valueOne, valueTwo);
-			break;
-		case tkMod:
-			return fmod(valueOne, valueTwo);
-			break;
-		case tkLn:
-			return log(valueTwo);
-			break;
-		case tkLog:
-			return log(valueTwo) / 2.3025850929940456840179914546844;
-			break;
-		case tkSin:
-			return sin(valueTwo);
-			break;
-		case tkCos:
-			return cos(valueTwo);
-			break;
-		case tkTan:
-			return tan(valueTwo);
-			break;
+		case tkPlus: return valueOne + valueTwo;
+		case tkMinus: return valueOne - valueTwo;
+		case tkNegation: return valueOne * -1.0;
 
-		case tkASin:
-			return asin(valueTwo);
-			break;
-		case tkACos:
-			return acos(valueTwo);
-			break;
-		case tkATan:
-			return atan(valueTwo);
-			break;
+		case tkMultiply:
+		case tkMultiplyX: return valueOne * valueTwo;
+
+		case tkDivide: return valueOne / valueTwo;
+		case tkPower: return pow(valueOne, valueTwo);
+		case tkMod: return fmod(valueOne, valueTwo);
+		case tkLn: return log(valueTwo);
+		case tkLog: return log(valueTwo) / 2.3025850929940456840179914546844;
+		case tkSin: return sin(valueTwo);
+		case tkCos: return cos(valueTwo);
+		case tkTan: return tan(valueTwo);
+		case tkASin: return asin(valueTwo);
+		case tkACos: return acos(valueTwo);
+		case tkATan: return atan(valueTwo);
+		case tkSqrt: return sqrt(valueTwo);
 
 		case tkNumber:
 		case tkLastResult:
@@ -260,6 +232,7 @@ double process(tokenItem **tokenList)
 				case tkASin:
 				case tkACos:
 				case tkATan:
+				case tkSqrt:
 					valueOne = 1.0;
 					firstValue = 0;
 					operator = item->type;

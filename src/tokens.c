@@ -235,6 +235,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 		case tkASin:
 		case tkACos:
 		case tkATan:
+		case tkSqrt:
 			newItem->type = token;
 			newItem->value = 0.0;
 			newItem->length = length;
@@ -299,6 +300,7 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkASin:
 			case tkACos:
 			case tkATan:
+			case tkSqrt:
 				precedence = 3;
 				break;
 			case tkMultiply:
@@ -724,6 +726,13 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						printError(line, i, err, quiet);
 					}
 					i += 2;
+				}else if((i < strlen(line) - 3) && line[i+1] == 'q' && line[i+2] == 'r' && line[i+3] == 't'){
+					err = addToken(tokenList, tkSqrt, 0.0, 4);
+					if(err != errNoError){
+						rc = 1;
+						printError(line, i, err, quiet);
+					}
+					i += 3;
 				}else{
 					printError(line, i, errUnknownToken, quiet);
 				}
@@ -857,6 +866,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkASin:
 			case tkACos:
 			case tkATan:
+			case tkSqrt:
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket || lastToken == tkNumber || lastToken == tkLastResult){
 					err = insertBeforeToken(item, tkMultiply, 0.0, 1);
 					if(err != errNoError){
@@ -950,7 +960,8 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			|| lastToken == tkPower || lastToken == tkOpenBracket || lastToken == tkCOpenBracket \
 			|| lastToken == tkMod || lastToken == tkLog || lastToken == tkLn \
 			|| lastToken == tkSin || lastToken == tkCos || lastToken == tkTan \
-			|| lastToken == tkASin || lastToken == tkACos || lastToken == tkATan){
+			|| lastToken == tkASin || lastToken == tkACos || lastToken == tkATan \
+			|| lastToken == tkSqrt){
 		printError(line, currentPos-1, errInvalidOperator, quiet);
 		rc = 1;
 	}

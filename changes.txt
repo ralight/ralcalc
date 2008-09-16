@@ -1,3 +1,9 @@
+1.2.3 (20080916)
+================
+
+- By request, explicit support for square root (sqrt) has been added.
+
+
 1.2.2 (20080915)
 ================
 
