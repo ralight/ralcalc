@@ -4,8 +4,8 @@ require("/home/oojah/includes/main/logging.php");
 dolog();
 print("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n");
 
-$version = "1.0";
-$builddate = "20080322";
+$version = "1.2.4";
+$builddate = "20081114";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
@@ -18,7 +18,6 @@ $builddate = "20080322";
 
 print("<h1>ralcalc version $version</h1>\n");
 
-$builddate = "20080322";
 ?>
 <h2>What is ralcalc?</h2>
 <p>ralcalc is a simple command line calculator designed to take a single line input and produce a result. I also have it installed as the "=" command for even quicker access.</p>
@@ -52,9 +51,9 @@ print("<li><a href=\"files/ralcalc-$version.tar.bz2\">ralcalc-$version.tar.bz2</
 <li><a href="files/">Old versions</a></li>
 </ul>
 
-<p>The source is also available as a <a href="http://www.selenic.com/mercurial/">Mercurial</a> repository at <a href="http://hg.atchoo.org/ralcalc">http://hg.atchoo.org/ralcalc</a>. To get a copy use "hg pull http://hg-home.atchoo.org/ralcalc".</p>
+<p>The source is also available as a <a href="http://www.selenic.com/mercurial/">Mercurial</a> repository at <a href="http://hg.atchoo.org/ralcalc">http://hg.atchoo.org/ralcalc</a>. To get a copy use "hg clone http://hg.atchoo.org/ralcalc".</p>
 
-<h2>Operators</h2>
+<h2>Operators, Functions and Constants</h2>
 
 <ul>
 <li>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Addition</li>
@@ -64,6 +63,12 @@ print("<li><a href=\"files/ralcalc-$version.tar.bz2\">ralcalc-$version.tar.bz2</
 <li>^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Power</li>
 <li>[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brackets - increase the precedence of anything within the brackets.</li>
 <li>_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The result of the last ralcalc run (stored in $HOME/.ralcalc_result)</li>
+<li>log&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The base 10 logarithm.</li>
+<li>ln&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The natural logarithm.</li>
+<li>sin, cos, tan, asin, acos, atan</li>
+<li>sqrt</li>
+<li>pi (3.14159)</li>
+<li>exp (2.71828)</li>
 </ul>
 
 
@@ -83,6 +88,48 @@ print("<li><a href=\"files/ralcalc-$version.tar.bz2\">ralcalc-$version.tar.bz2</
 <p>Either contact me directly (see the bottom of the page), or else head to <a href="https://launchpad.net/ralcalc/">launchpad</a> to submit a new bug report or see existing ones.</p>
 
 <h2>Changes</h2>
+
+<p>1.2.4 (20081114)</p>
+<ul>
+<li>Fix bug whereby the precedence wasn't reset correctly after processing a pair of brackets. This would lead to problems with calculations where a power directly followed a close bracket: [2+3]^3.</li>
+<li>Included Brazilian Portugese translations thanks to Ricardo Ichizo.</li>
+<li>Included French translations thanks to Djalil Oulmane.</li>
+<li>Included Spanish translations thanks to Daniel.</li>
+</ul>
+
+<p>1.2.3 (20080916)</p>
+<ul>
+<li>By request, explicit support for square root (sqrt) has been added.</li>
+</ul>
+
+<p>1.2.2 (20080915)</p>
+<ul>
+<li>Added support for the "-a" option which prints out all of the available operators, functions and constants.</li>
+</ul>
+
+<p>1.2.1 (20080718)</p>
+<ul>
+<li>Fixed a string buffer that was being allocated one byte too small and would occasionally lead to spurious "invalid operator" errors.</li>
+</ul>
+
+<p>1.2.0 (20080609)</p>
+<ul>
+<li>Support for sin, cos, tan, asin, acos, atan functions.</li>
+<li>Support for pi and exp constants.</li>
+<li>Inclusion of Hebrew translations thanks to Yaron.</li>
+</ul>
+
+<p>1.1.0 (20080601)</p>
+<ul>
+<li>Added the "-f filename" option. This will process each line of "filename" as though it was typed in at the command line.</li>
+<li>Added the "-i" option which does the same as "-f" but for stdin.</li>
+<li>Added support for log/ln functions.</li>
+</ul>
+
+<p>1.0.1 (20080322)</p>
+<ul>
+<li>Add missing file to the download.</li>
+</ul>
 
 <p>1.0 (20080322)</p>
 <ul>
@@ -135,13 +182,14 @@ print("<li><a href=\"files/ralcalc-$version.tar.bz2\">ralcalc-$version.tar.bz2</
 <li>Added a man page.</li>
 </ul>
 
+<!--
 <h2>To Do</h2>
 
 <ul>
 <li>Fix negation precedence.</li>
-<li>Function support sin[2]</li>
 </ul>
 
+-->
 
 <h2>Licence</h2>
 
@@ -151,7 +199,7 @@ information.</p>
 
 <h2>Contact</h2>
 
-<p>ralcalc was written by Roger Light to fulfill his own needs. He knows that
+<p>ralcalc was written in C by Roger Light to fulfill his own needs. He knows that
 there are other languages that are better suited to this kind of thing, but he
 isn't really bothered about that.</p>
 
