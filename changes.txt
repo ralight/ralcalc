@@ -1,3 +1,11 @@
+1.2.4 (20081114)
+================
+
+- Fix bug whereby the precedence wasn't reset correctly after processing a
+  pair of brackets. This would lead to problems with calculations where a
+  power directly followed a close bracket: [2+3]^3.
+
+
 1.2.3 (20080916)
 ================
 

@@ -144,7 +144,7 @@ double process(tokenItem **tokenList)
 						insertNumberAfterToken(item, retval);
 						deletePreviousToken(item->next); // delete open bracket
 						item = (*tokenList); /* Reset to the beginning */
-						precedence = 4; /* Always start with new precedence after brackets have been found */
+						precedence = 5; /* Always start with new precedence after brackets have been found */
 					}
 					break;
 
