@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-15 16:44+0100\n"
+"POT-Creation-Date: 2008-11-14 00:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: ../src/ralcalc.c:69
 #, c-format
-msgid "  1.0 : example number\n"
+msgid "  1.0    : example number\n"
 msgstr ""
 
 #: ../src/ralcalc.c:70
@@ -166,12 +166,12 @@ msgstr ""
 
 #: ../src/ralcalc.c:71
 #, c-format
-msgid "  1.0m : example number\n"
+msgid "  1.0m   : example number\n"
 msgstr ""
 
 #: ../src/ralcalc.c:72
 #, c-format
-msgid "  _ : previous result\n"
+msgid "  _      : previous result\n"
 msgstr ""
 
 #: ../src/ralcalc.c:73
@@ -193,32 +193,32 @@ msgstr ""
 
 #: ../src/ralcalc.c:76
 #, c-format
-msgid "  + : addition\n"
+msgid "  +     : addition\n"
 msgstr ""
 
 #: ../src/ralcalc.c:77
 #, c-format
-msgid "  - : subtraction\n"
+msgid "  -     : subtraction\n"
 msgstr ""
 
 #: ../src/ralcalc.c:78
 #, c-format
-msgid "  * x : multiplication\n"
+msgid "  * x   : multiplication\n"
 msgstr ""
 
 #: ../src/ralcalc.c:79
 #, c-format
-msgid "  / : division\n"
+msgid "  /     : division\n"
 msgstr ""
 
 #: ../src/ralcalc.c:80
 #, c-format
-msgid "  %% : modulus\n"
+msgid "  %%     : modulus\n"
 msgstr ""
 
 #: ../src/ralcalc.c:81
 #, c-format
-msgid "  ^ : power\n"
+msgid "  ^     : power\n"
 msgstr ""
 
 #: ../src/ralcalc.c:82
@@ -235,12 +235,12 @@ msgstr ""
 
 #: ../src/ralcalc.c:84
 #, c-format
-msgid "  log X : logarithm to base 10 of X\n"
+msgid "  log X         : logarithm to base 10 of X\n"
 msgstr ""
 
 #: ../src/ralcalc.c:85
 #, c-format
-msgid "  ln X : natural logarithm of X\n"
+msgid "  ln X          : natural logarithm of X\n"
 msgstr ""
 
 #: ../src/ralcalc.c:86
@@ -260,32 +260,37 @@ msgstr ""
 
 #: ../src/ralcalc.c:89
 #, c-format
+msgid "  sqrt X        : square root of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:90
+#, c-format
 msgid ""
 "\n"
 "Constants:\n"
 msgstr ""
 
-#: ../src/ralcalc.c:90
+#: ../src/ralcalc.c:91
 #, c-format
-msgid "  pi : 3.14159\n"
+msgid "  pi  : 3.14159\n"
 msgstr ""
 
-#: ../src/ralcalc.c:91
+#: ../src/ralcalc.c:92
 #, c-format
 msgid "  exp : 2.71828\n"
 msgstr ""
 
-#: ../src/ralcalc.c:196 ../src/ralcalc.c:239
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:240
 #, c-format
 msgid "Error: Out of memory\n"
 msgstr ""
 
-#: ../src/ralcalc.c:316
+#: ../src/ralcalc.c:317
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr ""
 
-#: ../src/tokens.c:254
+#: ../src/tokens.c:255
 #, c-format
 msgid "Unknown token (%d)\n"
 msgstr ""

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-15 16:44+0100\n"
+"POT-Creation-Date: 2008-11-14 00:50+0000\n"
 "PO-Revision-Date: 2008-05-23 05:45+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-02 10:40+0000\n"
+"X-Launchpad-Export-Date: 2008-11-14 00:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/output.c:109
@@ -116,11 +116,9 @@ msgid "       ralcalc -a   (display all available operators)\n"
 msgstr ""
 
 #: ../src/ralcalc.c:50
-#, fuzzy, c-format
+#, c-format
 msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
 msgstr ""
-"       ralcalc [-q] [-e] [-r] <משוואה>\n"
-"\n"
 
 #: ../src/ralcalc.c:51
 #, c-format
@@ -128,11 +126,11 @@ msgid "Options\n"
 msgstr "אפשרויות\n"
 
 #: ../src/ralcalc.c:52
-#, fuzzy, c-format
+#, c-format
 msgid ""
 " -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
-msgstr " -e\t   השתמש בצורה '1e-3' להצגת התשובה מאשר קידומות SI.\n"
+msgstr ""
 
 #: ../src/ralcalc.c:53
 #, c-format
@@ -145,9 +143,9 @@ msgid " -i    Process a list of calculations from stdin.\n"
 msgstr ""
 
 #: ../src/ralcalc.c:55
-#, fuzzy, c-format
+#, c-format
 msgid " -q    Only display the answer (quiet).\n"
-msgstr " -q\t   הצג את התשובה בלבד (שקט).\n"
+msgstr ""
 
 #: ../src/ralcalc.c:56
 #, c-format
@@ -170,7 +168,7 @@ msgstr ""
 
 #: ../src/ralcalc.c:69
 #, c-format
-msgid "  1.0 : example number\n"
+msgid "  1.0    : example number\n"
 msgstr ""
 
 #: ../src/ralcalc.c:70
@@ -180,12 +178,12 @@ msgstr ""
 
 #: ../src/ralcalc.c:71
 #, c-format
-msgid "  1.0m : example number\n"
+msgid "  1.0m   : example number\n"
 msgstr ""
 
 #: ../src/ralcalc.c:72
 #, c-format
-msgid "  _ : previous result\n"
+msgid "  _      : previous result\n"
 msgstr ""
 
 #: ../src/ralcalc.c:73
@@ -207,32 +205,32 @@ msgstr "אפשרויות\n"
 
 #: ../src/ralcalc.c:76
 #, c-format
-msgid "  + : addition\n"
+msgid "  +     : addition\n"
 msgstr ""
 
 #: ../src/ralcalc.c:77
 #, c-format
-msgid "  - : subtraction\n"
+msgid "  -     : subtraction\n"
 msgstr ""
 
 #: ../src/ralcalc.c:78
 #, c-format
-msgid "  * x : multiplication\n"
+msgid "  * x   : multiplication\n"
 msgstr ""
 
 #: ../src/ralcalc.c:79
 #, c-format
-msgid "  / : division\n"
+msgid "  /     : division\n"
 msgstr ""
 
 #: ../src/ralcalc.c:80
 #, c-format
-msgid "  %% : modulus\n"
+msgid "  %%     : modulus\n"
 msgstr ""
 
 #: ../src/ralcalc.c:81
 #, c-format
-msgid "  ^ : power\n"
+msgid "  ^     : power\n"
 msgstr ""
 
 #: ../src/ralcalc.c:82
@@ -249,12 +247,12 @@ msgstr "אפשרויות\n"
 
 #: ../src/ralcalc.c:84
 #, c-format
-msgid "  log X : logarithm to base 10 of X\n"
+msgid "  log X         : logarithm to base 10 of X\n"
 msgstr ""
 
 #: ../src/ralcalc.c:85
 #, c-format
-msgid "  ln X : natural logarithm of X\n"
+msgid "  ln X          : natural logarithm of X\n"
 msgstr ""
 
 #: ../src/ralcalc.c:86
@@ -274,32 +272,52 @@ msgstr ""
 
 #: ../src/ralcalc.c:89
 #, c-format
+msgid "  sqrt X        : square root of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:90
+#, c-format
 msgid ""
 "\n"
 "Constants:\n"
 msgstr ""
 
-#: ../src/ralcalc.c:90
+#: ../src/ralcalc.c:91
 #, c-format
-msgid "  pi : 3.14159\n"
+msgid "  pi  : 3.14159\n"
 msgstr ""
 
-#: ../src/ralcalc.c:91
+#: ../src/ralcalc.c:92
 #, c-format
 msgid "  exp : 2.71828\n"
 msgstr ""
 
-#: ../src/ralcalc.c:196 ../src/ralcalc.c:239
-#, fuzzy, c-format
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:240
+#, c-format
 msgid "Error: Out of memory\n"
-msgstr " חריגה מהזיכרון\n"
+msgstr ""
 
-#: ../src/ralcalc.c:316
+#: ../src/ralcalc.c:317
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr ""
 
-#: ../src/tokens.c:254
+#: ../src/tokens.c:255
 #, c-format
 msgid "Unknown token (%d)\n"
 msgstr "אסימון לא ידוע (%d)\n"
+
+#~ msgid ""
+#~ "       ralcalc [-q] [-e] [-r] <an equation>\n"
+#~ "\n"
+#~ msgstr ""
+#~ "       ralcalc [-q] [-e] [-r] <משוואה>\n"
+#~ "\n"
+
+#~ msgid " -q\t   Only display the answer (quiet).\n"
+#~ msgstr " -q\t   הצג את התשובה בלבד (שקט).\n"
+
+#~ msgid ""
+#~ " -e\t   Use the '1e-3' form of display for the answer rather than SI "
+#~ "prefixes.\n"
+#~ msgstr " -e\t   השתמש בצורה '1e-3' להצגת התשובה מאשר קידומות SI.\n"
