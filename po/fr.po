@@ -1,0 +1,309 @@
+# French translation for ralcalc
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the ralcalc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ralcalc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-14 00:50+0000\n"
+"PO-Revision-Date: 2008-10-18 12:42+0000\n"
+"Last-Translator: Djalil Oulmane <Unknown>\n"
+"Language-Team: French <fr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-11-14 00:48+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../src/output.c:109
+#, c-format
+msgid " out of memory\n"
+msgstr " dépassement de la mémoire\n"
+
+#: ../src/output.c:112
+#, c-format
+msgid " bad input to function (internal)\n"
+msgstr ""
+
+#: ../src/output.c:114
+#, c-format
+msgid " unknown token\n"
+msgstr " entrée invalide dans la fonction (interne)\n"
+
+#: ../src/output.c:117
+#, c-format
+msgid " bad number\n"
+msgstr " Nombre invalide\n"
+
+#: ../src/output.c:120
+#, c-format
+msgid " mismatched brackets\n"
+msgstr " Problème dans les parenthèses\n"
+
+#: ../src/output.c:123
+#, c-format
+msgid " duplicate number\n"
+msgstr " Nombre dupliqué\n"
+
+#: ../src/output.c:126
+#, c-format
+msgid " invalid operator\n"
+msgstr " Opératuer invalide\n"
+
+#: ../src/output.c:129
+#, c-format
+msgid " invalid bracket\n"
+msgstr " Prenthèse invalide\n"
+
+#: ../src/output.c:132
+#, c-format
+msgid " unable to open file\n"
+msgstr " impossible d'ouvrir le fichier\n"
+
+#: ../src/output.c:134
+#, c-format
+msgid " unknown error (%d)\n"
+msgstr " erreur inconnue (%d)\n"
+
+#: ../src/ralcalc.c:44
+#, c-format
+msgid "ralcalc  version %s (build date: %s)\n"
+msgstr "ralcalc version %s (datebuild: %s)\n"
+
+#: ../src/ralcalc.c:45
+#, c-format
+msgid ""
+"Copyright (C) 2007,2008 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
+msgstr ""
+"Copyright (C) 2007,2008 Roger Light\n"
+"\n"
+
+#: ../src/ralcalc.c:46
+#, c-format
+msgid ""
+"ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc "
+"freely\n"
+"as described in the COPYING file distributed with this program.\n"
+"\n"
+msgstr ""
+"ralcalc n'offre AUCUNE GARANTIE. Vous pouvez distribuer ralcal gratuitement\n"
+"comme expliqué dans le fichier COPYING distribué avec ce programme.\n"
+"\n"
+
+#: ../src/ralcalc.c:47
+#, c-format
+msgid ""
+"ralcalc is a simple command line calculator. \n"
+"\n"
+msgstr ""
+"ralcalc est une calculatrice en ligne de commande. \n"
+"\n"
+
+#: ../src/ralcalc.c:48
+#, c-format
+msgid "Usage: ralcalc -h   (display this text)\n"
+msgstr "Utilisation; ralcalc -h (affiche ce texte)\n"
+
+#: ../src/ralcalc.c:49
+#, c-format
+msgid "       ralcalc -a   (display all available operators)\n"
+msgstr ""
+
+#: ../src/ralcalc.c:50
+#, c-format
+msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
+msgstr ""
+"       ralcalc [-e] [-f fichier d'entrée] [-i] [-q] [-r] <une équation>\n"
+
+#: ../src/ralcalc.c:51
+#, c-format
+msgid "Options\n"
+msgstr "Options\n"
+
+#: ../src/ralcalc.c:52
+#, c-format
+msgid ""
+" -e    Use the '1e-3' form of display for the answer rather than SI "
+"prefixes.\n"
+msgstr ""
+" -e    Utilise la forme d'affichage '1e-3' pour le résultat au lieu des "
+"préfixes SI.\n"
+
+#: ../src/ralcalc.c:53
+#, c-format
+msgid " -f    Process a list of calculations from a file.\n"
+msgstr " -f Exécute une liste d'opérations depuis un fichier.\n"
+
+#: ../src/ralcalc.c:54
+#, c-format
+msgid " -i    Process a list of calculations from stdin.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:55
+#, c-format
+msgid " -q    Only display the answer (quiet).\n"
+msgstr ""
+
+#: ../src/ralcalc.c:56
+#, c-format
+msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:57
+#, c-format
+msgid ""
+"\n"
+"See http://atchoo.org/tools/ralcalc/ for updates.\n"
+msgstr ""
+"\n"
+"Allez sur http://atchoo.org/tools/ralcalc/ pour les mises à jour.\n"
+
+#: ../src/ralcalc.c:68
+#, c-format
+msgid "Numbers:\n"
+msgstr ""
+
+#: ../src/ralcalc.c:69
+#, c-format
+msgid "  1.0    : example number\n"
+msgstr ""
+
+#: ../src/ralcalc.c:70
+#, c-format
+msgid "  1.0e-3 : example number\n"
+msgstr ""
+
+#: ../src/ralcalc.c:71
+#, c-format
+msgid "  1.0m   : example number\n"
+msgstr ""
+
+#: ../src/ralcalc.c:72
+#, c-format
+msgid "  _      : previous result\n"
+msgstr ""
+
+#: ../src/ralcalc.c:73
+#, c-format
+msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
+msgstr ""
+
+#: ../src/ralcalc.c:74
+#, c-format
+msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
+msgstr ""
+
+#: ../src/ralcalc.c:75
+#, fuzzy, c-format
+msgid ""
+"\n"
+"Operators:\n"
+msgstr "Options\n"
+
+#: ../src/ralcalc.c:76
+#, c-format
+msgid "  +     : addition\n"
+msgstr ""
+
+#: ../src/ralcalc.c:77
+#, c-format
+msgid "  -     : subtraction\n"
+msgstr ""
+
+#: ../src/ralcalc.c:78
+#, c-format
+msgid "  * x   : multiplication\n"
+msgstr ""
+
+#: ../src/ralcalc.c:79
+#, c-format
+msgid "  /     : division\n"
+msgstr ""
+
+#: ../src/ralcalc.c:80
+#, c-format
+msgid "  %%     : modulus\n"
+msgstr ""
+
+#: ../src/ralcalc.c:81
+#, c-format
+msgid "  ^     : power\n"
+msgstr ""
+
+#: ../src/ralcalc.c:82
+#, c-format
+msgid "  () [] : brackets increase precedence\n"
+msgstr ""
+
+#: ../src/ralcalc.c:83
+#, fuzzy, c-format
+msgid ""
+"\n"
+"Functions:\n"
+msgstr "Options\n"
+
+#: ../src/ralcalc.c:84
+#, c-format
+msgid "  log X         : logarithm to base 10 of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:85
+#, c-format
+msgid "  ln X          : natural logarithm of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:86
+#, c-format
+msgid "  sin X, asin X : sine, arcsin of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:87
+#, c-format
+msgid "  cos X, acos X : cosine, arccos of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:88
+#, c-format
+msgid "  tan X, atan X : tangent, arctan of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:89
+#, c-format
+msgid "  sqrt X        : square root of X\n"
+msgstr ""
+
+#: ../src/ralcalc.c:90
+#, c-format
+msgid ""
+"\n"
+"Constants:\n"
+msgstr ""
+
+#: ../src/ralcalc.c:91
+#, c-format
+msgid "  pi  : 3.14159\n"
+msgstr ""
+
+#: ../src/ralcalc.c:92
+#, c-format
+msgid "  exp : 2.71828\n"
+msgstr ""
+
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:240
+#, c-format
+msgid "Error: Out of memory\n"
+msgstr "Erreur: Dépassement de la mémoire\n"
+
+#: ../src/ralcalc.c:317
+#, c-format
+msgid "Error: Unable to open file \"%s\"\n"
+msgstr "Erreur: Impossible d'ouvrir le fichier \"%s\"\n"
+
+#: ../src/tokens.c:255
+#, c-format
+msgid "Unknown token (%d)\n"
+msgstr ""
