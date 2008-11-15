@@ -23,7 +23,7 @@ clean :
 install : ralcalc
 	$(INSTALL) -d ${DESTDIR}${prefix}/bin/
 	$(INSTALL) -s ralcalc ${DESTDIR}${prefix}/bin/ralcalc
-	ln -sf ${DESTDIR}${prefix}/bin/ralcalc ${DESTDIR}${prefix}/bin/=
+	ln -sf ${prefix}/bin/ralcalc ${DESTDIR}${prefix}/bin/=
 
 uninstall :
 	-rm -f ${DESTDIR}${prefix}/bin/= ${DESTDIR}${prefix}/bin/ralcalc
