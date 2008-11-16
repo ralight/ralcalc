@@ -1,0 +1,12 @@
+ralcalc (1.2.4-0~ppa2) intrepid; urgency=low
+
+  * Fix the "=" symbolic link being linked to ${DESTDIR} by mistake.
+
+ -- Roger Light <roger@atchoo.org>  Sat, 15 Nov 2008 23:53:49 +0000
+
+ralcalc (1.2.4-0~ppa1) intrepid; urgency=low
+
+  * Initial release
+
+ -- Roger Light <roger@atchoo.org>  Sat, 15 Nov 2008 23:37:50 +0000
+
