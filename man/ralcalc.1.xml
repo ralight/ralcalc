@@ -117,7 +117,7 @@
 			<varlistentry>
 				<term><option>-f</option></term>
 				<listitem>
-					<para>Process a list of calculations from a file. See the <!-- FIXME -->FILE INPUT section below for more information.</para>
+					<para>Process a list of calculations from a file. See the FILE INPUT section below for more information.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -211,7 +211,7 @@
 		<para>The constants <constant>pi</constant> (3.14159) and <constant>exp</constant> (2.71828) can be used and are treated the same as any other number.</para>
 	</refsect1>
 
-	<refsect1>
+	<refsect1 id="fileinput">
 		<title>File Input</title>
 		<para>A list of calculations can be processed at once by placing them in a file. Each line of the file will be process exactly the same as if <command>ralcalc</command> had been run with those arguments. The file could look like the following (note the lack of the command <command>=</command> or <command>ralcalc</command>):
 			<programlisting>
@@ -317,8 +317,8 @@
 
 	<refsect1>
 		<title>Bugs</title>
-		<para>Only a single "<arg choice='plain'>-f <replaceable>filename</replaceable></arg>" can be passed at once.</para>
-		<para>If you find a bug, please submit a report at <uri>http://bugs.launchpad.net/ralcalc</uri></para>
+		<para>Only a single "<option>-f <replaceable>filename</replaceable></option>" can be passed at once.</para>
+		<para>If you find a bug, please submit a report at <uri type="webpage">http://bugs.launchpad.net/ralcalc</uri></para>
 	</refsect1>
 
 	<refsect1>

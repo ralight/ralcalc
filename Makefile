@@ -1,6 +1,7 @@
 include config.mk
 
 DIRS=man po src
+DISTDIRS=man
 
 .PHONY : all ralcalc clean install uninstall dist dist-clean sign copy
 
@@ -19,11 +20,15 @@ uninstall :
 	@for d in ${DIRS}; do $(MAKE) -C $${d} uninstall; done
 
 dist : clean
+	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} dist; done
+	
 	mkdir -p ralcalc-${VERSION}
 	cp -r man po src COPYING Makefile changes.txt config.mk readme.txt ralcalc-${VERSION}/
 	tar -jcf ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}/
 
 dist-clean : clean
+	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} dist-clean; done
+	
 	-rm -rf ralcalc-${VERSION}*
 
 sign : dist

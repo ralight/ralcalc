@@ -10,6 +10,7 @@ INSTALL=install
 XGETTEXT=xgettext
 MSGMERGE=msgmerge
 MSGFMT=msgfmt
+DOCBOOK2MAN=docbook2man.pl
 
 prefix=/usr/local
 mandir=${prefix}/man
