@@ -38,3 +38,9 @@ copy : sign
 	man2html man/ralcalc.1 > ralcalc.html
 	scp ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}.tar.bz2.asc atchoo:atchoo.org/tools/ralcalc/files/
 	scp ralcalc.html atchoo:atchoo.org/tools/ralcalc/ralcalc.html
+
+pottar : dist-clean
+	mkdir -p ralcalc-pot/po ralcalc-pot/man
+	cp po/*.po po/ralcalc.pot ralcalc-pot/po/
+	/usr/bin/xml2po -o ralcalc-pot/man/ralcalc-man-1.pot man/ralcalc.1.xml
+	tar -zcf ralcalc-pot.tar.gz ralcalc-pot
