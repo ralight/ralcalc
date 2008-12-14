@@ -17,8 +17,8 @@
 
 #include "datatypes.h"
 
-errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos);
-errType addSimpleToken(tokenItem *tokenList, cToken token);
+errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int spaces);
+errType addSimpleToken(tokenItem *tokenList, cToken token, int spaces);
 errType addToken(tokenItem *tokenList, cToken token, double value, int length);
 int assignPrecedence(tokenItem *tokenList);
 errType deletePreviousToken(tokenItem *item);

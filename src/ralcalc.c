@@ -247,6 +247,10 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
 			line[i] = argv[j][k];
 			i++;
 		}
+		if(j < argc - 1){
+			line[i] = ' ';
+			i++;
+		}
 	}
 	rc = processLine(line, quiet, dm);
 	free(line);
