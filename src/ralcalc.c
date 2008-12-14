@@ -232,7 +232,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
 	int rc = 0;
 
 	for(i = 1; i < argc; i++){
-		len += strlen(argv[i]);
+		len += strlen(argv[i]) + 1;
 	}
 
 	line = calloc(len + 1, sizeof(char));
@@ -244,10 +244,8 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
 	i = 0;
 	for(j = 1; j < argc; j++){
 		for(k = 0; k < strlen(argv[j]); k++){
-			if(argv[j][k] != ' '){
-				line[i] = argv[j][k];
-				i++;
-			}
+			line[i] = argv[j][k];
+			i++;
 		}
 	}
 	rc = processLine(line, quiet, dm);
