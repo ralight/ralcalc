@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-14 00:50+0000\n"
-"PO-Revision-Date: 2008-07-24 22:02+0000\n"
-"Last-Translator: Ricardo Ichizo <n1ghtcr4wler@gmail.com>\n"
+"POT-Creation-Date: 2008-12-15 23:48+0000\n"
+"PO-Revision-Date: 2008-12-14 22:53+0000\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-14 00:48+0000\n"
+"X-Launchpad-Export-Date: 2008-12-15 18:21+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/output.c:109
@@ -113,7 +113,7 @@ msgstr "Uso: ralcalc -h (mostra esse texto)\n"
 #: ../src/ralcalc.c:49
 #, c-format
 msgid "       ralcalc -a   (display all available operators)\n"
-msgstr ""
+msgstr "       ralcalc -a   (mostrar todas as operações possíveis)\n"
 
 #: ../src/ralcalc.c:50
 #, c-format
@@ -166,27 +166,27 @@ msgstr ""
 #: ../src/ralcalc.c:68
 #, c-format
 msgid "Numbers:\n"
-msgstr ""
+msgstr "Números:\n"
 
 #: ../src/ralcalc.c:69
 #, c-format
 msgid "  1.0    : example number\n"
-msgstr ""
+msgstr "  1.0    : número de exemplo\n"
 
 #: ../src/ralcalc.c:70
 #, c-format
 msgid "  1.0e-3 : example number\n"
-msgstr ""
+msgstr "  1.0e-3 : número de exemplo\n"
 
 #: ../src/ralcalc.c:71
 #, c-format
 msgid "  1.0m   : example number\n"
-msgstr ""
+msgstr "  1.0m   : número de exemplo\n"
 
 #: ../src/ralcalc.c:72
 #, c-format
 msgid "  _      : previous result\n"
-msgstr ""
+msgstr "  _      :resultado anterior\n"
 
 #: ../src/ralcalc.c:73
 #, c-format
@@ -199,41 +199,43 @@ msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
 msgstr ""
 
 #: ../src/ralcalc.c:75
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\n"
 "Operators:\n"
-msgstr "Opções\n"
+msgstr ""
+"\n"
+"Operações:\n"
 
 #: ../src/ralcalc.c:76
 #, c-format
 msgid "  +     : addition\n"
-msgstr ""
+msgstr "  +     : adição\n"
 
 #: ../src/ralcalc.c:77
 #, c-format
 msgid "  -     : subtraction\n"
-msgstr ""
+msgstr "  -     : subtração\n"
 
 #: ../src/ralcalc.c:78
 #, c-format
 msgid "  * x   : multiplication\n"
-msgstr ""
+msgstr "  * x   : multiplicação\n"
 
 #: ../src/ralcalc.c:79
 #, c-format
 msgid "  /     : division\n"
-msgstr ""
+msgstr "  /     : divisão\n"
 
 #: ../src/ralcalc.c:80
 #, c-format
 msgid "  %%     : modulus\n"
-msgstr ""
+msgstr "  %%     : módulo\n"
 
 #: ../src/ralcalc.c:81
 #, c-format
 msgid "  ^     : power\n"
-msgstr ""
+msgstr "  ^     : expoente\n"
 
 #: ../src/ralcalc.c:82
 #, c-format
@@ -241,21 +243,23 @@ msgid "  () [] : brackets increase precedence\n"
 msgstr ""
 
 #: ../src/ralcalc.c:83
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\n"
 "Functions:\n"
-msgstr "Opções\n"
+msgstr ""
+"\n"
+"Funções:\n"
 
 #: ../src/ralcalc.c:84
 #, c-format
 msgid "  log X         : logarithm to base 10 of X\n"
-msgstr ""
+msgstr "  log X         : logaritmo de X na base 10\n"
 
 #: ../src/ralcalc.c:85
 #, c-format
 msgid "  ln X          : natural logarithm of X\n"
-msgstr ""
+msgstr "  ln X          : logaritmo natural de X\n"
 
 #: ../src/ralcalc.c:86
 #, c-format
@@ -283,23 +287,25 @@ msgid ""
 "\n"
 "Constants:\n"
 msgstr ""
+"\n"
+"Constantes:\n"
 
 #: ../src/ralcalc.c:91
 #, c-format
 msgid "  pi  : 3.14159\n"
-msgstr ""
+msgstr "  pi  : 3.14159\n"
 
 #: ../src/ralcalc.c:92
 #, c-format
 msgid "  exp : 2.71828\n"
-msgstr ""
+msgstr "  exp : 2.71828\n"
 
 #: ../src/ralcalc.c:197 ../src/ralcalc.c:240
 #, c-format
 msgid "Error: Out of memory\n"
 msgstr "Erro: sem memória\n"
 
-#: ../src/ralcalc.c:317
+#: ../src/ralcalc.c:319
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr "Erro: Impossível abrir arquivo \"%s\"\n"

@@ -1,4 +1,4 @@
-# Basque translation for ralcalc
+# Polish translation for ralcalc
 # Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the ralcalc package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: ralcalc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-15 23:48+0000\n"
-"PO-Revision-Date: 2008-11-19 19:48+0000\n"
-"Last-Translator: Mikel Alzibar <mikelalzibar@gmail.com>\n"
-"Language-Team: Basque <eu@li.org>\n"
+"PO-Revision-Date: 2008-12-13 05:01+0000\n"
+"Last-Translator: pp/bs <Unknown>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,57 +20,57 @@ msgstr ""
 #: ../src/output.c:109
 #, c-format
 msgid " out of memory\n"
-msgstr " memoriatik kanpo\n"
+msgstr " brak wolnej pamięci\n"
 
 #: ../src/output.c:112
 #, c-format
 msgid " bad input to function (internal)\n"
-msgstr " funtziorako sarrera okerra (barnekoa)\n"
+msgstr " nieprawidłowe argumenty wejściowe funkcji (wewn.)\n"
 
 #: ../src/output.c:114
 #, c-format
 msgid " unknown token\n"
-msgstr " ikur ezezaguna\n"
+msgstr " nieznany symbol\n"
 
 #: ../src/output.c:117
 #, c-format
 msgid " bad number\n"
-msgstr " zenbaki okerra\n"
+msgstr " nieprawidłowa liczba\n"
 
 #: ../src/output.c:120
 #, c-format
 msgid " mismatched brackets\n"
-msgstr " parentesiek ez dute bat egiten\n"
+msgstr " niepasujące nawiasy\n"
 
 #: ../src/output.c:123
 #, c-format
 msgid " duplicate number\n"
-msgstr " bikoiztutako zenbakia\n"
+msgstr " dwukrotnie zdefiniowana liczba\n"
 
 #: ../src/output.c:126
 #, c-format
 msgid " invalid operator\n"
-msgstr " eragile okerra\n"
+msgstr " nieprawidłowy operator\n"
 
 #: ../src/output.c:129
 #, c-format
 msgid " invalid bracket\n"
-msgstr " parentesis okerra\n"
+msgstr " nieprawidłowy nawias\n"
 
 #: ../src/output.c:132
 #, c-format
 msgid " unable to open file\n"
-msgstr " ezinezkoa fitxategia zabaltzea\n"
+msgstr " nie można otworzyć pliku\n"
 
 #: ../src/output.c:134
 #, c-format
 msgid " unknown error (%d)\n"
-msgstr " errore ezezaguna(%d)\n"
+msgstr " nieznany błąd (%d)\n"
 
 #: ../src/ralcalc.c:44
 #, c-format
 msgid "ralcalc  version %s (build date: %s)\n"
-msgstr "racalac bertsioa %s (garapen data: %s)\n"
+msgstr "ralcalc wersja %s (data kompilacji: %s)\n"
 
 #: ../src/ralcalc.c:45
 #, c-format
@@ -91,8 +91,8 @@ msgid ""
 "as described in the COPYING file distributed with this program.\n"
 "\n"
 msgstr ""
-"racalc-ek ez du INOLAKO BERMERIK. Dohainik elkarbanatu dezakezu recalc\n"
-"programa honekin banatzen den COPYING fitxategian aipatzen den bezala.\n"
+"ralcalc nie jest W ŻADNYM RAZIE OBJĘTY JAKĄKOLWIEK GWARANCJĄ. Można go\n"
+"swobodnie rozpowszechniać na zasadach opisanych w pliku COPYING.\n"
 "\n"
 
 #: ../src/ralcalc.c:47
@@ -101,56 +101,57 @@ msgid ""
 "ralcalc is a simple command line calculator. \n"
 "\n"
 msgstr ""
-"racalc komando lerroko kalkulagailu sinple bat da. \n"
+"ralcalc to prosty kalkulator uruchamiany z wiersza poleceń. \n"
 "\n"
 
 #: ../src/ralcalc.c:48
 #, c-format
 msgid "Usage: ralcalc -h   (display this text)\n"
-msgstr "Erabilera: racalc -h (testu hau erakutsi)\n"
+msgstr "Wywołanie: ralcalc -h (wyświetla niniejszy tekst)\n"
 
 #: ../src/ralcalc.c:49
 #, c-format
 msgid "       ralcalc -a   (display all available operators)\n"
-msgstr "       ralcalc -a (erakutsi eragile eskuragarri guztiak)\n"
+msgstr "       ralcalc -a (wyświetla wszystkie dostępne operatory)\n"
 
 #: ../src/ralcalc.c:50
 #, c-format
 msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
-msgstr ""
-"       ralcalc [-e] [-f sarrera fitxategia] [-i] [-q] [-r] <ekuazio bat>\n"
+msgstr "       ralcalc [-e] [-f plik wejściowy] [-i] [-q] [-r] <równanie>\n"
 
 #: ../src/ralcalc.c:51
 #, c-format
 msgid "Options\n"
-msgstr "Aukerak\n"
+msgstr "Opcje\n"
 
 #: ../src/ralcalc.c:52
 #, c-format
 msgid ""
 " -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
-msgstr " -e Erabili '1e-3' notazioa SI aurrizkien ordez emaitzak erakusteko.\n"
+msgstr ""
+" -e Wyświetlaj wynik w postaci \"1e-3\" zamiast stosować przedrostki SI.\n"
 
 #: ../src/ralcalc.c:53
 #, c-format
 msgid " -f    Process a list of calculations from a file.\n"
-msgstr " -f Prozesatu eragiketa zerrenda bat fitxategi batetik abiatuz.\n"
+msgstr " -f Wykonuj obliczenia z listy pobranej z pliku.\n"
 
 #: ../src/ralcalc.c:54
 #, c-format
 msgid " -i    Process a list of calculations from stdin.\n"
-msgstr " -i Prozesatu eragiketa zerrenda bat stdin sarreratik.\n"
+msgstr " -i Wykonuj obliczenia z listy pobranej z wejścia standardowego.\n"
 
 #: ../src/ralcalc.c:55
 #, c-format
 msgid " -q    Only display the answer (quiet).\n"
-msgstr " -q Bakarrik emaitza erakutsi (quiet).\n"
+msgstr " -q Wyświetlaj tylko wynik (tryb cichy).\n"
 
 #: ../src/ralcalc.c:56
 #, c-format
 msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
-msgstr " -r Erakutsi emaitza SI aurrizkirik gabe eta berretzailerik gabe.\n"
+msgstr ""
+" -r Wyświetlaj wynik nie używając przedrostków SI ani postaci wykładniczej.\n"
 
 #: ../src/ralcalc.c:57
 #, c-format
@@ -159,42 +160,42 @@ msgid ""
 "See http://atchoo.org/tools/ralcalc/ for updates.\n"
 msgstr ""
 "\n"
-"Bisitatu http://atchoo.org/tools/ralcalc/ eguneratzeko.\n"
+"Zajrzyj na stronę http://atchoo.org/tools/ralcalc/ w celu aktualizacji.\n"
 
 #: ../src/ralcalc.c:68
 #, c-format
 msgid "Numbers:\n"
-msgstr "Zenbakiak:\n"
+msgstr "Liczby:\n"
 
 #: ../src/ralcalc.c:69
 #, c-format
 msgid "  1.0    : example number\n"
-msgstr "  1.0 : adibide zenbakia\n"
+msgstr "  1,0 : przykładowa liczba\n"
 
 #: ../src/ralcalc.c:70
 #, c-format
 msgid "  1.0e-3 : example number\n"
-msgstr "  1.0e-3 : adibide zenbakia\n"
+msgstr "  1,0e-3 : przykładowa liczba\n"
 
 #: ../src/ralcalc.c:71
 #, c-format
 msgid "  1.0m   : example number\n"
-msgstr "  1.0m : adibide zenbakia\n"
+msgstr "  1.0m : przykładowa liczba\n"
 
 #: ../src/ralcalc.c:72
 #, c-format
 msgid "  _      : previous result\n"
-msgstr "  _ : aurreko emaitza\n"
+msgstr "  _ : poprzedni wynik\n"
 
 #: ../src/ralcalc.c:73
 #, c-format
 msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
-msgstr "  y, z, a, f, p, n, u, m : SI aurrizkiak\n"
+msgstr "  y, z, a, f, p, n, u, m : przedrostki SI\n"
 
 #: ../src/ralcalc.c:74
 #, c-format
 msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
-msgstr "  k, M, G, T, P, E, Z, Y : SI aurrizkiak\n"
+msgstr "  k, M, G, T, P, E, Z, Y : przedrostki SI\n"
 
 #: ../src/ralcalc.c:75
 #, c-format
@@ -203,42 +204,43 @@ msgid ""
 "Operators:\n"
 msgstr ""
 "\n"
-"Eragileak:\n"
+"Operatory:\n"
 
 #: ../src/ralcalc.c:76
 #, c-format
 msgid "  +     : addition\n"
-msgstr "  + : batuketa\n"
+msgstr "  + : dodawanie\n"
 
 #: ../src/ralcalc.c:77
 #, c-format
 msgid "  -     : subtraction\n"
-msgstr "  - : kenketa\n"
+msgstr "  - : odejmowanie\n"
 
 #: ../src/ralcalc.c:78
 #, c-format
 msgid "  * x   : multiplication\n"
-msgstr "  * x : biderketa\n"
+msgstr "  * x : mnożenie\n"
 
 #: ../src/ralcalc.c:79
 #, c-format
 msgid "  /     : division\n"
-msgstr "  / : zatiketa\n"
+msgstr "  / : dzielenie\n"
 
 #: ../src/ralcalc.c:80
 #, c-format
 msgid "  %%     : modulus\n"
-msgstr "  %% : modulua\n"
+msgstr "  %% : dzielenie modulo\n"
 
 #: ../src/ralcalc.c:81
 #, c-format
 msgid "  ^     : power\n"
-msgstr "  ^ : berreketa\n"
+msgstr "  ^ : potęga\n"
 
 #: ../src/ralcalc.c:82
 #, c-format
 msgid "  () [] : brackets increase precedence\n"
-msgstr "  () [] : parentesiak lehentasuna finkatzeko\n"
+msgstr ""
+"  () [] : nawiasy wskazują działania wykonywane w pierwszej kolejności\n"
 
 #: ../src/ralcalc.c:83
 #, c-format
@@ -247,37 +249,37 @@ msgid ""
 "Functions:\n"
 msgstr ""
 "\n"
-"Funtzioak:\n"
+"Funkcje:\n"
 
 #: ../src/ralcalc.c:84
 #, c-format
 msgid "  log X         : logarithm to base 10 of X\n"
-msgstr "  log X : X-en logaritmoa 10 oinarrian\n"
+msgstr "  log X : logarytm o podstawie 10 z liczby X\n"
 
 #: ../src/ralcalc.c:85
 #, c-format
 msgid "  ln X          : natural logarithm of X\n"
-msgstr "  ln X : X-en logaritmo nepertarra\n"
+msgstr "  ln X : logarytm naturalny z liczby X\n"
 
 #: ../src/ralcalc.c:86
 #, c-format
 msgid "  sin X, asin X : sine, arcsin of X\n"
-msgstr "  sin X, asin X : X-en sinua eta arkosinua\n"
+msgstr "  sin X, asin X : sinus, arcus sinus z liczby X\n"
 
 #: ../src/ralcalc.c:87
 #, c-format
 msgid "  cos X, acos X : cosine, arccos of X\n"
-msgstr "  cos X, acosX : X-en kosinu eta arkokosinua\n"
+msgstr "  cos X, acos X : cosinus, arcus cosinus z liczby X\n"
 
 #: ../src/ralcalc.c:88
 #, c-format
 msgid "  tan X, atan X : tangent, arctan of X\n"
-msgstr "  tan X, atan X : X-en tangente eta arkotangentea\n"
+msgstr "  tan X, atan X : tangens, arcus tangens z liczby X\n"
 
 #: ../src/ralcalc.c:89
 #, c-format
 msgid "  sqrt X        : square root of X\n"
-msgstr "  sqrt X : X-en erro karratua\n"
+msgstr "  sqrt X : pierwiastek kwadratowy z liczby X\n"
 
 #: ../src/ralcalc.c:90
 #, c-format
@@ -286,29 +288,29 @@ msgid ""
 "Constants:\n"
 msgstr ""
 "\n"
-"Konstanteak:\n"
+"Stałe:\n"
 
 #: ../src/ralcalc.c:91
 #, c-format
 msgid "  pi  : 3.14159\n"
-msgstr "  pi  : 3.14159\n"
+msgstr "  pi : 3,14159\n"
 
 #: ../src/ralcalc.c:92
 #, c-format
 msgid "  exp : 2.71828\n"
-msgstr "  exp : 2.71828\n"
+msgstr "  exp : 2,71828\n"
 
 #: ../src/ralcalc.c:197 ../src/ralcalc.c:240
 #, c-format
 msgid "Error: Out of memory\n"
-msgstr "Errorea: Memoriatik kanpo\n"
+msgstr "Błąd: Brak wolnej pamięci\n"
 
 #: ../src/ralcalc.c:319
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
-msgstr "Errorea: Ezinezkoa \"%s\" fitxategia zabaltzea\n"
+msgstr "Błąd: Nie można otworzyć pliku \"%s\"\n"
 
 #: ../src/tokens.c:255
 #, c-format
 msgid "Unknown token (%d)\n"
-msgstr "Ikur ezezaguna (%d)\n"
+msgstr "Nieznany symbol (%d)\n"
