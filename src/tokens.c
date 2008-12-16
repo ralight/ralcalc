@@ -515,6 +515,17 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case '9':
 			case '.':
 			case ',':
+				if(inNumber){
+					buffer[bufferPos] = line[i];
+					bufferPos++;
+				}else{
+					memset(buffer, 0, 100);
+					buffer[0] = line[i];
+					bufferPos = 1;
+					inNumber = 1;
+				}
+				break;
+
 			case 'e':
 			case 'Y':
 			case 'Z':
@@ -627,16 +638,12 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						spaces = 0;
 					}
 					i+=3;
+				}else if(inNumber){
+					buffer[bufferPos] = line[i];
+					bufferPos++;
 				}else{
-					if(inNumber){
-						buffer[bufferPos] = line[i];
-						bufferPos++;
-					}else{
-						memset(buffer, 0, 100);
-						buffer[0] = line[i];
-						bufferPos = 1;
-						inNumber = 1;
-					}
+					rc = 1;
+					printError(line, i-1, errBadNumber, quiet);
 				}
 				break;
 
