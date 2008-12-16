@@ -6,7 +6,12 @@ x.x.x (200xxxxx)
   in the output if there is one in the input.
 - Fixed bug where SI prefixes entered on their own were treated as a number of
   value zero. This means that "= 1/p" correctly produces an error now.
+- The man page is now written in docbook format to allow easier translation.
 - Included Basque translations thanks to Mikel Alzibar.
+- Included Basque translations thanks to Mikel Alzibar.
+- Included Polish translations thanks to "pp/bs".
+- Included further Brazilian Portugese translations thanks to Enrico
+  Nicoletto.
 
 
 1.2.4 (20081114)
