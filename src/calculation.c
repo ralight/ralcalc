@@ -44,7 +44,7 @@
 double doCalculation(double valueOne, double valueTwo, cToken operator)
 {
 #ifdef DEBUG
-	printf("doCalculation(%g, %g, %d)\n", valueOne, valueTwo, operator);
+	fprintf(stderr, "doCalculation(%g, %g, %d)\n", valueOne, valueTwo, operator);
 #endif
 	switch(operator){
 		case tkPlus: return valueOne + valueTwo;
@@ -119,16 +119,16 @@ double process(tokenItem **tokenList)
 
 #ifdef DEBUG
 		item = (*tokenList);
-		printf("Tokens:");
+		fprintf(stderr, "Tokens:");
 		while(item){
 			if(item->type == tkNumber){
-				printf(" (%g)", item->value);
+				fprintf(stderr, " (%g)", item->value);
 			}else{
-				printf(" %c", item->type);
+				fprintf(stderr, " %c", item->type);
 			}
 			item = item->next;
 		}
-		printf("\n");
+		fprintf(stderr, "\n");
 #endif
 
 		firstValue = 1;

@@ -99,39 +99,39 @@ void printError(const char *line, int pos, errType error, int quiet)
 
 	if(quiet) return;
 
-	printf("\nError: %s\n       ", line);
+	fprintf(stderr, "\nError: %s\n       ", line);
 	for(i = 0; i < pos; i++){
-		printf(" ");
+		fprintf(stderr, " ");
 	}
-	printf("^");
+	fprintf(stderr, "^");
 	switch(error){
 		case errMemory:
-			printf(_(" out of memory\n"));
+			fprintf(stderr, _(" out of memory\n"));
 			break;
 		case errBadInput:
-			printf(_(" bad input to function (internal)\n"));
+			fprintf(stderr, _(" bad input to function (internal)\n"));
 		case errUnknownToken:
-			printf(_(" unknown token\n"));
+			fprintf(stderr, _(" unknown token\n"));
 			break;
 		case errBadNumber:
-			printf(_(" bad number\n"));
+			fprintf(stderr, _(" bad number\n"));
 			break;
 		case errMismatchedBrackets:
-			printf(_(" mismatched brackets\n"));
+			fprintf(stderr, _(" mismatched brackets\n"));
 			break;
 		case errDuplicateNumber:
-			printf(_(" duplicate number\n"));
+			fprintf(stderr, _(" duplicate number\n"));
 			break;
 		case errInvalidOperator:
-			printf(_(" invalid operator\n"));
+			fprintf(stderr, _(" invalid operator\n"));
 			break;
 		case errInvalidBracket:
-			printf(_(" invalid bracket\n"));
+			fprintf(stderr, _(" invalid bracket\n"));
 			break;
 		case errBadFile:
-			printf(_(" unable to open file\n"));
+			fprintf(stderr, _(" unable to open file\n"));
 		default:
-			printf(_(" unknown error (%d)\n"), error);
+			fprintf(stderr, _(" unknown error (%d)\n"), error);
 			break;
 	}
 }

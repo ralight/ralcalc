@@ -252,7 +252,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 			newItem->prev = list;
 			break;
 		default:
-			printf(_("Unknown token (%d)\n"), token);
+			fprintf(stderr, _("Unknown token (%d)\n"), token);
 			free(newItem);
 			return errUnknownToken;
 			break;
@@ -357,7 +357,7 @@ errType deletePreviousToken(tokenItem *item)
 	deleteItem = item->prev;
 
 #ifdef DEBUG
-	printf("Deleting '%c' (%g)\n", deleteItem->type, deleteItem->value);
+	fprintf(stderr, "Deleting '%c' (%g)\n", deleteItem->type, deleteItem->value);
 #endif
 	
 	item->prev = deleteItem->prev;
@@ -460,7 +460,7 @@ errType insertNumberAfterToken(tokenItem *item, double value)
 	if(!item) return errBadInput;
 
 #ifdef DEBUG
-	printf("Inserting %g\n", value);
+	fprintf(stderr, "Inserting %g\n", value);
 #endif
 
 	newItem = calloc(1, sizeof(tokenItem));

@@ -194,7 +194,7 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm)
 
 	line = calloc(1024, sizeof(char));
 	if(!line){
-		printf(_("Error: Out of memory\n"));
+		fprintf(stderr, _("Error: Out of memory\n"));
 		return 1;
 	}
 	fgets(line, 1024, fptr);
@@ -237,7 +237,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
 
 	line = calloc(len + 1, sizeof(char));
 	if(!line){
-		printf(_("Error: Out of memory\n"));
+		fprintf(stderr, _("Error: Out of memory\n"));
 		return 1;
 	}
 
@@ -316,7 +316,7 @@ int main(int argc, char *argv[])
 	if(ifile){
 		iptr = fopen(ifile, "rt");
 		if(!iptr){
-			printf(_("Error: Unable to open file \"%s\"\n"), ifile);
+			fprintf(stderr, _("Error: Unable to open file \"%s\"\n"), ifile);
 			return 1;
 		}
 		if(doFileInput(iptr, quiet, dm)) rc = 1;
