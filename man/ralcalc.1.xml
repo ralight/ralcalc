@@ -175,17 +175,18 @@
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting>
 		</para>
 		<para>Numbers of the form 1e-3 are also supported, where the "e" indicates a power of ten. Don't mix and match SI prefixes and "e"  in the same number (although 1e-3n is valid, 1ne-3 is not - avoid both for less confusion).</para>
+		<para>The SI prefixes supported are: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
 	</refsect1>
 
 	<refsect1>
 		<title>Operators</title>
-		<para>The simple mathematical operators for addition (+), subtraction (-), multiplication (*, x), division (/) and power (^) are supported, with addition and subtraction having the lowest precedence and power having the highest. The functions log (base 10 logarithm) and ln (natural logarithm) are also supported.
+		<para>The simple mathematical operators for addition (+), subtraction (-), multiplication (*, x), division (/) and power (^) are supported, with addition and subtraction having the lowest precedence and power having the highest.
 			<programlisting>
 	<userinput>= 1+2x3</userinput>
 	<computeroutput>1+2x3 = 7</computeroutput>
 
-	<userinput>= 10log 0.5</userinput>
-	<computeroutput>10log 0.5 = -3.00976</computeroutput></programlisting>
+	<userinput>= 1/2^0.5</userinput>
+	<computeroutput>1/2^0.5 = 0.707107</computeroutput></programlisting>
 		</para>
 		<para>Brackets ( (), [] ) can be used to control the order in which statements are processed:
 			<programlisting>
@@ -230,6 +231,30 @@
 		</para>
 		<para>File input is also possible using <filename class="devicefile">stdin</filename>, i.e. reading interactively directly from the terminal with each line being calculated as normal. To quit, type "q" or "quit" on a new line, use Ctrl-D to indicate the end of file, or use Ctrl-C to cause <command>ralcalc</command> to be terminated.</para>
 		<para>If either of the file input options are given on the command line, then any calculations given on the command line will be calculated first. If both of the file input options are given, then the calculations from the <option>-f</option> will be carried out first, followed by those from <filename class="devicefile">stdin</filename>.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Examples</title>
+		<para>Basic calculation:
+			<programlisting>
+	<userinput>= ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 99.995u</computeroutput></programlisting>
+		</para>
+		<para>Exponent number output format:
+			<programlisting>
+	<userinput>= -e ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 9.9995e-05</computeroutput></programlisting>
+		</para>
+		<para>Raw number output format:
+			<programlisting>
+	<userinput>= -r ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 0.000100</computeroutput></programlisting>
+		</para>
+		<para>Number output format with a specified SI prefix:
+			<programlisting>
+	<userinput>= -s m ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 0.099995</computeroutput></programlisting>
+		</para>
 	</refsect1>
 
 	<refsect1>
