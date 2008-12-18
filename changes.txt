@@ -8,6 +8,7 @@ x.x.x (200xxxxx)
   with a specified SI prefix.
 - Fixed bug where SI prefixes entered on their own were treated as a number of
   value zero. This means that "= 1/p" correctly produces an error now.
+- Fixed bug that caused incorrect handling of "sqrt".
 - Errors and debug messages are now written on stderr.
 - The man page is now written in docbook format to allow easier translation.
 - Included Basque translations thanks to Mikel Alzibar.
