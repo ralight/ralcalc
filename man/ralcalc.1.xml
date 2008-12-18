@@ -48,6 +48,7 @@
 			<arg><option>-f</option> <replaceable>filename</replaceable></arg>
 			<arg><option>-i</option></arg>
 			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>prefix</replaceable></arg>
 			<arg choice='plain'><replaceable>equation</replaceable></arg>
 		</cmdsynopsis>
 
@@ -84,6 +85,7 @@
 			<arg><option>-f</option> <replaceable>filename</replaceable></arg>
 			<arg><option>-i</option></arg>
 			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>prefix</replaceable></arg>
 			<arg choice='plain'><replaceable>equation</replaceable></arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>
@@ -145,6 +147,13 @@
 				<!-- <term><option>- -raw</option></term> -->
 				<listitem>
 					<para>Display the result in decimal format with neither SI prefixes nor exponent.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-s</option></term>
+				<!-- <term><option>- -si-prefix</option></term> -->
+				<listitem>
+					<para>Display the result using a particular SI prefix. This option is ignored if <option>-e</option> or <option>-r</option> is also used.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -224,15 +233,7 @@
 	</refsect1>
 
 	<refsect1>
-		<title>Files</title>
-		<para>
-			<filename>${HOME}/.ralcalc_result</filename>
-			<blockquote>The result of the most recent calculation, which can be accessed in a later calculation using the "_" character. Note that this is not necessarily portable across different machine architectures.</blockquote>
-		</para>
-	</refsect1>
-
-	<refsect1>
-		<title>Environment</title>
+		<title>Environment Variables</title>
 		<variablelist>
 			<varlistentry>
 				<term><envar>HOME</envar></term>
@@ -241,6 +242,32 @@
 				</listitem>
 			</varlistentry>
 		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Exit Values</title>
+		<variablelist>
+			<varlistentry>
+				<term>0</term>
+				<listitem>
+					<para>Success</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>1</term>
+				<listitem>
+					<para>At least one error occurred.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Files</title>
+		<para>
+			<filename>${HOME}/.ralcalc_result</filename>
+			<blockquote>The result of the most recent calculation, which can be accessed in a later calculation using the "_" character. Note that this is not necessarily portable across different machine architectures.</blockquote>
+		</para>
 	</refsect1>
 
 	<refsect1>
@@ -295,24 +322,6 @@
 		<para>Internal error: If the parser notices two numbers next to each other yet does not generate a "<errortext>bad number</errortext>" error, the a "<errortext>duplicate number</errortext>" error will be generated. This should never happen.</para>
 
 		<para>Internal error: If an unknown error code is passed to the error output function, an "<errortext>unknown error</errortext>" will be generated and the invalid error code displayed. This should never happen.</para>
-	</refsect1>
-
-	<refsect1>
-		<title>Exit Values</title>
-		<variablelist>
-			<varlistentry>
-				<term>0</term>
-				<listitem>
-					<para>Success</para>
-				</listitem>
-			</varlistentry>
-			<varlistentry>
-				<term>1</term>
-				<listitem>
-					<para>At least one error occurred.</para>
-				</listitem>
-			</varlistentry>
-		</variablelist>
 	</refsect1>
 
 	<refsect1>
