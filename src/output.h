@@ -17,7 +17,7 @@
 
 #include "datatypes.h"
 
-void doubleToString(double value, char *string, int len);
+void doubleToString(double value, char *string, int len, char siPrefix);
 void printError(const char *line, int pos, errType error, int quiet);
 
 #endif

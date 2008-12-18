@@ -99,7 +99,7 @@ void printTokens()
  * Take a string, tokenise it, validate it and pass it on for calculation. This
  * is the glue function of ralcalc really.
  */
-int processLine(const char *line, int quiet, displayMode dm)
+int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 {
 	tokenItem tokenList;
 	tokenItem *thisItem;
@@ -150,7 +150,7 @@ int processLine(const char *line, int quiet, displayMode dm)
 
 		switch(dm){
 			case dmSI:
-				doubleToString(result, resultStr, 100);
+				doubleToString(result, resultStr, 100, siPrefix);
 				break;
 			case dmExponent:
 				snprintf(resultStr, 100, "%lg", result);
@@ -187,7 +187,7 @@ int processLine(const char *line, int quiet, displayMode dm)
  * Get lines from a file (be that a file on disk or stdin) and pass the lines
  * to processLine() for calculation.
  */
-int doFileInput(FILE *fptr, int quiet, displayMode dm)
+int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
 {
 	char *line;
 	int rc = 0;
@@ -207,7 +207,7 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm)
 			rc = 0;
 			break;
 		}
-		if(processLine(line, quiet, dm)){
+		if(processLine(line, quiet, dm, siPrefix)){
 			rc = 1;
 		}
 		fgets(line, 1024, fptr);
@@ -224,7 +224,7 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm)
  * Convert argc and argv into a single string and pass them to processLine for
  * calculation.
  */
-int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
+int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix)
 {
 	char *line;
 	int i, j, k;
@@ -254,7 +254,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
 			}
 		}
 	}
-	rc = processLine(line, quiet, dm);
+	rc = processLine(line, quiet, dm, siPrefix);
 	free(line);
 
 	return rc;
@@ -270,6 +270,7 @@ int main(int argc, char *argv[])
 	char *ifile = NULL;
 	FILE *iptr;
 	int usestdin = 0;
+	char siPrefix = '\0';
 	
 	setlocale(LC_ALL, "");
 	bindtextdomain("ralcalc", LOCALEDIR);
@@ -308,11 +309,49 @@ int main(int argc, char *argv[])
 		}else if(!strcmp(argv[i], "-r")){
 			dm = dmRaw;
 			argv[i][0] = '\0';
+		}else if(!strcmp(argv[i], "-s")){
+			if(i < argc - 1){
+				if(strlen(argv[i+1]) != 1){
+					fprintf(stderr, _("Error: Invalid SI prefix '%s' for '-s' option.\n"), argv[i+1]);
+					return 1;
+				}else{
+					switch(argv[i+1][0]){
+						case 'Y':
+						case 'Z':
+						case 'E':
+						case 'P':
+						case 'T':
+						case 'G':
+						case 'M':
+						case 'k':
+						case 'm':
+						case 'u':
+						case 'n':
+						case 'p':
+						case 'f':
+						case 'a':
+						case 'z':
+						case 'y':
+							siPrefix = argv[i+1][0];
+							break;
+						default:
+							fprintf(stderr, _("Error: Invalid SI prefix '%s' for '-s' option.\n"), argv[i+1]);
+							return 1;
+							break;
+					}
+					argv[i][0] = '\0';
+					argv[i+1][0] = '\0';
+					i++;
+				}
+			}else{
+				printUsage();
+				return 1;
+			}
 		}
 	}
 
 	/* Do calculation based on input arguments first */
-	if(doLineCalculation(argc, argv, quiet, dm)) rc = 1;
+	if(doLineCalculation(argc, argv, quiet, dm, siPrefix)) rc = 1;
 	
 	/* Do calculations from a disk file */
 	if(ifile){
@@ -321,13 +360,13 @@ int main(int argc, char *argv[])
 			fprintf(stderr, _("Error: Unable to open file \"%s\"\n"), ifile);
 			return 1;
 		}
-		if(doFileInput(iptr, quiet, dm)) rc = 1;
+		if(doFileInput(iptr, quiet, dm, siPrefix)) rc = 1;
 		fclose(iptr);
 	}
 
 	/* Read calculations from stdin */
 	if(usestdin){
-		if(doFileInput(stdin, quiet, dm)) rc = 1;
+		if(doFileInput(stdin, quiet, dm, siPrefix)) rc = 1;
 	}
 
 	return rc;

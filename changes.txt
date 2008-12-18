@@ -4,6 +4,8 @@ x.x.x (200xxxxx)
 - Preserve some spaces in equations when output. This will compress multiple
   spaces into a single space, but there will always be at least a single space
   in the output if there is one in the input.
+- Added support for the "-s prefix" option to allow the output to be formatted
+  with a specified SI prefix.
 - Fixed bug where SI prefixes entered on their own were treated as a number of
   value zero. This means that "= 1/p" correctly produces an error now.
 - Errors and debug messages are now written on stderr.

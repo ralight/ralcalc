@@ -34,44 +34,44 @@
  * Convert a double into a string with SI prefixes.
  * "string" is a preallocated char array of length len.
  */
-void doubleToString(double value, char *string, int len)
+void doubleToString(double value, char *string, int len, char siPrefix)
 {
 	double absval;
 	memset(string, 0, len);
 
 	absval = fabs(value);
 
-	if(absval >= 1.0e24){
+	if((absval >= 1.0e24 && siPrefix == '\0') || siPrefix == 'Y'){
 		snprintf(string, len, "%gY", value / 1.0e24);
-	}else if(absval >= 1.0e21){
+	}else if((absval >= 1.0e21 && siPrefix == '\0') || siPrefix == 'Z'){
 		snprintf(string, len, "%gZ", value / 1.0e21);
-	}else if(absval >= 1.0e18){
+	}else if((absval >= 1.0e18 && siPrefix == '\0') || siPrefix == 'E'){
 		snprintf(string, len, "%gE", value / 1.0e18);
-	}else if(absval >= 1.0e15){
+	}else if((absval >= 1.0e15 && siPrefix == '\0') || siPrefix == 'P'){
 		snprintf(string, len, "%gP", value / 1.0e15);
-	}else if(absval >= 1.0e12){
+	}else if((absval >= 1.0e12 && siPrefix == '\0') || siPrefix == 'T'){
 		snprintf(string, len, "%gT", value / 1.0e12);
-	}else if(absval >= 1.0e9){
+	}else if((absval >= 1.0e9 && siPrefix == '\0') || siPrefix == 'G'){
 		snprintf(string, len, "%gG", value / 1.0e9);
-	}else if(absval >= 1.0e6){
+	}else if((absval >= 1.0e6 && siPrefix == '\0') || siPrefix == 'M'){
 		snprintf(string, len, "%gM", value / 1.0e6);
-	}else if(absval >= 1.0e3){
+	}else if((absval >= 1.0e3 && siPrefix == '\0') || siPrefix == 'k'){
 		snprintf(string, len, "%gk", value / 1.0e3);
-	}else if(absval < 1.0e-20){
+	}else if((absval < 1.0e-20 && siPrefix == '\0') || siPrefix == 'y'){
 		snprintf(string, len, "%gy", value * 1.0e24);
-	}else if(absval < 1.0e-17){
+	}else if((absval < 1.0e-17 && siPrefix == '\0') || siPrefix == 'z'){
 		snprintf(string, len, "%gz", value * 1.0e21);
-	}else if(absval < 1.0e-14){
+	}else if((absval < 1.0e-14 && siPrefix == '\0') || siPrefix == 'a'){
 		snprintf(string, len, "%ga", value * 1.0e18);
-	}else if(absval < 1.0e-11){
+	}else if((absval < 1.0e-11 && siPrefix == '\0') || siPrefix == 'f'){
 		snprintf(string, len, "%gf", value * 1.0e15);
-	}else if(absval < 1.0e-8){
+	}else if((absval < 1.0e-8 && siPrefix == '\0') || siPrefix == 'p'){
 		snprintf(string, len, "%gp", value * 1.0e12);
-	}else if(absval < 1.0e-5){
+	}else if((absval < 1.0e-5 && siPrefix == '\0') || siPrefix == 'n'){
 		snprintf(string, len, "%gn", value * 1.0e9);
-	}else if(absval < 1.0e-2){
+	}else if((absval < 1.0e-2 && siPrefix == '\0') || siPrefix == 'u'){
 		snprintf(string, len, "%gu", value * 1.0e6);
-	}else if(absval < 0.1){
+	}else if((absval < 0.1 && siPrefix == '\0') || siPrefix == 'm'){
 		snprintf(string, len, "%gm", value * 1.0e3);
 	}else{
 		snprintf(string, len, "%g", value);
