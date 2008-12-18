@@ -1,4 +1,4 @@
-x.x.x (200xxxxx)
+1.3.0 (20081218)
 ================
 
 - Preserve some spaces in equations when output. This will compress multiple
