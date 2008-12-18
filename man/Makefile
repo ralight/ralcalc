@@ -2,9 +2,9 @@ include ../config.mk
 
 .PHONY : all clean install uninstall dist dist-clean
 
-all : ralcalc.1
+all : 
 
-ralcalc.1 : dist
+dist : ralcalc.1
 
 clean :
 
@@ -16,7 +16,7 @@ install :
 uninstall :
 	-rm -f ${DESTDIR}${mandir}/man1/ralcalc.1 ${DESTDIR}${mandir}/man1/=.1
 
-dist :
+ralcalc.1 : ralcalc.1.xml
 	$(DOCBOOK2MAN) ralcalc.1.xml
 
 dist-clean :
