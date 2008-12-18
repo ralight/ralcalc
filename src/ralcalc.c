@@ -243,13 +243,15 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm)
 
 	i = 0;
 	for(j = 1; j < argc; j++){
-		for(k = 0; k < strlen(argv[j]); k++){
-			line[i] = argv[j][k];
-			i++;
-		}
-		if(j < argc - 1){
-			line[i] = ' ';
-			i++;
+		if(strlen(argv[j]) > 0){
+			for(k = 0; k < strlen(argv[j]); k++){
+				line[i] = argv[j][k];
+				i++;
+			}
+			if(j < argc - 1){
+				line[i] = ' ';
+				i++;
+			}
 		}
 	}
 	rc = processLine(line, quiet, dm);
