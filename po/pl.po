@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 23:48+0000\n"
+"POT-Creation-Date: 2008-12-18 10:55+0000\n"
 "PO-Revision-Date: 2008-12-13 05:01+0000\n"
 "Last-Translator: pp/bs <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -305,7 +305,12 @@ msgstr "  exp : 2,71828\n"
 msgid "Error: Out of memory\n"
 msgstr "Błąd: Brak wolnej pamięci\n"
 
-#: ../src/ralcalc.c:319
+#: ../src/ralcalc.c:315 ../src/ralcalc.c:338
+#, c-format
+msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:360
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr "Błąd: Nie można otworzyć pliku \"%s\"\n"
