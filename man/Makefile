@@ -18,8 +18,8 @@ install :
 	$(INSTALL) ralcalc.1 ${DESTDIR}${mandir}/man1/ralcalc.1
 	$(INSTALL) =.1 ${DESTDIR}${mandir}/man1/=.1
 	@for c in ${COUNTRIES}; do \
-		$(INSTALL) ralcalc-$${c}.1 ${DESTDIR}${mandir}/$${c}/man1/ralcalc.1 ; \
-		$(INSTALL) =.1 ${DESTDIR}${mandir}/$${c}/man1/=.1 ; \
+		$(INSTALL) -D ralcalc-$${c}.1 ${DESTDIR}${mandir}/$${c}/man1/ralcalc.1 ; \
+		$(INSTALL) -D =.1 ${DESTDIR}${mandir}/$${c}/man1/=.1 ; \
 	done
 
 uninstall :
