@@ -40,7 +40,11 @@ copy : sign
 	scp ralcalc.html atchoo:atchoo.org/tools/ralcalc/ralcalc.html
 
 pottar : dist-clean
-	mkdir -p ralcalc-pot/po ralcalc-pot/man
-	cp po/*.po po/ralcalc.pot ralcalc-pot/po/
-	/usr/bin/xml2po -o ralcalc-pot/man/ralcalc-man-1.pot man/ralcalc.1.xml
+	mkdir -p ralcalc-pot/
+	for a in $(ls po/*.po); do cp ${a} ralcalc-pot/ralcalc-${a}.po; done
+	cp po/ralcalc.pot ralcalc-pot/
 	tar -zcf ralcalc-pot.tar.gz ralcalc-pot
+	
+	mkdir -p ralcalc-man-pot/
+	/usr/bin/xml2po -o ralcalc-man-pot/ralcalc-man-1.pot man/ralcalc.1.xml
+	tar -zcf ralcalc-man-pot.tar.gz ralcalc-man-pot
