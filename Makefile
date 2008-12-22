@@ -36,12 +36,13 @@ sign : dist
 
 copy : sign
 	man2html man/ralcalc.1 > ralcalc.html
+	man2html man/ralcalc-pl.1 > ralcalc-pl.html
 	scp ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}.tar.bz2.asc atchoo:atchoo.org/tools/ralcalc/files/
-	scp ralcalc.html atchoo:atchoo.org/tools/ralcalc/ralcalc.html
+	scp ralcalc.html ralcalc-pl.html atchoo:atchoo.org/tools/ralcalc/
 
 pottar : dist-clean
 	mkdir -p ralcalc-pot/
-	for a in $(ls po/*.po); do cp ${a} ralcalc-pot/ralcalc-${a}.po; done
+	for a in $(ls po/*.po); do cp ${a} ralcalc-pot/ralcalc-${a}; done
 	cp po/ralcalc.pot ralcalc-pot/
 	tar -zcf ralcalc-pot.tar.gz ralcalc-pot
 	
