@@ -487,7 +487,7 @@ errType insertNumberAfterToken(tokenItem *item, double value)
  */
 int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quiet)
 {
-	int i;
+	unsigned int i;
 	cToken lastToken = tkEndToken;
 	char buffer[100];
 	char lastchar = '\0';

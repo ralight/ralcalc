@@ -227,7 +227,8 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
 int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix)
 {
 	char *line;
-	int i, j, k;
+	int i, j;
+	unsigned int k;
 	int len = 0;
 	int rc = 0;
 
