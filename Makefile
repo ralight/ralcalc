@@ -42,7 +42,7 @@ copy : sign
 
 pottar : dist-clean
 	mkdir -p ralcalc-pot/
-	for a in $(ls po/*.po); do cp ${a} ralcalc-pot/ralcalc-${a}; done
+	for a in $$(ls po/*.po); do cp $${a} ralcalc-pot/ralcalc-$${a}; done
 	cp po/ralcalc.pot ralcalc-pot/
 	tar -zcf ralcalc-pot.tar.gz ralcalc-pot
 	
