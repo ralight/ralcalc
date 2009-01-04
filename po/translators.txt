@@ -1,0 +1,25 @@
+To the best of my knowledge, the following people have contributed
+translations to ralcalc. Many thanks!
+
+Basque
+- Mikel Alzibar
+
+Brazilian Portugese
+- Enrico Nicoletto
+- Ricardo Ichizo
+
+English (United Kingdom)
+- Jen Ockwell
+
+French
+- Djalil Oulmane
+- Pierre Rudloff
+
+Hebrew
+- Yaron
+
+Polish
+- pp/bs
+
+Spanish
+- Daniel
