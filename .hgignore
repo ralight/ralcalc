@@ -3,3 +3,5 @@ syntax: glob
 *.mo
 *.o
 src/ralcalc
+po/*.po~
+po/*.pot~
