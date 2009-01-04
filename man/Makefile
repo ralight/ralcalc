@@ -2,7 +2,7 @@ include ../config.mk
 
 .PHONY : all clean install uninstall dist dist-clean
 
-COUNTRIES=pl
+COUNTRIES=fr pl pt_BR
 
 all : 
 

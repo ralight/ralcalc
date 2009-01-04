@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-18 10:55+0000\n"
+"POT-Creation-Date: 2009-01-04 16:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -277,17 +277,17 @@ msgstr ""
 msgid "  exp : 2.71828\n"
 msgstr ""
 
-#: ../src/ralcalc.c:197 ../src/ralcalc.c:240
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:241
 #, c-format
 msgid "Error: Out of memory\n"
 msgstr ""
 
-#: ../src/ralcalc.c:315 ../src/ralcalc.c:338
+#: ../src/ralcalc.c:316 ../src/ralcalc.c:339
 #, c-format
 msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
 msgstr ""
 
-#: ../src/ralcalc.c:360
+#: ../src/ralcalc.c:361
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr ""
