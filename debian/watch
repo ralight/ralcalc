@@ -8,7 +8,7 @@ version=3
 
 # Uncomment to examine a Webpage
 # <Webpage URL> <string match>
-http://atchoo.org/tools/ralcalc/files/ralcalc-(.*)\.tar\.bz2
+http://atchoo.org/tools/ralcalc/files/ralcalc-(.*)\.tar\.gz
 
 # Uncomment to examine a Webserver directory
 #http://www.example.com/pub/ralcalc-(.*)\.tar\.gz
