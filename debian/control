@@ -1,7 +1,8 @@
 Source: ralcalc
 Section: math
 Priority: optional
-Maintainer: Roger Light <roger@atchoo.org>
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+XSBC-Original-Maintainer: Roger Light <roger@atchoo.org>
 Build-Depends: debhelper (>= 6)
 Standards-Version: 3.8.0
 Homepage: http://atchoo.org/tools/ralcalc/
