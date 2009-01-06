@@ -1,6 +1,8 @@
 x.x.x (200xxxxx)
 ================
 
+- Use dynamic allocation for the .ralcalc_result path string to avoid possible
+  truncation.
 - Complete Brazilian Portugese translations thanks to Enrico Nicoletto.
 - Some French translation of the man page thanks to Pierre Rudloff.
 - United Kingdom English translations thanks to Jen Ockwell (I'm UK English
