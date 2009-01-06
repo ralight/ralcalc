@@ -66,7 +66,7 @@ void printUsage(void)
  *
  * Print out all of the possible tokens and their description.
  */
-void printTokens()
+void printTokens(void)
 {
 	printf(_("Numbers:\n"));
 	printf(_("  1.0    : example number\n"));
