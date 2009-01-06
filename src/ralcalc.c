@@ -42,7 +42,7 @@ typedef enum {
 /* Path to where .ralcalc_results is */
 static char *rcpath = NULL;
 
-void printUsage()
+void printUsage(void)
 {
 	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
 	printf(_("Copyright (C) 2007,2008 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
