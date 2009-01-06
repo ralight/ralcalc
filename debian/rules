@@ -12,7 +12,6 @@ configure-stamp:
 	dh_testdir
 
 	sed -i 's#^prefix=/usr/local#prefix=/usr#' config.mk
-	sed -i 's#ln -sf \$${DESTDIR}#ln -sf #' src/Makefile
 
 	touch configure-stamp
 
