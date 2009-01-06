@@ -24,7 +24,7 @@ dist : clean
 	
 	mkdir -p ralcalc-${VERSION}
 	cp -r man po src COPYING Makefile changes.txt config.mk readme.txt ralcalc-${VERSION}/
-	tar -jcf ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}/
+	tar -zcf ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}/
 
 distclean : clean
 	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} distclean; done
@@ -32,13 +32,13 @@ distclean : clean
 	-rm -rf ralcalc-${VERSION}*
 
 sign : dist
-	gpg --detach-sign -a ralcalc-${VERSION}.tar.bz2
+	gpg --detach-sign -a ralcalc-${VERSION}.tar.gz
 
 copy : sign
 	man2html man/ralcalc.1 > ralcalc.html
 	man2html man/ralcalc-pl.1 > ralcalc-pl.html
 	man2html man/ralcalc-pt_BR.1 > ralcalc-pt_BR.html
-	scp ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}.tar.bz2.asc atchoo:atchoo.org/tools/ralcalc/files/
+	scp ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}.tar.gz.asc atchoo:atchoo.org/tools/ralcalc/files/
 	scp ralcalc.html ralcalc-pl.html ralcalc-pt_BR.html atchoo:atchoo.org/tools/ralcalc/
 
 pottar : distclean
