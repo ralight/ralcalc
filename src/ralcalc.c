@@ -39,6 +39,9 @@ typedef enum {
 } displayMode;
 
 
+/* Path to where .ralcalc_results is */
+static char *rcpath = NULL;
+
 void printUsage()
 {
 	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
@@ -104,7 +107,6 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 	tokenItem tokenList;
 	tokenItem *thisItem;
 	int rc;
-	char rcpath[100];
 	FILE *rcptr;
 	double result;
 	double lastResult = 0.0;
@@ -112,9 +114,7 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 	int errorPos;
 	char resultStr[100];
 
-	if(getenv("HOME")){
-		snprintf(rcpath, 100, "%s/.ralcalc_result", getenv("HOME"));
-
+	if(rcpath){
 		rcptr = fopen(rcpath, "rb");
 		if(rcptr){
 			fread(&lastResult, sizeof(double), 1, rcptr);
@@ -166,7 +166,7 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 			printf("%s\n", resultStr);
 		}
 
-		if(getenv("HOME")){
+		if(rcpath){
 			rcptr = fopen(rcpath, "wb");
 			if(rcptr){
 				fwrite(&result, sizeof(double), 1, rcptr);
@@ -272,6 +272,8 @@ int main(int argc, char *argv[])
 	FILE *iptr;
 	int usestdin = 0;
 	char siPrefix = '\0';
+	char *home = getenv("HOME");
+	int rcpathlen;
 	
 	setlocale(LC_ALL, "");
 	bindtextdomain("ralcalc", LOCALEDIR);
@@ -351,6 +353,13 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	/* Figure out the path to .ralcalc_result for loading/saving. */
+	if(home){
+		rcpathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
+		rcpath = (char *)malloc(rcpathlen * sizeof(char));
+		snprintf(rcpath, rcpathlen, "%s/.ralcalc_result", home);
+	}
+
 	/* Do calculation based on input arguments first */
 	if(doLineCalculation(argc, argv, quiet, dm, siPrefix)) rc = 1;
 	
@@ -368,6 +377,10 @@ int main(int argc, char *argv[])
 	/* Read calculations from stdin */
 	if(usestdin){
 		if(doFileInput(stdin, quiet, dm, siPrefix)) rc = 1;
+	}
+
+	if(rcpath){
+		free(rcpath);
 	}
 
 	return rc;
