@@ -42,6 +42,14 @@ typedef enum {
 /* Path to where .ralcalc_results is */
 static char *rcpath = NULL;
 
+/* Internal functions */
+void printUsage(void);
+void printTokens(void);
+int processLine(const char *line, int quiet, displayMode dm, char siPrefix);
+int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix);
+int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix);
+
+
 void printUsage(void)
 {
 	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
