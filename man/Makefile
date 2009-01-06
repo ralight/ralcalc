@@ -1,6 +1,6 @@
 include ../config.mk
 
-.PHONY : all clean install uninstall dist dist-clean
+.PHONY : all clean install uninstall dist distclean
 
 COUNTRIES=fr pl pt_BR
 
@@ -31,7 +31,7 @@ uninstall :
 ralcalc.1 : ralcalc.1.xml
 	$(DOCBOOK2MAN) ralcalc.1.xml
 
-dist-clean :
+distclean :
 	-rm -f ralcalc.1
 	@for c in ${COUNTRIES}; do \
 		rm -f ralcalc-$${c}.1 ; \

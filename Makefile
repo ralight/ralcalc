@@ -3,7 +3,7 @@ include config.mk
 DIRS=man po src
 DISTDIRS=man
 
-.PHONY : all ralcalc clean install uninstall dist dist-clean sign copy
+.PHONY : all ralcalc clean install uninstall dist distclean sign copy
 
 all : ralcalc
 
@@ -26,8 +26,8 @@ dist : clean
 	cp -r man po src COPYING Makefile changes.txt config.mk readme.txt ralcalc-${VERSION}/
 	tar -jcf ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}/
 
-dist-clean : clean
-	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} dist-clean; done
+distclean : clean
+	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} distclean; done
 	
 	-rm -rf ralcalc-${VERSION}*
 
@@ -41,7 +41,7 @@ copy : sign
 	scp ralcalc-${VERSION}.tar.bz2 ralcalc-${VERSION}.tar.bz2.asc atchoo:atchoo.org/tools/ralcalc/files/
 	scp ralcalc.html ralcalc-pl.html ralcalc-pt_BR.html atchoo:atchoo.org/tools/ralcalc/
 
-pottar : dist-clean
+pottar : distclean
 	mkdir -p ralcalc-pot/
 	for a in $$(ls po/*.po); do cp $${a} ralcalc-pot/ralcalc-$${a}; done
 	cp po/ralcalc.pot ralcalc-pot/
