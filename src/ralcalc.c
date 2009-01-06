@@ -122,6 +122,8 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 	int errorPos;
 	char resultStr[100];
 
+	if(!line) return errBadInput;
+
 	if(rcpath){
 		rcptr = fopen(rcpath, "rb");
 		if(rcptr){
@@ -199,6 +201,8 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
 {
 	char *line;
 	int rc = 0;
+
+	if(!fptr) return errBadInput;
 
 	line = calloc(1024, sizeof(char));
 	if(!line){

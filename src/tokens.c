@@ -281,7 +281,7 @@ int assignPrecedence(tokenItem *tokenList)
 	tokenItem *item;
 	int precedence;
 
-	if(!tokenList) return 1;
+	if(!tokenList) return errBadInput;
 
 	item = tokenList;
 	while(item){
@@ -335,7 +335,7 @@ int assignPrecedence(tokenItem *tokenList)
 		item = item->next;
 	}
 
-	return 0;
+	return errNoError;
 }
 
 
