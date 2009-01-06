@@ -113,13 +113,11 @@ void printTokens(void)
 int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 {
 	tokenItem tokenList;
-	tokenItem *thisItem;
 	int rc;
 	FILE *rcptr;
 	double result;
 	double lastResult = 0.0;
 	int hasError = 0;
-	int errorPos;
 	char resultStr[100];
 
 	if(!line) return errBadInput;
@@ -140,17 +138,7 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 	if(rc != errNoError) hasError = 1;
 
 	rc = validate(&tokenList, line, quiet);
-	if(rc != errNoError){
-		hasError = 1;
-		thisItem = tokenList.next;
-		errorPos = 0;
-
-		while(thisItem && rc > 1){
-			errorPos += thisItem->length;
-			thisItem = thisItem->next;
-			rc--;
-		}
-	}
+	if(rc != errNoError) hasError = 1;
 
 	rc = assignPrecedence(&tokenList);
 	if(rc != errNoError) hasError = 1;
