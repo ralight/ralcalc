@@ -2,8 +2,8 @@ x.x.x (200xxxxx)
 ================
 
 - Use dynamic allocation for the .ralcalc_result path string to avoid possible
-  truncation.
-- Minor code tidy-ups.
+  truncation leading to the incorrect file being opened.
+- Minor code tidy-ups, including more consistent error code handling.
 - Complete Brazilian Portugese translations thanks to Enrico Nicoletto.
 - Some French translation of the man page thanks to Pierre Rudloff.
 - United Kingdom English translations thanks to Jen Ockwell (I'm UK English
