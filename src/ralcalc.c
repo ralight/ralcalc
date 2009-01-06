@@ -137,10 +137,10 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 	tokenList.type = tkEndToken;
 
 	rc = tokenise(&tokenList, line, lastResult, quiet);
-	if(rc > 0) hasError = 1;
+	if(rc != errNoError) hasError = 1;
 
 	rc = validate(&tokenList, line, quiet);
-	if(rc > 0){
+	if(rc != errNoError){
 		hasError = 1;
 		thisItem = tokenList.next;
 		errorPos = 0;
@@ -153,7 +153,7 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 	}
 
 	rc = assignPrecedence(&tokenList);
-	if(rc > 0) hasError = 1;
+	if(rc != errNoError) hasError = 1;
 
 	if(!hasError && tokenList.next){
 		result = process(&(tokenList.next));
@@ -200,14 +200,14 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
 {
 	char *line;
-	int rc = 0;
+	int rc = errNoError;
 
 	if(!fptr) return errBadInput;
 
 	line = calloc(1024, sizeof(char));
 	if(!line){
 		fprintf(stderr, _("Error: Out of memory\n"));
-		return 1;
+		return errMemory;
 	}
 	fgets(line, 1024, fptr);
 	while(!feof(fptr)){
@@ -216,11 +216,12 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
 		}
 		/* Quit if "q" (or "quit" etc.) is an input */
 		if(line[0] == 'q' || line[0] == 'Q'){
-			rc = 0;
+			rc = errNoError;
 			break;
 		}
-		if(processLine(line, quiet, dm, siPrefix)){
-			rc = 1;
+		rc = processLine(line, quiet, dm, siPrefix);
+		if(rc != errNoError){
+			break;
 		}
 		fgets(line, 1024, fptr);
 	}
@@ -242,7 +243,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char si
 	int i, j;
 	unsigned int k;
 	int len = 0;
-	int rc = 0;
+	int rc = errNoError;
 
 	for(i = 1; i < argc; i++){
 		len += strlen(argv[i]) + 1;
@@ -251,7 +252,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char si
 	line = calloc(len + 1, sizeof(char));
 	if(!line){
 		fprintf(stderr, _("Error: Out of memory\n"));
-		return 1;
+		return errMemory;
 	}
 
 	i = 0;

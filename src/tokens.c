@@ -493,7 +493,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 	char lastchar = '\0';
 	int bufferPos = 0;
 	int inNumber = 0;
-	int rc = 0;
+	int rc = errNoError;
 	errType err;
 	int spaces = 0;
 
@@ -548,7 +548,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					if(inNumber){
 						err = addNumber(tokenList, buffer, bufferPos, spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						inNumber = 0;
@@ -556,7 +556,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					}else{
 						err = addToken(tokenList, tkNumber, M_PI, 2 + spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						spaces = 0;
@@ -567,7 +567,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					if(inNumber){
 						err = addNumber(tokenList, buffer, bufferPos, spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						inNumber = 0;
@@ -575,7 +575,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					}else{
 						err = addToken(tokenList, tkNumber, M_E, 3 + spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						spaces = 0;
@@ -586,7 +586,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					if(inNumber){
 						err = addNumber(tokenList, buffer, bufferPos, spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						inNumber = 0;
@@ -594,7 +594,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					}else{
 						err = addToken(tokenList, tkASin, 0.0, 4 + spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						spaces= 0;
@@ -605,7 +605,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					if(inNumber){
 						err = addNumber(tokenList, buffer, bufferPos, spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						inNumber = 0;
@@ -613,7 +613,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					}else{
 						err = addToken(tokenList, tkACos, 0.0, 4 + spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						spaces = 0;
@@ -624,7 +624,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					if(inNumber){
 						err = addNumber(tokenList, buffer, bufferPos, spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						inNumber = 0;
@@ -632,7 +632,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					}else{
 						err = addToken(tokenList, tkATan, 0.0, 4 + spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						spaces = 0;
@@ -642,7 +642,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					buffer[bufferPos] = line[i];
 					bufferPos++;
 				}else{
-					rc = 1;
+					rc = errBadNumber;
 					printError(line, i-1, errBadNumber, quiet);
 				}
 				break;
@@ -665,7 +665,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					}else{
 						err = addNumber(tokenList, buffer, bufferPos, spaces);
 						if(err != errNoError){
-							rc = 1;
+							rc = err;
 							printError(line, i-1, err, quiet);
 						}
 						inNumber = 0;
@@ -679,7 +679,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					 */
 					err = addSimpleToken(tokenList, line[i], spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i, err, quiet);
 					}
 					lastToken = line[i];
@@ -690,7 +690,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case '_':
 				err = addToken(tokenList, tkLastResult, lastResult, 1 + spaces);
 				if(err != errNoError){
-					rc = 1;
+					rc = err;
 					printError(line, i, err, quiet);
 				}
 				lastToken = '_';
@@ -710,7 +710,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if(inNumber){
 					err = addNumber(tokenList, buffer, bufferPos, spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i-1, err, quiet);
 					}
 					inNumber = 0;
@@ -719,7 +719,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if((i < strlen(line) - 1) && line[i+1] == 'n'){
 					err = addToken(tokenList, tkLn, 0.0, 2 + spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i, err, quiet);
 					}
 					spaces = 0;
@@ -727,7 +727,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				}else if((i < strlen(line) - 2) && line[i+1] == 'o' && line[i+2] == 'g'){
 					err = addToken(tokenList, tkLog, 0.0, 3 + spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i, err, quiet);
 					}
 					spaces = 0;
@@ -741,7 +741,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if(inNumber){
 					err = addNumber(tokenList, buffer, bufferPos, spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i-1, err, quiet);
 					}
 					inNumber = 0;
@@ -750,7 +750,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if((i < strlen(line) - 2) && line[i+1] == 'i' && line[i+2] == 'n'){
 					err = addToken(tokenList, tkSin, 0.0, 3 + spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i, err, quiet);
 					}
 					spaces = 0;
@@ -758,7 +758,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				}else if((i < strlen(line) - 3) && line[i+1] == 'q' && line[i+2] == 'r' && line[i+3] == 't'){
 					err = addToken(tokenList, tkSqrt, 0.0, 4 + spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i, err, quiet);
 					}
 					spaces = 0;
@@ -772,7 +772,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if(inNumber){
 					err = addNumber(tokenList, buffer, bufferPos, spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i-1, err, quiet);
 					}
 					inNumber = 0;
@@ -781,7 +781,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if((i < strlen(line) - 2) && line[i+1] == 'o' && line[i+2] == 's'){
 					err = addToken(tokenList, tkCos, 0.0, 3 + spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i, err, quiet);
 					}
 					spaces = 0;
@@ -795,7 +795,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if(inNumber){
 					err = addNumber(tokenList, buffer, bufferPos, spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i-1, err, quiet);
 					}
 					inNumber = 0;
@@ -804,7 +804,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				if((i < strlen(line) - 2) && line[i+1] == 'a' && line[i+2] == 'n'){
 					err = addToken(tokenList, tkTan, 0.0, 3 + spaces);
 					if(err != errNoError){
-						rc = 1;
+						rc = err;
 						printError(line, i, err, quiet);
 					}
 					spaces = 0;
@@ -815,7 +815,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				break;
 
 			default:
-				rc = 1;
+				rc = errUnknownToken;
 				printError(line, i, errUnknownToken, quiet);
 				break;
 		}
@@ -824,7 +824,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 	if(inNumber){
 		err = addNumber(tokenList, buffer, bufferPos, spaces);
 		if(err != errNoError){
-			rc = 1;
+			rc = err;
 			printError(line, i-2, err, quiet);
 		}
 		inNumber = 0;
@@ -854,9 +854,9 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	int currentPos = 0;
 	int negateValue = 0;
 	errType err;
-	int rc = 0;
+	int rc = errNoError;
 
-	if(!tokenList || !tokenList->next) return -1;
+	if(!tokenList || !tokenList->next) return errBadInput;
 
 	item = tokenList->next;
 	lastToken = tkEndToken;
@@ -875,14 +875,14 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err, quiet);
-						rc = 1;
+						rc = err;
 					}
 				}else if(lastToken == tkNumber || lastToken == tkLastResult){
 					/* Should never happen because tokenise() will produce
 					 * an "invalid number" error.
 					 */
 					printError(line, currentPos, errDuplicateNumber, quiet);
-					rc = 1;
+					rc = errBadNumber;
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
 						/* Negate the value by changing the 
@@ -906,7 +906,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 					err = insertBeforeToken(item, tkMultiply, 0.0, 1);
 					if(err != errNoError){
 						printError(line, currentPos, err, quiet);
-						rc = 1;
+						rc = err;
 					}
 				}
 				break;
@@ -919,7 +919,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkMod:
 				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket && lastToken != tkEndToken){
 					printError(line, currentPos-1, errInvalidOperator, quiet);
-					rc = 1;
+					rc = errInvalidOperator;
 				}
 				break;
 
@@ -927,7 +927,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 				/* prevent an inappropriate number of "-" signs */
 				if(lastToken == tkMinus && negateValue == 1){
 					printError(line, currentPos-1, errInvalidOperator, quiet);
-					rc = 1;
+					rc = errInvalidOperator;
 				}else if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket){
 					negateValue = 2;
 				}
@@ -940,7 +940,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err, quiet);
-						rc = 1;
+						rc = err;
 					}
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
@@ -948,12 +948,12 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 						err = insertBeforeToken(item, tkNumber, -1.0, 1);
 						if(err != errNoError){
 							printError(line, currentPos, err, quiet);
-							rc = 1;
+							rc = err;
 						}
 						err = insertBeforeToken(item, tkMultiply, 0.0, 1);
 						if(err != errNoError){
 							printError(line, currentPos, err, quiet);
-							rc = 1;
+							rc = err;
 						}
 					}
 				}
@@ -964,19 +964,19 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkCCloseBracket:
 				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket){
 					printError(line, currentPos-1, errInvalidBracket, quiet);
-					rc = 1;
+					rc = errInvalidBracket;
 				}
 				closeBrackets++;
 
 				if(closeBrackets > openBrackets){
 					printError(line, currentPos-1, errInvalidBracket, quiet);
-					rc = 1;
+					rc = errInvalidBracket;
 				}
 				break;
 
 			default:
 				printError(line, currentPos, errUnknownToken, quiet);
-				rc = 1;
+				rc = errUnknownToken;
 				break;
 		}
 		lastToken = item->type;
@@ -986,7 +986,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	/* Check for bracket count mismatch */
 	if(openBrackets != closeBrackets){
 		printError(line, currentPos, errMismatchedBrackets, quiet);
-		rc = 1;
+		rc = errMismatchedBrackets;
 	}
 
 	/* Check that we haven't ended on an invalid operator, e.g. "= 1+2/"  */
@@ -998,7 +998,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			|| lastToken == tkASin || lastToken == tkACos || lastToken == tkATan \
 			|| lastToken == tkSqrt){
 		printError(line, currentPos-1, errInvalidOperator, quiet);
-		rc = 1;
+		rc = errInvalidOperator;
 	}
 
 	return rc;
