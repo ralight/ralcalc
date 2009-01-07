@@ -23,7 +23,7 @@ dist : clean
 	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} dist; done
 	
 	mkdir -p ralcalc-${VERSION}
-	cp -r man po src COPYING Makefile changes.txt config.mk readme.txt ralcalc-${VERSION}/
+	cp -r man po src COPYING Makefile ChangeLog config.mk readme.txt ralcalc-${VERSION}/
 	tar -zcf ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}/
 
 distclean : clean
