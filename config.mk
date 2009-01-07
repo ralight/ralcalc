@@ -1,5 +1,5 @@
-VERSION=1.3.0
-BUILDDATE=20081218
+VERSION=1.3.1
+BUILDDATE=20090107
 
 # Add "-DDEBUG" to CFLAGS for verbose debug output
 CFLAGS=-ggdb -Wall -O2
