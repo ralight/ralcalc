@@ -3,7 +3,7 @@
  * Project: ralcalc
  * Desc: Main program.
  *
- * Copyright (C) 2007,2008 Roger Light.
+ * Copyright (C) 2007-2009 Roger Light.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -53,7 +53,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char si
 void printUsage(void)
 {
 	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
-	printf(_("Copyright (C) 2007,2008 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
+	printf(_("Copyright (C) 2007-2009 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
 	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
 	printf(_("ralcalc is a simple command line calculator. \n\n"));
 	printf(_("Usage: ralcalc -h   (display this text)\n"));

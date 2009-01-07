@@ -3,7 +3,7 @@
  * Project: ralcalc
  * Desc: Perform a calculation based on a list of tokens.
  *
- * Copyright (C) 2007,2008 Roger Light.
+ * Copyright (C) 2007-2009 Roger Light.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
