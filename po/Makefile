@@ -25,8 +25,8 @@ install : $(MOFILES)
 		country=`echo $$j | cut -d "." -f 1`; \
 		dir=$(DESTDIR)$(prefix)/share/locale/$$country/LC_MESSAGES; \
 		echo "installing $$dir/ralcalc.mo ($$k)"; \
-		install -d $$dir; \
-		cp $$j $$dir/ralcalc.mo; \
+		$(INSTALL) -d $$dir; \
+		$(INSTALL) -m 644 $$j $$dir/ralcalc.mo; \
 	done
 
 uninstall :
