@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-04 16:18+0000\n"
+"POT-Creation-Date: 2009-03-07 22:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,70 +13,70 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-12-15 18:21+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../src/output.c:109
+#: ../src/output.c:110
 #, c-format
 msgid " out of memory\n"
 msgstr ""
 
-#: ../src/output.c:112
+#: ../src/output.c:113
 #, c-format
 msgid " bad input to function (internal)\n"
 msgstr ""
 
-#: ../src/output.c:114
+#: ../src/output.c:115
 #, c-format
 msgid " unknown token\n"
 msgstr ""
 
-#: ../src/output.c:117
+#: ../src/output.c:118
 #, c-format
 msgid " bad number\n"
 msgstr ""
 
-#: ../src/output.c:120
+#: ../src/output.c:121
 #, c-format
 msgid " mismatched brackets\n"
 msgstr ""
 
-#: ../src/output.c:123
+#: ../src/output.c:124
 #, c-format
 msgid " duplicate number\n"
 msgstr ""
 
-#: ../src/output.c:126
+#: ../src/output.c:127
 #, c-format
 msgid " invalid operator\n"
 msgstr ""
 
-#: ../src/output.c:129
+#: ../src/output.c:130
 #, c-format
 msgid " invalid bracket\n"
 msgstr ""
 
-#: ../src/output.c:132
+#: ../src/output.c:133
 #, c-format
 msgid " unable to open file\n"
 msgstr ""
 
-#: ../src/output.c:134
+#: ../src/output.c:135
 #, c-format
 msgid " unknown error (%d)\n"
 msgstr ""
 
-#: ../src/ralcalc.c:44
+#: ../src/ralcalc.c:55
 #, c-format
 msgid "ralcalc  version %s (build date: %s)\n"
 msgstr ""
 
-#: ../src/ralcalc.c:45
+#: ../src/ralcalc.c:56
 #, c-format
 msgid ""
-"Copyright (C) 2007,2008 Roger Light\n"
+"Copyright (C) 2007-2009 Roger Light\n"
 "http://atchoo.org/tools/ralcalc/\n"
 "\n"
 msgstr ""
 
-#: ../src/ralcalc.c:46
+#: ../src/ralcalc.c:57
 #, c-format
 msgid ""
 "ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc "
@@ -85,209 +85,209 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../src/ralcalc.c:47
+#: ../src/ralcalc.c:58
 #, c-format
 msgid ""
 "ralcalc is a simple command line calculator. \n"
 "\n"
 msgstr ""
 
-#: ../src/ralcalc.c:48
+#: ../src/ralcalc.c:59
 #, c-format
 msgid "Usage: ralcalc -h   (display this text)\n"
 msgstr ""
 
-#: ../src/ralcalc.c:49
+#: ../src/ralcalc.c:60
 #, c-format
 msgid "       ralcalc -a   (display all available operators)\n"
 msgstr ""
 
-#: ../src/ralcalc.c:50
+#: ../src/ralcalc.c:61
 #, c-format
 msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
 msgstr ""
 
-#: ../src/ralcalc.c:51
+#: ../src/ralcalc.c:62
 #, c-format
 msgid "Options\n"
 msgstr ""
 
-#: ../src/ralcalc.c:52
+#: ../src/ralcalc.c:63
 #, c-format
 msgid ""
 " -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
 msgstr ""
 
-#: ../src/ralcalc.c:53
+#: ../src/ralcalc.c:64
 #, c-format
 msgid " -f    Process a list of calculations from a file.\n"
 msgstr ""
 
-#: ../src/ralcalc.c:54
+#: ../src/ralcalc.c:65
 #, c-format
 msgid " -i    Process a list of calculations from stdin.\n"
 msgstr ""
 
-#: ../src/ralcalc.c:55
+#: ../src/ralcalc.c:66
 #, c-format
 msgid " -q    Only display the answer (quiet).\n"
 msgstr ""
 
-#: ../src/ralcalc.c:56
+#: ../src/ralcalc.c:67
 #, c-format
 msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
 msgstr ""
 
-#: ../src/ralcalc.c:57
+#: ../src/ralcalc.c:68
 #, c-format
 msgid ""
 "\n"
 "See http://atchoo.org/tools/ralcalc/ for updates.\n"
 msgstr ""
 
-#: ../src/ralcalc.c:68
+#: ../src/ralcalc.c:79
 #, c-format
 msgid "Numbers:\n"
 msgstr ""
 
-#: ../src/ralcalc.c:69
+#: ../src/ralcalc.c:80
 #, c-format
 msgid "  1.0    : example number\n"
 msgstr ""
 
-#: ../src/ralcalc.c:70
+#: ../src/ralcalc.c:81
 #, c-format
 msgid "  1.0e-3 : example number\n"
 msgstr ""
 
-#: ../src/ralcalc.c:71
+#: ../src/ralcalc.c:82
 #, c-format
 msgid "  1.0m   : example number\n"
 msgstr ""
 
-#: ../src/ralcalc.c:72
+#: ../src/ralcalc.c:83
 #, c-format
 msgid "  _      : previous result\n"
 msgstr ""
 
-#: ../src/ralcalc.c:73
+#: ../src/ralcalc.c:84
 #, c-format
 msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
 msgstr ""
 
-#: ../src/ralcalc.c:74
+#: ../src/ralcalc.c:85
 #, c-format
 msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
 msgstr ""
 
-#: ../src/ralcalc.c:75
+#: ../src/ralcalc.c:86
 #, c-format
 msgid ""
 "\n"
 "Operators:\n"
 msgstr ""
 
-#: ../src/ralcalc.c:76
+#: ../src/ralcalc.c:87
 #, c-format
 msgid "  +     : addition\n"
 msgstr ""
 
-#: ../src/ralcalc.c:77
+#: ../src/ralcalc.c:88
 #, c-format
 msgid "  -     : subtraction\n"
 msgstr ""
 
-#: ../src/ralcalc.c:78
+#: ../src/ralcalc.c:89
 #, c-format
 msgid "  * x   : multiplication\n"
 msgstr ""
 
-#: ../src/ralcalc.c:79
+#: ../src/ralcalc.c:90
 #, c-format
 msgid "  /     : division\n"
 msgstr ""
 
-#: ../src/ralcalc.c:80
+#: ../src/ralcalc.c:91
 #, c-format
 msgid "  %%     : modulus\n"
 msgstr ""
 
-#: ../src/ralcalc.c:81
+#: ../src/ralcalc.c:92
 #, c-format
 msgid "  ^     : power\n"
 msgstr ""
 
-#: ../src/ralcalc.c:82
+#: ../src/ralcalc.c:93
 #, c-format
 msgid "  () [] : brackets increase precedence\n"
 msgstr ""
 
-#: ../src/ralcalc.c:83
+#: ../src/ralcalc.c:94
 #, c-format
 msgid ""
 "\n"
 "Functions:\n"
 msgstr ""
 
-#: ../src/ralcalc.c:84
+#: ../src/ralcalc.c:95
 #, c-format
 msgid "  log X         : logarithm to base 10 of X\n"
 msgstr ""
 
-#: ../src/ralcalc.c:85
+#: ../src/ralcalc.c:96
 #, c-format
 msgid "  ln X          : natural logarithm of X\n"
 msgstr ""
 
-#: ../src/ralcalc.c:86
+#: ../src/ralcalc.c:97
 #, c-format
 msgid "  sin X, asin X : sine, arcsin of X\n"
 msgstr ""
 
-#: ../src/ralcalc.c:87
+#: ../src/ralcalc.c:98
 #, c-format
 msgid "  cos X, acos X : cosine, arccos of X\n"
 msgstr ""
 
-#: ../src/ralcalc.c:88
+#: ../src/ralcalc.c:99
 #, c-format
 msgid "  tan X, atan X : tangent, arctan of X\n"
 msgstr ""
 
-#: ../src/ralcalc.c:89
+#: ../src/ralcalc.c:100
 #, c-format
 msgid "  sqrt X        : square root of X\n"
 msgstr ""
 
-#: ../src/ralcalc.c:90
+#: ../src/ralcalc.c:101
 #, c-format
 msgid ""
 "\n"
 "Constants:\n"
 msgstr ""
 
-#: ../src/ralcalc.c:91
+#: ../src/ralcalc.c:102
 #, c-format
 msgid "  pi  : 3.14159\n"
 msgstr ""
 
-#: ../src/ralcalc.c:92
+#: ../src/ralcalc.c:103
 #, c-format
 msgid "  exp : 2.71828\n"
 msgstr ""
 
-#: ../src/ralcalc.c:197 ../src/ralcalc.c:241
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:242
 #, c-format
 msgid "Error: Out of memory\n"
 msgstr ""
 
-#: ../src/ralcalc.c:316 ../src/ralcalc.c:339
+#: ../src/ralcalc.c:319 ../src/ralcalc.c:342
 #, c-format
 msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
 msgstr ""
 
-#: ../src/ralcalc.c:361
+#: ../src/ralcalc.c:371
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr ""
