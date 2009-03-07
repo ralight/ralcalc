@@ -1,0 +1,18 @@
+To the best of my knowledge, the following people have contributed
+translations to the ralcalc man page. Many thanks!
+
+Brazilian Portugese
+- Enrico Nicoletto
+
+English (United Kingdom)
+- Jen Ockwell
+
+French
+- Pierre Rudloff
+- Johan Serre
+
+Polish
+- pp/bs
+
+Spanish
+- Feder Sáiz
