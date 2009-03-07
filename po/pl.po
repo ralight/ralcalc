@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-04 16:18+0000\n"
-"PO-Revision-Date: 2008-12-13 05:01+0000\n"
+"POT-Creation-Date: 2008-12-18 10:55+0000\n"
+"PO-Revision-Date: 2009-01-09 04:55+0000\n"
 "Last-Translator: pp/bs <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-15 18:21+0000\n"
+"X-Launchpad-Export-Date: 2009-03-07 22:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/output.c:109
@@ -40,12 +40,12 @@ msgstr " nieprawidłowa liczba\n"
 #: ../src/output.c:120
 #, c-format
 msgid " mismatched brackets\n"
-msgstr " niepasujące nawiasy\n"
+msgstr " nawias(y) bez pary\n"
 
 #: ../src/output.c:123
 #, c-format
 msgid " duplicate number\n"
-msgstr " dwukrotnie zdefiniowana liczba\n"
+msgstr " dwie liczby bezpośrednio obok siebie\n"
 
 #: ../src/output.c:126
 #, c-format
@@ -135,7 +135,7 @@ msgstr ""
 #: ../src/ralcalc.c:53
 #, c-format
 msgid " -f    Process a list of calculations from a file.\n"
-msgstr " -f Wykonuj obliczenia z listy pobranej z pliku.\n"
+msgstr " -f Wykonuj obliczenia z listy zapisanej w pliku.\n"
 
 #: ../src/ralcalc.c:54
 #, c-format
@@ -180,7 +180,7 @@ msgstr "  1,0e-3 : przykładowa liczba\n"
 #: ../src/ralcalc.c:71
 #, c-format
 msgid "  1.0m   : example number\n"
-msgstr "  1.0m : przykładowa liczba\n"
+msgstr "  1,0m : przykładowa liczba\n"
 
 #: ../src/ralcalc.c:72
 #, c-format
@@ -234,7 +234,7 @@ msgstr "  %% : dzielenie modulo\n"
 #: ../src/ralcalc.c:81
 #, c-format
 msgid "  ^     : power\n"
-msgstr "  ^ : potęga\n"
+msgstr "  ^ : potęgowanie\n"
 
 #: ../src/ralcalc.c:82
 #, c-format
@@ -300,17 +300,17 @@ msgstr "  pi : 3,14159\n"
 msgid "  exp : 2.71828\n"
 msgstr "  exp : 2,71828\n"
 
-#: ../src/ralcalc.c:197 ../src/ralcalc.c:241
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:240
 #, c-format
 msgid "Error: Out of memory\n"
 msgstr "Błąd: Brak wolnej pamięci\n"
 
-#: ../src/ralcalc.c:316 ../src/ralcalc.c:339
+#: ../src/ralcalc.c:315 ../src/ralcalc.c:338
 #, c-format
 msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
-msgstr ""
+msgstr "Błąd: Nieprawidłowy przedrostek SI \"%s\" przy opcji \"-s\".\n"
 
-#: ../src/ralcalc.c:361
+#: ../src/ralcalc.c:360
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr "Błąd: Nie można otworzyć pliku \"%s\"\n"
