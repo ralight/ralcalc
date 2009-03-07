@@ -36,16 +36,19 @@ sign : dist
 
 copy : sign
 	man2html man/ralcalc.1 > ralcalc.html
-	@for c in es fr pl pt_BR; do man2html man/ralcalc-$${c}.1 > ralcalc-$${c}.html; done
+	@for c in ${MANCOUNTRIES}; do man2html man/ralcalc-$${c}.1 > ralcalc-$${c}.html; done
 	scp ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}.tar.gz.asc atchoo:atchoo.org/tools/ralcalc/files/
 	scp ralcalc.html ralcalc-es.html ralcalc-fr.html ralcalc-pl.html ralcalc-pt_BR.html atchoo:atchoo.org/tools/ralcalc/
 
 pottar : distclean
 	mkdir -p ralcalc-pot/
-	for a in $$(ls po/*.po); do cp $${a} ralcalc-pot/ralcalc-$${a}; done
+	for a in $$(ls po/*.po); do cp $${a} ralcalc-pot/ralcalc-$$(basename $${a}); done
 	cp po/ralcalc.pot ralcalc-pot/
 	tar -zcf ralcalc-pot.tar.gz ralcalc-pot
 	
 	mkdir -p ralcalc-man-pot/
 	/usr/bin/xml2po -o ralcalc-man-pot/ralcalc-man-1.pot man/ralcalc.1.xml
+	for c in ${MANCOUNTRIES}; do \
+		/usr/bin/xml2po -o ralcalc-man-pot/ralcalc-man-1-$${c}.po man/ralcalc-$${c}.1.xml; \
+	done
 	tar -zcf ralcalc-man-pot.tar.gz ralcalc-man-pot

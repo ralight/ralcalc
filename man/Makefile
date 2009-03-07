@@ -2,12 +2,10 @@ include ../config.mk
 
 .PHONY : all clean install uninstall dist distclean
 
-COUNTRIES=es fr pl pt_BR
-
 all : 
 
 dist : ralcalc.1
-	@for c in ${COUNTRIES}; do \
+	@for c in ${MANCOUNTRIES}; do \
 		$(DOCBOOK2MAN) --encoding utf8 --to-stdout ralcalc-$${c}.1.xml > ralcalc-$${c}.1; \
 	done
 
@@ -24,7 +22,7 @@ install :
 
 uninstall :
 	-rm -f ${DESTDIR}${mandir}/man1/ralcalc.1 ${DESTDIR}${mandir}/man1/=.1
-	@for c in ${COUNTRIES}; do \
+	@for c in ${MANCOUNTRIES}; do \
 		rm -f ${DESTDIR}${mandir}/$${c}/man1/ralcalc.1 ${DESTDIR}${mandir}/$${c}/man1/=.1 ; \
 	done
 
@@ -33,6 +31,6 @@ ralcalc.1 : ralcalc.1.xml
 
 distclean :
 	-rm -f ralcalc.1
-	@for c in ${COUNTRIES}; do \
+	@for c in ${MANCOUNTRIES}; do \
 		rm -f ralcalc-$${c}.1 ; \
 	done
