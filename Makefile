@@ -36,10 +36,9 @@ sign : dist
 
 copy : sign
 	man2html man/ralcalc.1 > ralcalc.html
-	man2html man/ralcalc-pl.1 > ralcalc-pl.html
-	man2html man/ralcalc-pt_BR.1 > ralcalc-pt_BR.html
+	@for c in es fr pl pt_BR; do man2html man/ralcalc-$${c}.1 > ralcalc-$${c}.html; done
 	scp ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}.tar.gz.asc atchoo:atchoo.org/tools/ralcalc/files/
-	scp ralcalc.html ralcalc-pl.html ralcalc-pt_BR.html atchoo:atchoo.org/tools/ralcalc/
+	scp ralcalc.html ralcalc-es.html ralcalc-fr.hmtl ralcalc-pl.html ralcalc-pt_BR.html atchoo:atchoo.org/tools/ralcalc/
 
 pottar : distclean
 	mkdir -p ralcalc-pot/
