@@ -66,12 +66,6 @@ The equations are processed in order of ^, * /, + -. Anything within
 brackets [] is processed first.
 
 
-Possible To Do
---------------
-
-Function support sin[2]
-
-
 Licence
 -------
 
