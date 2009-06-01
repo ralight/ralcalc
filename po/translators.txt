@@ -20,6 +20,7 @@ English (United Kingdom)
 French
 - Djalil Oulmane
 - Pierre Rudloff
+- Johan Serre
 
 Hebrew
 - Yaron
