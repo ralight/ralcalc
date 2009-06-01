@@ -15,7 +15,7 @@ install :
 	$(INSTALL) -d ${DESTDIR}$(mandir)/man1
 	$(INSTALL) -m 644 ralcalc.1 ${DESTDIR}${mandir}/man1/ralcalc.1
 	$(INSTALL) -m 644 =.1 ${DESTDIR}${mandir}/man1/=.1
-	@for c in ${COUNTRIES}; do \
+	@for c in ${MANCOUNTRIES}; do \
 		$(INSTALL) -m 644 -D ralcalc-$${c}.1 ${DESTDIR}${mandir}/$${c}/man1/ralcalc.1 ; \
 		$(INSTALL) -m 644 -D =.1 ${DESTDIR}${mandir}/$${c}/man1/=.1 ; \
 	done
