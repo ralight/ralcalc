@@ -1,7 +1,7 @@
-VERSION=1.3.1.2
-BUILDDATE=20090307
+VERSION=1.3.1.3
+BUILDDATE=20090601
 
-MANCOUNTRIES=es fr pl pt_BR
+MANCOUNTRIES=da en_GB es fr pl pt_BR
 
 # Add "-DDEBUG" to CFLAGS for verbose debug output
 CFLAGS=-ggdb -Wall -O2
