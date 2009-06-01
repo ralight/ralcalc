@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-15 18:21+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 21:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/output.c:110
@@ -73,15 +73,12 @@ msgid "ralcalc  version %s (build date: %s)\n"
 msgstr "גירסת ralcalc %s (תאריך הבניה: %s)\n"
 
 #: ../src/ralcalc.c:56
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Copyright (C) 2007-2009 Roger Light\n"
 "http://atchoo.org/tools/ralcalc/\n"
 "\n"
 msgstr ""
-"כל הזכויות שמורות (C) 2007,2008 רובר לייט\n"
-"http://atchoo.org/tools/ralcalc/\n"
-"\n"
 
 #: ../src/ralcalc.c:57
 #, c-format
@@ -312,17 +309,17 @@ msgstr ""
 msgid "Unknown token (%d)\n"
 msgstr "אסימון לא ידוע (%d)\n"
 
-#~ msgid ""
-#~ "       ralcalc [-q] [-e] [-r] <an equation>\n"
-#~ "\n"
-#~ msgstr ""
-#~ "       ralcalc [-q] [-e] [-r] <משוואה>\n"
-#~ "\n"
+msgid ""
+"       ralcalc [-q] [-e] [-r] <an equation>\n"
+"\n"
+msgstr ""
+"       ralcalc [-q] [-e] [-r] <משוואה>\n"
+"\n"
 
-#~ msgid " -q\t   Only display the answer (quiet).\n"
-#~ msgstr " -q\t   הצג את התשובה בלבד (שקט).\n"
+msgid " -q\t   Only display the answer (quiet).\n"
+msgstr " -q\t   הצג את התשובה בלבד (שקט).\n"
 
-#~ msgid ""
-#~ " -e\t   Use the '1e-3' form of display for the answer rather than SI "
-#~ "prefixes.\n"
-#~ msgstr " -e\t   השתמש בצורה '1e-3' להצגת התשובה מאשר קידומות SI.\n"
+msgid ""
+" -e\t   Use the '1e-3' form of display for the answer rather than SI "
+"prefixes.\n"
+msgstr " -e\t   השתמש בצורה '1e-3' להצגת התשובה מאשר קידומות SI.\n"

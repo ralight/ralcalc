@@ -4,6 +4,9 @@ translations to the ralcalc man page. Many thanks!
 Brazilian Portugese
 - Enrico Nicoletto
 
+Danish
+- Jimmy Frydkær Jensefn
+
 English (United Kingdom)
 - Jen Ockwell
 

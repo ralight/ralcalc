@@ -1,16 +1,16 @@
-# Brazilian Portuguese translation for ralcalc
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Danish translation for ralcalc
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the ralcalc package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-03-07 22:44+0000\n"
-"PO-Revision-Date: 2009-01-03 23:57+0000\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
-"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"PO-Revision-Date: 2009-05-26 11:32+0000\n"
+"Last-Translator: Jimmy Frydkær Jensen <thewolf40@mailme.dk>\n"
+"Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,57 +20,57 @@ msgstr ""
 #: ../src/output.c:110
 #, c-format
 msgid " out of memory\n"
-msgstr " sem memória\n"
+msgstr " Ud af hukommelse\n"
 
 #: ../src/output.c:113
 #, c-format
 msgid " bad input to function (internal)\n"
-msgstr " entrada ruim para função (interno)\n"
+msgstr " dårlig inddata til funktion (internt)\n"
 
 #: ../src/output.c:115
 #, c-format
 msgid " unknown token\n"
-msgstr " símbolo desconhecido\n"
+msgstr " ukendt staffet\n"
 
 #: ../src/output.c:118
 #, c-format
 msgid " bad number\n"
-msgstr " número ruim\n"
+msgstr " dårligt tal\n"
 
 #: ../src/output.c:121
 #, c-format
 msgid " mismatched brackets\n"
-msgstr " parênteses inadequados\n"
+msgstr " fejl-placerede  klammer\n"
 
 #: ../src/output.c:124
 #, c-format
 msgid " duplicate number\n"
-msgstr " número duplicado\n"
+msgstr " duplikat tal\n"
 
 #: ../src/output.c:127
 #, c-format
 msgid " invalid operator\n"
-msgstr " operador inválido\n"
+msgstr " ugyldig operatør\n"
 
 #: ../src/output.c:130
 #, c-format
 msgid " invalid bracket\n"
-msgstr " parênteses inválido\n"
+msgstr " ugyldige klammer\n"
 
 #: ../src/output.c:133
 #, c-format
 msgid " unable to open file\n"
-msgstr " impossível abrir arquivo\n"
+msgstr " ude af stand til og åbne fil\n"
 
 #: ../src/output.c:135
 #, c-format
 msgid " unknown error (%d)\n"
-msgstr " erro desconhecido (%d)\n"
+msgstr " ukendt fejl (%d)\n"
 
 #: ../src/ralcalc.c:55
 #, c-format
 msgid "ralcalc  version %s (build date: %s)\n"
-msgstr "ralcal versão %s (data de construção: %s)\n"
+msgstr "ralcalc version %s (skrevet dato: %s)\n"
 
 #: ../src/ralcalc.c:56
 #, c-format
@@ -79,6 +79,9 @@ msgid ""
 "http://atchoo.org/tools/ralcalc/\n"
 "\n"
 msgstr ""
+"Ophavsret (C) 2007-2009 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
 
 #: ../src/ralcalc.c:57
 #, c-format
@@ -88,9 +91,8 @@ msgid ""
 "as described in the COPYING file distributed with this program.\n"
 "\n"
 msgstr ""
-"ralcalc não vem com ABSOLUTAMENTE NENHUMA GARANTIA. Você pode distribuir "
-"ralcalc livremente\n"
-"como descrito no arquivo COPYING que é distribuído junto com esse programa.\n"
+"ralcalc kommer uden NOGEN FORM FOR GARANTI. Du må distribuere ralcalc frit "
+"som det er beskrevet i KOPIERINGS filen distribueret til dette program.\n"
 "\n"
 
 #: ../src/ralcalc.c:58
@@ -99,28 +101,28 @@ msgid ""
 "ralcalc is a simple command line calculator. \n"
 "\n"
 msgstr ""
-"ralcalc é uma simples calculadora de linha de comando. \n"
+"ralcalc er en simpel kommando linje beregner. \n"
 "\n"
 
 #: ../src/ralcalc.c:59
 #, c-format
 msgid "Usage: ralcalc -h   (display this text)\n"
-msgstr "Uso: ralcalc -h (mostra esse texto)\n"
+msgstr "Brug: ralcalc -h (vis denne tekst)\n"
 
 #: ../src/ralcalc.c:60
 #, c-format
 msgid "       ralcalc -a   (display all available operators)\n"
-msgstr "       ralcalc -a   (mostrar todas as operações possíveis)\n"
+msgstr "       ralcalc -a (vis alle tilgængelige operatører)\n"
 
 #: ../src/ralcalc.c:61
 #, c-format
 msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
-msgstr "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <uma equação>\n"
+msgstr "       ralcalc [-e] [-f indlæs fil] [-i] [-q] [-r] <en ligning>\n"
 
 #: ../src/ralcalc.c:62
 #, c-format
 msgid "Options\n"
-msgstr "Opções\n"
+msgstr "Indstillinger\n"
 
 #: ../src/ralcalc.c:63
 #, c-format
@@ -128,28 +130,27 @@ msgid ""
 " -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
 msgstr ""
-" -e Utilize a forma '1e-3' de visualização do resultado ao invés de usar "
-"prefixos SI.\n"
+" -e Benyt '1e-3' formen til at vise resultatet frem for SI præfikset.\n"
 
 #: ../src/ralcalc.c:64
 #, c-format
 msgid " -f    Process a list of calculations from a file.\n"
-msgstr " -f Processa uma lista de cálculos a partir do arquivo.\n"
+msgstr " -f Kør en liste af udregninger fra en fil.\n"
 
 #: ../src/ralcalc.c:65
 #, c-format
 msgid " -i    Process a list of calculations from stdin.\n"
-msgstr " -i Processa uma lista de cálculos a partir da entrada padrão\n"
+msgstr " -i Kør en liste af beregninger fra stdin.\n"
 
 #: ../src/ralcalc.c:66
 #, c-format
 msgid " -q    Only display the answer (quiet).\n"
-msgstr " -q Mostra somente a saída (silencioso).\n"
+msgstr " -q Vis kun svaret (Stille)\n"
 
 #: ../src/ralcalc.c:67
 #, c-format
 msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
-msgstr " -r Mostra a resposta sem os prefixos SI nem expoentes.\n"
+msgstr " -r Vis svaret uden hverken SI præfiks eller eksponenter.\n"
 
 #: ../src/ralcalc.c:68
 #, c-format
@@ -158,42 +159,42 @@ msgid ""
 "See http://atchoo.org/tools/ralcalc/ for updates.\n"
 msgstr ""
 "\n"
-"Veja http://atchoo.org/tools/ralcalc/ para atualizações.\n"
+"Se http://atchoo.org/tools/ralcalc/ for opdateringer.\n"
 
 #: ../src/ralcalc.c:79
 #, c-format
 msgid "Numbers:\n"
-msgstr "Números:\n"
+msgstr "Tal:\n"
 
 #: ../src/ralcalc.c:80
 #, c-format
 msgid "  1.0    : example number\n"
-msgstr "  1.0    : número de exemplo\n"
+msgstr "  1.0 : tal eksempel\n"
 
 #: ../src/ralcalc.c:81
 #, c-format
 msgid "  1.0e-3 : example number\n"
-msgstr "  1.0e-3 : número de exemplo\n"
+msgstr "  1.0e3 : tal eksempel\n"
 
 #: ../src/ralcalc.c:82
 #, c-format
 msgid "  1.0m   : example number\n"
-msgstr "  1.0m   : número de exemplo\n"
+msgstr "  1.0m : tal eksempel\n"
 
 #: ../src/ralcalc.c:83
 #, c-format
 msgid "  _      : previous result\n"
-msgstr "  _      :resultado anterior\n"
+msgstr "  _ : tidligere resultat\n"
 
 #: ../src/ralcalc.c:84
 #, c-format
 msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
-msgstr "  y, z, a, f, p, n, u, m : Prefixos SI\n"
+msgstr "  y, z, a, f, p, n, u, m : SI præfiks\n"
 
 #: ../src/ralcalc.c:85
 #, c-format
 msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
-msgstr "  k, M, G, T, P, E, Z, Y : Prefixos SI\n"
+msgstr "  k, M, G, T, P, E, Z, Y : SI Præfiks\n"
 
 #: ../src/ralcalc.c:86
 #, c-format
@@ -202,42 +203,42 @@ msgid ""
 "Operators:\n"
 msgstr ""
 "\n"
-"Operadores:\n"
+"Operatører:\n"
 
 #: ../src/ralcalc.c:87
 #, c-format
 msgid "  +     : addition\n"
-msgstr "  +     : adição\n"
+msgstr "  + : sammenlægning\n"
 
 #: ../src/ralcalc.c:88
 #, c-format
 msgid "  -     : subtraction\n"
-msgstr "  -     : subtração\n"
+msgstr "  - : subtraktion\n"
 
 #: ../src/ralcalc.c:89
 #, c-format
 msgid "  * x   : multiplication\n"
-msgstr "  * x   : multiplicação\n"
+msgstr "  * x : multiplikation\n"
 
 #: ../src/ralcalc.c:90
 #, c-format
 msgid "  /     : division\n"
-msgstr "  /     : divisão\n"
+msgstr "  / : dividering\n"
 
 #: ../src/ralcalc.c:91
 #, c-format
 msgid "  %%     : modulus\n"
-msgstr "  %%     : módulo\n"
+msgstr "  %% : modulær\n"
 
 #: ../src/ralcalc.c:92
 #, c-format
 msgid "  ^     : power\n"
-msgstr "  ^     : expoente\n"
+msgstr "  ^     : potens\n"
 
 #: ../src/ralcalc.c:93
 #, c-format
 msgid "  () [] : brackets increase precedence\n"
-msgstr "  () [] : os parênteses aumentam a precedência\n"
+msgstr "  () [] : klammer forøger fortilfælde\n"
 
 #: ../src/ralcalc.c:94
 #, c-format
@@ -246,37 +247,37 @@ msgid ""
 "Functions:\n"
 msgstr ""
 "\n"
-"Funções:\n"
+"Funktioner:\n"
 
 #: ../src/ralcalc.c:95
 #, c-format
 msgid "  log X         : logarithm to base 10 of X\n"
-msgstr "  log X         : logaritmo de X na base 10\n"
+msgstr "  log X : logaritme til base 10 af X\n"
 
 #: ../src/ralcalc.c:96
 #, c-format
 msgid "  ln X          : natural logarithm of X\n"
-msgstr "  ln X          : logaritmo natural de X\n"
+msgstr "  i X : naturlig logaritme af X\n"
 
 #: ../src/ralcalc.c:97
 #, c-format
 msgid "  sin X, asin X : sine, arcsin of X\n"
-msgstr "  sin X, asin X : seno, arco do seno de X\n"
+msgstr "  sin X, asin X : sine, arcsin af X\n"
 
 #: ../src/ralcalc.c:98
 #, c-format
 msgid "  cos X, acos X : cosine, arccos of X\n"
-msgstr "  cos X, acos X : cosseno, arco do cosseno de X\n"
+msgstr "  cos X, acos X : cosine, arccos af X\n"
 
 #: ../src/ralcalc.c:99
 #, c-format
 msgid "  tan X, atan X : tangent, arctan of X\n"
-msgstr "  tan X, atan X : tangente, arco da tangente de X\n"
+msgstr "  tan X, atan X : tangent, arctan af X\n"
 
 #: ../src/ralcalc.c:100
 #, c-format
 msgid "  sqrt X        : square root of X\n"
-msgstr "  sqrt X        : raiz quadrada de X\n"
+msgstr "  sqrt X        : kvadrat roden af X\n"
 
 #: ../src/ralcalc.c:101
 #, c-format
@@ -285,7 +286,7 @@ msgid ""
 "Constants:\n"
 msgstr ""
 "\n"
-"Constantes:\n"
+"Konstanter:\n"
 
 #: ../src/ralcalc.c:102
 #, c-format
@@ -300,19 +301,19 @@ msgstr "  exp : 2.71828\n"
 #: ../src/ralcalc.c:197 ../src/ralcalc.c:242
 #, c-format
 msgid "Error: Out of memory\n"
-msgstr "Erro: Sem memória\n"
+msgstr "Fejl : Ud af hukommelse\n"
 
 #: ../src/ralcalc.c:319 ../src/ralcalc.c:342
 #, c-format
 msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
-msgstr "Erro: Prefixo SI '%s' inválido para a opção '-s'.\n"
+msgstr "Fejl: Ugyldig SI præfiks '%s' for '-s' indstillingen.\n"
 
 #: ../src/ralcalc.c:371
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
-msgstr "Erro: Impossível abrir arquivo \"%s\"\n"
+msgstr "Fejl: Ude af stand til og åbne filen \"%s\"\n"
 
 #: ../src/tokens.c:255
 #, c-format
 msgid "Unknown token (%d)\n"
-msgstr "Símbolo desconhecido (%d)\n"
+msgstr "Ukendt staffet (%d)\n"

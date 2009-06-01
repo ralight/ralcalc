@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "/usr/share/sgml/docbook/xml-dtd-4.1.2/docbookx.dtd">
+<refentry xml:id="ralcalc">
+	<refmeta>
+		<refentrytitle>ralcalc</refentrytitle>
+		<manvolnum>1</manvolnum>
+	</refmeta>
+
+	<refnamediv>
+		<refname>ralcalc</refname>
+		<refpurpose>En simpel kommando linje beregner</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>ralcalc</command>
+			<group choice="plain">
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-a</option></arg>
+						<arg choice="plain"><option>--alle</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-h</option></arg>
+						<arg choice="plain"><option>--hjælp</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-v</option></arg>
+						<arg choice="plain"><option>--version</option></arg>
+					</group>
+				</arg>
+			</group>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>ralcalc</command>
+			<group choice="opt">
+				<arg><option>-e</option></arg>
+				<arg><option>-r</option></arg>
+			</group>
+			<arg><option>-f</option> <replaceable>Filnavn</replaceable></arg>
+			<arg><option>-i</option></arg>
+			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>præfiks</replaceable></arg>
+			<arg choice="plain"><replaceable>ligning</replaceable></arg>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>=</command>
+			<group choice="plain">
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-a</option></arg>
+						<arg choice="plain"><option>--alle</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-h</option></arg>
+						<arg choice="plain"><option>--hjælp</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-v</option></arg>
+						<arg choice="plain"><option>--version</option></arg>
+					</group>
+				</arg>
+			</group>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>=</command>
+			<group choice="opt">
+				<arg><option>-e</option></arg>
+				<arg><option>-r</option></arg>
+			</group>
+			<arg><option>-f</option> <replaceable>Filnavn</replaceable></arg>
+			<arg><option>-i</option></arg>
+			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>præfiks</replaceable></arg>
+			<arg choice="plain"><replaceable>ligning</replaceable></arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+
+	<refsect1>
+		<title>Beskrivelse</title>
+		<para><command>ralcalc</command> er en kommando linje beregner designet til meget hurtige beregninger hvor måske kun enkelte resultater er ønsket uden og skulle starte og slutte et program.</para>
+
+		<para><command>ralcalc</command> er også installeret så <command>=</command> kommando brugen gør det endnu hurtigere.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Indstillinger</title>
+		<variablelist>
+			<varlistentry>
+				<term><option>-a</option></term>
+				<term><option>--alle</option></term>
+				<listitem>
+					<para>Udskriv alle tilgænglige operatører, funktioner og kontakter.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-e</option></term>
+				<listitem>
+					<para>Vis resultatet i "1e-3" formen istedet for at benytte SI præfikset.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-f</option></term>
+				<listitem>
+					<para>Kør en liste af beregninger fra en fil. Se FIL INDDATA sektionen nedenfor for yderligere information.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-h</option></term>
+				<term><option>--hjælp</option></term>
+				<listitem>
+					<para>Vis brug, version og kontakt detaljer.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-i</option></term>
+				<listitem>
+					<para>Kør en liste af beregninger fra <filename class="devicefile">stdin</filename>. Se FIL INDDATA sektionen nedenfor for yderligere information.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-q</option></term>
+				<!-- <term><option>- -quiet</option></term> -->
+				<listitem>
+					<para>Vis kun resultatet (Således inddata og fejl skjules).</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-r</option></term>
+				<!-- <term><option>- -raw</option></term> -->
+				<listitem>
+					<para>Vis resultatet i decimal form med hverken SI præfiks eller eksponent.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-s</option></term>
+				<!-- <term><option>- -si-prefix</option></term> -->
+				<listitem>
+					<para>Vis resultatet ved brug af en bestemt SI præfiks. Denne indstilling bliver ignoreret hvis <option>-e</option> eller <option>-r</option> også er i brug.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-v</option></term>
+				<term><option>--version</option></term>
+				<listitem>
+					<para>Vis brug, version og kontakt detaljer.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Tal format</title>
+		<para>Nummer bør indskrives ved brug af enten "." eller "," som decimal tegn (dette er lokal afhængig så det virker måske ikke i dit lokale), uden tusinde seperator.</para>
+		<para><command>ralcalc</command> understøtter SI præfiks tegn for både inddata og uddata: <programlisting>
+	<userinput>= 2u/35</userinput>
+	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
+		<para>Nummerne fra form 1e-3 er også understøttet, hvortil "e" indikere i ti'ende potens. Bland, og samlign ikke SI præfiksene med "e" i samme nummer (selvom 1e-3n er gyldig, 1ne-3 er ikke - undgå begge for mindre forvirring).</para>
+		<para>SI præfiksene der understøttes er: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Operatørene</title>
+		<para>Den simpleste matmatiske operatør for sammenlægning (+), subtraktion (-), multiplikation (*, x), dividere (/) og potens (^) er understøttet, hvor sammenlægning og subtraktion har laveste prioritet og potensen har den højeste. <programlisting>
+	<userinput>= 1+2x3</userinput>
+	<computeroutput>1+2x3 = 7</computeroutput>
+
+	<userinput>= 1/2^0.5</userinput>
+	<computeroutput>1/2^0.5 = 0.707107</computeroutput></programlisting></para>
+		<para>Klammerne ( (), [] ) kan benyttes til at kontrolere hvilken måde beregningerne udføres: <programlisting>
+	<userinput>= [1+2]x3</userinput>
+	<computeroutput>[1+2]x3 = 9</computeroutput></programlisting></para>
+		<para>Både firkantet og runde klammer kan benyttes og begge er direkte tilsvarende, således [1+2)x3 også er gyldig. Runde klammer er oftere benyttet i matematik, mens firkantet klammer (og "x"'et for multiplikation) er inkluderet for at forhindre problemer med Shell'en udvider disse tegn.</para>
+		<para><command>ralcalc</command> gemmer resultatet af beregningen således det kan blive benyttet i den næste udregning med "_" tegnet. <programlisting>
+	<userinput>= 2^0.5</userinput>
+	<computeroutput>2^0.5 = 1.41421</computeroutput>
+
+	<userinput>= 1/_</userinput>
+	<computeroutput>1/_ = 0.707107</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Funktioner</title>
+		<para>Funktionerne <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (base 10 logaritme) og <function>ln</function> (naturlig logaritme) er understøttet. Trigonometri funktionerne virker på omkreds. Brugen af klammer er ikke nødvendig, men anbefales hvor tidligere udregninger kan være forvirrende. Funktionerne har samme mønster til multiplikation/dividering, så vær varsom: <programlisting>
+	<userinput>= sin2x2</userinput>
+	<computeroutput>sin2x2 = 1.81859</computeroutput>
+
+	<userinput>= sin[2x2]</userinput>
+	<computeroutput>sin[2x2] = -0.756802</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>konstante</title>
+		<para>konstanterne <constant>Pi</constant> (3.14159) og <constant>exp</constant> (2.71828) can benyttes og behandles som et hvilket som helst andet tal.</para>
+	</refsect1>
+
+	<refsect1 id="fileinput">
+		<title>Fil inddata</title>
+		<para>En liste af beregninger kan blive kørt ved at placere dem i en fil. Hver linje af filen vil blive kørt på præcist samme måde som hvis <command>ralcalc</command> havde været kørt med disse argumenter. Filen kunne se ud som følgende (bemærk manglen på kommandoer <command>=</command> eller <command>ralcalc</command>): <programlisting>
+	<userinput>2^0.5</userinput>
+	<userinput>1/_</userinput>
+	<userinput>238/1064x100</userinput></programlisting></para>
+		<para>Filens inddata er også mulig ved brug af <filename class="devicefile">stdin</filename>, eksempelvis aflæses interaktivt direkte fra terminalen hvor hver linje beregnes normaltvis. For at afslutte, skriv "q" eller "quit" i en ny linje, benyt Ctrl-D for at indikere enden på filen, eller benyt Ctrl-C til at tvinge <command>ralcalc</command> til at lukke ned.</para>
+		<para>Hvis begge fil inddata indstillinger er tilstede på kommando linjen, da vil først givne kommando blive udregnet først. Hvis begge fil inddata instillinger er tilstede, da vil udregningerne fra <option>-f</option> blive udført først, efterfulgt af dem fra <filename class="devicefile">stdin</filename>.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Eksempler</title>
+		<para>Grundlæggende beregninger: <programlisting>
+	<userinput>= ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 99.995u</computeroutput></programlisting></para>
+		<para>Eksponentens nummer uddata format: <programlisting>
+	<userinput>= -e l 1.0001</userinput>
+	<computeroutput>l 1.0001 = 9.9995e-05</computeroutput></programlisting></para>
+		<para>Rå nummer uddata format: <programlisting>
+	<userinput>= -r l 1.0001</userinput>
+	<computeroutput>l 1.0001 = 0.000100</computeroutput></programlisting></para>
+		<para>Nummer uddata format med et specifikt SI Præfiks: <programlisting>
+	<userinput>= -s m l 1.0001</userinput>
+	<computeroutput>l 1.0001 = 0.099995</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Miljø Variabler</title>
+		<variablelist>
+			<varlistentry>
+				<term><envar>HJEM</envar></term>
+				<listitem>
+					<para>Fastslår hvor .ralcalc_resultat filen vil blive gemt.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Afslutnings Værdier</title>
+		<variablelist>
+			<varlistentry>
+				<term>0</term>
+				<listitem>
+					<para>Succes</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>1</term>
+				<listitem>
+					<para>Mindst en fejl opstod.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Filer</title>
+		<para>
+			<filename>${HOME}/.ralcalc_resultat</filename>
+			<blockquote>Resultatet af sidste udregning, kan blive tilgået i en senere beregning ved hjælp af "_" tegnet. Bemærk at dette ikke nødvendigvis er platforms uafhængig.</blockquote>
+		</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Diagnostisering</title>
+		<para><command>ralcalc</command> vil forsøge at meddele bruger på så mange fejl som muligt og indikere hvad disse fejl er, såfremt de er bruger inddata relaterede.</para>
+
+		<para>Såfremt et ukendt tegn er inkluderet i en ligning, vil en "<errortext>ukendt staffet</errortext>" fejl meddelelse blive genereret. Fejl meddelelsen vil forsøge af fremhæve de ugyldige tegn. <programlisting>
+	<userinput>= 34/3@2</userinput>
+
+	<computeroutput>Fejl: 34/3@2</computeroutput>
+	           ^ ukendt staffet</programlisting></para>
+
+		<para>Såfremt et ugyldig tegn er inkluderet, vil en "<errortext>forkert nummer</errortext>" fejl meddelelse blive genereret. Fejl meddelelsen vil forsøge at fremhæve det ugyldige nummer. <programlisting>
+	<userinput>= 3.14.159x2.8^2</userinput>
+
+	<computeroutput>Fejl: 3.14.159x2.8^2</computeroutput>
+	              ^ forkert nummer</programlisting></para>
+
+		<para>Hvis placeringen af åben og luk klemmerne ikke passer, vil en "<errortext>Fejlplaceret klammer</errortext>" fejl meddelelse blive genereret. Fejlens markeringer har ingen betydning. <programlisting>
+	<userinput>= 5/[[2+3]*9</userinput>
+
+	<computeroutput>Fejl: 5/[[2+3]*9</computeroutput>
+	                 ^ fejlplacerede klammer</programlisting></para>
+
+		<para>Såfremt en operatør fremstår som ugyldig, vil en "<errortext>ugyldig operatør</errortext>" fejl meddelelse blive genereret. Fejl meddelelsen vil førsøge at indikere den ugyldige operatør. <programlisting>
+	<userinput>= 3^^7</userinput>
+
+	<computeroutput>Fejl: 3^^7</computeroutput>
+	         ^ ugyldig operatør</programlisting></para>
+
+		<para>Såfremt klemmerne er i en ugyldig position, vil en "<errortext>ugyldig klemme</errortext>" fejl meddelelse blive genereret. Denne type fejl, efterfølger gerne andre fejl, således at der vil blive genereret et antal af beskeder på skærmen. Det er ofte klogest at rette denne fejl først eftersom det er mest sandsynligt at den er skyld i alle fejlene. Fejl meddelelsen vil forsøge at indikere den ugyldige klemme. <programlisting>
+	<userinput>= [2+]3</userinput>
+
+	<computeroutput>Fejl: [2+]3</computeroutput>
+	          ^ ugyldig klamme
+
+	<computeroutput>Fejl: [2+]3</computeroutput>
+	            ^ Ugyldig operatør</programlisting></para>
+		
+		<para>Såfremt <command>ralcalc</command> ikke er i stand til at allokere hukommelse, vil en "<errortext>ikke mere hukommelse</errortext>" fejl meddelelse blive genereret.</para>
+
+		<para>Intern fejl: Såfremt analyse værktøjet bemærker to tal side om side på en sådan måde det ikke generere en "<errortext>ugyldig nummer</errortext>" fejl meddelelse, vil en "<errortext>duplikeret nummer</errortext>" fejl meddelelse blive genereret. Dette burde dog aldrig ske.</para>
+
+		<para>Intern fejl: Såfremt ukendt fejl kode har nået fejl uddata funktionen, vil en "<errortext>ukendt fejl</errortext>" blive genereret og en ugyldig fejl kode vil blive vist. Dette burde dog aldrig ske.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Fejl</title>
+		<para>Kun én "<option>-f <replaceable>filnavn</replaceable></option>" kan blive benyttet af gangen.</para>
+		<para>Såfremt du støder på fejl, venligst rapporter dette til <uri type="webpage">http://bugs.launchpad.net/ralcalc</uri></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Forfatter</title>
+		<para>Roger Light <email>roger@atchoo.org</email></para>
+	</refsect1>
+</refentry>
