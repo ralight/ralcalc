@@ -917,7 +917,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkDivide:
 			case tkPower:
 			case tkMod:
-				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket && lastToken != tkEndToken){
+				if(lastToken != tkNumber && lastToken != tkLastResult && lastToken != tkCloseBracket && lastToken != tkCCloseBracket){
 					printError(line, currentPos-1, errInvalidOperator, quiet);
 					rc = errInvalidOperator;
 				}
