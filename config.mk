@@ -5,7 +5,7 @@ MANCOUNTRIES=da en_GB es fr pl pt_BR
 
 # Add "-DDEBUG" to CFLAGS for verbose debug output
 CFLAGS=-ggdb -Wall -O2
-LDFLAGS=-nopie -lm
+LDFLAGS=-lm
 
 CC=gcc
 INSTALL=install
