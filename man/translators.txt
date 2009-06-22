@@ -17,5 +17,9 @@ French
 Polish
 - pp/bs
 
+Portuguese
+- Tiago Silva
+
 Spanish
 - Feder Sáiz
+- navnelson

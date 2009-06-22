@@ -35,3 +35,6 @@ distclean :
 	@for c in ${MANCOUNTRIES}; do \
 		rm -f ralcalc-$${c}.1 ; \
 	done
+
+# To merge new translations do:
+# /usr/bin/xml2po -p de.po chapter1.xml > chapter1.de.xml
