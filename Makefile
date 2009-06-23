@@ -32,13 +32,13 @@ distclean : clean
 	-rm -rf dist/
 
 sign : dist
-	gpg --detach-sign -a ralcalc-${VERSION}.tar.gz
+	cd dist; gpg --detach-sign -a ralcalc-${VERSION}.tar.gz
 
 copy : sign
 	man2html man/ralcalc.1 > dist/ralcalc.html
 	@for c in ${MANCOUNTRIES}; do man2html man/ralcalc-$${c}.1 > dist/ralcalc-$${c}.html; done
 	cd dist; scp ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}.tar.gz.asc atchoo:atchoo.org/tools/ralcalc/files/
-	cd dist; scp *.html atchoo:atchoo.org/tools/ralcalc/
+	cd dist; scp *.html atchoo:atchoo.org/tools/ralcalc/man/
 
 pottar : distclean
 	mkdir -p dist/ralcalc-pot/
