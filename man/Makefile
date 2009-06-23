@@ -10,7 +10,7 @@ dist : ralcalc.1
 	done
 
 clean :
-	-rm *.1
+	-rm ralcalc*.1
 
 install :
 	$(INSTALL) -d ${DESTDIR}$(mandir)/man1
