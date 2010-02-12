@@ -9,7 +9,7 @@
 
 	<refnamediv>
 		<refname>ralcalc</refname>
-		<refpurpose>una simple calculadora de línea de comandos</refpurpose>
+		<refpurpose>una simple calculadora de línea de órdenes</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
@@ -90,9 +90,9 @@
 
 	<refsect1>
 		<title>Descripción</title>
-		<para><command>ralcalc</command>es una calculadora de línea de comandos diseñado para cálculos muy rápidos, donde se muestra sólo un único resultado que se quiere sin tener que empezar y, a continuación, salir del programa.</para>
+		<para><command>ralcalc</command>es una calculadora de línea de comandos diseñada para cálculos muy rápidos, donde se muestra sólo un único resultado que se quiere sin tener que empezar y, a continuación, salir del programa.</para>
 
-		<para><command>ralcalc</command>también se instala como el <command>=</command>comando para hacer uso de él, incluso más rápido.</para>
+		<para><command>ralcalc</command>también se instala como el comando <command>=</command> para hacer uso de él, incluso más rápido.</para>
 	</refsect1>
 
 	<refsect1>
@@ -102,19 +102,19 @@
 				<term><option>-a</option></term>
 				<term><option>--all</option></term>
 				<listitem>
-					<para>Imprimir todos los operadores disponibles, las funciones y constantes ..</para>
+					<para>Imprimir todos los operadores disponibles, las funciones y constantes.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-e</option></term>
 				<listitem>
-					<para>Mostrar el resultado en el "1e-3" la forma en lugar de utilizar prefijos SI.</para>
+					<para>Mostrar el resultado en la forma "1e-3" en lugar de utilizar prefijos SI.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-f</option></term>
 				<listitem>
-					<para>Proceso de una lista de los cálculos a partir de un archivo. Vea el archivo INPUT sección más abajo para obtener más información.</para>
+					<para>Procesar una lista de los cálculos desde un archivo. Vea la sección ARCHIVO DE ENTRADA más abajo para obtener más información.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -127,7 +127,7 @@
 			<varlistentry>
 				<term><option>-i</option></term>
 				<listitem>
-					<para>Proceso de una lista de los cálculos de <filename class="devicefile">stdin</filename>. Vea el archivo INPUT en sección de abajo para obtener más información.</para>
+					<para>Proceso de una lista de los cálculos de <filename class="devicefile">stdin</filename>. Vea la sección ARCHIVO DE ENTRADA más abajo para obtener más información.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -141,14 +141,14 @@
 				<term><option>-r</option></term>
 				<!-- <term><option>- -raw</option></term> -->
 				<listitem>
-					<para>Mostrar el resultado en formato decimal con prefijos ni SI ni exponente.</para>
+					<para>Mostrar el resultado en formato decimal sin prefijos SI ni exponente.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-s</option></term>
 				<!-- <term><option>- -si-prefix</option></term> -->
 				<listitem>
-					<para>Mostrar el resultado usando un prefijo SI. Esta opción se ignora si <option>-e</option> o <option>-r</option> también se utiliza.</para>
+					<para>Mostrar el resultado usando un prefijo SI. Esta opción se ignora sí se utiliza la opción <option>-e</option> o <option>-r</option>.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -163,67 +163,71 @@
 
 	<refsect1>
 		<title>Formato de Número</title>
-		<para>Números deben ser de entrada, ya sea usando "." o "," como un punto decimal (esto es depende del local por lo tanto no puede trabajar en su local), sin miles</para>
-		<para><command>ralcalc</command> 	
-apoya prefijo SI para ambos caracteres de entrada y salida: <programlisting>
+		<para>Números deben ingresarse usando "." ó "," como separador decimal (esto es depende del idioma del sistema, por lo tanto puede no funcionar en su idioma), no se utiliza separador de miles.</para>
+		<para><command>ralcalc</command> soporta caracteres de prefijo SI tanto para entrada como para salida de datos: <programlisting>
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
-		<para>Números de la forma 1e-3 también se apoya, en donde la "e" indica una potencia de diez. No mezclar y combinar los prefijos SI y "e" en el mismo número (aunque 1e-3n es válida, 1NE-3 no es - tanto para evitar la confusión menos).</para>
-		<para>El SI prefijos soportados son: Y, Z, E, P, T, G, H, K, M, u, n, p, f, a, z, y.</para>
+		<para>Números de la forma 1e-3 también son soportados, en donde la "e" indica una potencia de diez. No mezclar y combinar los prefijos SI y "e" en el mismo número (aunque 1e-3n es válida, 1NE-3 no es - evite ambos para menor confusión).</para>
+		<para>Los prefijos SI soportados son: Y, Z, E, P, T, G, H, K, M, u, n, p, f, a, z, y.</para>
 	</refsect1>
 
 	<refsect1>
 		<title>Operadores</title>
-		<para>La simple adición de los operadores matemáticos (+), resta (-), multiplicación (*, x), división (/) y potencia (^) se apoyan, con la suma y resta con la más baja prioridad y poder tener el más alto. <programlisting>
+		<para>Los operadores matemáticos simples de adición (+), resta (-), multiplicación (*, x), división (/) y potencia (^) estás soportados, con la suma y resta con la más baja prioridad y la potencia con la más alta. <programlisting>
 	<userinput>= 1+2x3</userinput>
 	<computeroutput>1+2x3 = 7</computeroutput>
 
-	<userinput>= 1/2^0.5</userinput>
-	<computeroutput>1/2^0.5 = 0.707107</computeroutput></programlisting></para>
-		<para>Entre paréntesis ((), []) se puede utilizar para controlar el orden en que las declaraciones son procesadas: <programlisting>
+	<userinput>= 1/2^0,5</userinput>
+	<computeroutput>1/2^0.5 = 0,707107</computeroutput></programlisting></para>
+		<para>Paréntesis y corchetes ((), []) pueden ser utilizados para controlar el orden de procesamiento de las operaciones: <programlisting>
 	<userinput>= [1+2]x3</userinput>
 	<computeroutput>[1+2]x3 = 9</computeroutput></programlisting></para>
-		<para>Tanto la plaza y entre paréntesis se pueden utilizar y son directamente equivalentes, de modo [1 +2) x3 también es válida. Entre paréntesis se utiliza más comúnmente en las matemáticas, pero los corchetes (y la "x" para la multiplicación) se incluyen para tratar de evitar problemas con el shell de la ampliación de los caracteres.</para>
-		<para><command>ralcalc</command> almacena el resultado del cálculo para que pueda ser utilizado en el próximo cálculo con el carácter "_". <programlisting>
+		<para>Tanto los paréntesis como los corchetes pueden ser utilizados equivalentemente, entonces [1+2)x3 es también válido. Los paréntesis se utilizan con más frecuencia en matemáticas, pero los corchetes (y la "x" para la multiplicación) son incluidos para evitar problemas.</para>
+		<para><command>ralcalc</command> almacena el resultado de un cálculo para que este pueda ser utilizados en el próximo cálculo con el caracter "_". <programlisting>
 	<userinput>= 2^0.5</userinput>
 	<computeroutput>2^0.5 = 1.41421</computeroutput>
 
 	<userinput>= 1/_</userinput>
-	<computeroutput>1/_ = 0.707107</computeroutput></programlisting></para>
+	<computeroutput>1/_ = 0,707107</computeroutput></programlisting></para>
 	</refsect1>
 
 	<refsect1>
-		<title>Functions</title>
-		<para>Las funciones function&gt;sin</para>
+		<title>Funciones</title>
+		<para>Las funciones <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (logaritmo en base 10) y <function>ln</function> (logaritmo natural) están soportadas. Las funciones trigonométricas se utilizan en radianes. El uso de paréntesis no es necesario, pero es recomendado en aquellos cálculos en los que la precedencia es confusa. Las funciones tienen igual precedencia que el producto/cociente, así que deben tomarse precauciones: <programlisting>
+	<userinput>= sen2x2</userinput>
+	<computeroutput>sen2x2 = 1,81859</computeroutput>
+
+	<userinput>= sen[2x2]</userinput>
+	<computeroutput>sen[2x2] = -0,756802</computeroutput></programlisting></para>
 	</refsect1>
 
 	<refsect1>
 		<title>Constantes</title>
-		<para>Las constantes <constant>pi</constant> (3.14159) y <constant>exp</constant> (2.71828) pueden ser usadas y son tratados igual que otro número.</para>
+		<para>Las constantes <constant>pi</constant> (3.14159) y <constant>exp</constant> (2.71828) pueden ser usadas y son tratados igual que cualquier otro número.</para>
 	</refsect1>
 
 	<refsect1 id="fileinput">
-		<title>Archifo de entradad</title>
-		<para>Una lista de los cálculos se pueden procesar a la vez por su inclusión en un archivo. Cada línea del archivo será exactamente el mismo proceso como si <command>ralcalc</command> ha sido gestionado con estos argumentos. El archivo podría ser el siguiente (tenga en cuenta la falta de la commandsame como si <command>=</command> o <command>ralcalc</command>): <programlisting>
+		<title>Archivo de Entrada</title>
+		<para>Una lista de cálculos puede ser procesada colocándolos en un archivo. Cada línea del archivo será procesada exactamente igual que si se hubiese ejecutado <command>ralcalc</command> con esos argumentos. El archivo puede verse como el siguiente (tenga en cuenta la ausencia del comando <command>=</command> ó <command>ralcalc</command>): <programlisting>
 	<userinput>2^0.5</userinput>
 	<userinput>1/_</userinput>
 	<userinput>238/1064x100</userinput></programlisting></para>
-		<para>Archivo de entrada también es posible utilizar <filename class="devicefile">stdin</filename>, i.e. lectura interactiva directamente desde el terminal de cada línea con el cálculo de la forma habitual.  Para salir, escriba "q" o "salir" en una nueva línea, use Ctrl-D para indicar el final del archivo, o utilizar las teclas Ctrl-C de la causa <command>ralcalc</command> para ser terminado</para>
-		<para>Si bien el archivo de opciones de entrada se dan en la línea de comandos y, a continuación, cualquier cálculo dado en la línea de comandos se calculará primero. Si tanto el archivo de opciones de entrada se da, entonces los cálculos de la <option>-f</option> se llevará a cabo en primer lugar, seguidos de los de <option>-f</option> se llevará a cabo en primer lugar, seguidos de los de <filename class="devicefile">stdin</filename>.</para>
+		<para>Archivo de entrada también puede ser utilizado con <filename class="devicefile">stdin</filename>, i.e. lectura interactiva directamente desde el terminal, con cada línea calculada de la forma habitual.  Para salir, escriba "q" o "quit" en una nueva línea, use Ctrl-D para indicar el final de archivo, o use las teclas Ctrl-C para terminar <command>ralcalc</command></para>
+		<para>Si cualquiera de las opciones del archivo de entrada son ingresadas desde la línea de comandos, entonces todos los cálculos ingresados por la línea de comandos serán calculados primero. Sí ambas opciones del archivo de entrada son ingresadas, entonces los cálculos de la opción <option>-f</option> serán calculados primero, seguidos por aquellos ingresados con <filename class="devicefile">stdin</filename>.</para>
 	</refsect1>
 
 	<refsect1>
 		<title>Ejemplos</title>
-		<para>Base de cálculo: <programlisting>
+		<para>Cálculo básico: <programlisting>
 	<userinput>= ln 1.0001</userinput>
 	<computeroutput>ln 1.0001 = 99.995u</computeroutput></programlisting></para>
-		<para>Exponente número de formato de salida: <programlisting>
+		<para>Formato de salida del número de exponente: <programlisting>
 	<userinput>= -e ln 1.0001</userinput>
 	<computeroutput>ln 1.0001 = 9.9995e-05</computeroutput></programlisting></para>
-		<para>Número de formato de salida de crudo: <programlisting>
+		<para>Formato de salida del número en crudo: <programlisting>
 	<userinput>= -r ln 1.0001</userinput>
 	<computeroutput>ln 1.0001 = 0.000100</computeroutput></programlisting></para>
-		<para>Número de formato de salida con un determinado prefijo SI: <programlisting>
+		<para>Formato de salida de número con un prefijo SI especificado: <programlisting>
 	<userinput>= -s m ln 1.0001</userinput>
 	<computeroutput>ln 1.0001 = 0.099995</computeroutput></programlisting></para>
 	</refsect1>
@@ -232,21 +236,21 @@ apoya prefijo SI para ambos caracteres de entrada y salida: <programlisting>
 		<title>Variables de Entorno</title>
 		<variablelist>
 			<varlistentry>
-				<term><envar>Inicio</envar></term>
+				<term><envar>HOME</envar></term>
 				<listitem>
-					<para>Determina que el. ralcalc_result archivo se almacena.</para>
+					<para>Determina donde se almacena el archivo .ralcalc_result</para>
 				</listitem>
 			</varlistentry>
 		</variablelist>
 	</refsect1>
 
 	<refsect1>
-		<title>Valores de salida</title>
+		<title>Valores de Salida</title>
 		<variablelist>
 			<varlistentry>
 				<term>0</term>
 				<listitem>
-					<para>Exitosamente</para>
+					<para>Éxito</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -262,58 +266,58 @@ apoya prefijo SI para ambos caracteres de entrada y salida: <programlisting>
 		<title>Archivos</title>
 		<para>
 			<filename>${HOME}/.ralcalc_result</filename>
-			<blockquote>El resultado del cálculo más reciente, que se puede acceder más tarde en un cálculo con el carácter "_". Tenga en cuenta que esto no es necesariamente máquina portátil a través de diferentes arquitecturas.</blockquote>
+			<blockquote>El resultado del cálculo más reciente, al cual puede accederse mas tarde con el caracter "_". Tenga en cuenta que esto no es necesariamente portable a través de diferentes arquitecturas.</blockquote>
 		</para>
 	</refsect1>
 
 	<refsect1>
 		<title>Diagnósticos</title>
-		<para><command>ralcalc</command> los intentos para notificar al usuario de la mayor cantidad de errores como sea posible e indicar dónde están los errores, si están relacionados con la entrada del usuario.</para>
+		<para><command>ralcalc</command> intenta notificar al usuario de la mayor cantidad de errores posibles e indica donde están dichos errores, siempre y cuando estos estén relacionados con la entrada del usuario.</para>
 
-		<para>Si un caracter desconocido se incluye en la ecuación, una "<errortext>razón desconocidad</errortext>" de error se generará. El error de marcador de puntos a los caracteres no válidos. <programlisting>
+		<para>Sí se ingresa un caracter no válido en la ecuación, se generará un error de "<errortext>símbolo desconocido</errortext>". El marcador del error (^) indica el caracter inválido. <programlisting>
 	<userinput>= 34/3@2</userinput>
+
 	<computeroutput>Error: 34/3@2</computeroutput>
-	 ^razón desconocida</programlisting></para>
+	           ^ símbolo desconocido</programlisting></para>
 
-		<para>Si un número no válido, se incluye, un "<errortext>número erroneo</errortext>" de error se generará. El error de marcador de puntos al final del número inválido. <programlisting>
+		<para>Si se incluye un número inválido, se generará un error de "<errortext>número incorrecto</errortext>". El marcador del error (^) indica el caracter inválido. <programlisting>
 	<userinput>= 3.14.159x2.8^2</userinput>
-	<computeroutput>Error: 3.14.159x2.8^2</computeroutput>
-	 ^ número erroneo</programlisting></para>
 
-		<para>Si el número de abrir y cerrar paréntesis no coinciden, un "<errortext>coincidente entre paréntesis</errortext>" 	
-de error se generará. El error de marcador de posición no tiene importancia. <programlisting>
+	<computeroutput>Error: 3.14.159x2.8^2</computeroutput>
+	              ^ número incorrecto</programlisting></para>
+
+		<para>Sí el número de paréntesis y corchetes abiertos y cerrados no coincide, se generará un error de "<errortext>paréntesis incorrectos</errortext>". El marcador del error (^) indica el caracter inválido. <programlisting>
 	<userinput>= 5/[[2+3]*9</userinput>
 
 	<computeroutput>Error: 5/[[2+3]*9</computeroutput>
-	 ^ coincidentes entre paréntesis</programlisting></para>
+	                 ^ paréntesis incorrectos</programlisting></para>
 
-		<para>Si un operador invalido aparece en un posición, un "<errortext>operador invalido</errortext>" de error se generará. El error se indica el marcador no válido operador. <programlisting>
+		<para>Sí un operador aparece en una posición inválida, se generará un error de "<errortext>operador inválido</errortext>". El marcador del error (^) indica el operador inválido. <programlisting>
 	<userinput>= 3^^7</userinput>
 
 	<computeroutput>Error: 3^^7</computeroutput>
-	 ^ operador invaido</programlisting></para>
+	         ^ operador inválido</programlisting></para>
 
-		<para>si aparecen paréntesis en una posición invalida, un "<errortext>paréntesis invalido</errortext>" de error se generará. Este tipo de error a menudo se superpone con otros errores, por lo que habrá una serie de mensajes escritos en la pantalla. Es mejor arreglar este error de primera, ya que probablemente será la causa del problema. El error indica que el marcador no válido soporte. <programlisting>
+		<para>Si un paréntesis aparece en una posición inválida, se generará un error de "<errortext>invalid bracket</errortext>". Este tipo de error normalmente se corresponde con otros errores, entonces habrá un número de mensajes escritos en la pantalla. Lo mejor es corregir este error primero, ya que probablemente sea la raíz de todos los demás problemas. El marcador del error (^) indica el paréntesis incorrecto. <programlisting>
 	<userinput>= [2+]3</userinput>
 
 	<computeroutput>Error: [2+]3</computeroutput>
-	 ^ paréntesis invalido
+	          ^ paréntesis incorrecto
 
 	<computeroutput>Error: [2+]3</computeroutput>
-	 ^operador invaido</programlisting></para>
+	            ^ operador inválido</programlisting></para>
 		
-		<para>si <command>ralcalc</command> 	
-no está en condiciones de destinar parte de la memoria, una "<errortext>fuera de memoria</errortext>" de error se generará.</para>
+		<para>Sí <command>ralcalc</command> es incapaz de asignar memoria, se generará un error de "<errortext>sin memoria</errortext>".</para>
 
-		<para>Error interno: Si el analizador de anuncios dos números uno al lado del otro aún no genera un <errortext>númeroerroneo</errortext>" error, el uno "<errortext>número duplicado</errortext>" de error se generará. Esto no debería suceder nunca.</para>
+		<para>Error interno: Sí el analizador encuentra dos números juntos, no genera un error de "<errortext>número inválido</errortext>", sino que se generará un error de "<errortext>número duplicado number</errortext>". Esto no debería de suceder nunca.</para>
 
-		<para>Error interno: Si un código de error desconocido se pasa a la función de error de salida, un "<errortext>error desconocido</errortext>" y se generará el código de error no válido muestra. Esto no debería suceder nunca.</para>
+		<para>Error interno: Si un código de error desconocido se pasa a la función de salida de error, se generará un error de "<errortext>error desconocido</errortext>" y se mostrará el código de error. Esto no debería suceder nunca.</para>
 	</refsect1>
 
 	<refsect1>
 		<title>Bugs</title>
-		<para>Una sola "<option>-f <replaceable>filename</replaceable></option> puede transmitirse a la vez.</para>
-		<para>Si usted encuentra un error, por favor envíe un informe en <uri type="webpage">http://bugs.launchpad.net/ralcalc</uri></para>
+		<para>Solo puede pasarse un "<option>-f <replaceable>nombre de archivo</replaceable></option>" a la vez.</para>
+		<para>Si encuentra un error, por favor envíelo a <uri type="webpage">http://bugs.launchpad.net/ralcalc</uri></para>
 	</refsect1>
 
 	<refsect1>

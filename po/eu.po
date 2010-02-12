@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-01 21:20+0000\n"
+"X-Launchpad-Export-Date: 2010-02-12 09:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/output.c:110
@@ -127,7 +127,8 @@ msgstr "Aukerak\n"
 msgid ""
 " -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
-msgstr " -e Erabili '1e-3' notazioa SI aurrizkien ordez emaitzak erakusteko.\n"
+msgstr ""
+" -e Erabili '1e-3' notazioa SI aurrizkien ordez emaitzak erakusteko.\n"
 
 #: ../src/ralcalc.c:64
 #, c-format

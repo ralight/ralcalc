@@ -70,7 +70,7 @@ void doubleToString(double value, char *string, int len, char siPrefix)
 		snprintf(string, len, "%gp", value * 1.0e12);
 	}else if((absval < 1.0e-5 && siPrefix == '\0') || siPrefix == 'n'){
 		snprintf(string, len, "%gn", value * 1.0e9);
-	}else if((absval < 1.0e-2 && siPrefix == '\0') || siPrefix == 'u'){
+	}else if((absval < 1.0e-3 && siPrefix == '\0') || siPrefix == 'u'){
 		snprintf(string, len, "%gu", value * 1.0e6);
 	}else if((absval < 0.1 && siPrefix == '\0') || siPrefix == 'm'){
 		snprintf(string, len, "%gm", value * 1.0e3);

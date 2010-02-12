@@ -1,4 +1,4 @@
-# Hebrew translation for ralcalc
+# Dutch translation for ralcalc
 # Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the ralcalc package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
@@ -6,11 +6,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-03-07 22:44+0000\n"
-"PO-Revision-Date: 2009-07-17 09:40+0000\n"
-"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <he@li.org>\n"
+"PO-Revision-Date: 2009-12-11 06:55+0000\n"
+"Last-Translator: Yentl <y.v.t@scarlet.be>\n"
+"Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,57 +20,57 @@ msgstr ""
 #: ../src/output.c:110
 #, c-format
 msgid " out of memory\n"
-msgstr " חריגה מהזיכרון\n"
+msgstr " geen geheugen meer\n"
 
 #: ../src/output.c:113
 #, c-format
 msgid " bad input to function (internal)\n"
-msgstr " קלט שגוי לפונקציה (פנימי)\n"
+msgstr " slechte invoer voor functie (intern)\n"
 
 #: ../src/output.c:115
 #, c-format
 msgid " unknown token\n"
-msgstr " אסימון לא ידוע\n"
+msgstr " onbekend teken\n"
 
 #: ../src/output.c:118
 #, c-format
 msgid " bad number\n"
-msgstr " מספר שגוי\n"
+msgstr " slecht getal\n"
 
 #: ../src/output.c:121
 #, c-format
 msgid " mismatched brackets\n"
-msgstr " סוגריים לא תואמים\n"
+msgstr " niet-overeenkomende haakjes\n"
 
 #: ../src/output.c:124
 #, c-format
 msgid " duplicate number\n"
-msgstr " מספר כפול\n"
+msgstr " dubbel getal\n"
 
 #: ../src/output.c:127
 #, c-format
 msgid " invalid operator\n"
-msgstr " פעולה שגויה\n"
+msgstr " ongeldige bewerking\n"
 
 #: ../src/output.c:130
 #, c-format
 msgid " invalid bracket\n"
-msgstr " סוגר שגוי\n"
+msgstr " ongeldig haakje\n"
 
 #: ../src/output.c:133
 #, c-format
 msgid " unable to open file\n"
-msgstr ""
+msgstr " kon bestand niet openen\n"
 
 #: ../src/output.c:135
 #, c-format
 msgid " unknown error (%d)\n"
-msgstr " שגיאה לא ידועה (%d)\n"
+msgstr " onbekende fout (%d)\n"
 
 #: ../src/ralcalc.c:55
 #, c-format
 msgid "ralcalc  version %s (build date: %s)\n"
-msgstr "גירסת ralcalc %s (תאריך הבניה: %s)\n"
+msgstr "ralcalc versie %s (bouw datum: %s)\n"
 
 #: ../src/ralcalc.c:56
 #, c-format
@@ -79,6 +79,9 @@ msgid ""
 "http://atchoo.org/tools/ralcalc/\n"
 "\n"
 msgstr ""
+"Copyright (C) 2007-2009 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
 
 #: ../src/ralcalc.c:57
 #, c-format
@@ -88,9 +91,10 @@ msgid ""
 "as described in the COPYING file distributed with this program.\n"
 "\n"
 msgstr ""
-"ralcalc ללא כל אחריות כלל.  תוכלו להפיץ את ralcalc בחינם כפי שמתואר בקובץ "
-"COPYING\n"
-"המושק יחד עם תוכנית זו.\n"
+"ralcalc komt met ABSOLUUT GEEN GARANTIES. Je mag ralcalc gratis "
+"distribueren\n"
+"zoals beschreven in het COPYING bestand dat samen met dit programma geleverd "
+"is.\n"
 "\n"
 
 #: ../src/ralcalc.c:58
@@ -99,28 +103,29 @@ msgid ""
 "ralcalc is a simple command line calculator. \n"
 "\n"
 msgstr ""
-"ralcalc הינו מחשבון פשוט לשורת הפקודה. \n"
+"ralcalc is een simpel command-line rekenmachine. \n"
 "\n"
 
 #: ../src/ralcalc.c:59
 #, c-format
 msgid "Usage: ralcalc -h   (display this text)\n"
-msgstr "שימוש: ralcalc -h   (הצגת טקסט זה)\n"
+msgstr "Gebruik: ralcalc -h (geeft deze tekst weer)\n"
 
 #: ../src/ralcalc.c:60
 #, c-format
 msgid "       ralcalc -a   (display all available operators)\n"
-msgstr ""
+msgstr "       ralcalc -a   (geeft alle mogelijke bewerkingen weer)\n"
 
 #: ../src/ralcalc.c:61
 #, c-format
 msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
 msgstr ""
+"       ralcalc [-e] [-f invoerbestand] [-i] [-q] [-r] <een vergelijking>\n"
 
 #: ../src/ralcalc.c:62
 #, c-format
 msgid "Options\n"
-msgstr "אפשרויות\n"
+msgstr "Opties\n"
 
 #: ../src/ralcalc.c:63
 #, c-format
@@ -128,26 +133,28 @@ msgid ""
 " -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
 msgstr ""
+" -e Gebruik het '1e-3' formaat van weergave voor het antwoord in plaats van "
+"de SI prefixen.\n"
 
 #: ../src/ralcalc.c:64
 #, c-format
 msgid " -f    Process a list of calculations from a file.\n"
-msgstr ""
+msgstr " -f Verwerk een lijst bewerkingen uit een bestand.\n"
 
 #: ../src/ralcalc.c:65
 #, c-format
 msgid " -i    Process a list of calculations from stdin.\n"
-msgstr ""
+msgstr " -i Verwerk een lijst van berekeningen vanuit stdin.\n"
 
 #: ../src/ralcalc.c:66
 #, c-format
 msgid " -q    Only display the answer (quiet).\n"
-msgstr ""
+msgstr " -q Geef enkel het antwoord weer (stil).\n"
 
 #: ../src/ralcalc.c:67
 #, c-format
 msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
-msgstr " -r    הצג את התשובה בלי קידומות SI או מעריכחפ.\n"
+msgstr " -r Geeft het antwoord weer zonder SI prefixen, noch exponenten.\n"
 
 #: ../src/ralcalc.c:68
 #, c-format
@@ -156,42 +163,42 @@ msgid ""
 "See http://atchoo.org/tools/ralcalc/ for updates.\n"
 msgstr ""
 "\n"
-"בקרו באתר http://atchoo.org/tools/ralcalc/ לעדכונים.\n"
+"http://atchoo.org/tools/ralcalc/ voor updates.\n"
 
 #: ../src/ralcalc.c:79
 #, c-format
 msgid "Numbers:\n"
-msgstr ""
+msgstr "Nummers:\n"
 
 #: ../src/ralcalc.c:80
 #, c-format
 msgid "  1.0    : example number\n"
-msgstr ""
+msgstr "  1.0 : voorbeeldnummer\n"
 
 #: ../src/ralcalc.c:81
 #, c-format
 msgid "  1.0e-3 : example number\n"
-msgstr ""
+msgstr "  1.0e-3 : voorbeeldnummer\n"
 
 #: ../src/ralcalc.c:82
 #, c-format
 msgid "  1.0m   : example number\n"
-msgstr ""
+msgstr "  1.0m : voorbeeldnummer\n"
 
 #: ../src/ralcalc.c:83
 #, c-format
 msgid "  _      : previous result\n"
-msgstr ""
+msgstr "  _ : vorig restultaat\n"
 
 #: ../src/ralcalc.c:84
 #, c-format
 msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
-msgstr ""
+msgstr "  y, z, a, f, p, n, u, m : SI prefixen\n"
 
 #: ../src/ralcalc.c:85
 #, c-format
 msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
-msgstr ""
+msgstr "  k, M, G, T, P, E, Z, Y : SI prefixen\n"
 
 #: ../src/ralcalc.c:86
 #, c-format
@@ -199,41 +206,43 @@ msgid ""
 "\n"
 "Operators:\n"
 msgstr ""
+"\n"
+"Bewerkingen:\n"
 
 #: ../src/ralcalc.c:87
 #, c-format
 msgid "  +     : addition\n"
-msgstr ""
+msgstr "  + : optelling\n"
 
 #: ../src/ralcalc.c:88
 #, c-format
 msgid "  -     : subtraction\n"
-msgstr ""
+msgstr "  - : aftrekking\n"
 
 #: ../src/ralcalc.c:89
 #, c-format
 msgid "  * x   : multiplication\n"
-msgstr ""
+msgstr "  * x : vermenigvuldiging\n"
 
 #: ../src/ralcalc.c:90
 #, c-format
 msgid "  /     : division\n"
-msgstr ""
+msgstr "  / : deling\n"
 
 #: ../src/ralcalc.c:91
 #, c-format
 msgid "  %%     : modulus\n"
-msgstr ""
+msgstr "  %% : restdeling\n"
 
 #: ../src/ralcalc.c:92
 #, c-format
 msgid "  ^     : power\n"
-msgstr ""
+msgstr "  ^ : macht\n"
 
 #: ../src/ralcalc.c:93
 #, c-format
 msgid "  () [] : brackets increase precedence\n"
-msgstr ""
+msgstr "  () [] : haakjes veranderen de volgorde van de bewerking\n"
 
 #: ../src/ralcalc.c:94
 #, c-format
@@ -241,36 +250,38 @@ msgid ""
 "\n"
 "Functions:\n"
 msgstr ""
+"\n"
+"Functies:\n"
 
 #: ../src/ralcalc.c:95
 #, c-format
 msgid "  log X         : logarithm to base 10 of X\n"
-msgstr ""
+msgstr "  log x : logaritme met basis 10 van X\n"
 
 #: ../src/ralcalc.c:96
 #, c-format
 msgid "  ln X          : natural logarithm of X\n"
-msgstr ""
+msgstr "  ln X : natuurlijk logaritme van X\n"
 
 #: ../src/ralcalc.c:97
 #, c-format
 msgid "  sin X, asin X : sine, arcsin of X\n"
-msgstr ""
+msgstr "  sin X, asin X : sinus en boogsinus van X\n"
 
 #: ../src/ralcalc.c:98
 #, c-format
 msgid "  cos X, acos X : cosine, arccos of X\n"
-msgstr ""
+msgstr "  cos X, acos X : cosinus en boogcosinus van X\n"
 
 #: ../src/ralcalc.c:99
 #, c-format
 msgid "  tan X, atan X : tangent, arctan of X\n"
-msgstr ""
+msgstr "  tan X, atan X : tangens en boogtangens van X\n"
 
 #: ../src/ralcalc.c:100
 #, c-format
 msgid "  sqrt X        : square root of X\n"
-msgstr ""
+msgstr "  sqrt X : vierkantswortel van X\n"
 
 #: ../src/ralcalc.c:101
 #, c-format
@@ -278,48 +289,35 @@ msgid ""
 "\n"
 "Constants:\n"
 msgstr ""
+"\n"
+"Constanten:\n"
 
 #: ../src/ralcalc.c:102
 #, c-format
 msgid "  pi  : 3.14159\n"
-msgstr ""
+msgstr "  pi  : 3.14159\n"
 
 #: ../src/ralcalc.c:103
 #, c-format
 msgid "  exp : 2.71828\n"
-msgstr ""
+msgstr "  exp : 2.71828\n"
 
 #: ../src/ralcalc.c:197 ../src/ralcalc.c:242
 #, c-format
 msgid "Error: Out of memory\n"
-msgstr ""
+msgstr "Fout: Geheugen vol\n"
 
 #: ../src/ralcalc.c:319 ../src/ralcalc.c:342
 #, c-format
 msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
-msgstr ""
+msgstr "Fout: Ongeldige SI prefix '%s' voor '-s' optie.\n"
 
 #: ../src/ralcalc.c:371
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
-msgstr ""
+msgstr "Fout: Kon bestand \"%s\" niet openen\n"
 
 #: ../src/tokens.c:255
 #, c-format
 msgid "Unknown token (%d)\n"
-msgstr "אסימון לא ידוע (%d)\n"
-
-#~ msgid ""
-#~ "       ralcalc [-q] [-e] [-r] <an equation>\n"
-#~ "\n"
-#~ msgstr ""
-#~ "       ralcalc [-q] [-e] [-r] <משוואה>\n"
-#~ "\n"
-
-#~ msgid " -q\t   Only display the answer (quiet).\n"
-#~ msgstr " -q\t   הצג את התשובה בלבד (שקט).\n"
-
-#~ msgid ""
-#~ " -e\t   Use the '1e-3' form of display for the answer rather than SI "
-#~ "prefixes.\n"
-#~ msgstr " -e\t   השתמש בצורה '1e-3' להצגת התשובה מאשר קידומות SI.\n"
+msgstr "Onbekend teken (%d)\n"

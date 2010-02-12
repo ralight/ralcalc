@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "/usr/share/sgml/docbook/xml-dtd-4.1.2/docbookx.dtd">
+<refentry xml:id="ralcalc">
+	<refmeta>
+		<refentrytitle>ralcalc</refentrytitle>
+		<manvolnum>1</manvolnum>
+	</refmeta>
+
+	<refnamediv>
+		<refname>ralcalc</refname>
+		<refpurpose>een simpel command-line rekentoestel</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>ralcalc</command>
+			<group choice="plain">
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-a</option></arg>
+						<arg choice="plain"><option>--all</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-h</option></arg>
+						<arg choice="plain"><option>--help</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-v</option></arg>
+						<arg choice="plain"><option>--version</option></arg>
+					</group>
+				</arg>
+			</group>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>ralcalc</command>
+			<group choice="opt">
+				<arg><option>-e</option></arg>
+				<arg><option>-r</option></arg>
+			</group>
+			<arg><option>-f</option> <replaceable>bestandsnaam</replaceable></arg>
+			<arg><option>-i</option></arg>
+			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>prefix</replaceable></arg>
+			<arg choice="plain"><replaceable>vergelijking</replaceable></arg>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>=</command>
+			<group choice="plain">
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-a</option></arg>
+						<arg choice="plain"><option>--all</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-h</option></arg>
+						<arg choice="plain"><option>--help</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-v</option></arg>
+						<arg choice="plain"><option>--version</option></arg>
+					</group>
+				</arg>
+			</group>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>=</command>
+			<group choice="opt">
+				<arg><option>-e</option></arg>
+				<arg><option>-r</option></arg>
+			</group>
+			<arg><option>-f</option> <replaceable>bestandsnaam</replaceable></arg>
+			<arg><option>-i</option></arg>
+			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>prefix</replaceable></arg>
+			<arg choice="plain"><replaceable>vergelijking</replaceable></arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+
+	<refsect1>
+		<title>Beschrijving</title>
+		<para><command>ralcalc</command> is een command-line rekentoestel ontworpen voor erg snelle berekeningen, waar waarschijnlijk enkel één resultaat gewenst is, zonder een heel programma te starten en af te sluiten.</para>
+
+		<para><command>ralcalc</command> is ook geinstalleerd als het <command>=</command> commando om het nog sneller bruikbaar te kunnen maken.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Opties</title>
+		<variablelist>
+			<varlistentry>
+				<term><option>-a</option></term>
+				<term><option>--all</option></term>
+				<listitem>
+					<para>Print alle beschikbare bewerkingen, functies en constanten uit.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-e</option></term>
+				<listitem>
+					<para>Geeft het resultaat weer in het "1e-3" formaat, in plaats van SI prefixen te gebruiken.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-f</option></term>
+				<listitem>
+					<para>Verwerk een lijst van berekeningen vanuit een bestand. Bekijk de BESTANDSINVOER sectie hieronder voor meer informatie.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-h</option></term>
+				<term><option>--help</option></term>
+				<listitem>
+					<para>Geef gebruik, versie en contact details weer.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-i</option></term>
+				<listitem>
+					<para>Verwerk een lijst van berekeningen van <filename class="devicefile">stdin</filename>. Bekijk de BESTANDSINVOER sectie hieronder voor meer informatie.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-q</option></term>
+				<!-- <term><option>- -quiet</option></term> -->
+				<listitem>
+					<para>Geef enkel het resultaat weer (dus verberg de invoer en enige fouten).</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-r</option></term>
+				<!-- <term><option>- -raw</option></term> -->
+				<listitem>
+					<para>Geeft het resultaat weer in decimale vorm, zonder SI prefixen, noch exponenten.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-s</option></term>
+				<!-- <term><option>- -si-prefix</option></term> -->
+				<listitem>
+					<para>Geeft het resultaat weer in een bepaalde SI prefix. Deze optie wordt genegeerd indien <option>-e</option> of <option>-r</option> ook gebruikt wordt.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-v</option></term>
+				<term><option>--version</option></term>
+				<listitem>
+					<para>Geef gebruik, versie en contact details weer.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Getalformaat</title>
+		<para>Nummer moet invoer zijn met ofwel "." of "," als een decimaal punt (dit is afhankelijk van de lokale instellingen, dus beide kunnen mogelijk niet werken voor jouw lokale instellingen), zonder een teken om duizendtallen aan te duiden.</para>
+		<para><command>ralcalc</command> ondersteunt SI prefix karakters voor zowel invoer als uitvoer: <programlisting>
+	<userinput>= 2u/35</userinput>
+	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
+		<para>Nummers in de vorm 1e-3 worden ook ondersteunt, waar een "e" een tiende macht aanduidt. Gebruik dit niet samen met SI prefixen en "e" in hetzelfde getal (howel 1e-3n geldig is, is 1ne-3 dit niet - vermijd beide voor minder verwarring).</para>
+		<para>De ondersteunde SI prefixen zijn: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Bewerkingen</title>
+		<para>De simpele mathematische bewerkingen voor optelling (+), aftrekking (-), vermenigvuldiging (*, x), deling (/) en machten (^) worden ondersteunt, met optelling en aftrekking met de laagste voorrang en machten de hoogste voorrang. <programlisting>
+	<userinput>= 1+2x3</userinput>
+	<computeroutput>1+2x3 = 7</computeroutput>
+
+	<userinput>= 1/2^0.5</userinput>
+	<computeroutput>1/2^0.5 = 0.707107</computeroutput></programlisting></para>
+		<para>Haakjes ( (), [] ) kunnen gebruikt worden om de volgorde van bewerkingen te controleren: <programlisting>
+	<userinput>= [1+2]x3</userinput>
+	<computeroutput>[1+2]x3 = 9</computeroutput></programlisting></para>
+		<para>Zowel de vierkante als ronde haakjes kunnen gebruikt worden en zijn exact hetzelfde, dus [1+2)x3 is ook geldig. Ronde haakjes worden meestal gebruikt in wiskunde, maar de vierkante haakjes (en de "x" voor vermenigvuldiging) zijn toegevoegd om problemen met de shell, die deze karakters wil verlengen, tegen te gaan.</para>
+		<para><command>ralcalc</command> slaat het resultaat van de berekening op zodat het in de volgende berekening herbruikt kan worden met het  "_" karakter. <programlisting>
+	<userinput>= 2^0.5</userinput>
+	<computeroutput>2^0.5 = 1.41421</computeroutput>
+
+	<userinput>= 1/_</userinput>
+	<computeroutput>1/_ = 0.707107</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Functies</title>
+		<para>De functies <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (basis 10 logaritme) en <function>ln</function> (natuurlijk logaritme) worden ondersteunt. De trigoniometrische functies werken op radialen. Het gebruik van haakjes is niet nodig, maar wordt wel aanbevolen waar voorrangsregels verwarrend kunnen zijn. De functies hebben dezelfde voorrangsregels als vermenigvuldiging/deling, dus wees voorzichtig: <programlisting>
+	<userinput>= sin2x2</userinput>
+	<computeroutput>sin2x2 = 1.81859</computeroutput>
+
+	<userinput>= sin[2x2]</userinput>
+	<computeroutput>sin[2x2] = -0.756802</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Constanten</title>
+		<para>De constanten <constant>pi</constant> (3.14159) en <constant>exp</constant> (2.71828) kunnen gebruikt worden en worden beschouwd als enig ander getal.</para>
+	</refsect1>
+
+	<refsect1 id="fileinput">
+		<title>Bestandsinvoer</title>
+		<para>Een lijst van berekeningen kan ineens verwerkt worden door deze in een bestand te plaatsen. Elke regel van het bestand zal exact hetzelfde verwerkt worden als <command>ralcalc</command> op elke regel apart opgeroepen met die argumenten. Het bestand kan er als volgt uitzien (merk op dat het commando <command>=</command> of <command>ralcalc</command> niet aanwezig zijn: <programlisting>
+	<userinput>2^0.5</userinput>
+	<userinput>1/_</userinput>
+	<userinput>238/1064x100</userinput></programlisting></para>
+		<para>Bestandsinvoer is ook mogelijk door <filename class="devicefile">stdin</filename> te gebruiken, maw interactief lezen, onmiddelijk vanuit de terminal met elke regel zoals normaal te berekenen. Om dit af te sluiten, type "q" of "quit" op een nieuwe regel, gebruik ctrl-D om het einde van het bestand aan te duiden, of gebruik ctrl-C om <command>ralcalc</command> af te laten sluiten.</para>
+		<para>Als een van de bestandsinvoer opties gebruikt wordt via de command-line, dan worden alle berekeningen ingegeven via de command-line eerst berekent. Als beide invoeropties gegeven worden, dan worden de berekeningen van de <option>-f</option> eerst uitgevoerd, gevolgd door deze van <filename class="devicefile">stdin</filename>.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Voorbeelden</title>
+		<para>Basis berekeningen: <programlisting>
+	<userinput>= ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 99.995u</computeroutput></programlisting></para>
+		<para>Exponent nummer uitvoerformaat: <programlisting>
+	<userinput>= -e ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 9.9995e-05</computeroutput></programlisting></para>
+		<para>Rauwe nummer uitvoer formaat: <programlisting>
+	<userinput>= -r ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 0.000100</computeroutput></programlisting></para>
+		<para>Nummer uitvoer format met een gespecifieerde SI prefix: <programlisting>
+	<userinput>= -s m ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 0.099995</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Omgevingsvariabelen</title>
+		<variablelist>
+			<varlistentry>
+				<term><envar>HOME</envar></term>
+				<listitem>
+					<para>Bepaalt waar het .ralcalc_result bestand opgeslagen wordt.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Exit Waarden</title>
+		<variablelist>
+			<varlistentry>
+				<term>0</term>
+				<listitem>
+					<para>Success</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>1</term>
+				<listitem>
+					<para>Op z'n minst 1 fout trad op.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Bestanden</title>
+		<para>
+			<filename>${HOME}/.ralcalc_result</filename>
+			<blockquote>Het resultaat van de meest recente berekening, dat gebruikt kan worden in een volgende berekingen door middel van "_". Merk op dat dit niet noodzakelijk overdraagbaar is naar andere computerarchitecturen.</blockquote>
+		</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Diagnose</title>
+		<para><command>ralcalc</command> probeert de gebruiker te verwittigen van zoveel mogelijk fouten en geeft aan waar deze fouten zijn, indien ze veroorzaakt zijn door de gebruikersinvoer.</para>
+
+		<para>Indien een onbekend karakters in de vergelijking zit, verschijnt een "<errortext>onbekend teken</errortext>" fout. De foutmarkeerder wijst naar het ongeldige karakter.<programlisting>
+	<userinput>= 34/3@2</userinput>
+
+	<computeroutput>Fout: 34/3@2</computeroutput>
+	           ^ onbekend teken</programlisting></para>
+
+		<para>Indien een slecht getal in de vergelijking zit, verschijnt een "<errortext>onbekend teken</errortext>" fout. De foutmarkeerder wijst naar het slechte getal.<programlisting>
+	<userinput>= 3.14.159x2.8^2</userinput>
+
+	<computeroutput>Fout: 3.14.159x2.8^2</computeroutput>
+	              ^ slecht getal</programlisting></para>
+
+		<para>Indien het aantal openende haakjes en sluitende haakjes niet overeenkomen in de vergelijking zit, verschijnt een "<errortext>niet-overeenkomende haakjes</errortext>" fout. De foutmarkeerder wijst naar het haakje zonder betekenis.<programlisting>
+	<userinput>= 5/[[2+3]*9</userinput>
+
+	<computeroutput>Fout: 5/[[2+3]*9</computeroutput>
+	                 ^ niet-overeenkomende haakjes</programlisting></para>
+
+		<para>Indien een bewerkingsteken op een verkeerde plaats voorkomt in de vergelijking, verschijnt een "<errortext>ongeldige bewerking</errortext>" fout. De foutmarkeerder wijst naar het ongeldig teken.<programlisting>
+	<userinput>= 3^^7</userinput>
+
+	<computeroutput>Fout: 3^^7</computeroutput>
+	         ^ ongeldige bewerking</programlisting></para>
+
+		<para>Indien een een haakje in de vergelijking voorkomt op een ongeldige locatie, verschijnt een "<errortext>ongeldige haakjes</errortext>" fout. Deze fout overlapt vaak met andere fouten, dus er kunnen een aantal fouten weergegeven worden. Het is het beste om deze fout eerst op te lossen, aangezien dit waarschijnlijk de bron van het probleem is. De foutmarkeerder wijst naar het ongeldige haakje.<programlisting>
+	<userinput>= [2+]3</userinput>
+
+	<computeroutput>Fout: [2+]3</computeroutput>
+	          ^ ongeldige haakjes
+
+	<computeroutput>Fout: [2+]3</computeroutput>
+	            ^ ongeldige bewerking</programlisting></para>
+		
+		<para>Indien <command>ralcalc</command> geen geheugen kan oproepen, verschijnt een "<errortext>out of memory</errortext>" fout.</para>
+
+		<para>Interne fout: Indien de parser merkt dat twee nummers na elkaar nog geen "<errortext>Slecht getal</errortext>" fout genereren, verschijnt een "<errortext>dubbel getal</errortext>" fout. Dit zou nooit mogen gebeuren.</para>
+
+		<para>Interne fout: Indien een onbekende foutcode doorgegeven wordt naar de fout-uitvoer functie, zal een "<errortext>onbekende fout</errortext>" fout gegenereerd worden en de ongeldige foutcode zal weergegeven worden. Dit zou nooit mogen gebeuren.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Bugs</title>
+		<para>Enkel één "<option>-f <replaceable>bestandsnaam</replaceable></option>" kan in één keer doorgegeven worden.</para>
+		<para>Indien je enige fouten vindt, lever dan een rapport in op <uri type="webpage">http://bugs.launchpad.net/ralcalc</uri></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Auteur</title>
+		<para>Roger Light <email>roger@atchoo.org</email></para>
+	</refsect1>
+</refentry>

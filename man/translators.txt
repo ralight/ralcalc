@@ -7,12 +7,18 @@ Brazilian Portugese
 Danish
 - Jimmy Frydkær Jensefn
 
+Dutch
+- Yentl
+
 English (United Kingdom)
 - Jen Ockwell
 
 French
-- Pierre Rudloff
 - Johan Serre
+- Pierre Rudloff
+
+Italian
+- Lorenzo Baracchi
 
 Polish
 - pp/bs
@@ -22,4 +28,5 @@ Portuguese
 
 Spanish
 - Feder Sáiz
+- Federico Vera
 - navnelson

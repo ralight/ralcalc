@@ -108,7 +108,7 @@
 			<varlistentry>
 				<term><option>-e</option></term>
 				<listitem>
-					<para>Wyświetlaj wynik w postaci "1e-3" zamiast stosować przedrostki SI.</para>
+					<para>Wyświetl wynik w postaci "1e-3" zamiast stosować przedrostki SI.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -164,7 +164,7 @@
 	<refsect1>
 		<title>Format liczby</title>
 		<para>Przy podawaniu liczb ułamkowych należy stosować kropkę (".") albo przecinek (",") dziesiętny; jest to zależne od ustawień regionalnych ("locale"), zatem jeden z tych znaków może nie działać przy twoich ustawieniach. Nie należy natomiast oddzielać żadnym znakiem tysięcy.</para>
-		<para><command>ralcalc</command> obsługuje przedrostki SI, zarówno przy podawaniu, jak i wyprowadzaniu informacji: <programlisting>
+		<para><command>ralcalc</command> obsługuje przedrostki SI zarówno przy wprowadzaniu, jak i wyprowadzaniu informacji: <programlisting>
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57,1429n</computeroutput></programlisting></para>
 		<para>Obsługiwane są także liczby w postaci 1e-3, gdzie "e" wskazuje potęgę dziesiątki. Nie należy mieszać w jednej liczbie przedrostków SI oraz "e" (zapis 1e-3n jest poprawny, natomiast 1ne-3 już nie - unikaj obu by nie stwarzać niejasności).</para>
@@ -173,7 +173,7 @@
 
 	<refsect1>
 		<title>Operatory</title>
-		<para>Obsługiwane są operatory matematyczne dodawania (+), odejmowania (-), mnożenia (*, x), dzielenia (/) i potęgowania (^), przy czym dodawanie i odejmowanie wykonywane jest w ostatniej kolejności, potęgowanie zaś w pierwszej. <programlisting>
+		<para>Obsługiwane są operatory matematyczne dodawania (+), odejmowania (-), mnożenia (*, x), dzielenia (/) i potęgowania (^), przy czym na końcu wykonywane jest dodawanie i odejmowanie, w pierwszej kolejności zaś potęgowanie. <programlisting>
 	<userinput>= 1+2x3</userinput>
 	<computeroutput>1+2x3 = 7</computeroutput>
 
@@ -193,7 +193,7 @@
 
 	<refsect1>
 		<title>Funkcje</title>
-		<para>Obsługiwane są funkcje <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (logarytm o podstawie 10) i <function>ln</function> (logarytm naturalny). Jednostką używaną w funkcjach trygonometrycznych jest radian. Używanie nawiasów nie jest konieczne, lecz jest zalecane tam, gdzie kolejność wykonywania działań może budzić wątpliwości. Funkcje wykonywane są w tym samym kroku co mnożenie/dzielenie, należy więc zwrócić na to szczególną uwagę: <programlisting>
+		<para>Obsługiwane są funkcje <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (logarytm o podstawie 10) i <function>ln</function> (logarytm naturalny). Jednostką używaną w funkcjach trygonometrycznych jest radian. Używanie nawiasów nie jest konieczne, lecz jest zalecane tam, gdzie kolejność wykonywania działań może budzić wątpliwości. Funkcje wykonywane są w tym samym kroku co mnożenie/dzielenie, należy więc zwrócić na tę kwestię szczególną uwagę: <programlisting>
 	<userinput>= sin2x2</userinput>
 	<computeroutput>sin2x2 = 1,81859</computeroutput>
 
@@ -236,7 +236,7 @@
 		<title>Zmienne środowiskowe</title>
 		<variablelist>
 			<varlistentry>
-				<term><envar>POCZĄTEK</envar></term>
+				<term><envar>HOME</envar></term>
 				<listitem>
 					<para>Określa lokalizację pliku .ralcalc_result.</para>
 				</listitem>
@@ -297,7 +297,7 @@
 	<computeroutput>Error: 3^^7</computeroutput>
 	 ^ nieprawidłowy operator</programlisting></para>
 
-		<para>Jeśli nawias znajduje się w niewłaściwym miejscu, to zostanie zgłoszony błąd "<errortext>nieprawidłowy nawias</errortext>". Błąd tego rodzaju często występuje łącznie z innymi błędami, więc na ekranie pojawi się więcej komunikatów. Najlepiej jest naprawić ten błąd jako pierwszy, ponieważ stanowi on zwykle główną przyczynę problemu. Znacznik błędu wskazuje nieprawidłowy nawias. <programlisting>
+		<para>Jeśli nawias znajduje się w niewłaściwym miejscu, to zostanie zgłoszony błąd "<errortext>nieprawidłowy nawias</errortext>". Błąd tego rodzaju często występuje łącznie z innymi błędami, więc na ekranie pojawi się więcej komunikatów. Najlepiej jest poprawić ten błąd jako pierwszy, ponieważ stanowi on zwykle główną przyczynę problemu. Znacznik błędu wskazuje nieprawidłowy nawias. <programlisting>
 	<userinput>= [2+]3</userinput>
 
 	<computeroutput>Błąd: [2+]3</computeroutput>

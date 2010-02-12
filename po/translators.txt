@@ -5,30 +5,50 @@ Basque
 - Mikel Alzibar
 
 Brazilian Portugese
+- Carlos Eduardo Moreira dos Santos
 - Enrico Nicoletto
 - Ricardo Ichizo
 
 Czech
 - DrakecZ
+- Kuvaly [LCT]
 
 Danish
 - Jimmy Frydkær Jensen
+
+Dutch
+- Yentl
 
 English (United Kingdom)
 - Jen Ockwell
 
 French
+- Christophe Painchaud
 - Djalil Oulmane
-- Pierre Rudloff
 - Johan Serre
+- Michel Boisset
+- Pierre Rudloff
+
+Frisian
+- Wander Nauta
 
 Hebrew
 - Yaron
 
+Italian
+- Lorenzo Baracchi
+
+Norwegian Bokmal
+- jraragris
+- Sigurd Gartmann
+
 Polish
+- Mexit
 - pp/bs
 
 Spanish
 - Daniel
 - Feder Sáiz
+- Federico Vera
 - navnelson
+- Paco Molinero

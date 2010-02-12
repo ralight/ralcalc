@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: ralcalc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-07 22:44+0000\n"
-"PO-Revision-Date: 2009-06-08 22:13+0000\n"
-"Last-Translator: navnelson <navnelson7@gmail.com>\n"
+"PO-Revision-Date: 2009-11-08 19:17+0000\n"
+"Last-Translator: Paco Molinero <paco@byasl.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-22 22:44+0000\n"
+"X-Launchpad-Export-Date: 2010-02-12 09:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../src/output.c:110
 #, c-format
 msgid " out of memory\n"
-msgstr " fuera de la memoria\n"
+msgstr " memoria insuficiente\n"
 
 #: ../src/output.c:113
 #, c-format
@@ -30,47 +30,47 @@ msgstr " Entrada a la función incorrecta (interno)\n"
 #: ../src/output.c:115
 #, c-format
 msgid " unknown token\n"
-msgstr " Símbolo desconocido\n"
+msgstr " símbolo desconocido\n"
 
 #: ../src/output.c:118
 #, c-format
 msgid " bad number\n"
-msgstr " mal numero\n"
+msgstr " número incorrecto\n"
 
 #: ../src/output.c:121
 #, c-format
 msgid " mismatched brackets\n"
-msgstr " Los paréntesis no coinciden\n"
+msgstr " paréntesis incorrectos\n"
 
 #: ../src/output.c:124
 #, c-format
 msgid " duplicate number\n"
-msgstr " Número duplicado\n"
+msgstr " número duplicado\n"
 
 #: ../src/output.c:127
 #, c-format
 msgid " invalid operator\n"
-msgstr " Operador invalido\n"
+msgstr " operador inválido\n"
 
 #: ../src/output.c:130
 #, c-format
 msgid " invalid bracket\n"
-msgstr " Paréntesis no valido\n"
+msgstr " paréntesis inválido\n"
 
 #: ../src/output.c:133
 #, c-format
 msgid " unable to open file\n"
-msgstr " Ha sido imposible abrir el archivo\n"
+msgstr " imposible abrir el archivo\n"
 
 #: ../src/output.c:135
 #, c-format
 msgid " unknown error (%d)\n"
-msgstr " Error desconocido (%d)\n"
+msgstr " error desconocido (%d)\n"
 
 #: ../src/ralcalc.c:55
 #, c-format
 msgid "ralcalc  version %s (build date: %s)\n"
-msgstr "ralcalc version %s (build date: %s)\n"
+msgstr "ralcalc versión %s (build date: %s)\n"
 
 #: ../src/ralcalc.c:56
 #, c-format
@@ -79,7 +79,8 @@ msgid ""
 "http://atchoo.org/tools/ralcalc/\n"
 "\n"
 msgstr ""
-"Derechos Reservados(R) 2007-2009 Roger Light\n"
+"Copyright (C) 2007-2009 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
 "\n"
 
 #: ../src/ralcalc.c:57
@@ -92,7 +93,7 @@ msgid ""
 msgstr ""
 "Racalc esta desprovisto de CUALQUIER GARANTIA. Usted puede distribuir racalc "
 "libremente\n"
-"como se indica en el archivo COPYING que acompaña a esta aplicación\n"
+"como se indica en el archivo COPYING que acompaña a esta aplicación.\n"
 "\n"
 
 #: ../src/ralcalc.c:58
@@ -101,7 +102,7 @@ msgid ""
 "ralcalc is a simple command line calculator. \n"
 "\n"
 msgstr ""
-"ralcalc es una calculadora simple en linea de comando. \n"
+"ralcalc es una calculadora simple de línea de comandos. \n"
 "\n"
 
 #: ../src/ralcalc.c:59
@@ -112,18 +113,18 @@ msgstr "Uso: ralcalc -h (muestra este mensaje)\n"
 #: ../src/ralcalc.c:60
 #, c-format
 msgid "       ralcalc -a   (display all available operators)\n"
-msgstr "       ralcalc -a (mostrar todos los operadores)\n"
+msgstr "       ralcalc -a (muestra todos los operadores)\n"
 
 #: ../src/ralcalc.c:61
 #, c-format
 msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
 msgstr ""
-"       ralcalc [-e] [-f fichero de entrada] [-i][-q][-r] <una ecuación>\n"
+"       ralcalc [-e] [-f archivo de entrada] [-i][-q][-r] <una ecuación>\n"
 
 #: ../src/ralcalc.c:62
 #, c-format
 msgid "Options\n"
-msgstr "Opcciones\n"
+msgstr "Opciones\n"
 
 #: ../src/ralcalc.c:63
 #, c-format
@@ -131,8 +132,8 @@ msgid ""
 " -e    Use the '1e-3' form of display for the answer rather than SI "
 "prefixes.\n"
 msgstr ""
-" -e Usa la notación '1e-3' en lugar de la notación Prefijo SI para mostrar "
-"los resultados.\n"
+" -e Usa la notación '1e-3' en lugar de la notación de prefijo SI para "
+"mostrar los resultados.\n"
 
 #: ../src/ralcalc.c:64
 #, c-format
@@ -148,12 +149,12 @@ msgstr ""
 #: ../src/ralcalc.c:66
 #, c-format
 msgid " -q    Only display the answer (quiet).\n"
-msgstr " -q Solo muestra la respuesta (quiet)\n"
+msgstr " -q Solo muestra la solución (silencioso)\n"
 
 #: ../src/ralcalc.c:67
 #, c-format
 msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
-msgstr " -r Muestra la respuesta sin prefijos SI ni exponentes.\n"
+msgstr " -r Muestra la solución sin prefijos SI ni exponentes.\n"
 
 #: ../src/ralcalc.c:68
 #, c-format
@@ -162,7 +163,7 @@ msgid ""
 "See http://atchoo.org/tools/ralcalc/ for updates.\n"
 msgstr ""
 "\n"
-"Visite http://atchoo.org/tools/ralcalc/ para actualizar\n"
+"Visite http://atchoo.org/tools/ralcalc/ para buscar actualizaciones\n"
 
 #: ../src/ralcalc.c:79
 #, c-format
@@ -172,32 +173,32 @@ msgstr "Números:\n"
 #: ../src/ralcalc.c:80
 #, c-format
 msgid "  1.0    : example number\n"
-msgstr "  1.0: Ejemplo de números\n"
+msgstr "  1.0 : número de ejemplo\n"
 
 #: ../src/ralcalc.c:81
 #, c-format
 msgid "  1.0e-3 : example number\n"
-msgstr "  1.0e-3 : Ejemplo de número\n"
+msgstr "  1.0e-3 : número de ejemplo\n"
 
 #: ../src/ralcalc.c:82
 #, c-format
 msgid "  1.0m   : example number\n"
-msgstr "  1.0m : Ejemplo de número\n"
+msgstr "  1.0m : número de ejemplo\n"
 
 #: ../src/ralcalc.c:83
 #, c-format
 msgid "  _      : previous result\n"
-msgstr "  _: Resultado previo\n"
+msgstr "  _: solución anterior\n"
 
 #: ../src/ralcalc.c:84
 #, c-format
 msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
-msgstr "  y, z, a, f, p, n, u, m : SI prefijos\n"
+msgstr "  y, z, a, f, p, n, u, m : prefijos SI\n"
 
 #: ../src/ralcalc.c:85
 #, c-format
 msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
-msgstr "  k, M, G, T, P, E, Z, Y : SI prefijos\n"
+msgstr "  k, M, G, T, P, E, Z, Y : prefijos SI\n"
 
 #: ../src/ralcalc.c:86
 #, c-format
@@ -216,17 +217,17 @@ msgstr "  +: adición\n"
 #: ../src/ralcalc.c:88
 #, c-format
 msgid "  -     : subtraction\n"
-msgstr "  -: resta\n"
+msgstr "  -: sustracción\n"
 
 #: ../src/ralcalc.c:89
 #, c-format
 msgid "  * x   : multiplication\n"
-msgstr "  *x: multiplicación\n"
+msgstr "  * x: producto\n"
 
 #: ../src/ralcalc.c:90
 #, c-format
 msgid "  /     : division\n"
-msgstr "  /: división\n"
+msgstr "  /: cociente\n"
 
 #: ../src/ralcalc.c:91
 #, c-format
@@ -236,12 +237,12 @@ msgstr "  %%: módulo\n"
 #: ../src/ralcalc.c:92
 #, c-format
 msgid "  ^     : power\n"
-msgstr "  ^ : Potenciación\n"
+msgstr "  ^ : potencia\n"
 
 #: ../src/ralcalc.c:93
 #, c-format
 msgid "  () [] : brackets increase precedence\n"
-msgstr "  () [] : aumentar la preferencia entre paréntesis\n"
+msgstr "  () [] : los paréntesis y corchetes aumentan la precedencia\n"
 
 #: ../src/ralcalc.c:94
 #, c-format
@@ -260,22 +261,22 @@ msgstr "  log X : logaritmo base 10 de X\n"
 #: ../src/ralcalc.c:96
 #, c-format
 msgid "  ln X          : natural logarithm of X\n"
-msgstr "  in X : logartimos natural de X\n"
+msgstr "  ln X : logaritmo natural de X\n"
 
 #: ../src/ralcalc.c:97
 #, c-format
 msgid "  sin X, asin X : sine, arcsin of X\n"
-msgstr "  sin X, asin X : sine, arcsin de X\n"
+msgstr "  sin X, asin X : seno, arcoseno de X\n"
 
 #: ../src/ralcalc.c:98
 #, c-format
 msgid "  cos X, acos X : cosine, arccos of X\n"
-msgstr "  cos X, acos X : cosine, arccos de X\n"
+msgstr "  cos X, acos X : coseno, arcocoseno de X\n"
 
 #: ../src/ralcalc.c:99
 #, c-format
 msgid "  tan X, atan X : tangent, arctan of X\n"
-msgstr "  tan X, atan X : tangent, arctan de X\n"
+msgstr "  tan X, atan X : tangente, arcotangente de X\n"
 
 #: ../src/ralcalc.c:100
 #, c-format
@@ -304,17 +305,17 @@ msgstr "  exp: 271828\n"
 #: ../src/ralcalc.c:197 ../src/ralcalc.c:242
 #, c-format
 msgid "Error: Out of memory\n"
-msgstr "Error: Fuera de memoria\n"
+msgstr "Error: Memoria insuficiente\n"
 
 #: ../src/ralcalc.c:319 ../src/ralcalc.c:342
 #, c-format
 msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
-msgstr "Error: Prefijo SI invalido '%s' for '-s' opcion.\n"
+msgstr "Error: Prefijo SI '%s' inválido para la opción '-s'.\n"
 
 #: ../src/ralcalc.c:371
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
-msgstr "Error: Fue imposible abrir el archivo \"%s\"\n"
+msgstr "Error: Imposible abrir el archivo \"%s\"\n"
 
 #: ../src/tokens.c:255
 #, c-format
