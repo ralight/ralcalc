@@ -1,0 +1,764 @@
+# Italian translation for ralcalc
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the ralcalc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ralcalc\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-06-01 23:26+0100\n"
+"PO-Revision-Date: 2010-01-01 14:15+0000\n"
+"Last-Translator: Lorenzo Baracchi <Unknown>\n"
+"Language-Team: Italian <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-05-06 11:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: man/ralcalc.1.xml:8(refentrytitle) man/ralcalc.1.xml:13(refname) man/ralcalc.1.xml:19(command) man/ralcalc.1.xml:43(command)
+msgid "ralcalc"
+msgstr "ralcalc"
+
+#: man/ralcalc.1.xml:9(manvolnum) man/ralcalc.1.xml:282(term)
+msgid "1"
+msgstr "1"
+
+#: man/ralcalc.1.xml:14(refpurpose)
+msgid "a simple command line calculator"
+msgstr "Una semplice calcolatrice da terminale"
+
+#: man/ralcalc.1.xml:23(option) man/ralcalc.1.xml:60(option) man/ralcalc.1.xml:107(option)
+msgid "-a"
+msgstr "-a"
+
+#: man/ralcalc.1.xml:24(option) man/ralcalc.1.xml:61(option) man/ralcalc.1.xml:108(option)
+msgid "--all"
+msgstr "--all"
+
+#: man/ralcalc.1.xml:29(option) man/ralcalc.1.xml:66(option) man/ralcalc.1.xml:126(option)
+msgid "-h"
+msgstr "-h"
+
+#: man/ralcalc.1.xml:30(option) man/ralcalc.1.xml:67(option) man/ralcalc.1.xml:127(option)
+msgid "--help"
+msgstr "--help"
+
+#: man/ralcalc.1.xml:35(option) man/ralcalc.1.xml:72(option) man/ralcalc.1.xml:160(option)
+msgid "-v"
+msgstr "-v"
+
+#: man/ralcalc.1.xml:36(option) man/ralcalc.1.xml:73(option) man/ralcalc.1.xml:161(option)
+msgid "--version"
+msgstr "--version"
+
+#: man/ralcalc.1.xml:45(option) man/ralcalc.1.xml:82(option) man/ralcalc.1.xml:114(option)
+msgid "-e"
+msgstr "-e"
+
+#: man/ralcalc.1.xml:46(option) man/ralcalc.1.xml:83(option) man/ralcalc.1.xml:146(option)
+msgid "-r"
+msgstr "-r"
+
+#: man/ralcalc.1.xml:48(option) man/ralcalc.1.xml:85(option) man/ralcalc.1.xml:120(option)
+msgid "-f"
+msgstr "-f"
+
+#: man/ralcalc.1.xml:48(replaceable) man/ralcalc.1.xml:85(replaceable)
+msgid "filename"
+msgstr "Nome del file"
+
+#: man/ralcalc.1.xml:49(option) man/ralcalc.1.xml:86(option) man/ralcalc.1.xml:133(option)
+msgid "-i"
+msgstr "-i"
+
+#: man/ralcalc.1.xml:50(option) man/ralcalc.1.xml:87(option) man/ralcalc.1.xml:139(option)
+msgid "-q"
+msgstr "-q"
+
+#: man/ralcalc.1.xml:51(option) man/ralcalc.1.xml:88(option) man/ralcalc.1.xml:153(option)
+msgid "-s"
+msgstr "-s"
+
+#: man/ralcalc.1.xml:51(replaceable) man/ralcalc.1.xml:88(replaceable)
+msgid "prefix"
+msgstr "prefisso"
+
+#: man/ralcalc.1.xml:52(replaceable) man/ralcalc.1.xml:89(replaceable)
+msgid "equation"
+msgstr "equazione"
+
+#: man/ralcalc.1.xml:56(command) man/ralcalc.1.xml:80(command)
+msgid "="
+msgstr "="
+
+#: man/ralcalc.1.xml:94(title)
+msgid "Description"
+msgstr "Descrizione"
+
+#: man/ralcalc.1.xml:95(para)
+msgid ""
+"<command>ralcalc</command> is a command line calculator designed for very "
+"quick calculations where perhaps only a single result is wanted without "
+"having to start and then quit a program."
+msgstr ""
+"<command>ralcalc</command> é una calcolatrice a liena di comando pesata per "
+"dei calcoli molto veloci dove forse si vuole un solo risultato senza dover "
+"far partire e poi chiudere un programma."
+
+#: man/ralcalc.1.xml:99(para)
+msgid ""
+"<command>ralcalc</command> is also installed as the <command>=</command> "
+"command to make using it even quicker."
+msgstr ""
+"<command>ralcalc</command> é installato anche come il comando "
+"<command>=</command> per renderne l'uso ancora piú veloce."
+
+#: man/ralcalc.1.xml:104(title)
+msgid "Options"
+msgstr "Opzioni"
+
+#: man/ralcalc.1.xml:110(para)
+msgid "Print out all of the available operators, functions and constants."
+msgstr "Stampa tutti i possibili operatori, funzioni e contanti."
+
+#: man/ralcalc.1.xml:116(para)
+msgid ""
+"Display the result in the \"1e-3\" form rather than using SI prefixes."
+msgstr ""
+"Mostra il risultato nella forma \"1e-3\" invece di usare il pefisso SI"
+
+#: man/ralcalc.1.xml:122(para)
+msgid ""
+"Process a list of calculations from a file. See the FILE INPUT section below "
+"for more information."
+msgstr ""
+"Processa una lista di calcoli da un file. Leggere la seguente sezione FILE "
+"INPUT per maggiori informazioni."
+
+#: man/ralcalc.1.xml:129(para) man/ralcalc.1.xml:163(para)
+msgid "Display usage, version and contact details."
+msgstr "Uso del display, dettagli su versione e contatti"
+
+#: man/ralcalc.1.xml:135(para)
+msgid ""
+"Process a list of calculations from <filename "
+"class=\"devicefile\">stdin</filename>. See the FILE INPUT section below for "
+"more information."
+msgstr ""
+"Processa una lista di calcoli da un file <filename "
+"class=\"devicefile\">stdin</filename>. Leggere la seguente sezione FILE "
+"INPUT per maggiori informazioni"
+
+#: man/ralcalc.1.xml:142(para)
+msgid "Only display the result (so hide the input and any errors)."
+msgstr ""
+"Mostra il solo risulatato (nascondendo gli input ed eventuali errori)"
+
+#: man/ralcalc.1.xml:149(para)
+msgid ""
+"Display the result in decimal format with neither SI prefixes nor exponent."
+msgstr ""
+"Mostra il risultato nella forma decimale senza il prefisso SI o esponente"
+
+#: man/ralcalc.1.xml:156(para)
+msgid ""
+"Display the result using a particular SI prefix. This option is ignored if "
+"<option>-e</option> or <option>-r</option> is also used."
+msgstr ""
+"Mostra il risulatato usando un particolare prefisso SI. Questa opzione é "
+"ingorata se <option>-e</option> o <option>-r</option> sono usate anch'esse."
+
+#: man/ralcalc.1.xml:170(title)
+msgid "Number Format"
+msgstr "Formato del numero"
+
+#: man/ralcalc.1.xml:171(para)
+msgid ""
+"Numbers should be input using either \".\" or \",\" as a decimal point (this "
+"is locale dependent so both may not work in your locale), with no thousands "
+"separators."
+msgstr ""
+"I numberi in ingresso usano sia \".\" che \",\" come virgola decimale "
+"(queste impostazioni dipendono dal locale impostato nel sistema, quindi "
+"potrebbero non funzionare sul tuo) senza specificare separatori per le "
+"migliaia."
+
+#: man/ralcalc.1.xml:174(userinput)
+#, no-wrap
+msgid "= 2u/35"
+msgstr "= 2u/35"
+
+#: man/ralcalc.1.xml:175(computeroutput)
+#, no-wrap
+msgid "2u/35 = 57.1429n"
+msgstr "2u/35 = 57.1429n"
+
+#: man/ralcalc.1.xml:172(para)
+msgid ""
+"<command>ralcalc</command> supports SI prefix characters for both input and "
+"output: <placeholder-1/>"
+msgstr ""
+"<command>ralcalc</command> supporta il prefisso SI  sia per input che "
+"output: <placeholder-1/>"
+
+#: man/ralcalc.1.xml:177(para)
+msgid ""
+"Numbers of the form 1e-3 are also supported, where the \"e\" indicates a "
+"power of ten. Don't mix and match SI prefixes and \"e\" in the same number "
+"(although 1e-3n is valid, 1ne-3 is not - avoid both for less confusion)."
+msgstr ""
+"I numeri nella forma 1e-3 sono anch'essi supportati, dove la \"e\" indica le "
+"potenze di 10. Non mischiare il prefisso SI e la notazione \"e\" nello "
+"stesso numero (altrimenti 1e-3n é valida, 1ne-3 non lo é - evitare entrambi "
+"per avere meno confisioni)"
+
+#: man/ralcalc.1.xml:178(para)
+msgid ""
+"The SI prefixes supported are: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, "
+"y."
+msgstr ""
+"I prefissi SI supportati sono: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, "
+"y."
+
+#: man/ralcalc.1.xml:182(title)
+msgid "Operators"
+msgstr "Operatori"
+
+#: man/ralcalc.1.xml:185(userinput)
+#, no-wrap
+msgid "= 1+2x3"
+msgstr "= 1+2x3"
+
+#: man/ralcalc.1.xml:186(computeroutput)
+#, no-wrap
+msgid "1+2x3 = 7"
+msgstr "1+2x3 = 7"
+
+#: man/ralcalc.1.xml:188(userinput)
+#, no-wrap
+msgid "= 1/2^0.5"
+msgstr "= 1/2^0.5"
+
+#: man/ralcalc.1.xml:189(computeroutput)
+#, no-wrap
+msgid "1/2^0.5 = 0.707107"
+msgstr "1/2^0.5 = 0.707107"
+
+#: man/ralcalc.1.xml:183(para)
+msgid ""
+"The simple mathematical operators for addition (+), subtraction (-), "
+"multiplication (*, x), division (/) and power (^) are supported, with "
+"addition and subtraction having the lowest precedence and power having the "
+"highest. <placeholder-1/>"
+msgstr ""
+"I semplici opreatori matematici per addizione (+), sottrazione (-), "
+"moltiplicazione (*, x), divisione (/) e potenza (^) sono supportati, con "
+"addizione e sottrazione con la precedenza minore, mentre la potenza con "
+"precedenza maggiore. <placeholder-1/>"
+
+#: man/ralcalc.1.xml:193(userinput)
+#, no-wrap
+msgid "= [1+2]x3"
+msgstr "= [1+2]x3"
+
+#: man/ralcalc.1.xml:194(computeroutput)
+#, no-wrap
+msgid "[1+2]x3 = 9"
+msgstr "[1+2]x3 = 9"
+
+#: man/ralcalc.1.xml:191(para)
+msgid ""
+"Brackets ( (), [] ) can be used to control the order in which statements are "
+"processed: <placeholder-1/>"
+msgstr ""
+"Le parentesi ( ( ), [ ] ) possono essere usate per controllare la precedenza "
+" delle operazioni processate: <placeholder-1/>"
+
+#: man/ralcalc.1.xml:196(para)
+msgid ""
+"Both the square and round brackets can be used and are both directly "
+"equivalent, so [1+2)x3 is also valid. Round brackets are more commonly used "
+"in mathematics, but the square brackets (and the \"x\" for multiplication) "
+"are included to try to prevent problems with the shell expanding those "
+"characters."
+msgstr ""
+"Sia le parentesi quadre che quelle tonde possono essere usate e sono "
+"equivalenti, quindi [1+2)x3 é valida. Le parentesi tonde sono piú "
+"comunemente utilizzate in matematica, ma le parentesi quadre (ed il simbolo "
+"\"x\" per la moltiplicazione) sono incluse per cercare di prevenire alla "
+"shell di espandere questi caratteri."
+
+#: man/ralcalc.1.xml:199(userinput)
+#, no-wrap
+msgid "= 2^0.5"
+msgstr "= 2^0.5"
+
+#: man/ralcalc.1.xml:200(computeroutput)
+#, no-wrap
+msgid "2^0.5 = 1.41421"
+msgstr "2^0.5 = 1.41421"
+
+#: man/ralcalc.1.xml:202(userinput)
+#, no-wrap
+msgid "= 1/_"
+msgstr "= 1/_"
+
+#: man/ralcalc.1.xml:203(computeroutput)
+#, no-wrap
+msgid "1/_ = 0.707107"
+msgstr "1/_ = 0.707107"
+
+#: man/ralcalc.1.xml:197(para)
+msgid ""
+"<command>ralcalc</command> stores the result of the calculation so that it "
+"can be used in the next calculation with the \"_\" character. <placeholder-"
+"1/>"
+msgstr ""
+"<command>ralcalc</command> memorizza il risultato dei calcoli cosí da essere "
+"utilizzati nelle prossime computazioni con il carattere \"_\". <placeholder-"
+"1/>"
+
+#: man/ralcalc.1.xml:208(title)
+msgid "Functions"
+msgstr "Funzioni"
+
+#: man/ralcalc.1.xml:211(userinput)
+#, no-wrap
+msgid "= sin2x2"
+msgstr "= sin2x2"
+
+#: man/ralcalc.1.xml:212(computeroutput)
+#, no-wrap
+msgid "sin2x2 = 1.81859"
+msgstr "sin2x2 = 1.81859"
+
+#: man/ralcalc.1.xml:214(userinput)
+#, no-wrap
+msgid "= sin[2x2]"
+msgstr "= sin[2x2]"
+
+#: man/ralcalc.1.xml:215(computeroutput)
+#, no-wrap
+msgid "sin[2x2] = -0.756802"
+msgstr "sin[2x2] = -0.756802"
+
+#: man/ralcalc.1.xml:209(para)
+msgid ""
+"The functions <function>sin</function>, <function>cos</function>, "
+"<function>tan</function>, <function>asin</function>, "
+"<function>acos</function>, <function>atan</function>, "
+"<function>sqrt</function>, <function>log</function> (base 10 logarithm) and "
+"<function>ln</function> (natural logarithm) are supported. The trigonometric "
+"functions work on radians. The use of brackets is not necessary, but is "
+"recommended where precedence may be confusing. The functions have equal "
+"precedence to multiplication/division, so care must be taken: <placeholder-"
+"1/>"
+msgstr ""
+"Le funzioni <function>sin</function>, <function>cos</function>, "
+"<function>tan</function>, <function>asin</function>, "
+"<function>acos</function>, <function>atan</function>, "
+"<function>sqrt</function>, <function>log</function> (logaritmo in base 10) e "
+"<function>ln</function> (logaritmo naturale) sono supportate. Le funzioni "
+"trigonometriche funzionano con valori espressi in radianti. L'uso delle "
+"parentesi non é necessario, ma é raccomandato quando le precedenze possono "
+"essere mal interpretate. Le funzioni hanno le stesse precedenze di "
+"moltiplicazione/divisione, così vanno usate con cautela: <placeholder-1/>"
+
+#: man/ralcalc.1.xml:220(title)
+msgid "Constants"
+msgstr "Costanti"
+
+#: man/ralcalc.1.xml:221(para)
+msgid ""
+"The constants <constant>pi</constant> (3.14159) and <constant>exp</constant> "
+"(2.71828) can be used and are treated the same as any other number."
+msgstr ""
+"Le costanti <constant>pi</constant> (3.14159) e <constant>exp</constant> "
+"(2.71828) possono essere usate e sono trattate esattamente come qualsiasi "
+"altro numero."
+
+#: man/ralcalc.1.xml:225(title)
+msgid "File Input"
+msgstr "File Input"
+
+#: man/ralcalc.1.xml:228(userinput)
+#, no-wrap
+msgid "2^0.5"
+msgstr "2^0.5"
+
+#: man/ralcalc.1.xml:229(userinput)
+#, no-wrap
+msgid "1/_"
+msgstr "1/_"
+
+#: man/ralcalc.1.xml:230(userinput)
+#, no-wrap
+msgid "238/1064x100"
+msgstr "238/1064x100"
+
+#: man/ralcalc.1.xml:226(para)
+msgid ""
+"A list of calculations can be processed at once by placing them in a file. "
+"Each line of the file will be process exactly the same as if "
+"<command>ralcalc</command> had been run with those arguments. The file could "
+"look like the following (note the lack of the command <command>=</command> "
+"or <command>ralcalc</command>): <placeholder-1/>"
+msgstr ""
+"Una lista di calcoli possono essere processati in una singola volta "
+"mettendole in un file. Ogni linea del file sará processata esattamente come "
+"se fosse stato eseguito il comando <command>ralcalc</command> senza "
+"argomenti. Il file potrebbe assomigliare al seguente (notare l'assenza di "
+"comandi <command>=</command> o <command>ralcalc</command>): <placeholder-1/>"
+
+#: man/ralcalc.1.xml:232(para)
+msgid ""
+"File input is also possible using <filename "
+"class=\"devicefile\">stdin</filename>, i.e. reading interactively directly "
+"from the terminal with each line being calculated as normal. To quit, type "
+"\"q\" or \"quit\" on a new line, use Ctrl-D to indicate the end of file, or "
+"use Ctrl-C to cause <command>ralcalc</command> to be terminated."
+msgstr ""
+"Gli input da file é anche possibile usando <filename "
+"class=\"devicefile\">stdin</filename>, come se ogni linea fosse inserita "
+"direttamente da terminale come usualmente. Per uscire premere \"q\" o "
+"\"quit\" su una nuova linea, usare Ctrl-D per indicare la fine del file, o "
+"usare Ctrl-C per far si che <command>ralcalc</command> venga terminato."
+
+#: man/ralcalc.1.xml:233(para)
+msgid ""
+"If either of the file input options are given on the command line, then any "
+"calculations given on the command line will be calculated first. If both of "
+"the file input options are given, then the calculations from the <option>-"
+"f</option> will be carried out first, followed by those from <filename "
+"class=\"devicefile\">stdin</filename>."
+msgstr ""
+"Se al comando vengono specificati sia un file in input che operazioni dalla "
+"linea di comando, allora i calcoli dati da linea di comando verranno "
+"eseguiti prima. Se entrambe le opzioni sono state date allora i calcoli da "
+"<option>-f</option> saranno eseguiti per primi, seguiti da quelli "
+"provenienti da <filename class=\"devicefile\">stdin</filename>."
+
+#: man/ralcalc.1.xml:237(title)
+msgid "Examples"
+msgstr "Esempi"
+
+#: man/ralcalc.1.xml:240(userinput)
+#, no-wrap
+msgid "= ln 1.0001"
+msgstr "= ln 1.0001"
+
+#: man/ralcalc.1.xml:241(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 99.995u"
+msgstr "ln 1.0001 = 99.995u"
+
+#: man/ralcalc.1.xml:238(para)
+msgid "Basic calculation: <placeholder-1/>"
+msgstr "Calcoli base: <placeholder-1/>"
+
+#: man/ralcalc.1.xml:245(userinput)
+#, no-wrap
+msgid "= -e ln 1.0001"
+msgstr "= -e ln 1.0001"
+
+#: man/ralcalc.1.xml:246(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 9.9995e-05"
+msgstr "ln 1.0001 = 9.9995e-05"
+
+#: man/ralcalc.1.xml:243(para)
+msgid "Exponent number output format: <placeholder-1/>"
+msgstr "Formato di output dell'esponente: <placeholder-1/>"
+
+#: man/ralcalc.1.xml:250(userinput)
+#, no-wrap
+msgid "= -r ln 1.0001"
+msgstr "= -r ln 1.0001"
+
+#: man/ralcalc.1.xml:251(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 0.000100"
+msgstr "ln 1.0001 = 0.000100"
+
+#: man/ralcalc.1.xml:248(para)
+msgid "Raw number output format: <placeholder-1/>"
+msgstr "Formato approssimato di output del numero: <placeholder-1/>"
+
+#: man/ralcalc.1.xml:255(userinput)
+#, no-wrap
+msgid "= -s m ln 1.0001"
+msgstr "= -s m ln 1.0001"
+
+#: man/ralcalc.1.xml:256(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 0.099995"
+msgstr "ln 1.0001 = 0.099995"
+
+#: man/ralcalc.1.xml:253(para)
+msgid "Number output format with a specified SI prefix: <placeholder-1/>"
+msgstr ""
+"Formato di output del numer con uno specifico prefisso SI: <placeholder-1/>"
+
+#: man/ralcalc.1.xml:261(title)
+msgid "Environment Variables"
+msgstr "Variabili d'Ambiente"
+
+#: man/ralcalc.1.xml:264(envar)
+msgid "HOME"
+msgstr "HOME"
+
+#: man/ralcalc.1.xml:266(para)
+msgid "Determines where the .ralcalc_result file is stored."
+msgstr "Determina dove i file .ralcalc_result sono salvati."
+
+#: man/ralcalc.1.xml:273(title)
+msgid "Exit Values"
+msgstr "Valore d'uscita"
+
+#: man/ralcalc.1.xml:276(term)
+msgid "0"
+msgstr "0"
+
+#: man/ralcalc.1.xml:278(para)
+msgid "Success"
+msgstr "Successo"
+
+#: man/ralcalc.1.xml:284(para)
+msgid "At least one error occurred."
+msgstr "Almeno un errore è stato riscontrato"
+
+#: man/ralcalc.1.xml:291(title)
+msgid "Files"
+msgstr "Files"
+
+#: man/ralcalc.1.xml:293(filename)
+msgid "${HOME}/.ralcalc_result"
+msgstr "${HOME}/.ralcalc_result"
+
+#: man/ralcalc.1.xml:294(blockquote)
+msgid ""
+"The result of the most recent calculation, which can be accessed in a later "
+"calculation using the \"_\" character. Note that this is not necessarily "
+"portable across different machine architectures."
+msgstr ""
+"Il risultato del calcolo più recente può essere riutilizzato in un calcolo "
+"seguente usando il carattere \"_\". Nota che questo potrebbe non essere "
+"portabile attraverso differenti tipi di architettura dei pc"
+
+#: man/ralcalc.1.xml:299(title)
+msgid "Diagnostics"
+msgstr "Diagnostica"
+
+#: man/ralcalc.1.xml:300(para)
+msgid ""
+"<command>ralcalc</command> attempts to notify the user of as many errors as "
+"possible and indicate where those errors are, if they are user input related."
+msgstr ""
+"<command>ralcalc</command> cerca di notificare all'utente il maggiorn numero "
+"possibile di errori verificatis e dove essi si trovano, se questi sono "
+"relativi all'input dell'utente."
+
+#: man/ralcalc.1.xml:303(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"\t<userinput>= 34/3@2</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 34/3@2</computeroutput>\n"
+"\t           ^ unknown token"
+msgstr ""
+"\n"
+"\t<userinput>= 34/3@2</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 34/3@2</computeroutput>\n"
+"\t           ^ unknown token"
+
+#: man/ralcalc.1.xml:302(para)
+msgid ""
+"If an unknown character is included in the equation, an \"<errortext>unknown "
+"token</errortext>\" error will be generated. The error marker points to the "
+"invalid character. <placeholder-1/>"
+msgstr ""
+"Se un carattere sconosciuto è incluso nell'equazione, un errore "
+"\"<errortext>simbolo sconosciuto</errortext>\" sarà generato. Il puntatore "
+"di errore sarà sotto il carattere invalido. <placeholder-1/>"
+
+#: man/ralcalc.1.xml:311(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"\t<userinput>= 3.14.159x2.8^2</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 3.14.159x2.8^2</computeroutput>\n"
+"\t              ^ bad number"
+msgstr ""
+"\n"
+"\t<userinput>= 3.14.159x2.8^2</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 3.14.159x2.8^2</computeroutput>\n"
+"\t              ^ numero errato"
+
+#: man/ralcalc.1.xml:310(para)
+msgid ""
+"If an invalid number is included, a \"<errortext>bad number</errortext>\" "
+"error will be generated. The error marker points to the end of the invalid "
+"number. <placeholder-1/>"
+msgstr ""
+"Se un numero invalido viene incluso, verrà generato un errore "
+"\"<errortext>bad number</errortext>\".  Un indicatore d'errore sarà posto "
+"alla fine del numero invalido.  <placeholder-1/>"
+
+#: man/ralcalc.1.xml:319(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"\t<userinput>= 5/[[2+3]*9</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 5/[[2+3]*9</computeroutput>\n"
+"\t                 ^ mismatched brackets"
+msgstr ""
+"\n"
+"\t<userinput>= 5/[[2+3]*9</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 5/[[2+3]*9</computeroutput>\n"
+"\t                 ^ mismatched brackets"
+
+#: man/ralcalc.1.xml:318(para)
+msgid ""
+"If the number of open and close brackets do not match, a "
+"\"<errortext>mismatched brackets</errortext>\" error will be generated. The "
+"error marker position has no significance. <placeholder-1/>"
+msgstr ""
+"Se il numero di parentesi aperte e chiuse non coincide, un errore "
+"\"<errortext>parentesi mal poste</errortext>\" verrà generato. Il puntatore "
+"all'errore non ha alcun significato."
+
+#: man/ralcalc.1.xml:327(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"\t<userinput>= 3^^7</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 3^^7</computeroutput>\n"
+"\t         ^ invalid operator"
+msgstr ""
+"\n"
+"\t<userinput>= 3^^7</userinput>\n"
+"\n"
+"\t<computeroutput>Error: 3^^7</computeroutput>\n"
+"\t         ^ operatore invalido"
+
+#: man/ralcalc.1.xml:326(para)
+msgid ""
+"If an operator appears in an invalid position, an \"<errortext>invalid "
+"operator</errortext>\" error will be generated. The error marker indicated "
+"the invalid operator. <placeholder-1/>"
+msgstr ""
+"Se un operatore appare in una posizione invalida, un errore "
+"\"<errortext>operatore invalido</errortext>\" sarà generato. Il puntatore di "
+"errore sarà sotto l'operatore invalido. <placeholder-1/>"
+
+#: man/ralcalc.1.xml:335(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"\t<userinput>= [2+]3</userinput>\n"
+"\n"
+"\t<computeroutput>Error: [2+]3</computeroutput>\n"
+"\t          ^ invalid bracket\n"
+"\n"
+"\t<computeroutput>Error: [2+]3</computeroutput>\n"
+"\t            ^ invalid operator"
+msgstr ""
+"\n"
+"\t<userinput>= [2+]3</userinput>\n"
+"\n"
+"\t<computeroutput>Error: [2+]3</computeroutput>\n"
+"\t          ^ parentesi invalida\n"
+"\n"
+"\t<computeroutput>Error: [2+]3</computeroutput>\n"
+"\t            ^ operatore invalido"
+
+#: man/ralcalc.1.xml:334(para)
+msgid ""
+"If a bracket appears in an invalid position, an \"<errortext>invalid "
+"bracket</errortext>\" error will be generated. This type of error often "
+"overlaps with other errors, so there will be a number of messages written to "
+"the screen. It is best to fix this error first as it will likely be the root "
+"cause of the problem. The error marker indicates the invalid bracket. "
+"<placeholder-1/>"
+msgstr ""
+"Se una parentesi appare in una posizione non valida, un errore "
+"\"<errortext>parentesi invalida</errortext>\" sarà generata. Questo genere "
+"di errori solitamente si sovrappone ad altri errori, quindi ci saranno un "
+"certo numero di messaggi sullo schermo. E' il miglior modo di correggere "
+"l'errore in quanto questo probabilmente è la causa principale del problema. "
+"Il puntatore all'errore indica la parentesi invalida. <placeholder-1/>"
+
+#: man/ralcalc.1.xml:345(para)
+msgid ""
+"If <command>ralcalc</command> is unable to allocate some memory, an "
+"\"<errortext>out of memory</errortext>\" error will be generated."
+msgstr ""
+"Se <command>ralcalc</command> non riesce ad allocare abbastanza memoria, un "
+"errore \"<errortext>out of memory</errortext>\" sarà generato."
+
+#: man/ralcalc.1.xml:347(para)
+msgid ""
+"Internal error: If the parser notices two numbers next to each other yet "
+"does not generate a \"<errortext>bad number</errortext>\" error, the a "
+"\"<errortext>duplicate number</errortext>\" error will be generated. This "
+"should never happen."
+msgstr ""
+"Errore interno: Se il parser nota due numeri vicini uno all'altro non genera "
+"ancora un errore \"<errortext>numero inesatto</errortext>\", l'errore "
+"\"<errortext>numero duplicato</errortext>\" verrà generato. Questo non "
+"dovrebbe mai accadere."
+
+#: man/ralcalc.1.xml:349(para)
+msgid ""
+"Internal error: If an unknown error code is passed to the error output "
+"function, an \"<errortext>unknown error</errortext>\" will be generated and "
+"the invalid error code displayed. This should never happen."
+msgstr ""
+"Errore interno: Se un codice d'errore sconosciuto è passato come output alla "
+"funzione di controllo errori, un errore \"<errortext>errore "
+"sconosciuto</errortext>\" sarà generato e visualizzato il codice invalido di "
+"errore. Questo non dovrebbe mai succedere."
+
+#: man/ralcalc.1.xml:353(title)
+msgid "Bugs"
+msgstr "Bugs"
+
+#: man/ralcalc.1.xml:354(para)
+msgid ""
+"Only a single \"<option>-f <replaceable>filename</replaceable></option>\" "
+"can be passed at once."
+msgstr ""
+"Soltanto una singola \"<option>-f "
+"<replaceable>filename</replaceable></option>\"  può essere passata per volta."
+
+#: man/ralcalc.1.xml:355(para)
+msgid ""
+"If you find a bug, please submit a report at <uri "
+"type=\"webpage\">http://bugs.launchpad.net/ralcalc</uri>"
+msgstr ""
+"Se trovi un bug, per favore invia un report a  <uri "
+"type=\"webpage\">http://bugs.launchpad.net/ralcalc</uri>"
+
+#: man/ralcalc.1.xml:359(title)
+msgid "Author"
+msgstr "Autore"
+
+#: man/ralcalc.1.xml:360(para)
+msgid "Roger Light <email>roger@atchoo.org</email>"
+msgstr "Roger Light <email>roger@atchoo.org</email>"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#: man/ralcalc.1.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Lorenzo Baracchi https://launchpad.net/~baracchi-lorenzo"
