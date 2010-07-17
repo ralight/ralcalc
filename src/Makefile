@@ -12,7 +12,7 @@ ralcalc_OBJS=$(ralcalc_SOURCES:.c=.o)
 all : ralcalc
 
 ralcalc : $(ralcalc_OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o : %.c
 	$(CC) -DVERSION=\"${VERSION}\" -DBUILDDATE=\"${BUILDDATE}\" -DLOCALEDIR=\"${localedir}\" ${CFLAGS} -c $^
