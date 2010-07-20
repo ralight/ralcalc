@@ -1,3 +1,7 @@
+
+copyrev: 957226f46deb15baba2c5b24ef7c683029e029d0
+copy: man/ralcalc-en_GB.xml
+
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "/usr/share/sgml/docbook/xml-dtd-4.1.2/docbookx.dtd">

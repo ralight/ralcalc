@@ -36,13 +36,5 @@ distclean :
 		rm -f ralcalc-$${c}.1 ; \
 	done
 
-potgen :
-	 /usr/bin/xml2po -o po/ralcalc.1.pot ralcalc.1.xml
-
-pomerge :
-	@for c in ${MANCOUNTRIES}; do \
-		/usr/bin/xml2po -p po/ralcalc-$${c}.1.po ralcalc.1.xml > ralcalc-$${c}.1.xml ; \
-	done
-
 # To merge new translations do:
 # /usr/bin/xml2po -p de.po chapter1.xml > chapter1.de.xml
