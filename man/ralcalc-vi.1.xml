@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "/usr/share/sgml/docbook/xml-dtd-4.1.2/docbookx.dtd">
+<refentry xml:id="ralcalc">
+	<refmeta>
+		<refentrytitle>ralcalc</refentrytitle>
+		<manvolnum>1</manvolnum>
+	</refmeta>
+
+	<refnamediv>
+		<refname>ralcalc</refname>
+		<refpurpose>máy tính đơn giản được thao tác từ dòng lệnh</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<cmdsynopsis>
+			<command>ralcalc</command>
+			<group choice="plain">
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-a</option></arg>
+						<arg choice="plain"><option>--all</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-h</option></arg>
+						<arg choice="plain"><option>--help</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-v</option></arg>
+						<arg choice="plain"><option>--version</option></arg>
+					</group>
+				</arg>
+			</group>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>ralcalc</command>
+			<group choice="opt">
+				<arg><option>-e</option></arg>
+				<arg><option>-r</option></arg>
+			</group>
+			<arg><option>-f</option> <replaceable>tên file</replaceable></arg>
+			<arg><option>-i</option></arg>
+			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>tiền tố</replaceable></arg>
+			<arg choice="plain"><replaceable>phương trình</replaceable></arg>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>=</command>
+			<group choice="plain">
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-a</option></arg>
+						<arg choice="plain"><option>--all</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-h</option></arg>
+						<arg choice="plain"><option>--help</option></arg>
+					</group>
+				</arg>
+				<arg choice="plain">
+					<group choice="req">
+						<arg choice="plain"><option>-v</option></arg>
+						<arg choice="plain"><option>--version</option></arg>
+					</group>
+				</arg>
+			</group>
+		</cmdsynopsis>
+
+		<cmdsynopsis>
+			<command>=</command>
+			<group choice="opt">
+				<arg><option>-e</option></arg>
+				<arg><option>-r</option></arg>
+			</group>
+			<arg><option>-f</option> <replaceable>tên file</replaceable></arg>
+			<arg><option>-i</option></arg>
+			<arg><option>-q</option></arg>
+			<arg><option>-s</option><replaceable>tiền tố</replaceable></arg>
+			<arg choice="plain"><replaceable>phương trình</replaceable></arg>
+		</cmdsynopsis>
+	</refsynopsisdiv>
+
+	<refsect1>
+		<title>Mô tả</title>
+		<para><command>ralcalc</command> là máy tính chạy trên dòng lệnh giúp bạn thực hiện phép tính nhanh chóng, những lúc chỉ cần một đáp số mà không cần phải khởi động và thoát chương trình.</para>
+
+		<para><command>ralcalc</command> cũng được cài đặt như lệnh <command>=</command> để có thể được sử dụng nhanh hơn.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Tuỳ chọn</title>
+		<variablelist>
+			<varlistentry>
+				<term><option>-a</option></term>
+				<term><option>--all</option></term>
+				<listitem>
+					<para>In ra tất cả các toán tử, hàm số và hằng số hiện có.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-e</option></term>
+				<listitem>
+					<para>Hiển thị kết quả dưới dạng "1e-3" thay vì dùng các tiền tố SI.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-f</option></term>
+				<listitem>
+					<para>Xử lí dãy các phép tính từ một file. Xem phần FILE INPUT sau đây để biết thêm thông tin.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-h</option></term>
+				<term><option>--help</option></term>
+				<listitem>
+					<para>Hiển thị cách dùng, phiên bản và thông tin về tác giả.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-i</option></term>
+				<listitem>
+					<para>Xử lí dãy các phép tính từ <filename class="devicefile">stdin</filename>. Xem phần FILE INPUT sau đây để biết thêm thông tin.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-q</option></term>
+				<!-- <term><option>- -quiet</option></term> -->
+				<listitem>
+					<para>Chỉ hiển thị kết quả (và do đó giấu đi lệnh nhập vào và lỗi, nếu có).</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-r</option></term>
+				<!-- <term><option>- -raw</option></term> -->
+				<listitem>
+					<para>Hiển thị kết quả dưới dạng thập phân mà không có các tiền tố SI hay số mũ.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-s</option></term>
+				<!-- <term><option>- -si-prefix</option></term> -->
+				<listitem>
+					<para>Hiển thị kết quả atheo một tiền tố SI riêng. Tùy chọ này sẽ được bỏ qua nếu <option>-e</option> hoặc <option>-r</option> cũng được dùng.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-v</option></term>
+				<term><option>--version</option></term>
+				<listitem>
+					<para>Hiển thị cách dùng, phiên bản và thông tin về tác giả.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Định dạng Số</title>
+		<para>Các số thập phân nên dùng dấu "." hoặc "," làm dấu phân cách (quy định dấu này phụ thuộc vào từng máy); không có dấu phân cách hàng nghìn.</para>
+		<para><command>ralcalc</command> hỗ trợ các chữ tiền tố SI cho cả đầu vào lẫn đầu ra: <programlisting>
+	<userinput>= 2u/35</userinput>
+	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
+		<para>Các số kiểu như 1e-3 cũng được hỗ trợ, trong đó chữ "e" biểu thị lũy thừa của 10. Đừng dùng lẫn các tiền tố SI và chữ "e" trong cùng một số (mặc dù 1e-3n là hợp lệ, nhưng 1ne-3 thì không - và tốt nhất tránh cả hai cách để đỡ nhầm lẫn).</para>
+		<para>Các tiền tố SI được hỗ trợ bao gồm: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Toán tử</title>
+		<para>Các toán tử đơn giản như cộng (+), trừ (-), nhân (*, x), chia (/) và lũy thừa (^) đều được hỗ trợ, với phép cộng và trừ có thứ tự ưu tiên thực hiện thấp nhất và lũy thừa ưu tiên cao nhất. <programlisting>
+	<userinput>= 1+2x3</userinput>
+	<computeroutput>1+2x3 = 7</computeroutput>
+
+	<userinput>= 1/2^0.5</userinput>
+	<computeroutput>1/2^0.5 = 0.707107</computeroutput></programlisting></para>
+		<para>Các ngoặc ( (), [] ) có thể được dùng để kiểm soát thứ tự thực hiện phép tính: <programlisting>
+	<userinput>= [1+2]x3</userinput>
+	<computeroutput>[1+2]x3 = 9</computeroutput></programlisting></para>
+		<para>Cả ngoặc vuông và ngoặc tròn đều dùng được và chúng tương đương nhau, vì vậy [1+2)x3 cũng hợp lệ. Ngoặc tròn thường dùng trong toán học, nhưng ngoặc vuông (và dấu "x" cho phép nhân) sẽ cần dùng đến trong trường hợp muốn tránh bị trùng kí hiệu với shell.</para>
+		<para><command>ralcalc</command> lưu kết quả tính toán vì vậy bằng kí tự "_" ta có thể dùng kết quả này trong phép tính kế tiếp. <programlisting>
+	<userinput>= 2^0.5</userinput>
+	<computeroutput>2^0.5 = 1.41421</computeroutput>
+
+	<userinput>= 1/_</userinput>
+	<computeroutput>1/_ = 0.707107</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Hàm số</title>
+		<para>Các hàm <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (lôga cơ số 10) và <function>ln</function> (lôga tự nhiên) đều được hỗ trợ. Các hàm lượng giác tính với ra-đian. Việc dùng ngoặc là không cần thiết, nhưng có thể nếu muốn đỡ bị lẫn thứ tự thực hiện. Các hàm có độ ưu tiên thứ tự thực hiện ngang với phép nhân/chia, vì vậy phải cẩn thận: <programlisting>
+	<userinput>= sin2x2</userinput>
+	<computeroutput>sin2x2 = 1.81859</computeroutput>
+
+	<userinput>= sin[2x2]</userinput>
+	<computeroutput>sin[2x2] = -0.756802</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Hằng số</title>
+		<para>Các hằng số <constant>pi</constant> (3.14159) và <constant>exp</constant> (2.71828) có thể được dùng và chúng được coi như bất kì số thông thường nào.</para>
+	</refsect1>
+
+	<refsect1 id="fileinput">
+		<title>File đầu vào</title>
+		<para>Một dãy các phép tính có thể thực hiện liền nhau nếu chúng được đặt trong một file. Mỗi dòng của file sẽ được xử lí giống như khi  <command>ralcalc</command> được chạy với các thông số đó. File có thể giống như sau (chú ý sự vắng mặt của lệnh <command>=</command> hoặc <command>ralcalc</command>): <programlisting>
+	<userinput>2^0.5</userinput>
+	<userinput>1/_</userinput>
+	<userinput>238/1064x100</userinput></programlisting></para>
+		<para>Cũng có thể nhập vào qua file <filename class="devicefile">stdin</filename>, nghĩa là trực tiếp đọc từ cửa sổ lệnh với mỗi dòng được tính toán như thông thường. Để thoát, ấn "q" hoặc "quit" ở đầu dòng mới, dùng Ctrl-D để chỉ định kết thúc file, hoặc dùng Ctrl-C để chấm dứt chạy <command>ralcalc</command>.</para>
+		<para>Nếu trên dòng lệnh có bất kì tùy chọn file đầu vào nào thì các phép tính ở dòng lệnh sẽ được thực hiện trước. Nếu có cả hai tùy chọn file đầu vào thì các phép tính ở <option>-f</option> sẽ được thực hiên trước, sau đó mới đến ở <filename class="devicefile">stdin</filename>.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Các ví dụ</title>
+		<para>Phép tính cơ bản: <programlisting>
+	<userinput>= ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 99.995u</computeroutput></programlisting></para>
+		<para>Dạng trình bày kết quả số mũ: <programlisting>
+	<userinput>= -e ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 9.9995e-05</computeroutput></programlisting></para>
+		<para>Định dạng kết quả số thuần tuý: <programlisting>
+	<userinput>= -r ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 0.000100</computeroutput></programlisting></para>
+		<para>Đáp số với một tiền tố SI: <programlisting>
+	<userinput>= -s m ln 1.0001</userinput>
+	<computeroutput>ln 1.0001 = 0.099995</computeroutput></programlisting></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Các biến môi trường</title>
+		<variablelist>
+			<varlistentry>
+				<term><envar>HOME</envar></term>
+				<listitem>
+					<para>Chỉ định chỗ lưu giữ file .ralcalc_result.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>Các giá trị thoát</title>
+		<variablelist>
+			<varlistentry>
+				<term>0</term>
+				<listitem>
+					<para>Thành công</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>1</term>
+				<listitem>
+					<para>Ít nhất là có một lỗi đã nảy sinh.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</refsect1>
+
+	<refsect1>
+		<title>File</title>
+		<para>
+			<filename>${HOME}/.ralcalc_result</filename>
+			<blockquote>Kết quả của phép tính gần nhất, ta có thể lưu lại nó bằng dấu "_" để phục vụ phép tính kế tiếp. Lưu ý rằng điều này không chắc áp dụng được với các hệ máy khác nhau.</blockquote>
+		</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Chẩn đoán</title>
+		<para><command>ralcalc</command> cố gắng lưu ý người dùng càng nhiều lỗi càng tốt và chỉ ra các lỗi đó ở đâu, nếu như chúng liên quan đến phần người dùng nhập vào.</para>
+
+		<para>Nếu có kí tự đáng ngờ xuât hiên trong phương trình thì một thông báo lỗi "<errortext>unknown token</errortext>" sẽ được đưa ra. Có một dấu chỉ vào đúng kí tự không hợp lệ đó. <programlisting>
+	<userinput>= 34/3@2</userinput>
+
+	<computeroutput>Error: 34/3@2</computeroutput>
+	           ^ unknown token</programlisting></para>
+
+		<para>Nếu có một con số không hợp lệ thì một thông báo lỗi "<errortext>unknown token</errortext>" sẽ được đưa ra. Có một dấu chỉ vào cuối số không hợp lệ đó. <programlisting>
+	<userinput>= 3.14.159x2.8^2</userinput>
+
+	<computeroutput>Error: 3.14.159x2.8^2</computeroutput>
+	              ^ bad number</programlisting></para>
+
+		<para>Nếu số ngoặc mở và ngoặc đóng không bằng nhau, một lỗi "<errortext>mismatched brackets</errortext>" sẽ được thông báo. Khi đó vị trí chỉ lỗi không quan trọng. <programlisting>
+	<userinput>= 5/[[2+3]*9</userinput>
+
+	<computeroutput>Error: 5/[[2+3]*9</computeroutput>
+	                 ^ mismatched brackets</programlisting></para>
+
+		<para>Nếu một toán tử xuất hiên ở vị trí không hợp lệ, một lỗi "<errortext>invalid operator</errortext>" sẽ được thông báo. Dấu chỉ lỗi sẽ ở vị trí toán tử không hợp lệ đó. <programlisting>
+	<userinput>= 3^^7</userinput>
+
+	<computeroutput>Error: 3^^7</computeroutput>
+	         ^ invalid operator</programlisting></para>
+
+		<para>Nếu ngoặc xuât hiên ở vị trí không hợp lệ, một lỗi "<errortext>invalid bracket</errortext>" sẽ được thông báo. Kiểu lỗi này thường đi cùng với các lỗi khác, vì vậy sẽ có một số thông báo xuất hiên trên màn hình. Khi đó tốt nhất là sửa lỗi này trước tiên, vì nó dường như là gốc rễ của vấn đề. Dấu chỉ lỗi sẽ ở vị trí ngoặc không hợp lệ. <programlisting>
+	<userinput>= [2+]3</userinput>
+
+	<computeroutput>Error: [2+]3</computeroutput>
+	          ^ invalid bracket
+
+	<computeroutput>Error: [2+]3</computeroutput>
+	            ^ invalid operator</programlisting></para>
+		
+		<para>Nếu <command>ralcalc</command> không thể điều động bộ nhớ, một lỗi "<errortext>out of memory</errortext>" sẽ được thông báo.</para>
+
+		<para>Lỗi bên trong: Nếu bộ tách phát hiện hai số cạnh nhau mà không phát thông báo lỗi "<errortext>bad number</errortext>", thì thông báo lỗi "<errortext>duplicate number</errortext>" sẽ được phát ra. Điều này lẽ ra không bao giờ có.</para>
+
+		<para>Lỗi bên trong: Nếu một mã lỗi không rõ được chuyển đến hàm báo lỗi, thì dòng thông báo lỗi "<errortext>unknown error</errortext>" sẽ được phát ra. Điều này lẽ ra không bao giờ có.</para>
+	</refsect1>
+
+	<refsect1>
+		<title>Lỗi</title>
+		<para>Mỗi lần chỉ chuyển được một "<option>-f <replaceable>filename</replaceable></option>" (tên file) duy nhất.</para>
+		<para>Nếu bạn phát hiện lỗi trong chương trình, hãy báo cáo đến <uri type="webpage">http://bugs.launchpad.net/ralcalc</uri></para>
+	</refsect1>
+
+	<refsect1>
+		<title>Tác giả</title>
+		<para>Roger Light <email>roger@atchoo.org</email></para>
+	</refsect1>
+</refentry>
