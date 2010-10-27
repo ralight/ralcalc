@@ -3,6 +3,7 @@ translations to ralcalc. Many thanks!
 
 Basque
 - Mikel Alzibar
+- Mikel Haranburu
 
 Brazilian Portugese
 - Carlos Eduardo Moreira dos Santos
