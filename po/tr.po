@@ -1,0 +1,321 @@
+# Turkish translation for ralcalc
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the ralcalc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ralcalc\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-03-07 22:44+0000\n"
+"PO-Revision-Date: 2010-07-19 15:10+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-10-25 04:50+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../src/output.c:110
+#, c-format
+msgid " out of memory\n"
+msgstr " Yetersiz bellek\n"
+
+#: ../src/output.c:113
+#, c-format
+msgid " bad input to function (internal)\n"
+msgstr " fonksiyon için kötü girdi (dahili)\n"
+
+#: ../src/output.c:115
+#, c-format
+msgid " unknown token\n"
+msgstr " bilinmeyen işaret\n"
+
+#: ../src/output.c:118
+#, c-format
+msgid " bad number\n"
+msgstr " kötü sayı\n"
+
+#: ../src/output.c:121
+#, c-format
+msgid " mismatched brackets\n"
+msgstr " eşleşmeyen parantez\n"
+
+#: ../src/output.c:124
+#, c-format
+msgid " duplicate number\n"
+msgstr " ikilenmiş sayı\n"
+
+#: ../src/output.c:127
+#, c-format
+msgid " invalid operator\n"
+msgstr " geçersiz işleç\n"
+
+#: ../src/output.c:130
+#, c-format
+msgid " invalid bracket\n"
+msgstr " geçersiz parantez\n"
+
+#: ../src/output.c:133
+#, c-format
+msgid " unable to open file\n"
+msgstr " dosya açılamıyor\n"
+
+#: ../src/output.c:135
+#, c-format
+msgid " unknown error (%d)\n"
+msgstr " bilinmeyen hata (%d)\n"
+
+#: ../src/ralcalc.c:55
+#, c-format
+msgid "ralcalc  version %s (build date: %s)\n"
+msgstr "ralcalc sürümü %s (oluşturulma tarihi: %s)\n"
+
+#: ../src/ralcalc.c:56
+#, c-format
+msgid ""
+"Copyright (C) 2007-2009 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
+msgstr ""
+"Telif Hakkı (C) 2007-2009 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
+
+#: ../src/ralcalc.c:57
+#, c-format
+msgid ""
+"ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc "
+"freely\n"
+"as described in the COPYING file distributed with this program.\n"
+"\n"
+msgstr ""
+"ralcalc için HERHANGİ BİR GARANTİ VERİLMEMEKTEDİR. ralcalc'ı, programla "
+"beraber dağıtılan KOPYALAMA dosyasında anlatıldığı şekilde özgürce "
+"dağıtabilirsiniz.\n"
+"\n"
+
+#: ../src/ralcalc.c:58
+#, c-format
+msgid ""
+"ralcalc is a simple command line calculator. \n"
+"\n"
+msgstr ""
+"ralcalc komut satırı ile çalışan basit bir hesap makinesidir. \n"
+"\n"
+
+#: ../src/ralcalc.c:59
+#, c-format
+msgid "Usage: ralcalc -h   (display this text)\n"
+msgstr "Kullanımı: ralcalc -h (bu metni göster)\n"
+
+#: ../src/ralcalc.c:60
+#, c-format
+msgid "       ralcalc -a   (display all available operators)\n"
+msgstr "       ralcalc -a (tüm mevcut işleçleri görüntüle)\n"
+
+#: ../src/ralcalc.c:61
+#, c-format
+msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
+msgstr ""
+"       ralcalc [-e] [-f girdi dosyası] [-i] [-q] [-r] <bir denklem>\n"
+
+#: ../src/ralcalc.c:62
+#, c-format
+msgid "Options\n"
+msgstr "Seçenekler\n"
+
+#: ../src/ralcalc.c:63
+#, c-format
+msgid ""
+" -e    Use the '1e-3' form of display for the answer rather than SI "
+"prefixes.\n"
+msgstr ""
+" -e    Cevabı göstermek için SI önekleri yerine '1e-3' biçimini kullan.\n"
+
+#: ../src/ralcalc.c:64
+#, c-format
+msgid " -f    Process a list of calculations from a file.\n"
+msgstr " -f    Dosyadan okunan hesaplamalar listesini işle.\n"
+
+#: ../src/ralcalc.c:65
+#, c-format
+msgid " -i    Process a list of calculations from stdin.\n"
+msgstr " -i stdin'den okunan hesaplamalar listesini işle.\n"
+
+#: ../src/ralcalc.c:66
+#, c-format
+msgid " -q    Only display the answer (quiet).\n"
+msgstr " -q Sadece cevapları görüntüle (sessiz).\n"
+
+#: ../src/ralcalc.c:67
+#, c-format
+msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgstr " -r    Cevabı SI önekleri ve üstel ifadeler olmadan göster.\n"
+
+#: ../src/ralcalc.c:68
+#, c-format
+msgid ""
+"\n"
+"See http://atchoo.org/tools/ralcalc/ for updates.\n"
+msgstr ""
+"\n"
+"Güncellemeler için http://atchoo.org/tools/ralcalc/ adresini ziyaret edin.\n"
+
+#: ../src/ralcalc.c:79
+#, c-format
+msgid "Numbers:\n"
+msgstr "Sayılar:\n"
+
+#: ../src/ralcalc.c:80
+#, c-format
+msgid "  1.0    : example number\n"
+msgstr "  1.0 : örnek sayı\n"
+
+#: ../src/ralcalc.c:81
+#, c-format
+msgid "  1.0e-3 : example number\n"
+msgstr "  1.0e-3 : örnek sayı\n"
+
+#: ../src/ralcalc.c:82
+#, c-format
+msgid "  1.0m   : example number\n"
+msgstr "  1.0m : örnek sayı\n"
+
+#: ../src/ralcalc.c:83
+#, c-format
+msgid "  _      : previous result\n"
+msgstr "  _ : önceki sonuç\n"
+
+#: ../src/ralcalc.c:84
+#, c-format
+msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
+msgstr "  y, z, a, f, p, n, u, m : SI önekleri\n"
+
+#: ../src/ralcalc.c:85
+#, c-format
+msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
+msgstr "  k, M, G, T, P, E, Z, Y : SI önekleri\n"
+
+#: ../src/ralcalc.c:86
+#, c-format
+msgid ""
+"\n"
+"Operators:\n"
+msgstr ""
+"\n"
+"İşleçler:\n"
+
+#: ../src/ralcalc.c:87
+#, c-format
+msgid "  +     : addition\n"
+msgstr "  + : toplama\n"
+
+#: ../src/ralcalc.c:88
+#, c-format
+msgid "  -     : subtraction\n"
+msgstr "  - : çıkarma\n"
+
+#: ../src/ralcalc.c:89
+#, c-format
+msgid "  * x   : multiplication\n"
+msgstr "  * x : çarpma\n"
+
+#: ../src/ralcalc.c:90
+#, c-format
+msgid "  /     : division\n"
+msgstr "  / : bölme\n"
+
+#: ../src/ralcalc.c:91
+#, c-format
+msgid "  %%     : modulus\n"
+msgstr "  %% : kalan işlemi\n"
+
+#: ../src/ralcalc.c:92
+#, c-format
+msgid "  ^     : power\n"
+msgstr "  ^ : üs\n"
+
+#: ../src/ralcalc.c:93
+#, c-format
+msgid "  () [] : brackets increase precedence\n"
+msgstr "  () [] : parantezler önceliği artırır\n"
+
+#: ../src/ralcalc.c:94
+#, c-format
+msgid ""
+"\n"
+"Functions:\n"
+msgstr ""
+"\n"
+"Fonksiyonlar:\n"
+
+#: ../src/ralcalc.c:95
+#, c-format
+msgid "  log X         : logarithm to base 10 of X\n"
+msgstr "  log X : 10 tabanında X'in logaritması\n"
+
+#: ../src/ralcalc.c:96
+#, c-format
+msgid "  ln X          : natural logarithm of X\n"
+msgstr "  ln X : X'in doğal logaritması\n"
+
+#: ../src/ralcalc.c:97
+#, c-format
+msgid "  sin X, asin X : sine, arcsin of X\n"
+msgstr "  sin X, asin X : X'in sinüsü, arksinüsü\n"
+
+#: ../src/ralcalc.c:98
+#, c-format
+msgid "  cos X, acos X : cosine, arccos of X\n"
+msgstr "  cos X, acos X : X'in kosinüsü, arkkosinüsü\n"
+
+#: ../src/ralcalc.c:99
+#, c-format
+msgid "  tan X, atan X : tangent, arctan of X\n"
+msgstr "  tan X, atan X : X'in tanjantı, arktanjantı\n"
+
+#: ../src/ralcalc.c:100
+#, c-format
+msgid "  sqrt X        : square root of X\n"
+msgstr "  sqrt X : X'in kare kökü\n"
+
+#: ../src/ralcalc.c:101
+#, c-format
+msgid ""
+"\n"
+"Constants:\n"
+msgstr ""
+"\n"
+"Sabitler:\n"
+
+#: ../src/ralcalc.c:102
+#, c-format
+msgid "  pi  : 3.14159\n"
+msgstr "  pi : 3.14159\n"
+
+#: ../src/ralcalc.c:103
+#, c-format
+msgid "  exp : 2.71828\n"
+msgstr "  exp : 2.71828\n"
+
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:242
+#, c-format
+msgid "Error: Out of memory\n"
+msgstr "Hata: Yetersiz Bellek\n"
+
+#: ../src/ralcalc.c:319 ../src/ralcalc.c:342
+#, c-format
+msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
+msgstr "Hata: '-s' seçeneği için geçersiz SI öneki '%s'.\n"
+
+#: ../src/ralcalc.c:371
+#, c-format
+msgid "Error: Unable to open file \"%s\"\n"
+msgstr "Hata: \"%s\" dosyası açılamıyor\n"
+
+#: ../src/tokens.c:255
+#, c-format
+msgid "Unknown token (%d)\n"
+msgstr "Bilinmeyen işaret (%d)\n"

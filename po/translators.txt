@@ -56,3 +56,6 @@ Spanish
 - Federico Vera
 - navnelson
 - Paco Molinero
+
+Turkish
+- Devrim Şahin
