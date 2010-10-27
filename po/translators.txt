@@ -43,6 +43,9 @@ Norwegian Bokmal
 - jraragris
 - Sigurd Gartmann
 
+Occitan
+- Cédric Valmary
+
 Polish
 - Mexit
 - pp/bs
