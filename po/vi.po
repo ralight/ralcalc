@@ -1,0 +1,319 @@
+# Vietnamese translation for ralcalc
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the ralcalc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ralcalc\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-03-07 22:44+0000\n"
+"PO-Revision-Date: 2010-10-14 17:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Vietnamese <vi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-10-25 04:50+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../src/output.c:110
+#, c-format
+msgid " out of memory\n"
+msgstr " hết bộ nhớ\n"
+
+#: ../src/output.c:113
+#, c-format
+msgid " bad input to function (internal)\n"
+msgstr " đầu vào sai cho hàm số (nội tại)\n"
+
+#: ../src/output.c:115
+#, c-format
+msgid " unknown token\n"
+msgstr " không rõ ký hiệu\n"
+
+#: ../src/output.c:118
+#, c-format
+msgid " bad number\n"
+msgstr " số bị sai\n"
+
+#: ../src/output.c:121
+#, c-format
+msgid " mismatched brackets\n"
+msgstr " ngoặc không tương ứng\n"
+
+#: ../src/output.c:124
+#, c-format
+msgid " duplicate number\n"
+msgstr " số trùng lặp\n"
+
+#: ../src/output.c:127
+#, c-format
+msgid " invalid operator\n"
+msgstr " toán tử không hợp lệ\n"
+
+#: ../src/output.c:130
+#, c-format
+msgid " invalid bracket\n"
+msgstr " ngoặc không hợp lệ\n"
+
+#: ../src/output.c:133
+#, c-format
+msgid " unable to open file\n"
+msgstr " không thể mở file\n"
+
+#: ../src/output.c:135
+#, c-format
+msgid " unknown error (%d)\n"
+msgstr " lỗi không xác định (%d)\n"
+
+#: ../src/ralcalc.c:55
+#, c-format
+msgid "ralcalc  version %s (build date: %s)\n"
+msgstr "ralcalc  phiên bản %s (ngày dựng: %s)\n"
+
+#: ../src/ralcalc.c:56
+#, c-format
+msgid ""
+"Copyright (C) 2007-2009 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
+msgstr ""
+"Copyright (C) 2007-2009 Roger Light\n"
+"http://atchoo.org/tools/ralcalc/\n"
+"\n"
+
+#: ../src/ralcalc.c:57
+#, c-format
+msgid ""
+"ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc "
+"freely\n"
+"as described in the COPYING file distributed with this program.\n"
+"\n"
+msgstr ""
+"ralcalc được cấp mà KHÔNG CÓ BẢO HÀNH. Bạn có thể tự do phân phối ralcalc\n"
+"như được miêu tả trong file COPYING đi kèm theo chương trình.\n"
+"\n"
+
+#: ../src/ralcalc.c:58
+#, c-format
+msgid ""
+"ralcalc is a simple command line calculator. \n"
+"\n"
+msgstr ""
+"ralcalc là một máy tính đơn giản trên dòng lệnh. \n"
+"\n"
+
+#: ../src/ralcalc.c:59
+#, c-format
+msgid "Usage: ralcalc -h   (display this text)\n"
+msgstr "Cách dùng: ralcalc -h   (hiện những dòng chữ này)\n"
+
+#: ../src/ralcalc.c:60
+#, c-format
+msgid "       ralcalc -a   (display all available operators)\n"
+msgstr "       ralcalc -a   (hiện tất cả các toán tử dùng được)\n"
+
+#: ../src/ralcalc.c:61
+#, c-format
+msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
+msgstr ""
+"       ralcalc [-e] [-f file đầu vào] [-i] [-q] [-r] <một biểu thức>\n"
+
+#: ../src/ralcalc.c:62
+#, c-format
+msgid "Options\n"
+msgstr "Tùy chọn\n"
+
+#: ../src/ralcalc.c:63
+#, c-format
+msgid ""
+" -e    Use the '1e-3' form of display for the answer rather than SI "
+"prefixes.\n"
+msgstr " -e    Dùng dạng '1e-3' thay vì tiền tố SI để hiển thị kết quả.\n"
+
+#: ../src/ralcalc.c:64
+#, c-format
+msgid " -f    Process a list of calculations from a file.\n"
+msgstr " -f    Thực hiện một loạt phép tính từ một file.\n"
+
+#: ../src/ralcalc.c:65
+#, c-format
+msgid " -i    Process a list of calculations from stdin.\n"
+msgstr " -i    Thực hiện một loạt phép tính từ stdin.\n"
+
+#: ../src/ralcalc.c:66
+#, c-format
+msgid " -q    Only display the answer (quiet).\n"
+msgstr " -q    Chỉ hiện kết quả (kiểu im lặng).\n"
+
+#: ../src/ralcalc.c:67
+#, c-format
+msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
+msgstr " -r    Hiện kết quả mà không có tiền tố SI hoặc số mũ.\n"
+
+#: ../src/ralcalc.c:68
+#, c-format
+msgid ""
+"\n"
+"See http://atchoo.org/tools/ralcalc/ for updates.\n"
+msgstr ""
+"\n"
+"Tìm kiếm bản cập nhật ở http://atchoo.org/tools/ralcalc/.\n"
+
+#: ../src/ralcalc.c:79
+#, c-format
+msgid "Numbers:\n"
+msgstr "Các số:\n"
+
+#: ../src/ralcalc.c:80
+#, c-format
+msgid "  1.0    : example number\n"
+msgstr "  1.0    : số được lấy làm ví dụ\n"
+
+#: ../src/ralcalc.c:81
+#, c-format
+msgid "  1.0e-3 : example number\n"
+msgstr "  1.0e-3 : số được lấy làm ví dụ\n"
+
+#: ../src/ralcalc.c:82
+#, c-format
+msgid "  1.0m   : example number\n"
+msgstr "  1.0m   : số được lấy làm ví dụ\n"
+
+#: ../src/ralcalc.c:83
+#, c-format
+msgid "  _      : previous result\n"
+msgstr "  _      : kết quả trước\n"
+
+#: ../src/ralcalc.c:84
+#, c-format
+msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
+msgstr "  y, z, a, f, p, n, u, m : các tiền tố SI\n"
+
+#: ../src/ralcalc.c:85
+#, c-format
+msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
+msgstr "  k, M, G, T, P, E, Z, Y : Các tiền tố SI\n"
+
+#: ../src/ralcalc.c:86
+#, c-format
+msgid ""
+"\n"
+"Operators:\n"
+msgstr ""
+"\n"
+"Các toán tử:\n"
+
+#: ../src/ralcalc.c:87
+#, c-format
+msgid "  +     : addition\n"
+msgstr "  +     : cộng\n"
+
+#: ../src/ralcalc.c:88
+#, c-format
+msgid "  -     : subtraction\n"
+msgstr "  -     : trừ\n"
+
+#: ../src/ralcalc.c:89
+#, c-format
+msgid "  * x   : multiplication\n"
+msgstr "  * x   : nhân\n"
+
+#: ../src/ralcalc.c:90
+#, c-format
+msgid "  /     : division\n"
+msgstr "  /     : chia\n"
+
+#: ../src/ralcalc.c:91
+#, c-format
+msgid "  %%     : modulus\n"
+msgstr "  %%     : lấy dư\n"
+
+#: ../src/ralcalc.c:92
+#, c-format
+msgid "  ^     : power\n"
+msgstr "  ^     : lũy thừa\n"
+
+#: ../src/ralcalc.c:93
+#, c-format
+msgid "  () [] : brackets increase precedence\n"
+msgstr "  () [] : ngoặc để ưu tiên tính toán\n"
+
+#: ../src/ralcalc.c:94
+#, c-format
+msgid ""
+"\n"
+"Functions:\n"
+msgstr ""
+"\n"
+"Các hàm số:\n"
+
+#: ../src/ralcalc.c:95
+#, c-format
+msgid "  log X         : logarithm to base 10 of X\n"
+msgstr "  log X         : lôga cơ số 10 của X\n"
+
+#: ../src/ralcalc.c:96
+#, c-format
+msgid "  ln X          : natural logarithm of X\n"
+msgstr "  ln X          : lôga tự nhiên của X\n"
+
+#: ../src/ralcalc.c:97
+#, c-format
+msgid "  sin X, asin X : sine, arcsin of X\n"
+msgstr "  sin X, asin X : sin, arcsin của X\n"
+
+#: ../src/ralcalc.c:98
+#, c-format
+msgid "  cos X, acos X : cosine, arccos of X\n"
+msgstr "  cos X, acos X : cos, arccos của X\n"
+
+#: ../src/ralcalc.c:99
+#, c-format
+msgid "  tan X, atan X : tangent, arctan of X\n"
+msgstr "  tan X, atan X : tang, arctan của X\n"
+
+#: ../src/ralcalc.c:100
+#, c-format
+msgid "  sqrt X        : square root of X\n"
+msgstr "  sqrt X        : căn bậc hai của X\n"
+
+#: ../src/ralcalc.c:101
+#, c-format
+msgid ""
+"\n"
+"Constants:\n"
+msgstr ""
+"\n"
+"Các hằng số:\n"
+
+#: ../src/ralcalc.c:102
+#, c-format
+msgid "  pi  : 3.14159\n"
+msgstr "  pi  : 3.14159\n"
+
+#: ../src/ralcalc.c:103
+#, c-format
+msgid "  exp : 2.71828\n"
+msgstr "  exp : 2.71828\n"
+
+#: ../src/ralcalc.c:197 ../src/ralcalc.c:242
+#, c-format
+msgid "Error: Out of memory\n"
+msgstr "Lỗi: Hết bộ nhớ\n"
+
+#: ../src/ralcalc.c:319 ../src/ralcalc.c:342
+#, c-format
+msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
+msgstr "Lỗi: Tiền tố SI '%s' không hợp lệ với tùy chọn '-s'.\n"
+
+#: ../src/ralcalc.c:371
+#, c-format
+msgid "Error: Unable to open file \"%s\"\n"
+msgstr "Lỗi: Không thể mở file \"%s\"\n"
+
+#: ../src/tokens.c:255
+#, c-format
+msgid "Unknown token (%d)\n"
+msgstr "Ký hiệu không xác định (%d)\n"
