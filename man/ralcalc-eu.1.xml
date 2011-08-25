@@ -9,7 +9,7 @@
 
 	<refnamediv>
 		<refname>ralcalc</refname>
-		<refpurpose>Une calculatrice simple en ligne de commandes</refpurpose>
+		<refpurpose>komando lerroko kalkulagailu sinple bat</refpurpose>
 	</refnamediv>
 
 	<refsynopsisdiv>
@@ -18,14 +18,14 @@
 			<group choice="plain">
 				<arg choice="plain">
 					<group choice="req">
-						<arg choice="plain"><option>-a</option></arg>
-						<arg choice="plain"><option>--all</option></arg>
+						<arg choice="plain"><option>-g</option></arg>
+						<arg choice="plain"><option>--guztia</option></arg>
 					</group>
 				</arg>
 				<arg choice="plain">
 					<group choice="req">
-						<arg choice="plain"><option>-h</option></arg>
-						<arg choice="plain"><option>--help</option></arg>
+						<arg choice="plain"><option>-l</option></arg>
+						<arg choice="plain"><option>--laguntza</option></arg>
 					</group>
 				</arg>
 				<arg choice="plain">
@@ -43,12 +43,12 @@
 				<arg><option>-e</option></arg>
 				<arg><option>-r</option></arg>
 			</group>
-			<arg><option>-f</option> <replaceable>nom_fichier</replaceable></arg>
+			<arg><option>-f</option> <replaceable>fitxategia</replaceable></arg>
 			<arg><option>-i</option></arg>
 			<arg><option>-p</option> <replaceable>precision</replaceable></arg>
 			<arg><option>-q</option></arg>
-			<arg><option>-s</option><replaceable>préfixe</replaceable></arg>
-			<arg choice="plain"><replaceable>équation</replaceable></arg>
+			<arg><option>-s</option><replaceable>aurrizkia</replaceable></arg>
+			<arg choice="plain"><replaceable>ekuazioa</replaceable></arg>
 		</cmdsynopsis>
 
 		<cmdsynopsis>
@@ -56,14 +56,14 @@
 			<group choice="plain">
 				<arg choice="plain">
 					<group choice="req">
-						<arg choice="plain"><option>-a</option></arg>
-						<arg choice="plain"><option>--all</option></arg>
+						<arg choice="plain"><option>-g</option></arg>
+						<arg choice="plain"><option>--guztia</option></arg>
 					</group>
 				</arg>
 				<arg choice="plain">
 					<group choice="req">
-						<arg choice="plain"><option>-h</option></arg>
-						<arg choice="plain"><option>--help</option></arg>
+						<arg choice="plain"><option>-l</option></arg>
+						<arg choice="plain"><option>--laguntza</option></arg>
 					</group>
 				</arg>
 				<arg choice="plain">
@@ -81,55 +81,58 @@
 				<arg><option>-e</option></arg>
 				<arg><option>-r</option></arg>
 			</group>
-			<arg><option>-f</option> <replaceable>nom_fichier</replaceable></arg>
+			<arg><option>-f</option> <replaceable>fitxategia</replaceable></arg>
 			<arg><option>-i</option></arg>
 			<arg><option>-p</option> <replaceable>precision</replaceable></arg>
 			<arg><option>-q</option></arg>
-			<arg><option>-s</option><replaceable>préfixe</replaceable></arg>
-			<arg choice="plain"><replaceable>équation</replaceable></arg>
+			<arg><option>-s</option><replaceable>aurrizkia</replaceable></arg>
+			<arg choice="plain"><replaceable>ekuazioa</replaceable></arg>
 		</cmdsynopsis>
 	</refsynopsisdiv>
 
 	<refsect1>
-		<title>Description</title>
-		<para><command>racalc</command> est une calculatrice en ligne de commande dont le but est de réaliser des calculs très rapide où un seul résultat est attendu, sans avoir à démarrer, puis quitter un programme.</para>
+		<title>Deskribapena</title>
+		<para><command>ralcalc</command> is a command line calculator designed for
+		very quick calculations where perhaps only a single result is wanted
+		without having to start and then quit a program.</para>
 
-		<para><command>ralcalc</command> est aussi installé sous la commande <command>=</command> pour encore plus de rapidité.</para>
+		<para><command>ralcalc</command> is also installed as the
+		<command>=</command> command to make using it even quicker.</para>
 	</refsect1>
 
 	<refsect1>
-		<title>Options</title>
+		<title>Aukerak</title>
 		<variablelist>
 			<varlistentry>
-				<term><option>-a</option></term>
-				<term><option>--all</option></term>
+				<term><option>-g</option></term>
+				<term><option>--guztia</option></term>
 				<listitem>
-					<para>Afficher tous les opérateurs disponibles, les fonctions et les constantes.</para>
+					<para>Print out all of the available operators, functions and constants.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-e</option></term>
 				<listitem>
-					<para>Afficher le résultat sous la forme "1e-3" plutôt qu'avec les préfixes du Système International (SI).</para>
+					<para>Display the result in the "1e-3" form rather than using SI prefixes.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-f</option></term>
 				<listitem>
-					<para>Procéder à une liste de calculs contenue dans un fichier. Veuillez vous référer à la section fichier d'entrée (FILE INPUT) ci-dessous pour plus d'informations.</para>
+					<para>Process a list of calculations from a file. See the FILE INPUT section below for more information.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
-				<term><option>-h</option></term>
-				<term><option>--help</option></term>
+				<term><option>-l</option></term>
+				<term><option>--laguntza</option></term>
 				<listitem>
-					<para>Afficher les détails d'utilisation, de version et de contact.</para>
+					<para>Pantailaratu erabilera, bertsio eta kontaktu xehetasunak.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-i</option></term>
 				<listitem>
-					<para>Processus de la liste de calcul depuis <filename class="devicefile">stdin</filename>. Voir la section du FICHIER D'ENTRÉE ci-dessous pour plus d'informations.</para>
+					<para>Process a list of calculations from <filename class="devicefile">stdin</filename>. See the FILE INPUT section below for more information.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
@@ -144,58 +147,73 @@
 				<term><option>-q</option></term>
 				<!-- <term><option>- -quiet</option></term> -->
 				<listitem>
-					<para>Afficher seulement le résultat (donc cacher l'entrée et de possibles erreurs)</para>
+					<para>Only display the result (so hide the input and any errors).</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-r</option></term>
 				<!-- <term><option>- -raw</option></term> -->
 				<listitem>
-					<para>Montre le résultat sous le format décimal sans les préfixes du SI, sans exposant.</para>
+					<para>Erakutsi emaitza formatu dezimalean, SI aurrizki eta berretzailerik gabe</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-s</option></term>
 				<!-- <term><option>- -si-prefix</option></term> -->
 				<listitem>
-					<para>Afficher le résultat en utilisant un préfixe particulier du SI. Cette option est ignorée si <option>-e  /option &gt; ou -r  est aussi utilis</option></para>
+					<para>Display the result using a particular SI prefix. This option is ignored if <option>-e</option> or <option>-r</option> is also used.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term><option>-v</option></term>
 				<term><option>--version</option></term>
 				<listitem>
-					<para>Afficher les détails d'utilisation, de version et de contact.</para>
+					<para>Pantailaratu erabilera, bertsio eta kontaktu xehetasunak.</para>
 				</listitem>
 			</varlistentry>
 		</variablelist>
 	</refsect1>
 
 	<refsect1>
-		<title>Format numérique</title>
-		<para>Les chiffres doivent être entrées en utilisant soit "." ou "," comme point décimal (ceci dépend de votre locale aussi les deux peuvent ne pas fonctionner ensemble), sans aucun séparateur de milliers.</para>
-		<para><command> ralcalc command&gt; prend en charge les caract
-	= 2u/35
-	2u/35 = 57.1429n</command></para>
-		<para>Les nombres du genre 1e-3 sont également supportés, où le "e" indique une puissance de dix. Ne pas mélanger les préfixes SI et "e" dans un même nombre (bien que 1e-3n soit valide, 1ne-3 ne l'est pas - éviter les deux pour moins de confusion).</para>
-		<para>Les préfixes du SI supportés sont : Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<title>Zenbaki formatua</title>
+		<para>Numbers should be input using either "." or "," as a decimal point (this is locale dependent so both may not work in your locale), with no thousands separators.</para>
+		<para><command>ralcalc</command> supports SI prefix characters for both input and output:
+		<programlisting>
+	<userinput>= 2u/35</userinput>
+	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting>
+		</para>
+		<para>Numbers of the form 1e-3 are also supported, where the "e" indicates a power of ten. Don't mix and match SI prefixes and "e"  in the same number (although 1e-3n is valid, 1ne-3 is not - avoid both for less confusion).</para>
+		<para>The SI prefixes supported are: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
 	</refsect1>
 
 	<refsect1>
-		<title>Opérateurs</title>
-		<para>Les opérateurs mathématiques simples pour l'addition  (+), la soustraction (-), la multiplication (*, x), la division (/) et la puissance (^) sont  supportés, l'addition et la soustraction ayant la priorité la plus basse et la puissance ayant la plus haute.  Placeholder-1 / &gt;</para>
-		<para>Les parenthèses ((), []) peuvent être utilisées pour contrôler l'ordre dans lequel les opérations sont traitées :  placeholder-1 / &gt;</para>
+		<title>Eragileak</title>
+		<para>The simple mathematical operators for addition (+), subtraction (-), multiplication (*, x), division (/) and power (^) are supported, with addition and subtraction having the lowest precedence and power having the highest.
+			<programlisting>
+	<userinput>= 1+2x3</userinput>
+	<computeroutput>1+2x3 = 7</computeroutput>
+
+	<userinput>= 1/2^0.5</userinput>
+	<computeroutput>1/2^0.5 = 0.707107</computeroutput></programlisting>
+		</para>
+		<para>Brackets ( (), [] ) can be used to control the order in which statements are processed:
+			<programlisting>
+	<userinput>= [1+2]x3</userinput>
+	<computeroutput>[1+2]x3 = 9</computeroutput></programlisting>
+		</para>
 		<para>Both the square and round brackets can be used and are both directly equivalent, so [1+2)x3 is also valid. Round brackets are more commonly used in mathematics, but the square brackets (and the "x" for multiplication) are included to try to prevent problems with the shell expanding those characters.</para>
-		<para><command> ralcalc command&gt; stocke le r
-	= 2^0.5
-	2^0.5 = 1.41421
+		<para><command>ralcalc</command> stores the result of the calculation so that it can be used in the next calculation with the "_" character.
+			<programlisting>
+	<userinput>= 2^0.5</userinput>
+	<computeroutput>2^0.5 = 1.41421</computeroutput>
 
-	= 1/_
-	1/_ = 0.707107</command></para>
+	<userinput>= 1/_</userinput>
+	<computeroutput>1/_ = 0.707107</computeroutput></programlisting>
+		</para>
 	</refsect1>
 
 	<refsect1>
-		<title>Fonctions</title>
+		<title>Funtzioak</title>
 		<para>The functions <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (base 10 logarithm) and <function>ln</function> (natural logarithm) are supported. The trigonometric functions work on radians. The use of brackets is not necessary, but is recommended where precedence may be confusing. The functions have equal precedence to multiplication/division, so care must be taken:
 			<programlisting>
 	<userinput>= sin2x2</userinput>
@@ -207,12 +225,12 @@
 	</refsect1>
 
 	<refsect1>
-		<title>Constantes</title>
-		<para>Les constantes <constant>pi</constant> (3.14159) et <constant>exp</constant> (2.71828) peuvent être utilisées et sont traitées de la même manière que n'importe quel nombre.</para>
+		<title>Konstanteak</title>
+		<para>The constants <constant>pi</constant> (3.14159) and <constant>exp</constant> (2.71828) can be used and are treated the same as any other number.</para>
 	</refsect1>
 
 	<refsect1 id="fileinput">
-		<title>Fichier d'entrée</title>
+		<title>File Input</title>
 		<para>A list of calculations can be processed at once by placing them in a file. Each line of the file will be process exactly the same as if <command>ralcalc</command> had been run with those arguments. The file could look like the following (note the lack of the command <command>=</command> or <command>ralcalc</command>):
 			<programlisting>
 	<userinput>2^0.5</userinput>
@@ -224,61 +242,69 @@
 	</refsect1>
 
 	<refsect1>
-		<title>Exemples</title>
-		<para>Calcul basique : <programlisting>
+		<title>Adibideak</title>
+		<para>Basic calculation:
+			<programlisting>
 	<userinput>= ln 1.0001</userinput>
-	<computeroutput>ln 1.0001 = 99.995u</computeroutput></programlisting></para>
-		<para>Format de sortie en exposant: <programlisting>
+	<computeroutput>ln 1.0001 = 99.995u</computeroutput></programlisting>
+		</para>
+		<para>Exponent number output format:
+			<programlisting>
 	<userinput>= -e ln 1.0001</userinput>
-	<computeroutput>ln 1.0001 = 9.9995e-05</computeroutput></programlisting></para>
-		<para>Format de sortie d'un nombre premier : <programlisting>
+	<computeroutput>ln 1.0001 = 9.9995e-05</computeroutput></programlisting>
+		</para>
+		<para>Raw number output format:
+			<programlisting>
 	<userinput>= -r ln 1.0001</userinput>
-	<computeroutput>ln 1.0001 = 0.000100</computeroutput></programlisting></para>
-		<para>Format de sortie d'un nombre avec un préfixe spécifique SI : <programlisting>
+	<computeroutput>ln 1.0001 = 0.000100</computeroutput></programlisting>
+		</para>
+		<para>Number output format with a specified SI prefix:
+			<programlisting>
 	<userinput>= -s m ln 1.0001</userinput>
-	<computeroutput>ln 1.0001 = 0.099995</computeroutput></programlisting></para>
+	<computeroutput>ln 1.0001 = 0.099995</computeroutput></programlisting>
+		</para>
 	</refsect1>
 
 	<refsect1>
-		<title>Variables d'environnement</title>
+		<title>Environment Variables</title>
 		<variablelist>
 			<varlistentry>
-				<term><envar>ACCUEIL</envar></term>
+				<term><envar>HOME</envar></term>
 				<listitem>
-					<para>Determine où le fichier .ralcalc_result est sauvegardé</para>
+					<para>Determines where the .ralcalc_result file is stored.</para>
 				</listitem>
 			</varlistentry>
 		</variablelist>
 	</refsect1>
 
 	<refsect1>
-		<title>Valeurs de sortie</title>
+		<title>Exit Values</title>
 		<variablelist>
 			<varlistentry>
 				<term>0</term>
 				<listitem>
-					<para>Réussi</para>
+					<para>Arrakasta</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term>1</term>
 				<listitem>
-					<para>Au moins une erreur est survenue.</para>
+					<para>At least one error occurred.</para>
 				</listitem>
 			</varlistentry>
 		</variablelist>
 	</refsect1>
 
 	<refsect1>
-		<title>Fichiers</title>
+		<title>Fitxategiak</title>
 		<para>
 			<filename>${HOME}/.ralcalc_result</filename>
-			<blockquote>Le résultat du calcul le plus récent, qui peut être consulté plus tard en utilisant le caractère "_". Notez que ce n'est pas nécessairement transférables dans différentes architectures machine.</blockquote>
+			<blockquote>The result of the most recent calculation, which can be accessed in a later calculation using the "_" character. Note that this is not necessarily portable across different machine architectures.</blockquote>
 		</para>
 	</refsect1>
 
 	<refsect1>
-		<title>Diagnostics</title>
+		<title>Diagnostikoa</title>
 		<para><command>ralcalc</command> attempts to notify the user of as many errors as possible and indicate where those errors are, if they are user input related.</para>
 
 		<para>If an unknown character is included in the equation, an "<errortext>unknown token</errortext>" error will be generated. The error marker points to the invalid character.
@@ -324,7 +350,7 @@
 	            ^ invalid operator</programlisting>
 		</para>
 		
-		<para>Si<command>ralcalc</command> ne peut allouer un peu de mémoire, une erreur "<errortext>Plus de mémoire disponible</errortext>" sera générée.</para>
+		<para>If <command>ralcalc</command> is unable to allocate some memory, an "<errortext>out of memory</errortext>" error will be generated.</para>
 
 		<para>Internal error: If the parser notices two numbers next to each other yet does not generate a "<errortext>bad number</errortext>" error, the a "<errortext>duplicate number</errortext>" error will be generated. This should never happen.</para>
 
@@ -338,7 +364,7 @@
 	</refsect1>
 
 	<refsect1>
-		<title>Auteur</title>
+		<title>Author</title>
 		<para>Roger Light <email>roger@atchoo.org</email></para>
 	</refsect1>
 </refentry>

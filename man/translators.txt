@@ -1,6 +1,9 @@
 To the best of my knowledge, the following people have contributed
 translations to the ralcalc man page. Many thanks!
 
+Basque
+- Mikel Alzibar
+
 Brazilian Portugese
 - Enrico Nicoletto
 

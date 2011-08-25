@@ -5,7 +5,9 @@
 - Fix inconsistent output for SI prefixes smaller than m.
 - Turkish translations thanks to Angel Spy and Devrim Şahin.
 - Updated Czech translations thanks to Kuvaly [LCT].
-- Updated Basque translations thanks to Mikel Haranburu.
+- Partial Basque man page translations thanks to Mikel Alzibar and gorkaazk.
+- Partial French man page translations thanks to Pierre Rudloff.
+- Partial Italian man page translations thanks to Guybrush88.
 - Updated Hebrew translations.
 - Occitan translations thanks to Cédric Valmary.
 - Vietnamese translations thanks to Nguyen Quang Chien.

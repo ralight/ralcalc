@@ -45,6 +45,7 @@
 			</group>
 			<arg><option>-f</option> <replaceable>tên file</replaceable></arg>
 			<arg><option>-i</option></arg>
+			<arg><option>-p</option> <replaceable>precision</replaceable></arg>
 			<arg><option>-q</option></arg>
 			<arg><option>-s</option><replaceable>tiền tố</replaceable></arg>
 			<arg choice="plain"><replaceable>phương trình</replaceable></arg>
@@ -82,6 +83,7 @@
 			</group>
 			<arg><option>-f</option> <replaceable>tên file</replaceable></arg>
 			<arg><option>-i</option></arg>
+			<arg><option>-p</option> <replaceable>precision</replaceable></arg>
 			<arg><option>-q</option></arg>
 			<arg><option>-s</option><replaceable>tiền tố</replaceable></arg>
 			<arg choice="plain"><replaceable>phương trình</replaceable></arg>
@@ -128,6 +130,14 @@
 				<term><option>-i</option></term>
 				<listitem>
 					<para>Xử lí dãy các phép tính từ <filename class="devicefile">stdin</filename>. Xem phần FILE INPUT sau đây để biết thêm thông tin.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-p</option></term>
+				<listitem>
+					<para>Control the number of digits displayed in the output
+					result. This is only available for -e and -r modes or if
+					the output does not use a SI prefix.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
