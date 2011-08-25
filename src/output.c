@@ -60,17 +60,17 @@ void doubleToString(double value, char *string, int len, char siPrefix, int prec
 		snprintf(string, len, "%gM", value / 1.0e6);
 	}else if((absval >= 1.0e3 && siPrefix == '\0') || siPrefix == 'k'){
 		snprintf(string, len, "%gk", value / 1.0e3);
-	}else if((absval < 1.0e-20 && siPrefix == '\0') || siPrefix == 'y'){
+	}else if((absval < 1.0e-21 && siPrefix == '\0') || siPrefix == 'y'){
 		snprintf(string, len, "%gy", value * 1.0e24);
-	}else if((absval < 1.0e-17 && siPrefix == '\0') || siPrefix == 'z'){
+	}else if((absval < 1.0e-18 && siPrefix == '\0') || siPrefix == 'z'){
 		snprintf(string, len, "%gz", value * 1.0e21);
-	}else if((absval < 1.0e-14 && siPrefix == '\0') || siPrefix == 'a'){
+	}else if((absval < 1.0e-15 && siPrefix == '\0') || siPrefix == 'a'){
 		snprintf(string, len, "%ga", value * 1.0e18);
-	}else if((absval < 1.0e-11 && siPrefix == '\0') || siPrefix == 'f'){
+	}else if((absval < 1.0e-12 && siPrefix == '\0') || siPrefix == 'f'){
 		snprintf(string, len, "%gf", value * 1.0e15);
-	}else if((absval < 1.0e-8 && siPrefix == '\0') || siPrefix == 'p'){
+	}else if((absval < 1.0e-9 && siPrefix == '\0') || siPrefix == 'p'){
 		snprintf(string, len, "%gp", value * 1.0e12);
-	}else if((absval < 1.0e-5 && siPrefix == '\0') || siPrefix == 'n'){
+	}else if((absval < 1.0e-6 && siPrefix == '\0') || siPrefix == 'n'){
 		snprintf(string, len, "%gn", value * 1.0e9);
 	}else if((absval < 1.0e-3 && siPrefix == '\0') || siPrefix == 'u'){
 		snprintf(string, len, "%gu", value * 1.0e6);
