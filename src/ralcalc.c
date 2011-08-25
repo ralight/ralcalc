@@ -45,9 +45,9 @@ static char *rcpath = NULL;
 /* Internal functions */
 void printUsage(void);
 void printTokens(void);
-int processLine(const char *line, int quiet, displayMode dm, char siPrefix);
-int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix);
-int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix);
+int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int precision);
+int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix, int precision);
+int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix, int precision);
 
 
 void printUsage(void)
@@ -58,11 +58,12 @@ void printUsage(void)
 	printf(_("ralcalc is a simple command line calculator. \n\n"));
 	printf(_("Usage: ralcalc -h   (display this text)\n"));
 	printf(_("       ralcalc -a   (display all available operators)\n"));
-	printf(_("       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"));
+	printf(_("       ralcalc [-e] [-f input file] [-i] [-p precision] [-q] [-r] <an equation>\n"));
 	printf(_("Options\n"));
 	printf(_(" -e    Use the '1e-3' form of display for the answer rather than SI prefixes.\n"));
 	printf(_(" -f    Process a list of calculations from a file.\n"));
 	printf(_(" -i    Process a list of calculations from stdin.\n"));
+	printf(_(" -p    Number of digits to display in the output when using -e or -r, or if the\n output does not have an SI prefix\n."));
 	printf(_(" -q    Only display the answer (quiet).\n"));
 	printf(_(" -r    Display the answer with neither SI prefixes nor exponents.\n"));
 	printf(_("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n"));
@@ -110,7 +111,7 @@ void printTokens(void)
  * Take a string, tokenise it, validate it and pass it on for calculation. This
  * is the glue function of ralcalc really.
  */
-int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
+int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int precision)
 {
 	tokenItem tokenList;
 	int rc;
@@ -119,6 +120,7 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 	double lastResult = 0.0;
 	int hasError = 0;
 	char resultStr[100];
+	char formatStr[20];
 
 	if(!line) return errBadInput;
 
@@ -148,13 +150,23 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
 
 		switch(dm){
 			case dmSI:
-				doubleToString(result, resultStr, 100, siPrefix);
+				doubleToString(result, resultStr, 100, siPrefix, precision);
 				break;
 			case dmExponent:
-				snprintf(resultStr, 100, "%lg", result);
+				if(precision == -1){
+					snprintf(resultStr, 100, "%lg", result);
+				}else{
+					snprintf(formatStr, 20, "%%.%dlg", precision);
+					snprintf(resultStr, 100, formatStr, result);
+				}
 				break;
 			case dmRaw:
-				snprintf(resultStr, 100, "%f", result);
+				if(precision == -1){
+					snprintf(resultStr, 100, "%f", result);
+				}else{
+					snprintf(formatStr, 20, "%%.%df", precision);
+					snprintf(resultStr, 100, formatStr, result);
+				}
 				break;
 		}
 
@@ -185,7 +197,7 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix)
  * Get lines from a file (be that a file on disk or stdin) and pass the lines
  * to processLine() for calculation.
  */
-int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
+int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix, int precision)
 {
 	char *line;
 	int rc = errNoError;
@@ -207,7 +219,7 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
 			rc = errNoError;
 			break;
 		}
-		rc = processLine(line, quiet, dm, siPrefix);
+		rc = processLine(line, quiet, dm, siPrefix, precision);
 		if(rc != errNoError){
 			break;
 		}
@@ -225,7 +237,7 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix)
  * Convert argc and argv into a single string and pass them to processLine for
  * calculation.
  */
-int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix)
+int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix, int precision)
 {
 	char *line;
 	int i, j;
@@ -256,7 +268,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char si
 			}
 		}
 	}
-	rc = processLine(line, quiet, dm, siPrefix);
+	rc = processLine(line, quiet, dm, siPrefix, precision);
 	free(line);
 
 	return rc;
@@ -275,6 +287,7 @@ int main(int argc, char *argv[])
 	char siPrefix = '\0';
 	char *home = getenv("HOME");
 	int rcpathlen;
+	int precision = -1;
 	
 	setlocale(LC_ALL, "");
 	bindtextdomain("ralcalc", LOCALEDIR);
@@ -307,8 +320,22 @@ int main(int argc, char *argv[])
 				printUsage();
 				return 1;
 			}
-		}else if(!strcmp(argv[i], "-i")){
-			usestdin = 1;
+		}else if(!strcmp(argv[i], "-p")){
+			if(i < argc - 1){
+				precision = atoi(argv[i+1]);
+				argv[i][0] = '\0';
+				argv[i+1][0] = '\0';
+				i++;
+				if(precision < 0){
+					fprintf(stderr, _("Error: Precision must be a positive integer.\n"));
+					return 1;
+				}
+			}else{
+				printUsage();
+				return 1;
+			}
+		}else if(!strcmp(argv[i], "-r")){
+			dm = dmRaw;
 			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-r")){
 			dm = dmRaw;
@@ -362,7 +389,7 @@ int main(int argc, char *argv[])
 	}
 
 	/* Do calculation based on input arguments first */
-	if(doLineCalculation(argc, argv, quiet, dm, siPrefix)) rc = 1;
+	if(doLineCalculation(argc, argv, quiet, dm, siPrefix, precision)) rc = 1;
 	
 	/* Do calculations from a disk file */
 	if(ifile){
@@ -371,13 +398,13 @@ int main(int argc, char *argv[])
 			fprintf(stderr, _("Error: Unable to open file \"%s\"\n"), ifile);
 			return 1;
 		}
-		if(doFileInput(iptr, quiet, dm, siPrefix)) rc = 1;
+		if(doFileInput(iptr, quiet, dm, siPrefix, precision)) rc = 1;
 		fclose(iptr);
 	}
 
 	/* Read calculations from stdin */
 	if(usestdin){
-		if(doFileInput(stdin, quiet, dm, siPrefix)) rc = 1;
+		if(doFileInput(stdin, quiet, dm, siPrefix, precision)) rc = 1;
 	}
 
 	if(rcpath){

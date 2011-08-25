@@ -47,6 +47,7 @@
 			</group>
 			<arg><option>-f</option> <replaceable>filename</replaceable></arg>
 			<arg><option>-i</option></arg>
+			<arg><option>-p</option> <replaceable>precision</replaceable></arg>
 			<arg><option>-q</option></arg>
 			<arg><option>-s</option><replaceable>prefix</replaceable></arg>
 			<arg choice='plain'><replaceable>equation</replaceable></arg>
@@ -84,6 +85,7 @@
 			</group>
 			<arg><option>-f</option> <replaceable>filename</replaceable></arg>
 			<arg><option>-i</option></arg>
+			<arg><option>-p</option> <replaceable>precision</replaceable></arg>
 			<arg><option>-q</option></arg>
 			<arg><option>-s</option><replaceable>prefix</replaceable></arg>
 			<arg choice='plain'><replaceable>equation</replaceable></arg>
@@ -133,6 +135,14 @@
 				<term><option>-i</option></term>
 				<listitem>
 					<para>Process a list of calculations from <filename class="devicefile">stdin</filename>. See the <!-- FIXME -->FILE INPUT section below for more information.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><option>-p</option></term>
+				<listitem>
+					<para>Control the number of digits displayed in the output
+					result. This is only available for -e and -r modes or if
+					the output does not use a SI prefix.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>

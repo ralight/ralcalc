@@ -35,9 +35,11 @@
  * Convert a double into a string with SI prefixes.
  * "string" is a preallocated char array of length len.
  */
-void doubleToString(double value, char *string, int len, char siPrefix)
+void doubleToString(double value, char *string, int len, char siPrefix, int precision)
 {
 	double absval;
+	char strFormat[20];
+
 	memset(string, 0, len);
 
 	absval = fabs(value);
@@ -75,7 +77,12 @@ void doubleToString(double value, char *string, int len, char siPrefix)
 	}else if((absval < 0.1 && siPrefix == '\0') || siPrefix == 'm'){
 		snprintf(string, len, "%gm", value * 1.0e3);
 	}else{
-		snprintf(string, len, "%g", value);
+		if(precision == -1){
+			snprintf(string, len, "%g", value);
+		}else{
+			snprintf(strFormat, 20, "%%.%dg", precision);
+			snprintf(string, len, strFormat, value);
+		}
 	}
 }
 
