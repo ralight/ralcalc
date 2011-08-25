@@ -37,7 +37,7 @@ distclean :
 	done
 
 potgen :
-	xml2po -o po/ralcalc-1.pot ralcalc.1.xml
+	xml2po -o po/ralcalc.1.pot ralcalc.1.xml
 	@for c in ${MANCOUNTRIES}; do \
 		xml2po -o po/$${c}.po ralcalc-$${c}.1.xml; \
 	done

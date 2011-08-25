@@ -1,0 +1,492 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-08-25 14:58+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ralcalc-nl.1.xml:6(refentrytitle) ralcalc-nl.1.xml:11(refname) ralcalc-nl.1.xml:17(command) ralcalc-nl.1.xml:41(command)
+msgid "ralcalc"
+msgstr ""
+
+#: ralcalc-nl.1.xml:7(manvolnum) ralcalc-nl.1.xml:257(term)
+msgid "1"
+msgstr ""
+
+#: ralcalc-nl.1.xml:12(refpurpose)
+msgid "een simpel command-line rekentoestel"
+msgstr ""
+
+#: ralcalc-nl.1.xml:21(option) ralcalc-nl.1.xml:58(option) ralcalc-nl.1.xml:102(option)
+msgid "-a"
+msgstr ""
+
+#: ralcalc-nl.1.xml:22(option) ralcalc-nl.1.xml:59(option) ralcalc-nl.1.xml:103(option)
+msgid "--all"
+msgstr ""
+
+#: ralcalc-nl.1.xml:27(option) ralcalc-nl.1.xml:64(option) ralcalc-nl.1.xml:121(option)
+msgid "-h"
+msgstr ""
+
+#: ralcalc-nl.1.xml:28(option) ralcalc-nl.1.xml:65(option) ralcalc-nl.1.xml:122(option)
+msgid "--help"
+msgstr ""
+
+#: ralcalc-nl.1.xml:33(option) ralcalc-nl.1.xml:70(option) ralcalc-nl.1.xml:155(option)
+msgid "-v"
+msgstr ""
+
+#: ralcalc-nl.1.xml:34(option) ralcalc-nl.1.xml:71(option) ralcalc-nl.1.xml:156(option)
+msgid "--version"
+msgstr ""
+
+#: ralcalc-nl.1.xml:43(option) ralcalc-nl.1.xml:80(option) ralcalc-nl.1.xml:109(option)
+msgid "-e"
+msgstr ""
+
+#: ralcalc-nl.1.xml:44(option) ralcalc-nl.1.xml:81(option) ralcalc-nl.1.xml:141(option)
+msgid "-r"
+msgstr ""
+
+#: ralcalc-nl.1.xml:46(option) ralcalc-nl.1.xml:83(option) ralcalc-nl.1.xml:115(option)
+msgid "-f"
+msgstr ""
+
+#: ralcalc-nl.1.xml:46(replaceable) ralcalc-nl.1.xml:83(replaceable)
+msgid "bestandsnaam"
+msgstr ""
+
+#: ralcalc-nl.1.xml:47(option) ralcalc-nl.1.xml:84(option) ralcalc-nl.1.xml:128(option)
+msgid "-i"
+msgstr ""
+
+#: ralcalc-nl.1.xml:48(option) ralcalc-nl.1.xml:85(option) ralcalc-nl.1.xml:134(option)
+msgid "-q"
+msgstr ""
+
+#: ralcalc-nl.1.xml:49(option) ralcalc-nl.1.xml:86(option) ralcalc-nl.1.xml:148(option)
+msgid "-s"
+msgstr ""
+
+#: ralcalc-nl.1.xml:49(replaceable) ralcalc-nl.1.xml:86(replaceable)
+msgid "prefix"
+msgstr ""
+
+#: ralcalc-nl.1.xml:50(replaceable) ralcalc-nl.1.xml:87(replaceable)
+msgid "vergelijking"
+msgstr ""
+
+#: ralcalc-nl.1.xml:54(command) ralcalc-nl.1.xml:78(command)
+msgid "="
+msgstr ""
+
+#: ralcalc-nl.1.xml:92(title)
+msgid "Beschrijving"
+msgstr ""
+
+#: ralcalc-nl.1.xml:93(para)
+msgid "<command>ralcalc</command> is een command-line rekentoestel ontworpen voor erg snelle berekeningen, waar waarschijnlijk enkel één resultaat gewenst is, zonder een heel programma te starten en af te sluiten."
+msgstr ""
+
+#: ralcalc-nl.1.xml:95(para)
+msgid "<command>ralcalc</command> is ook geinstalleerd als het <command>=</command> commando om het nog sneller bruikbaar te kunnen maken."
+msgstr ""
+
+#: ralcalc-nl.1.xml:99(title)
+msgid "Opties"
+msgstr ""
+
+#: ralcalc-nl.1.xml:105(para)
+msgid "Print alle beschikbare bewerkingen, functies en constanten uit."
+msgstr ""
+
+#: ralcalc-nl.1.xml:111(para)
+msgid "Geeft het resultaat weer in het \"1e-3\" formaat, in plaats van SI prefixen te gebruiken."
+msgstr ""
+
+#: ralcalc-nl.1.xml:117(para)
+msgid "Verwerk een lijst van berekeningen vanuit een bestand. Bekijk de BESTANDSINVOER sectie hieronder voor meer informatie."
+msgstr ""
+
+#: ralcalc-nl.1.xml:124(para) ralcalc-nl.1.xml:158(para)
+msgid "Geef gebruik, versie en contact details weer."
+msgstr ""
+
+#: ralcalc-nl.1.xml:130(para)
+msgid "Verwerk een lijst van berekeningen van <filename class=\"devicefile\">stdin</filename>. Bekijk de BESTANDSINVOER sectie hieronder voor meer informatie."
+msgstr ""
+
+#: ralcalc-nl.1.xml:137(para)
+msgid "Geef enkel het resultaat weer (dus verberg de invoer en enige fouten)."
+msgstr ""
+
+#: ralcalc-nl.1.xml:144(para)
+msgid "Geeft het resultaat weer in decimale vorm, zonder SI prefixen, noch exponenten."
+msgstr ""
+
+#: ralcalc-nl.1.xml:151(para)
+msgid "Geeft het resultaat weer in een bepaalde SI prefix. Deze optie wordt genegeerd indien <option>-e</option> of <option>-r</option> ook gebruikt wordt."
+msgstr ""
+
+#: ralcalc-nl.1.xml:165(title)
+msgid "Getalformaat"
+msgstr ""
+
+#: ralcalc-nl.1.xml:166(para)
+msgid "Nummer moet invoer zijn met ofwel \".\" of \",\" als een decimaal punt (dit is afhankelijk van de lokale instellingen, dus beide kunnen mogelijk niet werken voor jouw lokale instellingen), zonder een teken om duizendtallen aan te duiden."
+msgstr ""
+
+#: ralcalc-nl.1.xml:168(userinput)
+#, no-wrap
+msgid "= 2u/35"
+msgstr ""
+
+#: ralcalc-nl.1.xml:169(computeroutput)
+#, no-wrap
+msgid "2u/35 = 57.1429n"
+msgstr ""
+
+#: ralcalc-nl.1.xml:167(para)
+msgid "<command>ralcalc</command> ondersteunt SI prefix karakters voor zowel invoer als uitvoer: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:170(para)
+msgid "Nummers in de vorm 1e-3 worden ook ondersteunt, waar een \"e\" een tiende macht aanduidt. Gebruik dit niet samen met SI prefixen en \"e\" in hetzelfde getal (howel 1e-3n geldig is, is 1ne-3 dit niet - vermijd beide voor minder verwarring)."
+msgstr ""
+
+#: ralcalc-nl.1.xml:171(para)
+msgid "De ondersteunde SI prefixen zijn: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y."
+msgstr ""
+
+#: ralcalc-nl.1.xml:175(title)
+msgid "Bewerkingen"
+msgstr ""
+
+#: ralcalc-nl.1.xml:177(userinput)
+#, no-wrap
+msgid "= 1+2x3"
+msgstr ""
+
+#: ralcalc-nl.1.xml:178(computeroutput)
+#, no-wrap
+msgid "1+2x3 = 7"
+msgstr ""
+
+#: ralcalc-nl.1.xml:180(userinput)
+#, no-wrap
+msgid "= 1/2^0.5"
+msgstr ""
+
+#: ralcalc-nl.1.xml:181(computeroutput)
+#, no-wrap
+msgid "1/2^0.5 = 0.707107"
+msgstr ""
+
+#: ralcalc-nl.1.xml:176(para)
+msgid "De simpele mathematische bewerkingen voor optelling (+), aftrekking (-), vermenigvuldiging (*, x), deling (/) en machten (^) worden ondersteunt, met optelling en aftrekking met de laagste voorrang en machten de hoogste voorrang. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:183(userinput)
+#, no-wrap
+msgid "= [1+2]x3"
+msgstr ""
+
+#: ralcalc-nl.1.xml:184(computeroutput)
+#, no-wrap
+msgid "[1+2]x3 = 9"
+msgstr ""
+
+#: ralcalc-nl.1.xml:182(para)
+msgid "Haakjes ( (), [] ) kunnen gebruikt worden om de volgorde van bewerkingen te controleren: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:185(para)
+msgid "Zowel de vierkante als ronde haakjes kunnen gebruikt worden en zijn exact hetzelfde, dus [1+2)x3 is ook geldig. Ronde haakjes worden meestal gebruikt in wiskunde, maar de vierkante haakjes (en de \"x\" voor vermenigvuldiging) zijn toegevoegd om problemen met de shell, die deze karakters wil verlengen, tegen te gaan."
+msgstr ""
+
+#: ralcalc-nl.1.xml:187(userinput)
+#, no-wrap
+msgid "= 2^0.5"
+msgstr ""
+
+#: ralcalc-nl.1.xml:188(computeroutput)
+#, no-wrap
+msgid "2^0.5 = 1.41421"
+msgstr ""
+
+#: ralcalc-nl.1.xml:190(userinput)
+#, no-wrap
+msgid "= 1/_"
+msgstr ""
+
+#: ralcalc-nl.1.xml:191(computeroutput)
+#, no-wrap
+msgid "1/_ = 0.707107"
+msgstr ""
+
+#: ralcalc-nl.1.xml:186(para)
+msgid "<command>ralcalc</command> slaat het resultaat van de berekening op zodat het in de volgende berekening herbruikt kan worden met het \"_\" karakter. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:195(title)
+msgid "Functies"
+msgstr ""
+
+#: ralcalc-nl.1.xml:197(userinput)
+#, no-wrap
+msgid "= sin2x2"
+msgstr ""
+
+#: ralcalc-nl.1.xml:198(computeroutput)
+#, no-wrap
+msgid "sin2x2 = 1.81859"
+msgstr ""
+
+#: ralcalc-nl.1.xml:200(userinput)
+#, no-wrap
+msgid "= sin[2x2]"
+msgstr ""
+
+#: ralcalc-nl.1.xml:201(computeroutput)
+#, no-wrap
+msgid "sin[2x2] = -0.756802"
+msgstr ""
+
+#: ralcalc-nl.1.xml:196(para)
+msgid "De functies <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (basis 10 logaritme) en <function>ln</function> (natuurlijk logaritme) worden ondersteunt. De trigoniometrische functies werken op radialen. Het gebruik van haakjes is niet nodig, maar wordt wel aanbevolen waar voorrangsregels verwarrend kunnen zijn. De functies hebben dezelfde voorrangsregels als vermenigvuldiging/deling, dus wees voorzichtig: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:205(title)
+msgid "Constanten"
+msgstr ""
+
+#: ralcalc-nl.1.xml:206(para)
+msgid "De constanten <constant>pi</constant> (3.14159) en <constant>exp</constant> (2.71828) kunnen gebruikt worden en worden beschouwd als enig ander getal."
+msgstr ""
+
+#: ralcalc-nl.1.xml:210(title)
+msgid "Bestandsinvoer"
+msgstr ""
+
+#: ralcalc-nl.1.xml:212(userinput)
+#, no-wrap
+msgid "2^0.5"
+msgstr ""
+
+#: ralcalc-nl.1.xml:213(userinput)
+#, no-wrap
+msgid "1/_"
+msgstr ""
+
+#: ralcalc-nl.1.xml:214(userinput)
+#, no-wrap
+msgid "238/1064x100"
+msgstr ""
+
+#: ralcalc-nl.1.xml:211(para)
+msgid "Een lijst van berekeningen kan ineens verwerkt worden door deze in een bestand te plaatsen. Elke regel van het bestand zal exact hetzelfde verwerkt worden als <command>ralcalc</command> op elke regel apart opgeroepen met die argumenten. Het bestand kan er als volgt uitzien (merk op dat het commando <command>=</command> of <command>ralcalc</command> niet aanwezig zijn: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:215(para)
+msgid "Bestandsinvoer is ook mogelijk door <filename class=\"devicefile\">stdin</filename> te gebruiken, maw interactief lezen, onmiddelijk vanuit de terminal met elke regel zoals normaal te berekenen. Om dit af te sluiten, type \"q\" of \"quit\" op een nieuwe regel, gebruik ctrl-D om het einde van het bestand aan te duiden, of gebruik ctrl-C om <command>ralcalc</command> af te laten sluiten."
+msgstr ""
+
+#: ralcalc-nl.1.xml:216(para)
+msgid "Als een van de bestandsinvoer opties gebruikt wordt via de command-line, dan worden alle berekeningen ingegeven via de command-line eerst berekent. Als beide invoeropties gegeven worden, dan worden de berekeningen van de <option>-f</option> eerst uitgevoerd, gevolgd door deze van <filename class=\"devicefile\">stdin</filename>."
+msgstr ""
+
+#: ralcalc-nl.1.xml:220(title)
+msgid "Voorbeelden"
+msgstr ""
+
+#: ralcalc-nl.1.xml:222(userinput)
+#, no-wrap
+msgid "= ln 1.0001"
+msgstr ""
+
+#: ralcalc-nl.1.xml:223(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 99.995u"
+msgstr ""
+
+#: ralcalc-nl.1.xml:221(para)
+msgid "Basis berekeningen: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:225(userinput)
+#, no-wrap
+msgid "= -e ln 1.0001"
+msgstr ""
+
+#: ralcalc-nl.1.xml:226(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 9.9995e-05"
+msgstr ""
+
+#: ralcalc-nl.1.xml:224(para)
+msgid "Exponent nummer uitvoerformaat: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:228(userinput)
+#, no-wrap
+msgid "= -r ln 1.0001"
+msgstr ""
+
+#: ralcalc-nl.1.xml:229(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 0.000100"
+msgstr ""
+
+#: ralcalc-nl.1.xml:227(para)
+msgid "Rauwe nummer uitvoer formaat: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:231(userinput)
+#, no-wrap
+msgid "= -s m ln 1.0001"
+msgstr ""
+
+#: ralcalc-nl.1.xml:232(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 0.099995"
+msgstr ""
+
+#: ralcalc-nl.1.xml:230(para)
+msgid "Nummer uitvoer format met een gespecifieerde SI prefix: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:236(title)
+msgid "Omgevingsvariabelen"
+msgstr ""
+
+#: ralcalc-nl.1.xml:239(envar)
+msgid "HOME"
+msgstr ""
+
+#: ralcalc-nl.1.xml:241(para)
+msgid "Bepaalt waar het .ralcalc_result bestand opgeslagen wordt."
+msgstr ""
+
+#: ralcalc-nl.1.xml:248(title)
+msgid "Exit Waarden"
+msgstr ""
+
+#: ralcalc-nl.1.xml:251(term)
+msgid "0"
+msgstr ""
+
+#: ralcalc-nl.1.xml:253(para)
+msgid "Success"
+msgstr ""
+
+#: ralcalc-nl.1.xml:259(para)
+msgid "Op z'n minst 1 fout trad op."
+msgstr ""
+
+#: ralcalc-nl.1.xml:266(title)
+msgid "Bestanden"
+msgstr ""
+
+#: ralcalc-nl.1.xml:268(filename)
+msgid "${HOME}/.ralcalc_result"
+msgstr ""
+
+#: ralcalc-nl.1.xml:269(blockquote)
+msgid "Het resultaat van de meest recente berekening, dat gebruikt kan worden in een volgende berekingen door middel van \"_\". Merk op dat dit niet noodzakelijk overdraagbaar is naar andere computerarchitecturen."
+msgstr ""
+
+#: ralcalc-nl.1.xml:274(title)
+msgid "Diagnose"
+msgstr ""
+
+#: ralcalc-nl.1.xml:275(para)
+msgid "<command>ralcalc</command> probeert de gebruiker te verwittigen van zoveel mogelijk fouten en geeft aan waar deze fouten zijn, indien ze veroorzaakt zijn door de gebruikersinvoer."
+msgstr ""
+
+#: ralcalc-nl.1.xml:277(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 34/3@2</userinput>\n\n\t<computeroutput>Fout: 34/3@2</computeroutput>\n\t           ^ onbekend teken"
+msgstr ""
+
+#: ralcalc-nl.1.xml:277(para)
+msgid "Indien een onbekend karakters in de vergelijking zit, verschijnt een \"<errortext>onbekend teken</errortext>\" fout. De foutmarkeerder wijst naar het ongeldige karakter.<placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:283(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 3.14.159x2.8^2</userinput>\n\n\t<computeroutput>Fout: 3.14.159x2.8^2</computeroutput>\n\t              ^ slecht getal"
+msgstr ""
+
+#: ralcalc-nl.1.xml:283(para)
+msgid "Indien een slecht getal in de vergelijking zit, verschijnt een \"<errortext>onbekend teken</errortext>\" fout. De foutmarkeerder wijst naar het slechte getal.<placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:289(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 5/[[2+3]*9</userinput>\n\n\t<computeroutput>Fout: 5/[[2+3]*9</computeroutput>\n\t                 ^ niet-overeenkomende haakjes"
+msgstr ""
+
+#: ralcalc-nl.1.xml:289(para)
+msgid "Indien het aantal openende haakjes en sluitende haakjes niet overeenkomen in de vergelijking zit, verschijnt een \"<errortext>niet-overeenkomende haakjes</errortext>\" fout. De foutmarkeerder wijst naar het haakje zonder betekenis.<placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:295(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 3^^7</userinput>\n\n\t<computeroutput>Fout: 3^^7</computeroutput>\n\t         ^ ongeldige bewerking"
+msgstr ""
+
+#: ralcalc-nl.1.xml:295(para)
+msgid "Indien een bewerkingsteken op een verkeerde plaats voorkomt in de vergelijking, verschijnt een \"<errortext>ongeldige bewerking</errortext>\" fout. De foutmarkeerder wijst naar het ongeldig teken.<placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:301(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= [2+]3</userinput>\n\n\t<computeroutput>Fout: [2+]3</computeroutput>\n\t          ^ ongeldige haakjes\n\n\t<computeroutput>Fout: [2+]3</computeroutput>\n\t            ^ ongeldige bewerking"
+msgstr ""
+
+#: ralcalc-nl.1.xml:301(para)
+msgid "Indien een een haakje in de vergelijking voorkomt op een ongeldige locatie, verschijnt een \"<errortext>ongeldige haakjes</errortext>\" fout. Deze fout overlapt vaak met andere fouten, dus er kunnen een aantal fouten weergegeven worden. Het is het beste om deze fout eerst op te lossen, aangezien dit waarschijnlijk de bron van het probleem is. De foutmarkeerder wijst naar het ongeldige haakje.<placeholder-1/>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:310(para)
+msgid "Indien <command>ralcalc</command> geen geheugen kan oproepen, verschijnt een \"<errortext>out of memory</errortext>\" fout."
+msgstr ""
+
+#: ralcalc-nl.1.xml:312(para)
+msgid "Interne fout: Indien de parser merkt dat twee nummers na elkaar nog geen \"<errortext>Slecht getal</errortext>\" fout genereren, verschijnt een \"<errortext>dubbel getal</errortext>\" fout. Dit zou nooit mogen gebeuren."
+msgstr ""
+
+#: ralcalc-nl.1.xml:314(para)
+msgid "Interne fout: Indien een onbekende foutcode doorgegeven wordt naar de fout-uitvoer functie, zal een \"<errortext>onbekende fout</errortext>\" fout gegenereerd worden en de ongeldige foutcode zal weergegeven worden. Dit zou nooit mogen gebeuren."
+msgstr ""
+
+#: ralcalc-nl.1.xml:318(title)
+msgid "Bugs"
+msgstr ""
+
+#: ralcalc-nl.1.xml:319(para)
+msgid "Enkel één \"<option>-f <replaceable>bestandsnaam</replaceable></option>\" kan in één keer doorgegeven worden."
+msgstr ""
+
+#: ralcalc-nl.1.xml:320(para)
+msgid "Indien je enige fouten vindt, lever dan een rapport in op <uri type=\"webpage\">http://bugs.launchpad.net/ralcalc</uri>"
+msgstr ""
+
+#: ralcalc-nl.1.xml:324(title)
+msgid "Auteur"
+msgstr ""
+
+#: ralcalc-nl.1.xml:325(para)
+msgid "Roger Light <email>roger@atchoo.org</email>"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: ralcalc-nl.1.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+

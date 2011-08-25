@@ -1,0 +1,492 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-08-25 14:57+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ralcalc-da.1.xml:6(refentrytitle) ralcalc-da.1.xml:11(refname) ralcalc-da.1.xml:17(command) ralcalc-da.1.xml:41(command)
+msgid "ralcalc"
+msgstr ""
+
+#: ralcalc-da.1.xml:7(manvolnum) ralcalc-da.1.xml:257(term)
+msgid "1"
+msgstr ""
+
+#: ralcalc-da.1.xml:12(refpurpose)
+msgid "En simpel kommando linje beregner"
+msgstr ""
+
+#: ralcalc-da.1.xml:21(option) ralcalc-da.1.xml:58(option) ralcalc-da.1.xml:102(option)
+msgid "-a"
+msgstr ""
+
+#: ralcalc-da.1.xml:22(option) ralcalc-da.1.xml:59(option) ralcalc-da.1.xml:103(option)
+msgid "--alle"
+msgstr ""
+
+#: ralcalc-da.1.xml:27(option) ralcalc-da.1.xml:64(option) ralcalc-da.1.xml:121(option)
+msgid "-h"
+msgstr ""
+
+#: ralcalc-da.1.xml:28(option) ralcalc-da.1.xml:65(option) ralcalc-da.1.xml:122(option)
+msgid "--hjælp"
+msgstr ""
+
+#: ralcalc-da.1.xml:33(option) ralcalc-da.1.xml:70(option) ralcalc-da.1.xml:155(option)
+msgid "-v"
+msgstr ""
+
+#: ralcalc-da.1.xml:34(option) ralcalc-da.1.xml:71(option) ralcalc-da.1.xml:156(option)
+msgid "--version"
+msgstr ""
+
+#: ralcalc-da.1.xml:43(option) ralcalc-da.1.xml:80(option) ralcalc-da.1.xml:109(option)
+msgid "-e"
+msgstr ""
+
+#: ralcalc-da.1.xml:44(option) ralcalc-da.1.xml:81(option) ralcalc-da.1.xml:141(option)
+msgid "-r"
+msgstr ""
+
+#: ralcalc-da.1.xml:46(option) ralcalc-da.1.xml:83(option) ralcalc-da.1.xml:115(option)
+msgid "-f"
+msgstr ""
+
+#: ralcalc-da.1.xml:46(replaceable) ralcalc-da.1.xml:83(replaceable)
+msgid "Filnavn"
+msgstr ""
+
+#: ralcalc-da.1.xml:47(option) ralcalc-da.1.xml:84(option) ralcalc-da.1.xml:128(option)
+msgid "-i"
+msgstr ""
+
+#: ralcalc-da.1.xml:48(option) ralcalc-da.1.xml:85(option) ralcalc-da.1.xml:134(option)
+msgid "-q"
+msgstr ""
+
+#: ralcalc-da.1.xml:49(option) ralcalc-da.1.xml:86(option) ralcalc-da.1.xml:148(option)
+msgid "-s"
+msgstr ""
+
+#: ralcalc-da.1.xml:49(replaceable) ralcalc-da.1.xml:86(replaceable)
+msgid "præfiks"
+msgstr ""
+
+#: ralcalc-da.1.xml:50(replaceable) ralcalc-da.1.xml:87(replaceable)
+msgid "ligning"
+msgstr ""
+
+#: ralcalc-da.1.xml:54(command) ralcalc-da.1.xml:78(command)
+msgid "="
+msgstr ""
+
+#: ralcalc-da.1.xml:92(title)
+msgid "Beskrivelse"
+msgstr ""
+
+#: ralcalc-da.1.xml:93(para)
+msgid "<command>ralcalc</command> er en kommando linje beregner designet til meget hurtige beregninger hvor måske kun enkelte resultater er ønsket uden og skulle starte og slutte et program."
+msgstr ""
+
+#: ralcalc-da.1.xml:95(para)
+msgid "<command>ralcalc</command> er også installeret så <command>=</command> kommando brugen gør det endnu hurtigere."
+msgstr ""
+
+#: ralcalc-da.1.xml:99(title)
+msgid "Indstillinger"
+msgstr ""
+
+#: ralcalc-da.1.xml:105(para)
+msgid "Udskriv alle tilgænglige operatører, funktioner og kontakter."
+msgstr ""
+
+#: ralcalc-da.1.xml:111(para)
+msgid "Vis resultatet i \"1e-3\" formen istedet for at benytte SI præfikset."
+msgstr ""
+
+#: ralcalc-da.1.xml:117(para)
+msgid "Kør en liste af beregninger fra en fil. Se FIL INDDATA sektionen nedenfor for yderligere information."
+msgstr ""
+
+#: ralcalc-da.1.xml:124(para) ralcalc-da.1.xml:158(para)
+msgid "Vis brug, version og kontakt detaljer."
+msgstr ""
+
+#: ralcalc-da.1.xml:130(para)
+msgid "Kør en liste af beregninger fra <filename class=\"devicefile\">stdin</filename>. Se FIL INDDATA sektionen nedenfor for yderligere information."
+msgstr ""
+
+#: ralcalc-da.1.xml:137(para)
+msgid "Vis kun resultatet (Således inddata og fejl skjules)."
+msgstr ""
+
+#: ralcalc-da.1.xml:144(para)
+msgid "Vis resultatet i decimal form med hverken SI præfiks eller eksponent."
+msgstr ""
+
+#: ralcalc-da.1.xml:151(para)
+msgid "Vis resultatet ved brug af en bestemt SI præfiks. Denne indstilling bliver ignoreret hvis <option>-e</option> eller <option>-r</option> også er i brug."
+msgstr ""
+
+#: ralcalc-da.1.xml:165(title)
+msgid "Tal format"
+msgstr ""
+
+#: ralcalc-da.1.xml:166(para)
+msgid "Nummer bør indskrives ved brug af enten \".\" eller \",\" som decimal tegn (dette er lokal afhængig så det virker måske ikke i dit lokale), uden tusinde seperator."
+msgstr ""
+
+#: ralcalc-da.1.xml:168(userinput)
+#, no-wrap
+msgid "= 2u/35"
+msgstr ""
+
+#: ralcalc-da.1.xml:169(computeroutput)
+#, no-wrap
+msgid "2u/35 = 57.1429n"
+msgstr ""
+
+#: ralcalc-da.1.xml:167(para)
+msgid "<command>ralcalc</command> understøtter SI præfiks tegn for både inddata og uddata: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:170(para)
+msgid "Nummerne fra form 1e-3 er også understøttet, hvortil \"e\" indikere i ti'ende potens. Bland, og samlign ikke SI præfiksene med \"e\" i samme nummer (selvom 1e-3n er gyldig, 1ne-3 er ikke - undgå begge for mindre forvirring)."
+msgstr ""
+
+#: ralcalc-da.1.xml:171(para)
+msgid "SI præfiksene der understøttes er: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y."
+msgstr ""
+
+#: ralcalc-da.1.xml:175(title)
+msgid "Operatørene"
+msgstr ""
+
+#: ralcalc-da.1.xml:177(userinput)
+#, no-wrap
+msgid "= 1+2x3"
+msgstr ""
+
+#: ralcalc-da.1.xml:178(computeroutput)
+#, no-wrap
+msgid "1+2x3 = 7"
+msgstr ""
+
+#: ralcalc-da.1.xml:180(userinput)
+#, no-wrap
+msgid "= 1/2^0.5"
+msgstr ""
+
+#: ralcalc-da.1.xml:181(computeroutput)
+#, no-wrap
+msgid "1/2^0.5 = 0.707107"
+msgstr ""
+
+#: ralcalc-da.1.xml:176(para)
+msgid "Den simpleste matmatiske operatør for sammenlægning (+), subtraktion (-), multiplikation (*, x), dividere (/) og potens (^) er understøttet, hvor sammenlægning og subtraktion har laveste prioritet og potensen har den højeste. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:183(userinput)
+#, no-wrap
+msgid "= [1+2]x3"
+msgstr ""
+
+#: ralcalc-da.1.xml:184(computeroutput)
+#, no-wrap
+msgid "[1+2]x3 = 9"
+msgstr ""
+
+#: ralcalc-da.1.xml:182(para)
+msgid "Klammerne ( (), [] ) kan benyttes til at kontrolere hvilken måde beregningerne udføres: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:185(para)
+msgid "Både firkantet og runde klammer kan benyttes og begge er direkte tilsvarende, således [1+2)x3 også er gyldig. Runde klammer er oftere benyttet i matematik, mens firkantet klammer (og \"x\"'et for multiplikation) er inkluderet for at forhindre problemer med Shell'en udvider disse tegn."
+msgstr ""
+
+#: ralcalc-da.1.xml:187(userinput)
+#, no-wrap
+msgid "= 2^0.5"
+msgstr ""
+
+#: ralcalc-da.1.xml:188(computeroutput)
+#, no-wrap
+msgid "2^0.5 = 1.41421"
+msgstr ""
+
+#: ralcalc-da.1.xml:190(userinput)
+#, no-wrap
+msgid "= 1/_"
+msgstr ""
+
+#: ralcalc-da.1.xml:191(computeroutput)
+#, no-wrap
+msgid "1/_ = 0.707107"
+msgstr ""
+
+#: ralcalc-da.1.xml:186(para)
+msgid "<command>ralcalc</command> gemmer resultatet af beregningen således det kan blive benyttet i den næste udregning med \"_\" tegnet. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:195(title)
+msgid "Funktioner"
+msgstr ""
+
+#: ralcalc-da.1.xml:197(userinput)
+#, no-wrap
+msgid "= sin2x2"
+msgstr ""
+
+#: ralcalc-da.1.xml:198(computeroutput)
+#, no-wrap
+msgid "sin2x2 = 1.81859"
+msgstr ""
+
+#: ralcalc-da.1.xml:200(userinput)
+#, no-wrap
+msgid "= sin[2x2]"
+msgstr ""
+
+#: ralcalc-da.1.xml:201(computeroutput)
+#, no-wrap
+msgid "sin[2x2] = -0.756802"
+msgstr ""
+
+#: ralcalc-da.1.xml:196(para)
+msgid "Funktionerne <function>sin</function>, <function>cos</function>, <function>tan</function>, <function>asin</function>, <function>acos</function>, <function>atan</function>, <function>sqrt</function>, <function>log</function> (base 10 logaritme) og <function>ln</function> (naturlig logaritme) er understøttet. Trigonometri funktionerne virker på omkreds. Brugen af klammer er ikke nødvendig, men anbefales hvor tidligere udregninger kan være forvirrende. Funktionerne har samme mønster til multiplikation/dividering, så vær varsom: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:205(title)
+msgid "konstante"
+msgstr ""
+
+#: ralcalc-da.1.xml:206(para)
+msgid "konstanterne <constant>Pi</constant> (3.14159) og <constant>exp</constant> (2.71828) can benyttes og behandles som et hvilket som helst andet tal."
+msgstr ""
+
+#: ralcalc-da.1.xml:210(title)
+msgid "Fil inddata"
+msgstr ""
+
+#: ralcalc-da.1.xml:212(userinput)
+#, no-wrap
+msgid "2^0.5"
+msgstr ""
+
+#: ralcalc-da.1.xml:213(userinput)
+#, no-wrap
+msgid "1/_"
+msgstr ""
+
+#: ralcalc-da.1.xml:214(userinput)
+#, no-wrap
+msgid "238/1064x100"
+msgstr ""
+
+#: ralcalc-da.1.xml:211(para)
+msgid "En liste af beregninger kan blive kørt ved at placere dem i en fil. Hver linje af filen vil blive kørt på præcist samme måde som hvis <command>ralcalc</command> havde været kørt med disse argumenter. Filen kunne se ud som følgende (bemærk manglen på kommandoer <command>=</command> eller <command>ralcalc</command>): <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:215(para)
+msgid "Filens inddata er også mulig ved brug af <filename class=\"devicefile\">stdin</filename>, eksempelvis aflæses interaktivt direkte fra terminalen hvor hver linje beregnes normaltvis. For at afslutte, skriv \"q\" eller \"quit\" i en ny linje, benyt Ctrl-D for at indikere enden på filen, eller benyt Ctrl-C til at tvinge <command>ralcalc</command> til at lukke ned."
+msgstr ""
+
+#: ralcalc-da.1.xml:216(para)
+msgid "Hvis begge fil inddata indstillinger er tilstede på kommando linjen, da vil først givne kommando blive udregnet først. Hvis begge fil inddata instillinger er tilstede, da vil udregningerne fra <option>-f</option> blive udført først, efterfulgt af dem fra <filename class=\"devicefile\">stdin</filename>."
+msgstr ""
+
+#: ralcalc-da.1.xml:220(title)
+msgid "Eksempler"
+msgstr ""
+
+#: ralcalc-da.1.xml:222(userinput)
+#, no-wrap
+msgid "= ln 1.0001"
+msgstr ""
+
+#: ralcalc-da.1.xml:223(computeroutput)
+#, no-wrap
+msgid "ln 1.0001 = 99.995u"
+msgstr ""
+
+#: ralcalc-da.1.xml:221(para)
+msgid "Grundlæggende beregninger: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:225(userinput)
+#, no-wrap
+msgid "= -e l 1.0001"
+msgstr ""
+
+#: ralcalc-da.1.xml:226(computeroutput)
+#, no-wrap
+msgid "l 1.0001 = 9.9995e-05"
+msgstr ""
+
+#: ralcalc-da.1.xml:224(para)
+msgid "Eksponentens nummer uddata format: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:228(userinput)
+#, no-wrap
+msgid "= -r l 1.0001"
+msgstr ""
+
+#: ralcalc-da.1.xml:229(computeroutput)
+#, no-wrap
+msgid "l 1.0001 = 0.000100"
+msgstr ""
+
+#: ralcalc-da.1.xml:227(para)
+msgid "Rå nummer uddata format: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:231(userinput)
+#, no-wrap
+msgid "= -s m l 1.0001"
+msgstr ""
+
+#: ralcalc-da.1.xml:232(computeroutput)
+#, no-wrap
+msgid "l 1.0001 = 0.099995"
+msgstr ""
+
+#: ralcalc-da.1.xml:230(para)
+msgid "Nummer uddata format med et specifikt SI Præfiks: <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:236(title)
+msgid "Miljø Variabler"
+msgstr ""
+
+#: ralcalc-da.1.xml:239(envar)
+msgid "HJEM"
+msgstr ""
+
+#: ralcalc-da.1.xml:241(para)
+msgid "Fastslår hvor .ralcalc_resultat filen vil blive gemt."
+msgstr ""
+
+#: ralcalc-da.1.xml:248(title)
+msgid "Afslutnings Værdier"
+msgstr ""
+
+#: ralcalc-da.1.xml:251(term)
+msgid "0"
+msgstr ""
+
+#: ralcalc-da.1.xml:253(para)
+msgid "Succes"
+msgstr ""
+
+#: ralcalc-da.1.xml:259(para)
+msgid "Mindst en fejl opstod."
+msgstr ""
+
+#: ralcalc-da.1.xml:266(title)
+msgid "Filer"
+msgstr ""
+
+#: ralcalc-da.1.xml:268(filename)
+msgid "${HOME}/.ralcalc_resultat"
+msgstr ""
+
+#: ralcalc-da.1.xml:269(blockquote)
+msgid "Resultatet af sidste udregning, kan blive tilgået i en senere beregning ved hjælp af \"_\" tegnet. Bemærk at dette ikke nødvendigvis er platforms uafhængig."
+msgstr ""
+
+#: ralcalc-da.1.xml:274(title)
+msgid "Diagnostisering"
+msgstr ""
+
+#: ralcalc-da.1.xml:275(para)
+msgid "<command>ralcalc</command> vil forsøge at meddele bruger på så mange fejl som muligt og indikere hvad disse fejl er, såfremt de er bruger inddata relaterede."
+msgstr ""
+
+#: ralcalc-da.1.xml:277(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 34/3@2</userinput>\n\n\t<computeroutput>Fejl: 34/3@2</computeroutput>\n\t           ^ ukendt staffet"
+msgstr ""
+
+#: ralcalc-da.1.xml:277(para)
+msgid "Såfremt et ukendt tegn er inkluderet i en ligning, vil en \"<errortext>ukendt staffet</errortext>\" fejl meddelelse blive genereret. Fejl meddelelsen vil forsøge af fremhæve de ugyldige tegn. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:283(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 3.14.159x2.8^2</userinput>\n\n\t<computeroutput>Fejl: 3.14.159x2.8^2</computeroutput>\n\t              ^ forkert nummer"
+msgstr ""
+
+#: ralcalc-da.1.xml:283(para)
+msgid "Såfremt et ugyldig tegn er inkluderet, vil en \"<errortext>forkert nummer</errortext>\" fejl meddelelse blive genereret. Fejl meddelelsen vil forsøge at fremhæve det ugyldige nummer. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:289(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 5/[[2+3]*9</userinput>\n\n\t<computeroutput>Fejl: 5/[[2+3]*9</computeroutput>\n\t                 ^ fejlplacerede klammer"
+msgstr ""
+
+#: ralcalc-da.1.xml:289(para)
+msgid "Hvis placeringen af åben og luk klemmerne ikke passer, vil en \"<errortext>Fejlplaceret klammer</errortext>\" fejl meddelelse blive genereret. Fejlens markeringer har ingen betydning. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:295(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= 3^^7</userinput>\n\n\t<computeroutput>Fejl: 3^^7</computeroutput>\n\t         ^ ugyldig operatør"
+msgstr ""
+
+#: ralcalc-da.1.xml:295(para)
+msgid "Såfremt en operatør fremstår som ugyldig, vil en \"<errortext>ugyldig operatør</errortext>\" fejl meddelelse blive genereret. Fejl meddelelsen vil førsøge at indikere den ugyldige operatør. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:301(programlisting)
+#, no-wrap
+msgid "\n\t<userinput>= [2+]3</userinput>\n\n\t<computeroutput>Fejl: [2+]3</computeroutput>\n\t          ^ ugyldig klamme\n\n\t<computeroutput>Fejl: [2+]3</computeroutput>\n\t            ^ Ugyldig operatør"
+msgstr ""
+
+#: ralcalc-da.1.xml:301(para)
+msgid "Såfremt klemmerne er i en ugyldig position, vil en \"<errortext>ugyldig klemme</errortext>\" fejl meddelelse blive genereret. Denne type fejl, efterfølger gerne andre fejl, således at der vil blive genereret et antal af beskeder på skærmen. Det er ofte klogest at rette denne fejl først eftersom det er mest sandsynligt at den er skyld i alle fejlene. Fejl meddelelsen vil forsøge at indikere den ugyldige klemme. <placeholder-1/>"
+msgstr ""
+
+#: ralcalc-da.1.xml:310(para)
+msgid "Såfremt <command>ralcalc</command> ikke er i stand til at allokere hukommelse, vil en \"<errortext>ikke mere hukommelse</errortext>\" fejl meddelelse blive genereret."
+msgstr ""
+
+#: ralcalc-da.1.xml:312(para)
+msgid "Intern fejl: Såfremt analyse værktøjet bemærker to tal side om side på en sådan måde det ikke generere en \"<errortext>ugyldig nummer</errortext>\" fejl meddelelse, vil en \"<errortext>duplikeret nummer</errortext>\" fejl meddelelse blive genereret. Dette burde dog aldrig ske."
+msgstr ""
+
+#: ralcalc-da.1.xml:314(para)
+msgid "Intern fejl: Såfremt ukendt fejl kode har nået fejl uddata funktionen, vil en \"<errortext>ukendt fejl</errortext>\" blive genereret og en ugyldig fejl kode vil blive vist. Dette burde dog aldrig ske."
+msgstr ""
+
+#: ralcalc-da.1.xml:318(title)
+msgid "Fejl"
+msgstr ""
+
+#: ralcalc-da.1.xml:319(para)
+msgid "Kun én \"<option>-f <replaceable>filnavn</replaceable></option>\" kan blive benyttet af gangen."
+msgstr ""
+
+#: ralcalc-da.1.xml:320(para)
+msgid "Såfremt du støder på fejl, venligst rapporter dette til <uri type=\"webpage\">http://bugs.launchpad.net/ralcalc</uri>"
+msgstr ""
+
+#: ralcalc-da.1.xml:324(title)
+msgid "Forfatter"
+msgstr ""
+
+#: ralcalc-da.1.xml:325(para)
+msgid "Roger Light <email>roger@atchoo.org</email>"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: ralcalc-da.1.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+
