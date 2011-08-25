@@ -1,5 +1,5 @@
-1.3.2.2 ()
-==================
+1.4.0 (20110825)
+================
 
 - Added -p option to control output precision for -r and -e modes.
 - Fix inconsistent output for SI prefixes smaller than m.
