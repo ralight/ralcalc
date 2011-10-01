@@ -287,9 +287,11 @@ int assignPrecedence(tokenItem *tokenList)
 	while(item){
 		precedence = 0;
 		switch(item->type){
+			case tkNegation:
+				precedence = 5;
+				break;
 			case tkPlus:
 			case tkMinus:
-			case tkNegation:
 				precedence = 1;
 				break;
 			case tkLog:

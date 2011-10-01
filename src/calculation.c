@@ -115,7 +115,7 @@ double process(tokenItem **tokenList)
 
 	if(!tokenList || !(*tokenList)) return 0.0;
 
-	for(precedence = 4; precedence >= 0; precedence--){
+	for(precedence = 5; precedence >= 0; precedence--){
 
 #ifdef DEBUG
 		item = (*tokenList);
