@@ -127,7 +127,11 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int 
 	if(rcpath){
 		rcptr = fopen(rcpath, "rb");
 		if(rcptr){
-			fread(&lastResult, sizeof(double), 1, rcptr);
+			rc = fread(&lastResult, sizeof(double), 1, rcptr);
+			if(rc != sizeof(double)){
+				fprintf(stderr, "Warning: Previous value file corrupt, ignoring.\n");
+				lastResult = 0.0;
+			}
 			fclose(rcptr);
 		}
 	}
@@ -179,7 +183,10 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int 
 		if(rcpath){
 			rcptr = fopen(rcpath, "wb");
 			if(rcptr){
-				fwrite(&result, sizeof(double), 1, rcptr);
+				rc = fwrite(&result, sizeof(double), 1, rcptr);
+				if(rc != sizeof(double)){
+					fprintf(stderr, "Error writing last value file.\n");
+				}
 				fclose(rcptr);
 			}
 		}
