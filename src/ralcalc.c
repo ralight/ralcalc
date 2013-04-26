@@ -55,7 +55,7 @@ void printUsage(void)
 	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
 	printf(_("Copyright (C) 2007-2009,2011 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
 	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
-	printf(_("ralcalc is a simple command line calculator. \n\n"));
+	printf(_("ralcalc is a simple command line calculator.\n\n"));
 	printf(_("Usage: ralcalc -h   (display this text)\n"));
 	printf(_("       ralcalc -a   (display all available operators)\n"));
 	printf(_("       ralcalc [-e] [-f input file] [-i] [-p precision] [-q] [-r] <an equation>\n"));
@@ -63,7 +63,7 @@ void printUsage(void)
 	printf(_(" -e    Use the '1e-3' form of display for the answer rather than SI prefixes.\n"));
 	printf(_(" -f    Process a list of calculations from a file.\n"));
 	printf(_(" -i    Process a list of calculations from stdin.\n"));
-	printf(_(" -p    Number of digits to display in the output when using -e or -r, or if the\n       output does not have an SI prefix\n."));
+	printf(_(" -p    Number of digits to display in the output when using -e or -r, or if the\n       output does not have an SI prefix.\n"));
 	printf(_(" -q    Only display the answer (quiet).\n"));
 	printf(_(" -r    Display the answer with neither SI prefixes nor exponents.\n"));
 	printf(_("\nSee http://atchoo.org/tools/ralcalc/ for updates.\n"));
