@@ -12,7 +12,7 @@ INSTALL=install
 XGETTEXT=xgettext
 MSGMERGE=msgmerge
 MSGFMT=msgfmt
-DOCBOOK2MAN=docbook2man.pl
+XSLTPROC=xsltproc
 
 prefix=/usr/local
 mandir=${prefix}/share/man
