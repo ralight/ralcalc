@@ -328,6 +328,8 @@ int main(int argc, char *argv[])
 				printUsage();
 				return 1;
 			}
+		}else if(!strcmp(argv[i], "-i")){
+			usestdin = 1;
 		}else if(!strcmp(argv[i], "-p")){
 			if(i < argc - 1){
 				precision = atoi(argv[i+1]);
