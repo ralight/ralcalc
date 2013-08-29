@@ -192,6 +192,17 @@
 	</refsect1>
 
 	<refsect1>
+		<title>Default Options</title>
+		<para>The default options can be specified in the file
+			${HOME}/.ralcalcrc. The options are currently limited to the
+			display format and so the only line in the file should be one of
+			<option>-e</option>, <option>-r</option> or <option>-s
+				<replaceable>prefix</replaceable></option>, exactly as it would
+			be given on the command line. The default can be overridden by
+			using a different display format on the command line.</para>
+	</refsect1>
+
+	<refsect1>
 		<title>Number Format</title>
 		<para>Numbers should be input using either "." or "," as a decimal point (this is locale dependent so both may not work in your locale), with no thousands separators.</para>
 		<para><command>ralcalc</command> supports SI prefix characters for both input and output:
@@ -357,6 +368,10 @@
 				accessed in a later calculation using the "_" character. Note
 				that this is not necessarily portable across different machine
 				architectures.</blockquote>
+		</para>
+		<para>
+			<filename>${HOME}/.ralcalcrc</filename>
+			<blockquote>Stores default options.</blockquote>
 		</para>
 	</refsect1>
 

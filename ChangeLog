@@ -3,6 +3,7 @@
 
 - Fix "-i" mode, which was previously being ignored completely.
 - The latest given of -e, -r, -s is now used as the output format.
+- Default display mode can now be configured in ~/.ralcalcrc.
 
 1.4.2 (20111003)
 ================

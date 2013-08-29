@@ -1,9 +1,10 @@
 /*
- * File: ralcalc.c Author: Roger Light
+ * File: ralcalc.c
+ * Author: Roger Light
  * Project: ralcalc
  * Desc: Main program.
  *
- * Copyright (C) 2007-2009 Roger Light.
+ * Copyright (C) 2007-2009,2011,2013 Roger Light.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -53,7 +54,7 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char si
 void printUsage(void)
 {
 	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
-	printf(_("Copyright (C) 2007-2009,2011 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
+	printf(_("Copyright (C) 2007-2009,2011,2013 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
 	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
 	printf(_("ralcalc is a simple command line calculator.\n\n"));
 	printf(_("Usage: ralcalc -h   (display this text)\n"));
@@ -291,11 +292,14 @@ int main(int argc, char *argv[])
 	int rc = 0;
 	char *ifile = NULL;
 	FILE *iptr;
+	FILE *rcptr;
 	int usestdin = 0;
 	char siPrefix = '\0';
 	char *home = getenv("HOME");
 	int rcpathlen;
 	int precision = -1;
+	char *token;
+	char line[200];
 	
 	setlocale(LC_ALL, "");
 	bindtextdomain("ralcalc", LOCALEDIR);
@@ -309,6 +313,31 @@ int main(int argc, char *argv[])
 	if(argc==2 && (!strcmp(argv[1], "-a") || !strcmp(argv[1], "--all"))){
 		printTokens();
 		return 1;
+	}
+
+	if(home){
+		rcpathlen = strlen(home) + strlen("/.ralcalcrc") + 1;
+		rcpath = (char *)malloc(rcpathlen * sizeof(char));
+		snprintf(rcpath, rcpathlen, "%s/.ralcalcrc", home);
+		rcptr = fopen(rcpath, "rb");
+		if(rcptr){
+			if(fgets(line, 200, rcptr)){
+				while(line[strlen(line)-1] == '\n'){
+					line[strlen(line)-1] = '\0';
+				}
+				token = strtok(line, " ");
+				if(!strcmp(line, "-e")){
+					dm = dmExponent;
+				}else if(!strcmp(line, "-r")){
+					dm = dmRaw;
+				}else if(!strcmp(line, "-s")){
+					dm = dmSI;
+					token = strtok(NULL, " ");
+					siPrefix = token[0];
+				}
+			}
+			fclose(rcptr);
+		}
 	}
 
 	for(i = 1; i < argc; i++){
