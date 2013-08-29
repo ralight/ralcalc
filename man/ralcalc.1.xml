@@ -1,12 +1,12 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<?xml-stylesheet type="text/xsl" href="http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"?>
-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "/usr/share/sgml/docbook/xml-dtd-4.1.2/docbookx.dtd">
-
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="manpage.xsl"?>
 
 <refentry xml:id="ralcalc">
 	<refmeta>
 		<refentrytitle>ralcalc</refentrytitle>
 		<manvolnum>1</manvolnum>
+		<refmiscinfo class="source">Roger Light</refmiscinfo>
+		<refmiscinfo class="manual">Commands</refmiscinfo>
 	</refmeta>
 
 	<refnamediv>
