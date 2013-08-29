@@ -10,4 +10,5 @@
 	<xsl:param name="man.output.quietly" select="1"></xsl:param>
 	<!-- Generate ansi style function synopses. -->
 	<xsl:param name="man.funcsynopsis.style">ansi</xsl:param>
+	<xsl:param name="man.output.lang.in.name.enabled" select="1"></xsl:param>
 </xsl:stylesheet>

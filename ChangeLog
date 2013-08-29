@@ -2,6 +2,7 @@
 ==============
 
 - Fix "-i" mode, which was previously being ignored completely.
+- The latest given of -e, -r, -s is now used as the output format.
 
 1.4.2 (20111003)
 ================

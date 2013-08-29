@@ -353,6 +353,7 @@ int main(int argc, char *argv[])
 					fprintf(stderr, _("Error: Invalid SI prefix '%s' for '-s' option.\n"), argv[i+1]);
 					return 1;
 				}else{
+					dm = dmSI;
 					switch(argv[i+1][0]){
 						case 'Y':
 						case 'Z':
