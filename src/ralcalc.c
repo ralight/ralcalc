@@ -347,9 +347,6 @@ int main(int argc, char *argv[])
 		}else if(!strcmp(argv[i], "-r")){
 			dm = dmRaw;
 			argv[i][0] = '\0';
-		}else if(!strcmp(argv[i], "-r")){
-			dm = dmRaw;
-			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-s")){
 			if(i < argc - 1){
 				if(strlen(argv[i+1]) != 1){
