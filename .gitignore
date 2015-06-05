@@ -1,5 +1,3 @@
-syntax: glob
-
 *.mo
 *.o
 src/ralcalc
@@ -7,3 +5,4 @@ po/*.po~
 po/*.pot~
 *.1
 dist/
+cov-int/
