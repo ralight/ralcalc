@@ -6,8 +6,10 @@ input and produce a result. It is also installed as the "=" command.
 
 For example:
 
+```
 = 2*9
 2*9 = 18
+```
 
 Both the input and output make use of SI prefixes (see 
 http://en.wikipedia.org/wiki/SI_prefix ) for easier input and reading of
@@ -16,16 +18,20 @@ three are used, so G, M, k, m, u, n, etc.
 
 Numbers can be input using an "e" to indicate a power of ten, so
 
+```
 = 1e-3*1000
 1e-3*1000 = 1
+```
 
 ralcalc expects the SI prefixes to be at the end of a number, so 1e-3n is
 valid but 1ne-3 is not. Basically, I'd avoid mixing the two.
 
 Version information can be shown with:
 
+```
 = -h
 ralcalc -h
+```
 
 The -q option causes the input and any error messages to be not printed to the
 screen.
@@ -40,6 +46,7 @@ exponents.
 Operators
 ---------
 
+```
 +		- Addition
 -		- Subtraction
 * x		- Multiplication (the 'x' is for use when shell expansion may be a
@@ -50,13 +57,16 @@ Operators
 ()		  Both sets of brackets are directly equivalent, so = (3+2]/2 is
           valid.
 _		- The result of the last ralcalc run (stored in $HOME/.ralcalc_result)
+```
 
 
+```
 = 2^.5
 2^.5 = 1.41421
 
 = 1/_
 1/_ = 707.107m
+```
 
 
 Precedence
