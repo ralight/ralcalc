@@ -5,10 +5,12 @@
 	<xsl:param name="man.endnotes.list.enabled">0</xsl:param>
 	<xsl:param name="man.endnotes.are.numbered">0</xsl:param>
 	<!-- But if we do, set a base url for the relative links. -->
-	<xsl:param name="man.base.url.for.relative.links">http://mosquitto.org/man/</xsl:param>
+	<!-- <xsl:param name="man.base.url.for.relative.links">http://atchoo.org/man/</xsl:param> -->
 	<!-- Don't output filename when generating. -->
 	<xsl:param name="man.output.quietly" select="1"></xsl:param>
 	<!-- Generate ansi style function synopses. -->
 	<xsl:param name="man.funcsynopsis.style">ansi</xsl:param>
 	<xsl:param name="man.output.lang.in.name.enabled" select="1"></xsl:param>
+	<!-- Generate automatic author section. -->
+	<xsl:param name="man.authors.section.enabled">1</xsl:param>
 </xsl:stylesheet>

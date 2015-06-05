@@ -12,9 +12,12 @@ INSTALL=install
 XGETTEXT=xgettext
 MSGMERGE=msgmerge
 MSGFMT=msgfmt
-XSLTPROC=xsltproc
 
 prefix=/usr/local
 mandir=${prefix}/share/man
 localedir=${prefix}/share/locale
 
+# Man page generation requires xsltproc and docbook-xsl
+XSLTPROC=xsltproc
+# For html generation
+DB_HTML_XSL=man/html.xsl

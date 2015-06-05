@@ -6,63 +6,64 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ralcalc\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-03-07 22:44+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-26 10:53+0100\n"
 "PO-Revision-Date: 2010-10-14 18:01+0000\n"
 "Last-Translator: Nguyen Quang Chien <Unknown>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2011-08-25 13:36+0000\n"
 "X-Generator: Launchpad (build 13779)\n"
 
-#: ../src/output.c:110
+#: ../src/output.c:117
 #, c-format
 msgid " out of memory\n"
 msgstr " hết bộ nhớ\n"
 
-#: ../src/output.c:113
+#: ../src/output.c:120
 #, c-format
 msgid " bad input to function (internal)\n"
 msgstr " đầu vào sai cho hàm số (nội tại)\n"
 
-#: ../src/output.c:115
+#: ../src/output.c:122
 #, c-format
 msgid " unknown token\n"
 msgstr " không rõ ký hiệu\n"
 
-#: ../src/output.c:118
+#: ../src/output.c:125
 #, c-format
 msgid " bad number\n"
 msgstr " số bị sai\n"
 
-#: ../src/output.c:121
+#: ../src/output.c:128
 #, c-format
 msgid " mismatched brackets\n"
 msgstr " ngoặc không tương ứng\n"
 
-#: ../src/output.c:124
+#: ../src/output.c:131
 #, c-format
 msgid " duplicate number\n"
 msgstr " số trùng lặp\n"
 
-#: ../src/output.c:127
+#: ../src/output.c:134
 #, c-format
 msgid " invalid operator\n"
 msgstr " toán tử không hợp lệ\n"
 
-#: ../src/output.c:130
+#: ../src/output.c:137
 #, c-format
 msgid " invalid bracket\n"
 msgstr " ngoặc không hợp lệ\n"
 
-#: ../src/output.c:133
+#: ../src/output.c:140
 #, c-format
 msgid " unable to open file\n"
 msgstr " không thể mở file\n"
 
-#: ../src/output.c:135
+#: ../src/output.c:142
 #, c-format
 msgid " unknown error (%d)\n"
 msgstr " lỗi không xác định (%d)\n"
@@ -73,9 +74,9 @@ msgid "ralcalc  version %s (build date: %s)\n"
 msgstr "ralcalc  phiên bản %s (ngày dựng: %s)\n"
 
 #: ../src/ralcalc.c:56
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"Copyright (C) 2007-2009 Roger Light\n"
+"Copyright (C) 2007-2009,2011 Roger Light\n"
 "http://atchoo.org/tools/ralcalc/\n"
 "\n"
 msgstr ""
@@ -115,10 +116,11 @@ msgid "       ralcalc -a   (display all available operators)\n"
 msgstr "       ralcalc -a   (hiện tất cả các toán tử dùng được)\n"
 
 #: ../src/ralcalc.c:61
-#, c-format
-msgid "       ralcalc [-e] [-f input file] [-i] [-q] [-r] <an equation>\n"
-msgstr ""
-"       ralcalc [-e] [-f file đầu vào] [-i] [-q] [-r] <một biểu thức>\n"
+#, fuzzy, c-format
+msgid ""
+"       ralcalc [-e] [-f input file] [-i] [-p precision] [-q] [-r] <an "
+"equation>\n"
+msgstr "       ralcalc [-e] [-f file đầu vào] [-i] [-q] [-r] <một biểu thức>\n"
 
 #: ../src/ralcalc.c:62
 #, c-format
@@ -144,15 +146,24 @@ msgstr " -i    Thực hiện một loạt phép tính từ stdin.\n"
 
 #: ../src/ralcalc.c:66
 #, c-format
+msgid ""
+" -p    Number of digits to display in the output when using -e or -r, or if "
+"the\n"
+"       output does not have an SI prefix\n"
+"."
+msgstr ""
+
+#: ../src/ralcalc.c:67
+#, c-format
 msgid " -q    Only display the answer (quiet).\n"
 msgstr " -q    Chỉ hiện kết quả (kiểu im lặng).\n"
 
-#: ../src/ralcalc.c:67
+#: ../src/ralcalc.c:68
 #, c-format
 msgid " -r    Display the answer with neither SI prefixes nor exponents.\n"
 msgstr " -r    Hiện kết quả mà không có tiền tố SI hoặc số mũ.\n"
 
-#: ../src/ralcalc.c:68
+#: ../src/ralcalc.c:69
 #, c-format
 msgid ""
 "\n"
@@ -161,42 +172,42 @@ msgstr ""
 "\n"
 "Tìm kiếm bản cập nhật ở http://atchoo.org/tools/ralcalc/.\n"
 
-#: ../src/ralcalc.c:79
+#: ../src/ralcalc.c:80
 #, c-format
 msgid "Numbers:\n"
 msgstr "Các số:\n"
 
-#: ../src/ralcalc.c:80
+#: ../src/ralcalc.c:81
 #, c-format
 msgid "  1.0    : example number\n"
 msgstr "  1.0    : số được lấy làm ví dụ\n"
 
-#: ../src/ralcalc.c:81
+#: ../src/ralcalc.c:82
 #, c-format
 msgid "  1.0e-3 : example number\n"
 msgstr "  1.0e-3 : số được lấy làm ví dụ\n"
 
-#: ../src/ralcalc.c:82
+#: ../src/ralcalc.c:83
 #, c-format
 msgid "  1.0m   : example number\n"
 msgstr "  1.0m   : số được lấy làm ví dụ\n"
 
-#: ../src/ralcalc.c:83
+#: ../src/ralcalc.c:84
 #, c-format
 msgid "  _      : previous result\n"
 msgstr "  _      : kết quả trước\n"
 
-#: ../src/ralcalc.c:84
+#: ../src/ralcalc.c:85
 #, c-format
 msgid "  y, z, a, f, p, n, u, m : SI prefixes\n"
 msgstr "  y, z, a, f, p, n, u, m : các tiền tố SI\n"
 
-#: ../src/ralcalc.c:85
+#: ../src/ralcalc.c:86
 #, c-format
 msgid "  k, M, G, T, P, E, Z, Y : SI prefixes\n"
 msgstr "  k, M, G, T, P, E, Z, Y : Các tiền tố SI\n"
 
-#: ../src/ralcalc.c:86
+#: ../src/ralcalc.c:87
 #, c-format
 msgid ""
 "\n"
@@ -205,42 +216,42 @@ msgstr ""
 "\n"
 "Các toán tử:\n"
 
-#: ../src/ralcalc.c:87
+#: ../src/ralcalc.c:88
 #, c-format
 msgid "  +     : addition\n"
 msgstr "  +     : cộng\n"
 
-#: ../src/ralcalc.c:88
+#: ../src/ralcalc.c:89
 #, c-format
 msgid "  -     : subtraction\n"
 msgstr "  -     : trừ\n"
 
-#: ../src/ralcalc.c:89
+#: ../src/ralcalc.c:90
 #, c-format
 msgid "  * x   : multiplication\n"
 msgstr "  * x   : nhân\n"
 
-#: ../src/ralcalc.c:90
+#: ../src/ralcalc.c:91
 #, c-format
 msgid "  /     : division\n"
 msgstr "  /     : chia\n"
 
-#: ../src/ralcalc.c:91
+#: ../src/ralcalc.c:92
 #, c-format
 msgid "  %%     : modulus\n"
 msgstr "  %%     : lấy dư\n"
 
-#: ../src/ralcalc.c:92
+#: ../src/ralcalc.c:93
 #, c-format
 msgid "  ^     : power\n"
 msgstr "  ^     : lũy thừa\n"
 
-#: ../src/ralcalc.c:93
+#: ../src/ralcalc.c:94
 #, c-format
 msgid "  () [] : brackets increase precedence\n"
 msgstr "  () [] : ngoặc để ưu tiên tính toán\n"
 
-#: ../src/ralcalc.c:94
+#: ../src/ralcalc.c:95
 #, c-format
 msgid ""
 "\n"
@@ -249,37 +260,37 @@ msgstr ""
 "\n"
 "Các hàm số:\n"
 
-#: ../src/ralcalc.c:95
+#: ../src/ralcalc.c:96
 #, c-format
 msgid "  log X         : logarithm to base 10 of X\n"
 msgstr "  log X         : lôga cơ số 10 của X\n"
 
-#: ../src/ralcalc.c:96
+#: ../src/ralcalc.c:97
 #, c-format
 msgid "  ln X          : natural logarithm of X\n"
 msgstr "  ln X          : lôga tự nhiên của X\n"
 
-#: ../src/ralcalc.c:97
+#: ../src/ralcalc.c:98
 #, c-format
 msgid "  sin X, asin X : sine, arcsin of X\n"
 msgstr "  sin X, asin X : sin, arcsin của X\n"
 
-#: ../src/ralcalc.c:98
+#: ../src/ralcalc.c:99
 #, c-format
 msgid "  cos X, acos X : cosine, arccos of X\n"
 msgstr "  cos X, acos X : cos, arccos của X\n"
 
-#: ../src/ralcalc.c:99
+#: ../src/ralcalc.c:100
 #, c-format
 msgid "  tan X, atan X : tangent, arctan of X\n"
 msgstr "  tan X, atan X : tang, arctan của X\n"
 
-#: ../src/ralcalc.c:100
+#: ../src/ralcalc.c:101
 #, c-format
 msgid "  sqrt X        : square root of X\n"
 msgstr "  sqrt X        : căn bậc hai của X\n"
 
-#: ../src/ralcalc.c:101
+#: ../src/ralcalc.c:102
 #, c-format
 msgid ""
 "\n"
@@ -288,27 +299,32 @@ msgstr ""
 "\n"
 "Các hằng số:\n"
 
-#: ../src/ralcalc.c:102
+#: ../src/ralcalc.c:103
 #, c-format
 msgid "  pi  : 3.14159\n"
 msgstr "  pi  : 3.14159\n"
 
-#: ../src/ralcalc.c:103
+#: ../src/ralcalc.c:104
 #, c-format
 msgid "  exp : 2.71828\n"
 msgstr "  exp : 2.71828\n"
 
-#: ../src/ralcalc.c:197 ../src/ralcalc.c:242
+#: ../src/ralcalc.c:216 ../src/ralcalc.c:261
 #, c-format
 msgid "Error: Out of memory\n"
 msgstr "Lỗi: Hết bộ nhớ\n"
 
-#: ../src/ralcalc.c:319 ../src/ralcalc.c:342
+#: ../src/ralcalc.c:337
+#, c-format
+msgid "Error: Precision must be a positive integer.\n"
+msgstr ""
+
+#: ../src/ralcalc.c:353 ../src/ralcalc.c:376
 #, c-format
 msgid "Error: Invalid SI prefix '%s' for '-s' option.\n"
 msgstr "Lỗi: Tiền tố SI '%s' không hợp lệ với tùy chọn '-s'.\n"
 
-#: ../src/ralcalc.c:371
+#: ../src/ralcalc.c:405
 #, c-format
 msgid "Error: Unable to open file \"%s\"\n"
 msgstr "Lỗi: Không thể mở file \"%s\"\n"

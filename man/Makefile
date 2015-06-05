@@ -5,7 +5,7 @@ include ../config.mk
 all : 
 
 dist : ralcalc.1
-	@for c in ${MANCOUNTRIES}; do \
+	for c in ${MANCOUNTRIES}; do \
 		$(XSLTPROC) ralcalc-$${c}.1.xml; \
 	done
 
@@ -17,7 +17,9 @@ install :
 	$(INSTALL) -m 644 ralcalc.1 ${DESTDIR}${mandir}/man1/ralcalc.1
 	$(INSTALL) -m 644 =.1 ${DESTDIR}${mandir}/man1/=.1
 	@for c in ${MANCOUNTRIES}; do \
-		$(INSTALL) -m 644 -D $${c}/ralcalc.1 ${DESTDIR}${mandir}/$${c}/man1/ralcalc.1 ; \
+		d=$$(echo $${c} | sed -e 's/_/-/g') ; \
+		echo $${d} ; \
+		$(INSTALL) -m 644 -D ralcalc.$${d}.1 ${DESTDIR}${mandir}/$${c}/man1/ralcalc.1 ; \
 		$(INSTALL) -m 644 -D =.1 ${DESTDIR}${mandir}/$${c}/man1/=.1 ; \
 	done
 

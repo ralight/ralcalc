@@ -25,6 +25,10 @@ dist : clean
 	mkdir -p dist/ralcalc-${VERSION}
 	cp -r man po src COPYING Makefile ChangeLog config.mk readme.txt dist/ralcalc-${VERSION}/
 	cd dist; tar -zcf ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}/
+	$(XSLTPROC) $(DB_HTML_XSL) man/ralcalc.1.xml > dist/ralcalc.html
+	@for c in ${MANCOUNTRIES}; do \
+		$(XSLTPROC) $(DB_HTML_XSL) man/ralcalc-$${c}.1.xml > dist/ralcalc-$${c}.html; \
+	done
 
 distclean : clean
 	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} distclean; done
@@ -35,8 +39,6 @@ sign : dist
 	cd dist; gpg --detach-sign -a ralcalc-${VERSION}.tar.gz
 
 copy : sign
-	man2html man/ralcalc.1 > dist/ralcalc.html
-	@for c in ${MANCOUNTRIES}; do man2html man/ralcalc-$${c}.1 > dist/ralcalc-$${c}.html; done
 	cd dist; scp ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}.tar.gz.asc atchoo:atchoo.org/tools/ralcalc/files/
 	cd dist; scp *.html atchoo:atchoo.org/tools/ralcalc/man/
 

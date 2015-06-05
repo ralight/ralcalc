@@ -1,10 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"?>
-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "/usr/share/sgml/docbook/xml-dtd-4.1.2/docbookx.dtd">
-<refentry xml:id="ralcalc">
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="manpage.xsl"?>
+
+<refentry xml:id="ralcalc" xml:lang="tr" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<info>
+		<author>
+			<personname><firstname>Roger</firstname><surname>Light</surname></personname>
+			<email>roger@atchoo.org</email>
+			<contrib></contrib>
+		</author>
+	</info>
+
 	<refmeta>
 		<refentrytitle>ralcalc</refentrytitle>
 		<manvolnum>1</manvolnum>
+		<refmiscinfo class="source">ralcalc</refmiscinfo>
+		<refmiscinfo class="version">1.5</refmiscinfo>
+		<refmiscinfo class="manual">User Commands</refmiscinfo>
 	</refmeta>
 
 	<refnamediv>
@@ -349,10 +360,5 @@
 		<title>Hatalar</title>
 		<para>Only a single "<option>-f <replaceable>filename</replaceable></option>" can be passed at once.</para>
 		<para>Eğer hata bulduysanız lütfen <uri type="webpage">http://bugs.launchpad.net/ralcalc</uri> rapor edin.</para>
-	</refsect1>
-
-	<refsect1>
-		<title>Yazan</title>
-		<para>Roger Light <email>roger@atchoo.org</email></para>
 	</refsect1>
 </refentry>
