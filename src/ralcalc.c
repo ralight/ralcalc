@@ -39,16 +39,29 @@ typedef enum {
 	dmRaw
 } displayMode;
 
+struct ralcalc_config {
+	int quiet;
+	displayMode dm;
+	int rc;
+	char *ifile;
+	FILE *iptr;
+	FILE *rcptr;
+	int usestdin;
+	char siPrefix;
+	char *config_dir;
+	char *data_dir;
+	int precision;
+};
 
-/* Path to where .ralcalc_results is */
-static char *rcpath = NULL;
 
 /* Internal functions */
 void printUsage(void);
 void printTokens(void);
-int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int precision);
-int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix, int precision);
-int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix, int precision);
+int processLine(const char *line, struct ralcalc_config *config);
+int doFileInput(FILE *fptr, struct ralcalc_config *config);
+int doLineCalculation(int argc, char *argv[], struct ralcalc_config *config);
+void readLastResult(double *value);
+void writeLastResult(double value);
 
 
 void printUsage(void)
@@ -113,11 +126,10 @@ void printTokens(void)
  * Take a string, tokenise it, validate it and pass it on for calculation. This
  * is the glue function of ralcalc really.
  */
-int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int precision)
+int processLine(const char *line, struct ralcalc_config *config)
 {
 	tokenItem tokenList;
 	int rc;
-	FILE *rcptr;
 	double result;
 	double lastResult = 0.0;
 	int hasError = 0;
@@ -126,26 +138,16 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int 
 
 	if(!line) return errBadInput;
 
-	if(rcpath){
-		rcptr = fopen(rcpath, "rb");
-		if(rcptr){
-			rc = fread(&lastResult, sizeof(double), 1, rcptr);
-			if(rc != 1){
-				fprintf(stderr, "Warning: Previous value file corrupt, ignoring.\n");
-				lastResult = 0.0;
-			}
-			fclose(rcptr);
-		}
-	}
+	readLastResult(&lastResult);
 
 	/* First element always defined and not dynamic for less hassle */
 	tokenList.next = NULL;
 	tokenList.type = tkEndToken;
 
-	rc = tokenise(&tokenList, line, lastResult, quiet);
+	rc = tokenise(&tokenList, line, lastResult, config->quiet);
 	if(rc != errNoError) hasError = 1;
 
-	rc = validate(&tokenList, line, quiet);
+	rc = validate(&tokenList, line, config->quiet);
 	if(rc != errNoError) hasError = 1;
 
 	rc = assignPrecedence(&tokenList);
@@ -154,44 +156,35 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int 
 	if(!hasError && tokenList.next){
 		result = process(&(tokenList.next));
 
-		switch(dm){
+		switch(config->dm){
 			case dmSI:
-				doubleToString(result, resultStr, 100, siPrefix, precision);
+				doubleToString(result, resultStr, 100, config->siPrefix, config->precision);
 				break;
 			case dmExponent:
-				if(precision == -1){
+				if(config->precision == -1){
 					snprintf(resultStr, 100, "%lg", result);
 				}else{
-					snprintf(formatStr, 20, "%%.%dlg", precision);
+					snprintf(formatStr, 20, "%%.%dlg", config->precision);
 					snprintf(resultStr, 100, formatStr, result);
 				}
 				break;
 			case dmRaw:
-				if(precision == -1){
+				if(config->precision == -1){
 					snprintf(resultStr, 100, "%f", result);
 				}else{
-					snprintf(formatStr, 20, "%%.%df", precision);
+					snprintf(formatStr, 20, "%%.%df", config->precision);
 					snprintf(resultStr, 100, formatStr, result);
 				}
 				break;
 		}
 
-		if(!quiet){
+		if(!config->quiet){
 			printf("%s = %s\n", line, resultStr);
 		}else{
 			printf("%s\n", resultStr);
 		}
 
-		if(rcpath){
-			rcptr = fopen(rcpath, "wb");
-			if(rcptr){
-				rc = fwrite(&result, sizeof(double), 1, rcptr);
-				if(rc != 1){
-					fprintf(stderr, "Error writing last value file.\n");
-				}
-				fclose(rcptr);
-			}
-		}
+		writeLastResult(result);
 	}
 
 	if(tokenList.next) freeList(tokenList.next);
@@ -206,7 +199,7 @@ int processLine(const char *line, int quiet, displayMode dm, char siPrefix, int 
  * Get lines from a file (be that a file on disk or stdin) and pass the lines
  * to processLine() for calculation.
  */
-int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix, int precision)
+int doFileInput(FILE *fptr, struct ralcalc_config *config)
 {
 	char *line;
 	int rc = errNoError;
@@ -228,7 +221,7 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix, int precis
 			rc = errNoError;
 			break;
 		}
-		rc = processLine(line, quiet, dm, siPrefix, precision);
+		rc = processLine(line, config);
 		if(rc != errNoError){
 			break;
 		}
@@ -246,7 +239,7 @@ int doFileInput(FILE *fptr, int quiet, displayMode dm, char siPrefix, int precis
  * Convert argc and argv into a single string and pass them to processLine for
  * calculation.
  */
-int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char siPrefix, int precision)
+int doLineCalculation(int argc, char *argv[], struct ralcalc_config *config)
 {
 	char *line;
 	int i, j;
@@ -277,30 +270,271 @@ int doLineCalculation(int argc, char *argv[], int quiet, displayMode dm, char si
 			}
 		}
 	}
-	rc = processLine(line, quiet, dm, siPrefix, precision);
+	rc = processLine(line, config);
 	free(line);
 
 	return rc;
 }
 
 
+int loadConfigPath(struct ralcalc_config *config, const char *path)
+{
+	FILE *rcptr;
+	char *token;
+	char line[200];
+
+	rcptr = fopen(path, "rb");
+	if(rcptr){
+		if(fgets(line, 200, rcptr)){
+			while(line[strlen(line)-1] == '\n'){
+				line[strlen(line)-1] = '\0';
+			}
+			token = strtok(line, " ");
+			if(!strcmp(line, "-e")){
+				config->dm = dmExponent;
+			}else if(!strcmp(line, "-r")){
+				config->dm = dmRaw;
+			}else if(!strcmp(line, "-s")){
+				config->dm = dmSI;
+				token = strtok(NULL, " ");
+				config->siPrefix = token[0];
+			}
+		}
+		fclose(rcptr);
+	}else{
+		return 1;
+	}
+
+	return 0;
+}
+
+
+/* Load configuration file
+ *
+ * Either:
+ *
+ * $XDG_CONFIG_HOME/ralcalcrc
+ * $HOME/.config/ralcalcrc
+ * $HOME/.ralcalcrc
+ */
+int load_config(struct ralcalc_config *config)
+{
+	char *xdg_config;
+	char *home;
+	char *path;
+	int pathlen;
+	int rc;
+
+	xdg_config = getenv("XDG_CONFIG_HOME");
+
+	if(xdg_config){
+		pathlen = strlen(xdg_config) + strlen("/ralcalcrc") + 1;
+		path = malloc(pathlen);
+		snprintf(path, pathlen, "%s/ralcalcrc", xdg_config);
+		if(!path){
+			fprintf(stderr, "Error: Out of memory.\n");
+			return 1;
+		}
+		rc = loadConfigPath(config, path);
+		free(path);
+		return rc;
+	}else{
+		home = getenv("HOME");
+		if(home){
+			pathlen = strlen(home) + strlen("/.config/ralcalcrc") + 1;
+			path = (char *)malloc(pathlen * sizeof(char));
+			if(!path){
+				fprintf(stderr, "Error: Out of memory.\n");
+				return 1;
+			}
+			snprintf(path, pathlen, "%s/.config/ralcalcrc", home);
+
+			rc = loadConfigPath(config, path);
+			free(path);
+
+			if(!rc) return 0;
+
+			/* Loading from $HOME/.config/ralcalcrc failed, try old location. */
+			pathlen = strlen(home) + strlen("/.ralcalcrc") + 1;
+			path = (char *)malloc(pathlen * sizeof(char));
+			if(!path){
+				fprintf(stderr, "Error: Out of memory.\n");
+				return 1;
+			}
+			snprintf(path, pathlen, "%s/.ralcalcrc", home);
+
+			rc = loadConfigPath(config, path);
+			free(path);
+
+			return rc;
+		}else{
+			/* No config file loaded, but carry on anyway */
+			return 0;
+		}
+	}
+}
+
+
+int writeLastResultPath(double value, const char *path)
+{
+	int rc = 0;
+	FILE *fptr;
+
+	fptr = fopen(path, "wb");
+	if(fptr){
+		if(fwrite(&value, sizeof(double), 1, fptr) != 1){
+			fprintf(stderr, "Error writing last value file.\n");
+			rc = 1;
+		}
+		fclose(fptr);
+	}
+	return rc;
+}
+
+
+void writeLastResult(double value)
+{
+	char *xdg_data;
+	char *home;
+	char *path;
+	int pathlen;
+	int rc;
+
+	xdg_data = getenv("XDG_DATA_HOME");
+
+	if(xdg_data){
+		pathlen = strlen(xdg_data) + strlen("/ralcalc_result") + 1;
+		path = malloc(pathlen);
+		snprintf(path, pathlen, "%s/ralcalc_result", xdg_data);
+		if(!path){
+			fprintf(stderr, "Error: Out of memory.\n");
+			return;
+		}
+		rc = writeLastResultPath(value, path);
+		free(path);
+		return;
+	}else{
+		home = getenv("HOME");
+		if(home){
+			pathlen = strlen(home) + strlen("/.local/share/ralcalc_result") + 1;
+			path = (char *)malloc(pathlen * sizeof(char));
+			if(!path){
+				fprintf(stderr, "Error: Out of memory.\n");
+				return;
+			}
+			snprintf(path, pathlen, "%s/.local/share/ralcalc_result", home);
+
+			rc = writeLastResultPath(value, path);
+			free(path);
+
+			if(!rc) return;
+
+			/* Loading from $HOME/.local/share/ralcalc_result failed, try old location. */
+			pathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
+			path = (char *)malloc(pathlen * sizeof(char));
+			if(!path){
+				fprintf(stderr, "Error: Out of memory.\n");
+				return;
+			}
+			snprintf(path, pathlen, "%s/.ralcalc_result", home);
+
+			rc = writeLastResultPath(value, path);
+			free(path);
+		}
+	}
+
+}
+
+
+int readLastResultPath(double *value, const char *path)
+{
+	FILE *fptr;
+
+	fptr = fopen(path, "rb");
+	if(fptr){
+		int rc = fread(value, sizeof(double), 1, fptr);
+		fclose(fptr);
+		if(rc == 1){
+			return 0;
+		}else{
+			fprintf(stderr, "Warning: Previous value file corrupt, ignoring.\n");
+			*value = 0.0;
+			return 1;
+		}
+	}
+
+	return 1;
+}
+
+
+void readLastResult(double *value)
+{
+	char *xdg_data;
+	char *home;
+	char *path;
+	int pathlen;
+	int rc;
+
+	xdg_data = getenv("XDG_DATA_HOME");
+
+	if(xdg_data){
+		pathlen = strlen(xdg_data) + strlen("/ralcalc_result") + 1;
+		path = malloc(pathlen);
+		snprintf(path, pathlen, "%s/ralcalc_result", xdg_data);
+		if(!path){
+			fprintf(stderr, "Error: Out of memory.\n");
+			return;
+		}
+		rc = readLastResultPath(value, path);
+		free(path);
+		if(rc == 0) return;
+	}
+
+	home = getenv("HOME");
+	if(home){
+		pathlen = strlen(home) + strlen("/.local/share/ralcalc_result") + 1;
+		path = (char *)malloc(pathlen * sizeof(char));
+		if(!path){
+			fprintf(stderr, "Error: Out of memory.\n");
+			return;
+		}
+		snprintf(path, pathlen, "%s/.local/share/ralcalc_result", home);
+
+		rc = readLastResultPath(value, path);
+		free(path);
+
+		if(rc == 0) return;
+	}
+
+	{
+		/* Loading from $HOME/.local/share/ralcalc_result failed, try old location. */
+		pathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
+		path = (char *)malloc(pathlen * sizeof(char));
+		if(!path){
+			fprintf(stderr, "Error: Out of memory.\n");
+			return;
+		}
+		snprintf(path, pathlen, "%s/.ralcalc_result", home);
+
+		readLastResultPath(value, path);
+		free(path);
+	}
+
+}
+
+
 int main(int argc, char *argv[])
 {
 	int i;
-	int quiet = 0;
-	displayMode dm = dmSI;
 	int rc = 0;
 	char *ifile = NULL;
 	FILE *iptr;
-	FILE *rcptr;
-	int usestdin = 0;
-	char siPrefix = '\0';
-	char *home = getenv("HOME");
-	int rcpathlen;
-	int precision = -1;
-	char *token;
-	char line[200];
-	
+	struct ralcalc_config config;
+
+	memset(&config, 0, sizeof(struct ralcalc_config));
+	config.dm = dmSI;
+	config.precision = -1;
+
 	setlocale(LC_ALL, "");
 	bindtextdomain("ralcalc", LOCALEDIR);
 	textdomain("ralcalc");
@@ -315,41 +549,19 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	if(home){
-		rcpathlen = strlen(home) + strlen("/.ralcalcrc") + 1;
-		rcpath = (char *)malloc(rcpathlen * sizeof(char));
-		snprintf(rcpath, rcpathlen, "%s/.ralcalcrc", home);
-		rcptr = fopen(rcpath, "rb");
-		if(rcptr){
-			if(fgets(line, 200, rcptr)){
-				while(line[strlen(line)-1] == '\n'){
-					line[strlen(line)-1] = '\0';
-				}
-				token = strtok(line, " ");
-				if(!strcmp(line, "-e")){
-					dm = dmExponent;
-				}else if(!strcmp(line, "-r")){
-					dm = dmRaw;
-				}else if(!strcmp(line, "-s")){
-					dm = dmSI;
-					token = strtok(NULL, " ");
-					siPrefix = token[0];
-				}
-			}
-			fclose(rcptr);
-		}
-	}
+
+	load_config(&config);
 
 	for(i = 1; i < argc; i++){
 		if(!strcmp(argv[i], "-q")){
-			quiet = 1;
+			config.quiet = 1;
 			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-e")){
-			dm = dmExponent;
+			config.dm = dmExponent;
 			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-f")){
 			if(i < argc - 1){
-				ifile = strdup(argv[i+1]);
+				config.ifile = strdup(argv[i+1]);
 				argv[i][0] = '\0';
 				argv[i+1][0] = '\0';
 				i++;
@@ -358,14 +570,14 @@ int main(int argc, char *argv[])
 				return 1;
 			}
 		}else if(!strcmp(argv[i], "-i")){
-			usestdin = 1;
+			config.usestdin = 1;
 		}else if(!strcmp(argv[i], "-p")){
 			if(i < argc - 1){
-				precision = atoi(argv[i+1]);
+				config.precision = atoi(argv[i+1]);
 				argv[i][0] = '\0';
 				argv[i+1][0] = '\0';
 				i++;
-				if(precision < 0){
+				if(config.precision < 0){
 					fprintf(stderr, _("Error: Precision must be a positive integer.\n"));
 					return 1;
 				}
@@ -374,7 +586,7 @@ int main(int argc, char *argv[])
 				return 1;
 			}
 		}else if(!strcmp(argv[i], "-r")){
-			dm = dmRaw;
+			config.dm = dmRaw;
 			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-s")){
 			if(i < argc - 1){
@@ -382,7 +594,7 @@ int main(int argc, char *argv[])
 					fprintf(stderr, _("Error: Invalid SI prefix '%s' for '-s' option.\n"), argv[i+1]);
 					return 1;
 				}else{
-					dm = dmSI;
+					config.dm = dmSI;
 					switch(argv[i+1][0]){
 						case 'Y':
 						case 'Z':
@@ -400,7 +612,7 @@ int main(int argc, char *argv[])
 						case 'a':
 						case 'z':
 						case 'y':
-							siPrefix = argv[i+1][0];
+							config.siPrefix = argv[i+1][0];
 							break;
 						default:
 							fprintf(stderr, _("Error: Invalid SI prefix '%s' for '-s' option.\n"), argv[i+1]);
@@ -418,16 +630,9 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	/* Figure out the path to .ralcalc_result for loading/saving. */
-	if(home){
-		rcpathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
-		rcpath = (char *)malloc(rcpathlen * sizeof(char));
-		snprintf(rcpath, rcpathlen, "%s/.ralcalc_result", home);
-	}
-
 	/* Do calculation based on input arguments first */
-	if(doLineCalculation(argc, argv, quiet, dm, siPrefix, precision)) rc = 1;
-	
+	if(doLineCalculation(argc, argv, &config)) rc = 1;
+
 	/* Do calculations from a disk file */
 	if(ifile){
 		iptr = fopen(ifile, "rt");
@@ -435,17 +640,13 @@ int main(int argc, char *argv[])
 			fprintf(stderr, _("Error: Unable to open file \"%s\"\n"), ifile);
 			return 1;
 		}
-		if(doFileInput(iptr, quiet, dm, siPrefix, precision)) rc = 1;
+		if(doFileInput(iptr, &config)) rc = 1;
 		fclose(iptr);
 	}
 
 	/* Read calculations from stdin */
-	if(usestdin){
-		if(doFileInput(stdin, quiet, dm, siPrefix, precision)) rc = 1;
-	}
-
-	if(rcpath){
-		free(rcpath);
+	if(config.usestdin){
+		if(doFileInput(stdin, &config)) rc = 1;
 	}
 
 	return rc;
