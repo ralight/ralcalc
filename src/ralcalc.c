@@ -398,7 +398,7 @@ void writeLastResult(double value)
 	char *home;
 	char *path;
 	int pathlen;
-	int rc;
+	int rc = -1;
 
 	xdg_data = getenv("XDG_DATA_HOME");
 
@@ -412,8 +412,9 @@ void writeLastResult(double value)
 		}
 		rc = writeLastResultPath(value, path);
 		free(path);
-		return;
-	}else{
+	}
+
+	if(rc != 0){
 		home = getenv("HOME");
 		if(home){
 			pathlen = strlen(home) + strlen("/.local/share/ralcalc_result") + 1;
@@ -429,7 +430,7 @@ void writeLastResult(double value)
 
 			if(!rc) return;
 
-			/* Loading from $HOME/.local/share/ralcalc_result failed, try old location. */
+			/* Writing to $HOME/.local/share/ralcalc_result failed, try old location. */
 			pathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
 			path = (char *)malloc(pathlen * sizeof(char));
 			if(!path){
