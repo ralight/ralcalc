@@ -42,14 +42,8 @@ typedef enum {
 struct ralcalc_config {
 	int quiet;
 	displayMode dm;
-	int rc;
-	char *ifile;
-	FILE *iptr;
-	FILE *rcptr;
 	int usestdin;
 	char siPrefix;
-	char *config_dir;
-	char *data_dir;
 	int precision;
 };
 
@@ -562,7 +556,7 @@ int main(int argc, char *argv[])
 			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-f")){
 			if(i < argc - 1){
-				config.ifile = strdup(argv[i+1]);
+				ifile = strdup(argv[i+1]);
 				argv[i][0] = '\0';
 				argv[i+1][0] = '\0';
 				i++;
