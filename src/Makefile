@@ -15,7 +15,7 @@ ralcalc : $(ralcalc_OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o : %.c
-	$(CC) -DVERSION=\"${VERSION}\" -DBUILDDATE=\"${BUILDDATE}\" -DLOCALEDIR=\"${localedir}\" ${CFLAGS} -c $^
+	$(CC) -DVERSION=\"${VERSION}\" -DLOCALEDIR=\"${localedir}\" ${CFLAGS} -c $^
 
 clean :
 	-rm -f ralcalc *.o

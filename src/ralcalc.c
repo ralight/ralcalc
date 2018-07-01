@@ -66,7 +66,7 @@ void writeLastResult(double value);
 
 void printUsage(void)
 {
-	printf(_("ralcalc  version %s (build date: %s)\n"), VERSION, BUILDDATE);
+	printf(_("ralcalc  version %s\n"), VERSION);
 	printf(_("Copyright (C) 2007-2009,2011,2013 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
 	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
 	printf(_("ralcalc is a simple command line calculator.\n\n"));
