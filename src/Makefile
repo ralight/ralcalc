@@ -9,7 +9,7 @@ ralcalc_OBJS=$(ralcalc_SOURCES:.c=.o)
 
 .PHONY : all clean install uninstall
 
-all : ralcalc
+all : ralcalc ralcalc_test
 
 ralcalc : $(ralcalc_OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS)
@@ -18,7 +18,7 @@ ralcalc : $(ralcalc_OBJS)
 	$(CC) -DVERSION=\"${VERSION}\" -DLOCALEDIR=\"${localedir}\" ${CFLAGS} -c $^
 
 clean :
-	-rm -f ralcalc *.o
+	-rm -f ralcalc *.o ralcalc_test *.gcda *.gcno
 
 install : ralcalc
 	$(INSTALL) -d ${DESTDIR}${prefix}/bin/
@@ -27,3 +27,11 @@ install : ralcalc
 
 uninstall :
 	-rm -f ${DESTDIR}${prefix}/bin/= ${DESTDIR}${prefix}/bin/ralcalc
+
+# Testing
+#
+ralcalc_test : test.o output.o
+	$(CC) -o $@ $^ $(LDFLAGS) -lcunit
+
+test : ralcalc_test
+	./ralcalc_test

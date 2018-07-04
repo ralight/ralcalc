@@ -3,8 +3,9 @@ VERSION=1.4.2
 MANCOUNTRIES=da en_GB es eu fr it nl pl pt pt_BR tr vi
 
 # Add "-DDEBUG" to CFLAGS for verbose debug output
-CFLAGS=-ggdb -Wall -O2
-LDFLAGS=-lm
+#COVERAGE=-coverage
+CFLAGS=-ggdb -Wall -O2 ${COVERAGE}
+LDFLAGS=-lm ${COVERAGE}
 
 CC=gcc
 INSTALL=install

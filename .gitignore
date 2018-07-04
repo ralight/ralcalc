@@ -1,8 +1,13 @@
 *.mo
 *.o
 src/ralcalc
+src/ralcalc_test
 po/*.po~
 po/*.pot~
 *.1
 dist/
 cov-int/
+*.gcda
+*.gcno
+coverage.info
+out/

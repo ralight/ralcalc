@@ -56,3 +56,8 @@ pottar : distclean
 	
 	cd dist; tar -zcf ralcalc-man-pot.tar.gz ralcalc-man-pot
 
+test : all
+	make -C src test
+lcov : all
+	lcov --capture --directory src --output-file coverage.info
+	genhtml coverage.info --output-directory out
