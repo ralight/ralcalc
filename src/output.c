@@ -118,6 +118,7 @@ void printError(const char *line, int pos, errType error, int quiet)
 			break;
 		case errBadInput:
 			fprintf(stderr, _(" bad input to function (internal)\n"));
+			break;
 		case errUnknownToken:
 			fprintf(stderr, _(" unknown token\n"));
 			break;
@@ -138,6 +139,7 @@ void printError(const char *line, int pos, errType error, int quiet)
 			break;
 		case errBadFile:
 			fprintf(stderr, _(" unable to open file\n"));
+			break;
 		default:
 			fprintf(stderr, _(" unknown error (%d)\n"), error);
 			break;
