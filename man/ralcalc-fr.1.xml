@@ -189,7 +189,7 @@
 	= 2u/35
 	2u/35 = 57.1429n</command></para>
 		<para>Les nombres du genre 1e-3 sont également supportés, où le "e" indique une puissance de dix. Ne pas mélanger les préfixes SI et "e" dans un même nombre (bien que 1e-3n soit valide, 1ne-3 ne l'est pas - éviter les deux pour moins de confusion).</para>
-		<para>Les préfixes du SI supportés sont : Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<para>Les préfixes du SI supportés sont : Q, R, Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

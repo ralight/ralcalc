@@ -61,7 +61,7 @@ void writeLastResult(double value);
 void printUsage(void)
 {
 	printf(_("ralcalc  version %s\n"), VERSION);
-	printf(_("Copyright (C) 2007-2009,2011,2013 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
+	printf(_("Copyright (C) 2007-2025 Roger Light\nhttp://atchoo.org/tools/ralcalc/\n\n"));
 	printf(_("ralcalc comes with ABSOLUTELY NO WARRANTY.  You may distribute ralcalc freely\nas described in the COPYING file distributed with this program.\n\n"));
 	printf(_("ralcalc is a simple command line calculator.\n\n"));
 	printf(_("Usage: ralcalc -h   (display this text)\n"));
@@ -91,8 +91,8 @@ void printTokens(void)
 	printf(_("  1.0e-3 : example number\n"));
 	printf(_("  1.0m   : example number\n"));
 	printf(_("  _      : previous result\n"));
-	printf(_("  y, z, a, f, p, n, u, m : SI prefixes\n"));
-	printf(_("  k, M, G, T, P, E, Z, Y : SI prefixes\n"));
+	printf(_("  q, r, y, z, a, f, p, n, u, m : SI prefixes\n"));
+	printf(_("  k, M, G, T, P, E, Z, Y, R, Q : SI prefixes\n"));
 	printf(_("\nOperators:\n"));
 	printf(_("  +     : addition\n"));
 	printf(_("  -     : subtraction\n"));
@@ -591,6 +591,8 @@ int main(int argc, char *argv[])
 				}else{
 					config.dm = dmSI;
 					switch(argv[i+1][0]){
+						case 'Q':
+						case 'R':
 						case 'Y':
 						case 'Z':
 						case 'E':
@@ -607,6 +609,8 @@ int main(int argc, char *argv[])
 						case 'a':
 						case 'z':
 						case 'y':
+						case 'r':
+						case 'q':
 							config.siPrefix = argv[i+1][0];
 							break;
 						default:

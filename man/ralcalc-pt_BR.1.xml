@@ -179,7 +179,7 @@
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
 		<para>Números da forma 1e-3 também são suportados, onde o "e" indica uma potência de dez. Não misture e coincida prefixos SI e "e" no mesmo número (apesar de 1e-3n ser válido, 1ne-3 não é - evite ambos para menos confusões).</para>
-		<para>Os prefixos SI suportados são: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<para>Os prefixos SI suportados são: Q, R, Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

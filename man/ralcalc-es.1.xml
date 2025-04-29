@@ -179,7 +179,7 @@
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
 		<para>Números de la forma 1e-3 también son soportados, en donde la "e" indica una potencia de diez. No mezclar y combinar los prefijos SI y "e" en el mismo número (aunque 1e-3n es válida, 1NE-3 no es - evite ambos para menor confusión).</para>
-		<para>Los prefijos SI soportados son: Y, Z, E, P, T, G, H, K, M, u, n, p, f, a, z, y.</para>
+		<para>Los prefijos SI soportados son: Q, R, Y, Z, E, P, T, G, H, K, M, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

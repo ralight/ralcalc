@@ -189,7 +189,7 @@
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
 		<para>Các số kiểu như 1e-3 cũng được hỗ trợ, trong đó chữ "e" biểu thị lũy thừa của 10. Đừng dùng lẫn các tiền tố SI và chữ "e" trong cùng một số (mặc dù 1e-3n là hợp lệ, nhưng 1ne-3 thì không - và tốt nhất tránh cả hai cách để đỡ nhầm lẫn).</para>
-		<para>Các tiền tố SI được hỗ trợ bao gồm: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<para>Các tiền tố SI được hỗ trợ bao gồm: Q, R, Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

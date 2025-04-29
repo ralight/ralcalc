@@ -179,7 +179,7 @@
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
 		<para>Nummerne fra form 1e-3 er også understøttet, hvortil "e" indikere i ti'ende potens. Bland, og samlign ikke SI præfiksene med "e" i samme nummer (selvom 1e-3n er gyldig, 1ne-3 er ikke - undgå begge for mindre forvirring).</para>
-		<para>SI præfiksene der understøttes er: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<para>SI præfiksene der understøttes er: Q, R, Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

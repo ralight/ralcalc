@@ -179,7 +179,7 @@
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting></para>
 		<para>Nummers in de vorm 1e-3 worden ook ondersteunt, waar een "e" een tiende macht aanduidt. Gebruik dit niet samen met SI prefixen en "e" in hetzelfde getal (howel 1e-3n geldig is, is 1ne-3 dit niet - vermijd beide voor minder verwarring).</para>
-		<para>De ondersteunde SI prefixen zijn: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<para>De ondersteunde SI prefixen zijn: Q, R, Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

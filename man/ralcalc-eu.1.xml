@@ -194,7 +194,7 @@
 	<computeroutput>2u/35 = 57.1429n</computeroutput></programlisting>
 		</para>
 		<para>Numbers of the form 1e-3 are also supported, where the "e" indicates a power of ten. Don't mix and match SI prefixes and "e"  in the same number (although 1e-3n is valid, 1ne-3 is not - avoid both for less confusion).</para>
-		<para>The SI prefixes supported are: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<para>The SI prefixes supported are: Q, R, Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

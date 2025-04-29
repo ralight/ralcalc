@@ -44,7 +44,11 @@ void doubleToString(double value, char *string, int len, char siPrefix, int prec
 
 	absval = fabs(value);
 
-	if((absval >= 1.0e24 && siPrefix == '\0') || siPrefix == 'Y'){
+	if((absval >= 1.0e30 && siPrefix == '\0') || siPrefix == 'Q'){
+		snprintf(string, len, "%gQ", value / 1.0e30);
+	}else if((absval >= 1.0e27 && siPrefix == '\0') || siPrefix == 'R'){
+		snprintf(string, len, "%gR", value / 1.0e27);
+	}else if((absval >= 1.0e24 && siPrefix == '\0') || siPrefix == 'Y'){
 		snprintf(string, len, "%gY", value / 1.0e24);
 	}else if((absval >= 1.0e21 && siPrefix == '\0') || siPrefix == 'Z'){
 		snprintf(string, len, "%gZ", value / 1.0e21);
@@ -60,6 +64,10 @@ void doubleToString(double value, char *string, int len, char siPrefix, int prec
 		snprintf(string, len, "%gM", value / 1.0e6);
 	}else if((absval >= 1.0e3 && siPrefix == '\0') || siPrefix == 'k'){
 		snprintf(string, len, "%gk", value / 1.0e3);
+	}else if((absval < 1.0e-27 && siPrefix == '\0') || siPrefix == 'q'){
+		snprintf(string, len, "%gq", value * 1.0e30);
+	}else if((absval < 1.0e-24 && siPrefix == '\0') || siPrefix == 'r'){
+		snprintf(string, len, "%gr", value * 1.0e27);
 	}else if((absval < 1.0e-21 && siPrefix == '\0') || siPrefix == 'y'){
 		snprintf(string, len, "%gy", value * 1.0e24);
 	}else if((absval < 1.0e-18 && siPrefix == '\0') || siPrefix == 'z'){
@@ -145,5 +153,3 @@ void printError(const char *line, int pos, errType error, int quiet)
 			break;
 	}
 }
-
-

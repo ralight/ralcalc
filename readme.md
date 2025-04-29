@@ -88,8 +88,7 @@ Author
 
 ralcalc was written by Roger Light to fulfill his own needs. He knows that
 there are other languages that are better suited to this kind of thing, but he
-isn't really bothered about that. 
+isn't really bothered about that.
 
 Updates should be available at http://atchoo.org/tools/ralcalc/
 Questions/suggestions should be directed to roger@atchoo.org
-

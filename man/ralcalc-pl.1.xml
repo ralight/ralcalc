@@ -179,7 +179,7 @@
 	<userinput>= 2u/35</userinput>
 	<computeroutput>2u/35 = 57,1429n</computeroutput></programlisting></para>
 		<para>Obsługiwane są także liczby w postaci 1e-3, gdzie "e" wskazuje potęgę dziesiątki. Nie należy mieszać w jednej liczbie przedrostków SI oraz "e" (zapis 1e-3n jest poprawny, natomiast 1ne-3 już nie - unikaj obu by nie stwarzać niejasności).</para>
-		<para>Obsługiwane przedrostki SI: Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y.</para>
+		<para>Obsługiwane przedrostki SI: Q, R, Y, Z, E, P, T, G, M, k, m, u, n, p, f, a, z, y, r, q.</para>
 	</refsect1>
 
 	<refsect1>

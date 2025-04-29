@@ -52,6 +52,18 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int s
 
 	for(i = bufferPos-1; i >= 0; i--){
 		switch(str[i]){
+			case 'Q':
+				multiplier = 1.0e30;
+				haveMultiplier++;
+				multiplierPos = i;
+				str[i] = ' ';
+				break;
+			case 'R':
+				multiplier = 1.0e27;
+				haveMultiplier++;
+				multiplierPos = i;
+				str[i] = ' ';
+				break;
 			case 'Y':
 				multiplier = 1.0e24;
 				haveMultiplier++;
@@ -144,6 +156,18 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int s
 				break;
 			case 'y':
 				multiplier = 1.0e-24;
+				haveMultiplier++;
+				multiplierPos = i;
+				str[i] = ' ';
+				break;
+			case 'r':
+				multiplier = 1.0e-27;
+				haveMultiplier++;
+				multiplierPos = i;
+				str[i] = ' ';
+				break;
+			case 'q':
+				multiplier = 1.0e-30;
 				haveMultiplier++;
 				multiplierPos = i;
 				str[i] = ' ';
@@ -529,6 +553,8 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				break;
 
 			case 'e':
+			case 'Q':
+			case 'R':
 			case 'Y':
 			case 'Z':
 			case 'E':
@@ -545,6 +571,8 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case 'a':
 			case 'z':
 			case 'y':
+			case 'r':
+			case 'q':
 				if(i < strlen(line)-1 && line[i] == 'p' && line[i+1] == 'i'){
 					/* pi */
 					if(inNumber){
