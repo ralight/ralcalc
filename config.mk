@@ -1,4 +1,4 @@
-VERSION=1.4.2
+VERSION=1.6.0
 
 MANCOUNTRIES=da en_GB es eu fr it nl pl pt pt_BR tr vi
 
