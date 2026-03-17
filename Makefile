@@ -23,7 +23,7 @@ dist : clean
 	@for d in ${DISTDIRS}; do $(MAKE) -C $${d} dist; done
 	
 	mkdir -p dist/ralcalc-${VERSION}
-	cp -r man po src COPYING Makefile ChangeLog config.mk readme.txt dist/ralcalc-${VERSION}/
+	cp -r man po src COPYING Makefile ChangeLog config.mk readme.md dist/ralcalc-${VERSION}/
 	cd dist; tar -zcf ralcalc-${VERSION}.tar.gz ralcalc-${VERSION}/
 	$(XSLTPROC) $(DB_HTML_XSL) man/ralcalc.1.xml > dist/ralcalc.html
 	@for c in ${MANCOUNTRIES}; do \
