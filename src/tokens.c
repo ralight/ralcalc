@@ -383,7 +383,7 @@ errType deletePreviousToken(tokenItem *item)
 	deleteItem = item->prev;
 
 #ifdef DEBUG
-	fprintf(stderr, "Deleting '%c' (%g)\n", deleteItem->type, deleteItem->value);
+	fprintf(stderr, "Deleting '%s' (%g)\n", ctoken_to_string(deleteItem->type), deleteItem->value);
 #endif
 	
 	item->prev = deleteItem->prev;
@@ -1034,3 +1034,64 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	return rc;
 }
 
+
+const char *ctoken_to_string(cToken token)
+{
+	switch(token){
+		case tkNumber:
+			return "tkNumber";
+		case tkMod:
+			return "tkMod";
+		case tkCOpenBracket:
+			return "tkCOpenBracket";
+		case tkCCloseBracket:
+			return "tkCCloseBracket";
+		case tkMultiply:
+			return "tkMultiply";
+		case tkPlus:
+			return "tkPlus";
+		case tkMinus:
+			return "tkMinus";
+		case tkDivide:
+			return "tkDivide";
+		case tkOpenBracket:
+			return "tkOpenBracket";
+		case tkCloseBracket:
+			return "tkCloseBracket";
+		case tkPower:
+			return "tkPower";
+		case tkLastResult:
+			return "tkLastResult";
+		case tkMultiplyX:
+			return "tkMultiplyX";
+		case tkNegation:
+			return "tkNegation";
+		case tkLog:
+			return "tkLog";
+		case tkLn:
+			return "tkLn";
+		case tkSin:
+			return "tkSin";
+		case tkCos:
+			return "tkCos";
+		case tkTan:
+			return "tkTan";
+		case tkASin:
+			return "tkASin";
+		case tkACos:
+			return "tkACos";
+		case tkATan:
+			return "tkATan";
+		case tkSqrt:
+			return "tkSqrt";
+		case tkPi:
+			return "tkPi";
+		case tkExp:
+			return "tkExp";
+		case tkEndToken:
+			return "tkEndToken";
+
+	}
+
+	return "invalid";
+}

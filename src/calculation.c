@@ -44,7 +44,7 @@
 double doCalculation(double valueOne, double valueTwo, cToken operator)
 {
 #ifdef DEBUG
-	fprintf(stderr, "doCalculation(%g, %g, %d)\n", valueOne, valueTwo, operator);
+	fprintf(stderr, "doCalculation(%g, %g, %s)\n", valueOne, valueTwo, ctoken_to_string(operator));
 #endif
 	switch(operator){
 		case tkPlus: return valueOne + valueTwo;
@@ -124,7 +124,7 @@ double process(tokenItem **tokenList)
 			if(item->type == tkNumber){
 				fprintf(stderr, " (%g)", item->value);
 			}else{
-				fprintf(stderr, " %c", item->type);
+				fprintf(stderr, " %s", ctoken_to_string(item->type));
 			}
 			item = item->next;
 		}

@@ -28,5 +28,6 @@ errType insertBeforeToken(tokenItem *item, cToken token, double value, int lengt
 errType insertNumberAfterToken(tokenItem *item, double value);
 int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quiet);
 int validate(tokenItem *tokenList, const char *line, int quiet);
+const char *ctoken_to_string(cToken token);
 
 #endif
