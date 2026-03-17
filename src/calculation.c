@@ -186,7 +186,8 @@ double process(tokenItem **tokenList)
 						valueTwo = item->value;
 				
 						if((operator == tkLog || operator == tkLn || operator == tkSin \
-									|| operator == tkCos || operator == tkTan || operator == tkSqrt) \
+									|| operator == tkCos || operator == tkTan || operator == tkSqrt \
+									|| operator == tkASin || operator == tkACos || operator == tkATan) \
 									&& tokenPrecedence == precedence){
 							retval = doCalculation(valueOne, valueTwo, operator);
 							insertNumberAfterToken(item, retval);
