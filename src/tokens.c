@@ -583,14 +583,20 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						}
 						inNumber = 0;
 						spaces = 0;
-					}else{
-						err = addToken(tokenList, tkNumber, M_PI, 2 + spaces);
+
+						err = addSimpleToken(tokenList, 'x', 0);
 						if(err != errNoError){
 							rc = err;
-							printError(line, i-1, err, quiet);
+							printError(line, i, err, quiet);
 						}
-						spaces = 0;
 					}
+
+					err = addToken(tokenList, tkNumber, M_PI, 2 + spaces);
+					if(err != errNoError){
+						rc = err;
+						printError(line, i-1, err, quiet);
+					}
+					spaces = 0;
 					i++;
 				}else if(i < strlen(line)-2 && line[i] == 'e' && line[i+1] == 'x' && line[i+2] == 'p'){
 					/* exp */
@@ -602,14 +608,19 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						}
 						inNumber = 0;
 						spaces = 0;
-					}else{
-						err = addToken(tokenList, tkNumber, M_E, 3 + spaces);
+
+						err = addSimpleToken(tokenList, 'x', 0);
 						if(err != errNoError){
 							rc = err;
-							printError(line, i-1, err, quiet);
+							printError(line, i, err, quiet);
 						}
-						spaces = 0;
 					}
+					err = addToken(tokenList, tkNumber, M_E, 3 + spaces);
+					if(err != errNoError){
+						rc = err;
+						printError(line, i-1, err, quiet);
+					}
+					spaces = 0;
 					i+=2;
 				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 's' && line[i+2] == 'i' && line[i+3] == 'n'){
 					/* asin */
@@ -621,14 +632,14 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						}
 						inNumber = 0;
 						spaces = 0;
-					}else{
-						err = addToken(tokenList, tkASin, 0.0, 4 + spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						spaces= 0;
 					}
+
+					err = addToken(tokenList, tkASin, 0.0, 4 + spaces);
+					if(err != errNoError){
+						rc = err;
+						printError(line, i-1, err, quiet);
+					}
+					spaces= 0;
 					i+=3;
 				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 'c' && line[i+2] == 'o' && line[i+3] == 's'){
 					/* acos */
@@ -640,14 +651,14 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						}
 						inNumber = 0;
 						spaces = 0;
-					}else{
-						err = addToken(tokenList, tkACos, 0.0, 4 + spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						spaces = 0;
 					}
+
+					err = addToken(tokenList, tkACos, 0.0, 4 + spaces);
+					if(err != errNoError){
+						rc = err;
+						printError(line, i-1, err, quiet);
+					}
+					spaces = 0;
 					i+=3;
 				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 't' && line[i+2] == 'a' && line[i+3] == 'n'){
 					/* atan */
@@ -659,14 +670,13 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 						}
 						inNumber = 0;
 						spaces = 0;
-					}else{
-						err = addToken(tokenList, tkATan, 0.0, 4 + spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						spaces = 0;
 					}
+					err = addToken(tokenList, tkATan, 0.0, 4 + spaces);
+					if(err != errNoError){
+						rc = err;
+						printError(line, i-1, err, quiet);
+					}
+					spaces = 0;
 					i+=3;
 				}else if(inNumber){
 					buffer[bufferPos] = line[i];
