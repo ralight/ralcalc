@@ -31,7 +31,7 @@
 
 #define BUFSIZE 100
 
-struct tokeniserState{
+struct tokeniserState {
 	char buffer[BUFSIZE];
 	const char *line;
 	tokenItem *tokenList;
@@ -60,7 +60,9 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int s
 	double multiplier = 1.0;
 	double number = 0.0;
 
-	if(!tokenList || !buffer || bufferPos < 0) return errBadInput;
+	if(!tokenList || !buffer || bufferPos < 0){
+		return errBadInput;
+	}
 
 	strncpy(str, buffer, bufferPos+2);
 
@@ -214,7 +216,7 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int s
  *
  * Add a simple token (no value) to the end of the list.
  * This is a convenience function to avoid confusion with the
- * extra two arguments to addToken() that are unused in 
+ * extra two arguments to addToken() that are unused in
  * simple tokens.
  */
 errType addSimpleToken(tokenItem *tokenList, cToken token, int spaces)
@@ -242,14 +244,20 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 	tokenItem *newItem = NULL;
 	tokenItem *list;
 
-	if(!tokenList) return errBadInput;
+	if(!tokenList){
+		return errBadInput;
+	}
 
 	/* Find tail */
 	list = tokenList;
-	while(list->next) list = list->next;
+	while(list->next){
+		list = list->next;
+	}
 
 	newItem = calloc(1, sizeof(tokenItem));
-	if(!newItem) return errMemory;
+	if(!newItem){
+		return errMemory;
+	}
 	newItem->next = NULL;
 
 	switch(token){
@@ -304,7 +312,7 @@ errType addToken(tokenItem *tokenList, cToken token, double value, int length)
  * assignPrecedence()
  *
  * Go through all tokens and assign precedence to the
- * operators in the token list. 
+ * operators in the token list.
  *
  * It's much cleaner to do this here than in tokenise()
  * because of the other error checking done there.
@@ -319,7 +327,9 @@ int assignPrecedence(tokenItem *tokenList)
 	tokenItem *item;
 	int precedence;
 
-	if(!tokenList) return errBadInput;
+	if(!tokenList){
+		return errBadInput;
+	}
 
 	item = tokenList;
 	while(item){
@@ -353,7 +363,7 @@ int assignPrecedence(tokenItem *tokenList)
 				precedence = 4;
 				break;
 
-			/* 
+			/*
 			 * These tokens should never have to worry about
 			 * precedence.
 			 */
@@ -383,7 +393,7 @@ int assignPrecedence(tokenItem *tokenList)
  * deletePreviousToken()
  *
  * Delete the previous token in the list.
- * This is used to delete the negation token when a number has been 
+ * This is used to delete the negation token when a number has been
  * negated and also to remove a bracket pair and contents when its
  * result has been calculated.
  */
@@ -391,15 +401,19 @@ errType deletePreviousToken(tokenItem *item)
 {
 	tokenItem *deleteItem;
 
-	if(!item || !item->prev) return errBadInput;
-	if(item->prev->type == tkEndToken) return errBadInput;
+	if(!item || !item->prev){
+		return errBadInput;
+	}
+	if(item->prev->type == tkEndToken){
+		return errBadInput;
+	}
 
 	deleteItem = item->prev;
 
 #ifdef DEBUG
 	fprintf(stderr, "Deleting '%s' (%g)\n", ctoken_to_string(deleteItem->type), deleteItem->value);
 #endif
-	
+
 	item->prev = deleteItem->prev;
 	if(item->prev){
 		item->prev->next = item;
@@ -433,17 +447,21 @@ void freeList(tokenItem *tokenList)
  *
  * Insert a simple token in the middle of the list after the current item.
  * This is used to turn (1+2)(3+4) into (1+2)*(3+4) for easier processing.
- * An alternative would be to presume the user had made a mistake and 
+ * An alternative would be to presume the user had made a mistake and
  * exit with an error.
  */
 errType insertAfterToken(tokenItem *item, cToken token)
 {
 	tokenItem *newItem;
 
-	if(!item) return errBadInput;
+	if(!item){
+		return errBadInput;
+	}
 
 	newItem = calloc(1, sizeof(tokenItem));
-	if(!newItem) return errMemory;
+	if(!newItem){
+		return errMemory;
+	}
 
 	newItem->type = token;
 	newItem->next = item->next;
@@ -468,10 +486,14 @@ errType insertBeforeToken(tokenItem *item, cToken token, double value, int lengt
 {
 	tokenItem *newItem;
 
-	if(!item) return errBadInput;
+	if(!item){
+		return errBadInput;
+	}
 
 	newItem = calloc(1, sizeof(tokenItem));
-	if(!newItem) return errMemory;
+	if(!newItem){
+		return errMemory;
+	}
 
 	newItem->type = token;
 	newItem->value = value;
@@ -497,14 +519,18 @@ errType insertNumberAfterToken(tokenItem *item, double value)
 {
 	tokenItem *newItem;
 
-	if(!item) return errBadInput;
+	if(!item){
+		return errBadInput;
+	}
 
 #ifdef DEBUG
 	fprintf(stderr, "Inserting %g\n", value);
 #endif
 
 	newItem = calloc(1, sizeof(tokenItem));
-	if(!newItem) return errMemory;
+	if(!newItem){
+		return errMemory;
+	}
 
 	newItem->type = tkNumber;
 	newItem->value = value;
@@ -545,7 +571,9 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 	errType err;
 	struct tokeniserState ts = {0};
 
-	if(!tokenList || !line) return -1;
+	if(!tokenList || !line){
+		return -1;
+	}
 
 	ts.line = line;
 	ts.tokenList = tokenList;
@@ -686,7 +714,7 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 					}
 				}
 				if(!ts.inNumber || lastchar != 'e' || line[ts.i] != '-'){
-					/* 
+					/*
 					 * If we're at the "-" of an "1e-3", then don't
 					 * add the "-" as a token.
 					 */
@@ -809,11 +837,11 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 }
 
 
-/* 
+/*
  * validate()
  *
  * Work through all tokens making sure that all brackets match
- * and that no illegal combinations of tokens exist: 9++2 for 
+ * and that no illegal combinations of tokens exist: 9++2 for
  * example.
  *
  * Also negates numbers where necessary: 9+-2.
@@ -830,7 +858,9 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	errType err;
 	int rc = errNoError;
 
-	if(!tokenList || !tokenList->next) return errBadInput;
+	if(!tokenList || !tokenList->next){
+		return errBadInput;
+	}
 
 	item = tokenList->next;
 	lastToken = tkEndToken;
@@ -838,7 +868,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	while(item){
 		currentPos += item->length;
 		negateValue--; /* this allows us to detect when we have e.g. 4+-2 -> so we're looking backwards by two
-						* operators at once rather than just one. */
+		                * operators at once rather than just one. */
 
 		switch(item->type){
 			case tkNumber:
@@ -859,7 +889,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 					rc = errBadNumber;
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
-						/* Negate the value by changing the 
+						/* Negate the value by changing the
 						 * previous tkMinus to a tkNegation.
 						 */
 						item->prev->type = tkNegation;

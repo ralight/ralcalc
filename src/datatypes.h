@@ -54,7 +54,7 @@ typedef enum{
 	tkPi,
 	tkExp,
 
-	tkEndToken
+	tkEndToken,
 } cToken;
 
 
@@ -73,7 +73,7 @@ typedef enum{
 	errInvalidBracket,
 	errInvalidOperator,
 	errBadFile,
-	errUnknownToken
+	errUnknownToken,
 } errType;
 
 
@@ -82,7 +82,7 @@ typedef enum{
  * Token struct containing all information about a particular token,
  * implemented as a doubly linked list.
  */
-typedef struct _tokenItem{
+typedef struct _tokenItem {
 	struct _tokenItem *next;
 	struct _tokenItem *prev;
 	cToken type;

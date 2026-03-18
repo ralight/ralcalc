@@ -84,10 +84,11 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 	return 0.0;
 }
 
-/* 
+
+/*
  * process()
  *
- * Recursive processing with nested brackets taking precedent and 
+ * Recursive processing with nested brackets taking precedent and
  * ^, * /, + - precedence for the other operators.
  *
  * When it reaches an end bracket then all of the previous tokens are deleted
@@ -113,7 +114,9 @@ double process(tokenItem **tokenList)
 	cToken operator = tkEndToken;
 	int tokenPrecedence = 0;
 
-	if(!tokenList || !(*tokenList)) return 0.0;
+	if(!tokenList || !(*tokenList)){
+		return 0.0;
+	}
 
 	for(precedence = 5; precedence >= 0; precedence--){
 
@@ -184,11 +187,11 @@ double process(tokenItem **tokenList)
 						value = valueOne;
 					}else{
 						valueTwo = item->value;
-				
+
 						if((operator == tkLog || operator == tkLn || operator == tkSin \
-									|| operator == tkCos || operator == tkTan || operator == tkSqrt \
-									|| operator == tkASin || operator == tkACos || operator == tkATan) \
-									&& tokenPrecedence == precedence){
+								|| operator == tkCos || operator == tkTan || operator == tkSqrt \
+								|| operator == tkASin || operator == tkACos || operator == tkATan) \
+								&& tokenPrecedence == precedence){
 							retval = doCalculation(valueOne, valueTwo, operator);
 							insertNumberAfterToken(item, retval);
 							deletePreviousToken(item); /* Delete operator */
@@ -262,7 +265,9 @@ double process(tokenItem **tokenList)
 					/* FIXME - error condition */
 					break;
 			}
-			if(item) item = item->next;
+			if(item){
+				item = item->next;
+			}
 		}
 	}
 

@@ -33,10 +33,10 @@
 #include "tokens.h"
 #include "output.h"
 
-typedef enum {
+typedef enum{
 	dmSI,
 	dmExponent,
-	dmRaw
+	dmRaw,
 } displayMode;
 
 struct ralcalc_config {
@@ -130,7 +130,9 @@ int processLine(const char *line, struct ralcalc_config *config)
 	char resultStr[100];
 	char formatStr[20];
 
-	if(!line) return errBadInput;
+	if(!line){
+		return errBadInput;
+	}
 
 	readLastResult(&lastResult);
 
@@ -139,13 +141,19 @@ int processLine(const char *line, struct ralcalc_config *config)
 	tokenList.type = tkEndToken;
 
 	rc = tokenise(&tokenList, line, lastResult, config->quiet);
-	if(rc != errNoError) hasError = 1;
+	if(rc != errNoError){
+		hasError = 1;
+	}
 
 	rc = validate(&tokenList, line, config->quiet);
-	if(rc != errNoError) hasError = 1;
+	if(rc != errNoError){
+		hasError = 1;
+	}
 
 	rc = assignPrecedence(&tokenList);
-	if(rc != errNoError) hasError = 1;
+	if(rc != errNoError){
+		hasError = 1;
+	}
 
 	if(!hasError && tokenList.next){
 		result = process(&(tokenList.next));
@@ -181,7 +189,9 @@ int processLine(const char *line, struct ralcalc_config *config)
 		writeLastResult(result);
 	}
 
-	if(tokenList.next) freeList(tokenList.next);
+	if(tokenList.next){
+		freeList(tokenList.next);
+	}
 
 	return hasError;
 }
@@ -198,7 +208,9 @@ int doFileInput(FILE *fptr, struct ralcalc_config *config)
 	char *line;
 	int rc = errNoError;
 
-	if(!fptr) return errBadInput;
+	if(!fptr){
+		return errBadInput;
+	}
 
 	line = calloc(1024, sizeof(char));
 	if(!line){
@@ -346,7 +358,9 @@ int load_config(struct ralcalc_config *config)
 			rc = loadConfigPath(config, path);
 			free(path);
 
-			if(!rc) return 0;
+			if(!rc){
+				return 0;
+			}
 
 			/* Loading from $HOME/.config/ralcalcrc failed, try old location. */
 			pathlen = strlen(home) + strlen("/.ralcalcrc") + 1;
@@ -422,7 +436,9 @@ void writeLastResult(double value)
 			rc = writeLastResultPath(value, path);
 			free(path);
 
-			if(!rc) return;
+			if(!rc){
+				return;
+			}
 
 			/* Writing to $HOME/.local/share/ralcalc_result failed, try old location. */
 			pathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
@@ -482,7 +498,9 @@ void readLastResult(double *value)
 		}
 		rc = readLastResultPath(value, path);
 		free(path);
-		if(rc == 0) return;
+		if(rc == 0){
+			return;
+		}
 	}
 
 	home = getenv("HOME");
@@ -498,7 +516,9 @@ void readLastResult(double *value)
 		rc = readLastResultPath(value, path);
 		free(path);
 
-		if(rc == 0) return;
+		if(rc == 0){
+			return;
+		}
 	}
 
 	{
@@ -630,7 +650,9 @@ int main(int argc, char *argv[])
 	}
 
 	/* Do calculation based on input arguments first */
-	if(doLineCalculation(argc, argv, &config)) rc = 1;
+	if(doLineCalculation(argc, argv, &config)){
+		rc = 1;
+	}
 
 	/* Do calculations from a disk file */
 	if(ifile){
@@ -639,13 +661,17 @@ int main(int argc, char *argv[])
 			fprintf(stderr, _("Error: Unable to open file \"%s\"\n"), ifile);
 			return 1;
 		}
-		if(doFileInput(iptr, &config)) rc = 1;
+		if(doFileInput(iptr, &config)){
+			rc = 1;
+		}
 		fclose(iptr);
 	}
 
 	/* Read calculations from stdin */
 	if(config.usestdin){
-		if(doFileInput(stdin, &config)) rc = 1;
+		if(doFileInput(stdin, &config)){
+			rc = 1;
+		}
 	}
 
 	return rc;

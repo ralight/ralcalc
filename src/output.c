@@ -101,7 +101,7 @@ void doubleToString(double value, char *string, int len, char siPrefix, int prec
  * Output an error with the line and a marker to where the
  * error is (probably). This works when checking that the
  * characters and numbers are all valid, however has more
- * problems getting the correct marker position when the 
+ * problems getting the correct marker position when the
  * error involves incorrect token order.
  *
  * Arguments:
@@ -113,7 +113,9 @@ void printError(const char *line, int pos, errType error, int quiet)
 {
 	int i;
 
-	if(quiet) return;
+	if(quiet){
+		return;
+	}
 
 	fprintf(stderr, "\nError: %s\n       ", line);
 	for(i = 0; i < pos; i++){
