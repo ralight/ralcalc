@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 #include <math.h>
 #include <arpa/inet.h>
 #include <libintl.h>
