@@ -63,7 +63,7 @@ typedef enum{
  * Possible errors for printing.
  */
 typedef enum{
-	errNoError,
+	errNoError = 0,
 	errBadInput,
 	errNotFound,
 	errMemory,

@@ -29,6 +29,20 @@
 #include "output.h"
 #include "tokens.h"
 
+#define BUFSIZE 100
+
+struct tokeniserState{
+	char buffer[BUFSIZE];
+	const char *line;
+	tokenItem *tokenList;
+	int spaces;
+	int bufferPos;
+	int rc;
+	unsigned int i;
+	cToken lastToken;
+	bool inNumber;
+};
+
 
 /*
  * addNumber()
@@ -506,6 +520,20 @@ errType insertNumberAfterToken(tokenItem *item, double value)
 }
 
 
+static void addPotentialNumber(struct tokeniserState *ts, int quiet)
+{
+	if(ts->inNumber){
+		errType err = addNumber(ts->tokenList, ts->buffer, ts->bufferPos, ts->spaces);
+		if(err != errNoError){
+			ts->rc = err;
+			printError(ts->line, ts->i-1, err, quiet);
+		}
+		ts->inNumber = 0;
+		ts->spaces = 0;
+	}
+}
+
+
 /*
  * tokenise()
  *
@@ -513,22 +541,17 @@ errType insertNumberAfterToken(tokenItem *item, double value)
  */
 int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quiet)
 {
-	unsigned int i;
-	cToken lastToken = tkEndToken;
-	char buffer[100];
 	char lastchar = '\0';
-	int bufferPos = 0;
-	int inNumber = 0;
-	int rc = errNoError;
 	errType err;
-	int spaces = 0;
+	struct tokeniserState ts = {0};
 
 	if(!tokenList || !line) return -1;
 
-	memset(buffer, 0, 100);
+	ts.line = line;
+	ts.tokenList = tokenList;
 
-	for(i = 0; i < strlen(line); i++){
-		switch(line[i]){
+	for(ts.i = 0; ts.i < strlen(line); ts.i++){
+		switch(line[ts.i]){
 			case '0':
 			case '1':
 			case '2':
@@ -541,14 +564,14 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case '9':
 			case '.':
 			case ',':
-				if(inNumber){
-					buffer[bufferPos] = line[i];
-					bufferPos++;
+				if(ts.inNumber){
+					ts.buffer[ts.bufferPos] = line[ts.i];
+					ts.bufferPos++;
 				}else{
-					memset(buffer, 0, 100);
-					buffer[0] = line[i];
-					bufferPos = 1;
-					inNumber = 1;
+					memset(ts.buffer, 0, sizeof(ts.buffer));
+					ts.buffer[0] = line[ts.i];
+					ts.bufferPos = 1;
+					ts.inNumber = 1;
 				}
 				break;
 
@@ -573,117 +596,67 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case 'y':
 			case 'r':
 			case 'q':
-				if(i < strlen(line)-1 && line[i] == 'p' && line[i+1] == 'i'){
+				if(ts.i < strlen(line)-1 && line[ts.i] == 'p' && line[ts.i+1] == 'i'){
 					/* pi */
-					if(inNumber){
-						err = addNumber(tokenList, buffer, bufferPos, spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						inNumber = 0;
-						spaces = 0;
+					addPotentialNumber(&ts, quiet);
 
-						err = addSimpleToken(tokenList, 'x', 0);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i, err, quiet);
-						}
-					}
-
-					err = addToken(tokenList, tkNumber, M_PI, 2 + spaces);
+					err = addToken(ts.tokenList, tkNumber, M_PI, 2 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i-1, err, quiet);
 					}
-					spaces = 0;
-					i++;
-				}else if(i < strlen(line)-2 && line[i] == 'e' && line[i+1] == 'x' && line[i+2] == 'p'){
+					ts.spaces = 0;
+					ts.i++;
+				}else if(ts.i < strlen(line)-2 && line[ts.i] == 'e' && line[ts.i+1] == 'x' && line[ts.i+2] == 'p'){
 					/* exp */
-					if(inNumber){
-						err = addNumber(tokenList, buffer, bufferPos, spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						inNumber = 0;
-						spaces = 0;
+					addPotentialNumber(&ts, quiet);
 
-						err = addSimpleToken(tokenList, 'x', 0);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i, err, quiet);
-						}
-					}
-					err = addToken(tokenList, tkNumber, M_E, 3 + spaces);
+					err = addToken(ts.tokenList, tkNumber, M_E, 3 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i-1, err, quiet);
 					}
-					spaces = 0;
-					i+=2;
-				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 's' && line[i+2] == 'i' && line[i+3] == 'n'){
+					ts.spaces = 0;
+					ts.i+=2;
+				}else if(ts.i < strlen(line)-3 && line[ts.i] == 'a' && line[ts.i+1] == 's' && line[ts.i+2] == 'i' && line[ts.i+3] == 'n'){
 					/* asin */
-					if(inNumber){
-						err = addNumber(tokenList, buffer, bufferPos, spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						inNumber = 0;
-						spaces = 0;
-					}
+					addPotentialNumber(&ts, quiet);
 
-					err = addToken(tokenList, tkASin, 0.0, 4 + spaces);
+					err = addToken(ts.tokenList, tkASin, 0.0, 4 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i-1, err, quiet);
 					}
-					spaces= 0;
-					i+=3;
-				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 'c' && line[i+2] == 'o' && line[i+3] == 's'){
+					ts.spaces= 0;
+					ts.i+=3;
+				}else if(ts.i < strlen(line)-3 && line[ts.i] == 'a' && line[ts.i+1] == 'c' && line[ts.i+2] == 'o' && line[ts.i+3] == 's'){
 					/* acos */
-					if(inNumber){
-						err = addNumber(tokenList, buffer, bufferPos, spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						inNumber = 0;
-						spaces = 0;
-					}
+					addPotentialNumber(&ts, quiet);
 
-					err = addToken(tokenList, tkACos, 0.0, 4 + spaces);
+					err = addToken(ts.tokenList, tkACos, 0.0, 4 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i-1, err, quiet);
 					}
-					spaces = 0;
-					i+=3;
-				}else if(i < strlen(line)-3 && line[i] == 'a' && line[i+1] == 't' && line[i+2] == 'a' && line[i+3] == 'n'){
+					ts.spaces = 0;
+					ts.i+=3;
+				}else if(ts.i < strlen(line)-3 && line[ts.i] == 'a' && line[ts.i+1] == 't' && line[ts.i+2] == 'a' && line[ts.i+3] == 'n'){
 					/* atan */
-					if(inNumber){
-						err = addNumber(tokenList, buffer, bufferPos, spaces);
-						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
-						}
-						inNumber = 0;
-						spaces = 0;
-					}
-					err = addToken(tokenList, tkATan, 0.0, 4 + spaces);
+					addPotentialNumber(&ts, quiet);
+
+					err = addToken(ts.tokenList, tkATan, 0.0, 4 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i-1, err, quiet);
 					}
-					spaces = 0;
-					i+=3;
-				}else if(inNumber){
-					buffer[bufferPos] = line[i];
-					bufferPos++;
+					ts.spaces = 0;
+					ts.i+=3;
+				}else if(ts.inNumber){
+					ts.buffer[ts.bufferPos] = line[ts.i];
+					ts.bufferPos++;
 				}else{
-					rc = errBadNumber;
-					printError(line, i-1, errBadNumber, quiet);
+					ts.rc = errBadNumber;
+					printError(line, ts.i-1, errBadNumber, quiet);
 				}
 				break;
 
@@ -698,47 +671,47 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 			case ')':
 			case '^':
 			case '%':
-				if(inNumber){
-					if(lastchar == 'e' && line[i] == '-'){
-						buffer[bufferPos] = line[i];
-						bufferPos++;
+				if(ts.inNumber){
+					if(lastchar == 'e' && line[ts.i] == '-'){
+						ts.buffer[ts.bufferPos] = line[ts.i];
+						ts.bufferPos++;
 					}else{
-						err = addNumber(tokenList, buffer, bufferPos, spaces);
+						err = addNumber(ts.tokenList, ts.buffer, ts.bufferPos, ts.spaces);
 						if(err != errNoError){
-							rc = err;
-							printError(line, i-1, err, quiet);
+							ts.rc = err;
+							printError(line, ts.i-1, err, quiet);
 						}
-						inNumber = 0;
-						spaces = 0;
+						ts.inNumber = 0;
+						ts.spaces = 0;
 					}
 				}
-				if(!inNumber || lastchar != 'e' || line[i] != '-'){ 
+				if(!ts.inNumber || lastchar != 'e' || line[ts.i] != '-'){
 					/* 
 					 * If we're at the "-" of an "1e-3", then don't
 					 * add the "-" as a token.
 					 */
-					err = addSimpleToken(tokenList, line[i], spaces);
+					err = addSimpleToken(ts.tokenList, line[ts.i], ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i, err, quiet);
 					}
-					lastToken = line[i];
-					spaces = 0;
+					ts.lastToken = line[ts.i];
+					ts.spaces = 0;
 				}
 				break;
 
 			case '_':
-				err = addToken(tokenList, tkLastResult, lastResult, 1 + spaces);
+				err = addToken(ts.tokenList, tkLastResult, lastResult, 1 + ts.spaces);
 				if(err != errNoError){
-					rc = err;
-					printError(line, i, err, quiet);
+					ts.rc = err;
+					printError(line, ts.i, err, quiet);
 				}
-				lastToken = '_';
-				spaces = 0;
+				ts.lastToken = '_';
+				ts.spaces = 0;
 				break;
 
 			case ' ':
-				spaces++;
+				ts.spaces++;
 				break;
 
 			case 10:
@@ -747,131 +720,92 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				break;
 
 			case 'l':
-				if(inNumber){
-					err = addNumber(tokenList, buffer, bufferPos, spaces);
+				addPotentialNumber(&ts, quiet);
+				if((ts.i < strlen(line) - 1) && line[ts.i+1] == 'n'){
+					err = addToken(ts.tokenList, tkLn, 0.0, 2 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i, err, quiet);
 					}
-					inNumber = 0;
-					spaces = 0;
-				}
-				if((i < strlen(line) - 1) && line[i+1] == 'n'){
-					err = addToken(tokenList, tkLn, 0.0, 2 + spaces);
+					ts.spaces = 0;
+					ts.i++;
+				}else if((ts.i < strlen(line) - 2) && line[ts.i+1] == 'o' && line[ts.i+2] == 'g'){
+					err = addToken(ts.tokenList, tkLog, 0.0, 3 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i, err, quiet);
 					}
-					spaces = 0;
-					i++;
-				}else if((i < strlen(line) - 2) && line[i+1] == 'o' && line[i+2] == 'g'){
-					err = addToken(tokenList, tkLog, 0.0, 3 + spaces);
-					if(err != errNoError){
-						rc = err;
-						printError(line, i, err, quiet);
-					}
-					spaces = 0;
-					i += 2;
+					ts.spaces = 0;
+					ts.i += 2;
 				}else{
-					printError(line, i, errUnknownToken, quiet);
+					printError(line, ts.i, errUnknownToken, quiet);
 				}
 				break;
 
 			case 's':
-				if(inNumber){
-					err = addNumber(tokenList, buffer, bufferPos, spaces);
+				addPotentialNumber(&ts, quiet);
+				if((ts.i < strlen(line) - 2) && line[ts.i+1] == 'i' && line[ts.i+2] == 'n'){
+					err = addToken(ts.tokenList, tkSin, 0.0, 3 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i, err, quiet);
 					}
-					inNumber = 0;
-					spaces = 0;
-				}
-				if((i < strlen(line) - 2) && line[i+1] == 'i' && line[i+2] == 'n'){
-					err = addToken(tokenList, tkSin, 0.0, 3 + spaces);
+					ts.spaces = 0;
+					ts.i += 2;
+				}else if((ts.i < strlen(line) - 3) && line[ts.i+1] == 'q' && line[ts.i+2] == 'r' && line[ts.i+3] == 't'){
+					err = addToken(ts.tokenList, tkSqrt, 0.0, 4 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i, err, quiet);
 					}
-					spaces = 0;
-					i += 2;
-				}else if((i < strlen(line) - 3) && line[i+1] == 'q' && line[i+2] == 'r' && line[i+3] == 't'){
-					err = addToken(tokenList, tkSqrt, 0.0, 4 + spaces);
-					if(err != errNoError){
-						rc = err;
-						printError(line, i, err, quiet);
-					}
-					spaces = 0;
-					i += 3;
+					ts.spaces = 0;
+					ts.i += 3;
 				}else{
-					printError(line, i, errUnknownToken, quiet);
+					printError(line, ts.i, errUnknownToken, quiet);
 				}
 				break;
 
 			case 'c':
-				if(inNumber){
-					err = addNumber(tokenList, buffer, bufferPos, spaces);
+				addPotentialNumber(&ts, quiet);
+				if((ts.i < strlen(line) - 2) && line[ts.i+1] == 'o' && line[ts.i+2] == 's'){
+					err = addToken(ts.tokenList, tkCos, 0.0, 3 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i, err, quiet);
 					}
-					inNumber = 0;
-					spaces = 0;
-				}
-				if((i < strlen(line) - 2) && line[i+1] == 'o' && line[i+2] == 's'){
-					err = addToken(tokenList, tkCos, 0.0, 3 + spaces);
-					if(err != errNoError){
-						rc = err;
-						printError(line, i, err, quiet);
-					}
-					spaces = 0;
-					i += 2;
+					ts.spaces = 0;
+					ts.i += 2;
 				}else{
-					printError(line, i, errUnknownToken, quiet);
+					printError(line, ts.i, errUnknownToken, quiet);
 				}
 				break;
 
 			case 't':
-				if(inNumber){
-					err = addNumber(tokenList, buffer, bufferPos, spaces);
+				addPotentialNumber(&ts, quiet);
+				if((ts.i < strlen(line) - 2) && line[ts.i+1] == 'a' && line[ts.i+2] == 'n'){
+					err = addToken(ts.tokenList, tkTan, 0.0, 3 + ts.spaces);
 					if(err != errNoError){
-						rc = err;
-						printError(line, i-1, err, quiet);
+						ts.rc = err;
+						printError(line, ts.i, err, quiet);
 					}
-					inNumber = 0;
-					spaces = 0;
-				}
-				if((i < strlen(line) - 2) && line[i+1] == 'a' && line[i+2] == 'n'){
-					err = addToken(tokenList, tkTan, 0.0, 3 + spaces);
-					if(err != errNoError){
-						rc = err;
-						printError(line, i, err, quiet);
-					}
-					spaces = 0;
-					i += 2;
+					ts.spaces = 0;
+					ts.i += 2;
 				}else{
-					printError(line, i, errUnknownToken, quiet);
+					printError(line, ts.i, errUnknownToken, quiet);
 				}
 				break;
 
 			default:
-				rc = errUnknownToken;
-				printError(line, i, errUnknownToken, quiet);
+				ts.rc = errUnknownToken;
+				printError(line, ts.i, errUnknownToken, quiet);
 				break;
 		}
-		lastchar = line[i];
+		lastchar = line[ts.i];
 	}
-	if(inNumber){
-		err = addNumber(tokenList, buffer, bufferPos, spaces);
-		if(err != errNoError){
-			rc = err;
-			printError(line, i-2, err, quiet);
-		}
-		inNumber = 0;
-		spaces = 0;
-	}
+	addPotentialNumber(&ts, quiet);
 
-	return rc;
+	tokenList->next = ts.tokenList->next;
+	return ts.rc;
 }
 
 
