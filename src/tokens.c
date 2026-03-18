@@ -43,13 +43,15 @@ struct tokeniserState {
 	bool inNumber;
 };
 
+static errType addToken(tokenItem *tokenList, cToken token, double value, int length);
+
 
 /*
  * addNumber()
  *
  * Parse a number and add it to the end of the token list.
  */
-errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int spaces)
+static errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int spaces)
 {
 	int i;
 	char str[bufferPos+2];
@@ -219,7 +221,7 @@ errType addNumber(tokenItem *tokenList, const char *buffer, int bufferPos, int s
  * extra two arguments to addToken() that are unused in
  * simple tokens.
  */
-errType addSimpleToken(tokenItem *tokenList, cToken token, int spaces)
+static errType addSimpleToken(tokenItem *tokenList, cToken token, int spaces)
 {
 	return addToken(tokenList, token, 0.0, 1 + spaces);
 }
@@ -239,7 +241,7 @@ errType addSimpleToken(tokenItem *tokenList, cToken token, int spaces)
  * errMemory (unable to allocate new item)
  * errNoError
  */
-errType addToken(tokenItem *tokenList, cToken token, double value, int length)
+static errType addToken(tokenItem *tokenList, cToken token, double value, int length)
 {
 	tokenItem *newItem = NULL;
 	tokenItem *list;
@@ -450,7 +452,7 @@ void freeList(tokenItem *tokenList)
  * An alternative would be to presume the user had made a mistake and
  * exit with an error.
  */
-errType insertAfterToken(tokenItem *item, cToken token)
+static errType insertAfterToken(tokenItem *item, cToken token)
 {
 	tokenItem *newItem;
 
@@ -482,7 +484,7 @@ errType insertAfterToken(tokenItem *item, cToken token)
  * Insert a complex token in the middle of the list before the current item.
  * This is used to turn -(1+2) into -1.0*(1+2).
  */
-errType insertBeforeToken(tokenItem *item, cToken token, double value, int length)
+static errType insertBeforeToken(tokenItem *item, cToken token, double value, int length)
 {
 	tokenItem *newItem;
 
