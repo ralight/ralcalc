@@ -587,6 +587,7 @@ int main(int argc, char *argv[])
 			}
 		}else if(!strcmp(argv[i], "-i")){
 			config.usestdin = 1;
+			argv[i][0] = '\0';
 		}else if(!strcmp(argv[i], "-p")){
 			if(i < argc - 1){
 				config.precision = atoi(argv[i+1]);
