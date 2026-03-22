@@ -557,12 +557,12 @@ int main(int argc, char *argv[])
 
 	if(argc==2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help") || !strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))){
 		printUsage();
-		return 1;
+		return 0;
 	}
 
 	if(argc==2 && (!strcmp(argv[1], "-a") || !strcmp(argv[1], "--all"))){
 		printTokens();
-		return 1;
+		return 0;
 	}
 
 
@@ -583,7 +583,7 @@ int main(int argc, char *argv[])
 				i++;
 			}else{
 				printUsage();
-				return 1;
+				return 0;
 			}
 		}else if(!strcmp(argv[i], "-i")){
 			config.usestdin = 1;
@@ -600,7 +600,7 @@ int main(int argc, char *argv[])
 				}
 			}else{
 				printUsage();
-				return 1;
+				return 0;
 			}
 		}else if(!strcmp(argv[i], "-r")){
 			config.dm = dmRaw;
@@ -646,7 +646,7 @@ int main(int argc, char *argv[])
 				}
 			}else{
 				printUsage();
-				return 1;
+				return 0;
 			}
 		}
 	}
