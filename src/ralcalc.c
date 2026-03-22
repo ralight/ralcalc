@@ -165,18 +165,18 @@ int processLine(const char *line, struct ralcalc_config *config)
 				break;
 			case dmExponent:
 				if(config->precision == -1){
-					snprintf(resultStr, 100, "%lg", result);
+					snprintf(resultStr, sizeof(resultStr), "%lg", result);
 				}else{
-					snprintf(formatStr, 20, "%%.%dlg", config->precision);
-					snprintf(resultStr, 100, formatStr, result);
+					snprintf(formatStr, sizeof(formatStr), "%%.%dlg", config->precision);
+					snprintf(resultStr, sizeof(resultStr), formatStr, result);
 				}
 				break;
 			case dmRaw:
 				if(config->precision == -1){
-					snprintf(resultStr, 100, "%f", result);
+					snprintf(resultStr, sizeof(resultStr), "%f", result);
 				}else{
-					snprintf(formatStr, 20, "%%.%df", config->precision);
-					snprintf(resultStr, 100, formatStr, result);
+					snprintf(formatStr, sizeof(formatStr), "%%.%df", config->precision);
+					snprintf(resultStr, sizeof(resultStr), formatStr, result);
 				}
 				break;
 		}

@@ -88,7 +88,7 @@ void doubleToString(double value, char *string, int len, char siPrefix, int prec
 		if(precision == -1){
 			snprintf(string, len, "%g", value);
 		}else{
-			snprintf(strFormat, 20, "%%.%dg", precision);
+			snprintf(strFormat, sizeof(strFormat), "%%.%dg", precision);
 			snprintf(string, len, strFormat, value);
 		}
 	}
