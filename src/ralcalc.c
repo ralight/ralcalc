@@ -317,6 +317,27 @@ int loadConfigPath(struct ralcalc_config *config, const char *path)
 }
 
 
+
+static int loadConfigByLocation(struct ralcalc_config *config, const char *envvar, const char *path_suffix)
+{
+	char *envstr = getenv(envvar);
+	if(envstr){
+		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
+		char *path = malloc(pathlen);
+		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
+		if(!path){
+			fprintf(stderr, "Error: Out of memory.\n");
+			return 1;
+		}
+		int rc = loadConfigPath(config, path);
+		free(path);
+		return rc;
+	}else{
+		return 1;
+	}
+}
+
+
 /* Load configuration file
  *
  * Either:
@@ -325,63 +346,22 @@ int loadConfigPath(struct ralcalc_config *config, const char *path)
  * $HOME/.config/ralcalcrc
  * $HOME/.ralcalcrc
  */
-int load_config(struct ralcalc_config *config)
+int loadConfig(struct ralcalc_config *config)
 {
-	char *xdg_config;
-	char *home;
-	char *path;
-	int pathlen;
 	int rc;
 
-	xdg_config = getenv("XDG_CONFIG_HOME");
-
-	if(xdg_config){
-		pathlen = strlen(xdg_config) + strlen("/ralcalcrc") + 1;
-		path = malloc(pathlen);
-		snprintf(path, pathlen, "%s/ralcalcrc", xdg_config);
-		if(!path){
-			fprintf(stderr, "Error: Out of memory.\n");
-			return 1;
-		}
-		rc = loadConfigPath(config, path);
-		free(path);
-		return rc;
-	}else{
-		home = getenv("HOME");
-		if(home){
-			pathlen = strlen(home) + strlen("/.config/ralcalcrc") + 1;
-			path = (char *)malloc(pathlen * sizeof(char));
-			if(!path){
-				fprintf(stderr, "Error: Out of memory.\n");
-				return 1;
-			}
-			snprintf(path, pathlen, "%s/.config/ralcalcrc", home);
-
-			rc = loadConfigPath(config, path);
-			free(path);
-
-			if(!rc){
-				return 0;
-			}
-
-			/* Loading from $HOME/.config/ralcalcrc failed, try old location. */
-			pathlen = strlen(home) + strlen("/.ralcalcrc") + 1;
-			path = (char *)malloc(pathlen * sizeof(char));
-			if(!path){
-				fprintf(stderr, "Error: Out of memory.\n");
-				return 1;
-			}
-			snprintf(path, pathlen, "%s/.ralcalcrc", home);
-
-			rc = loadConfigPath(config, path);
-			free(path);
-
-			return rc;
-		}else{
-			/* No config file loaded, but carry on anyway */
-			return 0;
-		}
+	rc = loadConfigByLocation(config, "XDG_CONFIG_HOME", "/ralcalcrc");
+	if(rc == 0){
+		return 0;
 	}
+
+	rc = loadConfigByLocation(config, "HOME", "/.config/ralcalcrc");
+	if(rc == 0){
+		return 0;
+	}
+
+	/* Loading from $HOME/.config/ralcalcrc failed, try old location. */
+	return loadConfigByLocation(config, "HOME", "/.ralcalcrc");
 }
 
 
@@ -402,60 +382,41 @@ int writeLastResultPath(double value, const char *path)
 }
 
 
-void writeLastResult(double value)
+static int writeLastResultByLocation(double value, const char *envvar, const char *path_suffix)
 {
-	char *xdg_data;
-	char *home;
-	char *path;
-	int pathlen;
-	int rc = -1;
-
-	xdg_data = getenv("XDG_DATA_HOME");
-
-	if(xdg_data){
-		pathlen = strlen(xdg_data) + strlen("/ralcalc_result") + 1;
-		path = malloc(pathlen);
-		snprintf(path, pathlen, "%s/ralcalc_result", xdg_data);
+	char *envstr = getenv(envvar);
+	if(envstr){
+		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
+		char *path = malloc(pathlen);
+		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
 		if(!path){
 			fprintf(stderr, "Error: Out of memory.\n");
-			return;
+			return 1;
 		}
-		rc = writeLastResultPath(value, path);
+		int rc = writeLastResultPath(value, path);
 		free(path);
+		return rc;
+	}
+	return 1;
+}
+
+
+void writeLastResult(double value)
+{
+	int rc;
+
+	rc = writeLastResultByLocation(value, "XDG_DATA_HOME", "/ralcalc_result");
+	if(rc == errNoError){
+		return;
 	}
 
-	if(rc != 0){
-		home = getenv("HOME");
-		if(home){
-			pathlen = strlen(home) + strlen("/.local/share/ralcalc_result") + 1;
-			path = (char *)malloc(pathlen * sizeof(char));
-			if(!path){
-				fprintf(stderr, "Error: Out of memory.\n");
-				return;
-			}
-			snprintf(path, pathlen, "%s/.local/share/ralcalc_result", home);
-
-			rc = writeLastResultPath(value, path);
-			free(path);
-
-			if(!rc){
-				return;
-			}
-
-			/* Writing to $HOME/.local/share/ralcalc_result failed, try old location. */
-			pathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
-			path = (char *)malloc(pathlen * sizeof(char));
-			if(!path){
-				fprintf(stderr, "Error: Out of memory.\n");
-				return;
-			}
-			snprintf(path, pathlen, "%s/.ralcalc_result", home);
-
-			rc = writeLastResultPath(value, path);
-			free(path);
-		}
+	rc = writeLastResultByLocation(value, "HOME", "/.local/share/ralcalc_result");
+	if(rc == errNoError){
+		return;
 	}
 
+	/* Writing to $HOME/.local/share/ralcalc_result failed, try old location. */
+	writeLastResultByLocation(value, "HOME", "/.ralcalc_result");
 }
 
 
@@ -480,63 +441,40 @@ int readLastResultPath(double *value, const char *path)
 }
 
 
+static int readLastResultByLocation(const char *envvar, const char *path_suffix, double *value)
+{
+	char *envstr = getenv(envvar);
+	if(envstr){
+		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
+		char *path = malloc(pathlen);
+		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
+		if(!path){
+			fprintf(stderr, "Error: Out of memory.\n");
+			return 1;
+		}
+		int rc = readLastResultPath(value, path);
+		free(path);
+		return rc;
+	}
+	return -1;
+}
+
+
 void readLastResult(double *value)
 {
-	char *xdg_data;
-	char *home;
-	char *path;
-	int pathlen;
 	int rc;
 
-	xdg_data = getenv("XDG_DATA_HOME");
-
-	if(xdg_data){
-		pathlen = strlen(xdg_data) + strlen("/ralcalc_result") + 1;
-		path = malloc(pathlen);
-		snprintf(path, pathlen, "%s/ralcalc_result", xdg_data);
-		if(!path){
-			fprintf(stderr, "Error: Out of memory.\n");
-			return;
-		}
-		rc = readLastResultPath(value, path);
-		free(path);
-		if(rc == 0){
-			return;
-		}
+	rc = readLastResultByLocation("XDG_DATA_HOME", "/ralcalc_result", value);
+	if(rc >= 0){
+		return;
 	}
 
-	home = getenv("HOME");
-	if(home){
-		pathlen = strlen(home) + strlen("/.local/share/ralcalc_result") + 1;
-		path = (char *)malloc(pathlen * sizeof(char));
-		if(!path){
-			fprintf(stderr, "Error: Out of memory.\n");
-			return;
-		}
-		snprintf(path, pathlen, "%s/.local/share/ralcalc_result", home);
-
-		rc = readLastResultPath(value, path);
-		free(path);
-
-		if(rc == 0){
-			return;
-		}
+	rc = readLastResultByLocation("HOME", "/.local/share/ralcalc_result", value);
+	if(rc >= 0){
+		return;
 	}
 
-	{
-		/* Loading from $HOME/.local/share/ralcalc_result failed, try old location. */
-		pathlen = strlen(home) + strlen("/.ralcalc_result") + 1;
-		path = (char *)malloc(pathlen * sizeof(char));
-		if(!path){
-			fprintf(stderr, "Error: Out of memory.\n");
-			return;
-		}
-		snprintf(path, pathlen, "%s/.ralcalc_result", home);
-
-		readLastResultPath(value, path);
-		free(path);
-	}
-
+	readLastResultByLocation("HOME", "/.ralcalc_result", value);
 }
 
 
@@ -567,7 +505,7 @@ int main(int argc, char *argv[])
 	}
 
 
-	load_config(&config);
+	loadConfig(&config);
 
 	for(i = 1; i < argc; i++){
 		if(!strcmp(argv[i], "-q")){
