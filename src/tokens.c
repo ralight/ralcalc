@@ -907,7 +907,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkCOpenBracket:
 				/* Insert * between )( */
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
-					err = insertAfterToken(item, tkMultiply);
+					err = insertAfterToken(item->prev, tkMultiply);
 					if(err != errNoError){
 						printError(line, currentPos, err, quiet);
 						rc = err;
