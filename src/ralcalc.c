@@ -221,8 +221,7 @@ int doFileInput(FILE *fptr, struct ralcalc_config *config)
 		fprintf(stderr, _("Error: Out of memory\n"));
 		return errMemory;
 	}
-	fgets(line, 1024, fptr);
-	while(!feof(fptr)){
+	while(fgets(line, sizeof(line), fptr)){
 		if(line[strlen(line)-1] == 10 || line[strlen(line)-1] == 13){
 			line[strlen(line)-1] = '\0';
 		}
@@ -235,7 +234,6 @@ int doFileInput(FILE *fptr, struct ralcalc_config *config)
 		if(rc != errNoError){
 			break;
 		}
-		fgets(line, 1024, fptr);
 	}
 	free(line);
 
