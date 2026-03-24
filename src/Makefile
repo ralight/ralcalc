@@ -35,3 +35,4 @@ ralcalc_test : test.o output.o
 
 test : ralcalc_test
 	./ralcalc_test
+	./test.py
