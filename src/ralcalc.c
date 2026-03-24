@@ -134,6 +134,9 @@ int processLine(const char *line, struct ralcalc_config *config)
 	if(!line){
 		return errBadInput;
 	}
+	if(!strlen(line)){
+		return errNoError;
+	}
 
 	readLastResult(&lastResult);
 
