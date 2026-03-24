@@ -803,6 +803,23 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 }
 
 
+#ifdef DEBUG
+void print_token_debug(tokenItem *tokenList)
+{
+	fprintf(stderr, "Tokens:");
+	while(tokenList){
+		if(tokenList->type == tkNumber){
+			fprintf(stderr, " (%g)", tokenList->value);
+		}else{
+			fprintf(stderr, " %s", ctoken_to_string(tokenList->type));
+		}
+		tokenList = tokenList->next;
+	}
+	fprintf(stderr, "\n");
+}
+#endif
+
+
 /*
  * validate()
  *
@@ -975,6 +992,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 }
 
 
+#ifdef DEBUG
 const char *ctoken_to_string(cToken token)
 {
 	switch(token){
@@ -1035,3 +1053,4 @@ const char *ctoken_to_string(cToken token)
 
 	return "invalid";
 }
+#endif
