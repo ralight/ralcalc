@@ -72,7 +72,6 @@ typedef enum{
 	errMismatchedBrackets,
 	errInvalidBracket,
 	errInvalidOperator,
-	errBadFile,
 	errUnknownToken,
 } errType;
 
