@@ -1,8 +1,8 @@
 name: ralcalc
-version: '1.4.2'
+version: '1.6.1'
 summary: ralcalc is a simple command line calculator
 description: |
-  ralcalc is a simple command line calculator designed to take a single 
+  ralcalc is a simple command line calculator designed to take a single
   line input and produce a result. It is also installed as the "=" command.
 
 grade: stable
@@ -17,7 +17,6 @@ parts:
     plugin: make
     source: https://github.com/ralight/ralcalc
     source-type: git
-    
+
     prime:
     - usr/local/bin/ralcalc
-
