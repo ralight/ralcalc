@@ -292,17 +292,13 @@ static errType addToken(tokenItem *tokenList, cToken token, double value, int le
 			break;
 		case tkNumber:
 		case tkLastResult:
-		case tkPi:
 			newItem->type = token;
 			newItem->value = value;
 			newItem->length = length;
 			list->next = newItem;
 			newItem->prev = list;
 			break;
-		default:
-			fprintf(stderr, _("Unknown token (%d)\n"), token);
-			free(newItem);
-			return errUnknownToken;
+		case tkEndToken:
 			break;
 	}
 
@@ -375,8 +371,6 @@ int assignPrecedence(tokenItem *tokenList)
 			case tkCCloseBracket:
 			case tkNumber:
 			case tkLastResult:
-			case tkPi:
-			case tkExp:
 			case tkEndToken:
 				precedence = 0;
 				break;
@@ -856,8 +850,6 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 		switch(item->type){
 			case tkNumber:
 			case tkLastResult:
-			case tkPi:
-			case tkExp:
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
 					err = insertAfterToken(item, tkMultiply);
 					if(err != errNoError){
@@ -1042,10 +1034,6 @@ const char *ctoken_to_string(cToken token)
 			return "tkATan";
 		case tkSqrt:
 			return "tkSqrt";
-		case tkPi:
-			return "tkPi";
-		case tkExp:
-			return "tkExp";
 		case tkEndToken:
 			return "tkEndToken";
 

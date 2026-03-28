@@ -50,10 +50,6 @@ typedef enum{
 	tkATan,
 	tkSqrt,
 
-/* Constants */
-	tkPi,
-	tkExp,
-
 	tkEndToken,
 } cToken;
 
