@@ -953,9 +953,8 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 				}
 				break;
 
-			default:
-				printError(line, currentPos, errUnknownToken, quiet);
-				rc = errUnknownToken;
+			case tkNegation:
+			case tkEndToken:
 				break;
 		}
 		lastToken = item->type;
