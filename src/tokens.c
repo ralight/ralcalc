@@ -851,7 +851,7 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 			case tkNumber:
 			case tkLastResult:
 				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
-					err = insertAfterToken(item, tkMultiply);
+					err = insertBeforeToken(item, tkMultiply, 0.0, 1);
 					if(err != errNoError){
 						printError(line, currentPos, err, quiet);
 						rc = err;
