@@ -4,7 +4,7 @@
  * Project: ralcalc
  * Desc: Main program.
  *
- * Copyright (C) 2007-2009,2011,2013 Roger Light.
+ * Copyright (C) 2007-2026 Roger Light.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
