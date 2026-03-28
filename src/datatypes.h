@@ -61,7 +61,6 @@ typedef enum{
 typedef enum{
 	errNoError = 0,
 	errBadInput,
-	errNotFound,
 	errMemory,
 	errBadNumber,
 	errDuplicateNumber,

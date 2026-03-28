@@ -123,6 +123,8 @@ void printError(const char *line, int pos, errType error, int quiet)
 	}
 	fprintf(stderr, "^");
 	switch(error){
+		case errNoError:
+			break;
 		case errMemory:
 			fprintf(stderr, _(" out of memory\n"));
 			break;
@@ -146,9 +148,6 @@ void printError(const char *line, int pos, errType error, int quiet)
 			break;
 		case errInvalidBracket:
 			fprintf(stderr, _(" invalid bracket\n"));
-			break;
-		default:
-			fprintf(stderr, _(" unknown error (%d)\n"), error);
 			break;
 	}
 }
