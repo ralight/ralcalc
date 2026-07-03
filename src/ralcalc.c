@@ -300,7 +300,7 @@ int loadConfigPath(struct ralcalc_config *config, const char *path)
 				config->dm = dmSI;
 				token = strtok(NULL, " ");
 				if(!token){
-					fprintf(stderr, "-s specified but without a prefix.\n");
+					fprintf(stderr, _("-s specified but without a prefix.\n"));
 					fclose(rcptr);
 					return 1;
 				}
@@ -323,7 +323,7 @@ static int constructPathFromEnv(const char *envvar, const char *path_suffix, cha
 		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
 		*path = malloc(pathlen);
 		if(!(*path)){
-			fprintf(stderr, "Error: Out of memory.\n");
+			fprintf(stderr, _("Error: Out of memory.\n"));
 			return 1;
 		}
 		snprintf(*path, pathlen, "%s%s", envstr, path_suffix);
@@ -385,7 +385,7 @@ int writeLastResultPath(double value, const char *path)
 	fptr = fopen(path, "wb");
 	if(fptr){
 		if(fwrite(&value, sizeof(double), 1, fptr) != 1){
-			fprintf(stderr, "Error writing last value file.\n");
+			fprintf(stderr, _("Error writing last value file.\n"));
 			rc = 1;
 		}
 		fclose(fptr);
@@ -437,7 +437,7 @@ int readLastResultPath(double *value, const char *path)
 		if(rc == 1){
 			return 0;
 		}else{
-			fprintf(stderr, "Warning: Previous value file corrupt, ignoring.\n");
+			fprintf(stderr, _("Warning: Previous value file corrupt, ignoring.\n"));
 			*value = 0.0;
 			return 1;
 		}
