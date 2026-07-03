@@ -44,7 +44,9 @@ void doubleToString(double value, char *string, int len, char siPrefix, int prec
 
 	absval = fabs(value);
 
-	if((absval >= 1.0e30 && siPrefix == '\0') || siPrefix == 'Q'){
+	if(!isnormal(absval)){
+		snprintf(string, len, "%g", value);
+	}else if((absval >= 1.0e30 && siPrefix == '\0') || siPrefix == 'Q'){
 		snprintf(string, len, "%gQ", value / 1.0e30);
 	}else if((absval >= 1.0e27 && siPrefix == '\0') || siPrefix == 'R'){
 		snprintf(string, len, "%gR", value / 1.0e27);
