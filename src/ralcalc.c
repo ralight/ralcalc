@@ -604,8 +604,10 @@ int main(int argc, char *argv[])
 		iptr = fopen(ifile, "rt");
 		if(!iptr){
 			fprintf(stderr, _("Error: Unable to open file \"%s\"\n"), ifile);
+			free(ifile);
 			return 1;
 		}
+		free(ifile);
 		if(doFileInput(iptr, &config)){
 			rc = 1;
 		}
