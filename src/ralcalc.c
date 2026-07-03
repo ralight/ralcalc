@@ -125,7 +125,7 @@ int processLine(const char *line, struct ralcalc_config *config)
 {
 	tokenItem tokenList;
 	int rc;
-	double result;
+	double result = 0.0;
 	double lastResult = 0.0;
 	int hasError = 0;
 	char resultStr[100];
@@ -160,7 +160,11 @@ int processLine(const char *line, struct ralcalc_config *config)
 	}
 
 	if(!hasError && tokenList.next){
-		result = process(&(tokenList.next));
+		errType err = process(&(tokenList.next), &result);
+		if(err != errNoError){
+			printError(line, 0, err, config->quiet);
+			return 1;
+		}
 
 		switch(config->dm){
 			case dmSI:

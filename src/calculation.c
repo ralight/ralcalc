@@ -19,6 +19,7 @@
  * this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -41,31 +42,35 @@
  * Returns:
  * 		Double result of the calculation or 0.0 on error.
  */
-double doCalculation(double valueOne, double valueTwo, cToken operator)
+double doCalculation(double valueOne, double valueTwo, cToken operator, errType *err)
 {
 #ifdef DEBUG
 	fprintf(stderr, "doCalculation(%g, %g, %s)\n", valueOne, valueTwo, ctoken_to_string(operator));
 #endif
+	double result = 0.0;
+
+	errno = 0;
+	*err = errNoError;
 	switch(operator){
-		case tkPlus: return valueOne + valueTwo;
-		case tkMinus: return valueOne - valueTwo;
-		case tkNegation: return valueOne * -1.0;
+		case tkPlus: result = valueOne + valueTwo; break;
+		case tkMinus: result = valueOne - valueTwo; break;
+		case tkNegation: result = valueOne * -1.0; break;
 
 		case tkMultiply:
-		case tkMultiplyX: return valueOne * valueTwo;
+		case tkMultiplyX: result = valueOne * valueTwo; break;
 
-		case tkDivide: return valueOne / valueTwo;
-		case tkPower: return pow(valueOne, valueTwo);
-		case tkMod: return fmod(valueOne, valueTwo);
-		case tkLn: return log(valueTwo);
-		case tkLog: return log10(valueTwo);
-		case tkSin: return sin(valueTwo);
-		case tkCos: return cos(valueTwo);
-		case tkTan: return tan(valueTwo);
-		case tkASin: return asin(valueTwo);
-		case tkACos: return acos(valueTwo);
-		case tkATan: return atan(valueTwo);
-		case tkSqrt: return sqrt(valueTwo);
+		case tkDivide: result = valueOne / valueTwo; break;
+		case tkPower: result = pow(valueOne, valueTwo); break;
+		case tkMod: result = fmod(valueOne, valueTwo); break;
+		case tkLn: result = log(valueTwo); break;
+		case tkLog: result = log10(valueTwo); break;
+		case tkSin: result = sin(valueTwo); break;
+		case tkCos: result = cos(valueTwo); break;
+		case tkTan: result = tan(valueTwo); break;
+		case tkASin: result = asin(valueTwo); break;
+		case tkACos: result = acos(valueTwo); break;
+		case tkATan: result = atan(valueTwo); break;
+		case tkSqrt: result = sqrt(valueTwo); break;
 
 		case tkNumber:
 		case tkLastResult:
@@ -74,12 +79,15 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 		case tkCOpenBracket:
 		case tkCCloseBracket:
 		case tkEndToken:
-			return valueTwo;
+			result = valueTwo;
 			/* FIXME - error condition */
 			break;
 	}
 
-	return 0.0;
+	if(errno == EDOM || errno == ERANGE || isnan(result)){
+		*err = errDomain;
+	}
+	return result;
 }
 
 
@@ -100,10 +108,9 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
  * within a set of brackets are processed with the correct precedence. Seems
  * fine so far.
  */
-double process(tokenItem **tokenList)
+errType process(tokenItem **tokenList, double *result)
 {
 	double value = 0.0;
-	double retval;
 	tokenItem *item;
 	int precedence;
 	double valueOne;
@@ -111,9 +118,10 @@ double process(tokenItem **tokenList)
 	int firstValue;
 	cToken operator = tkEndToken;
 	int tokenPrecedence = 0;
+	errType err = errNoError;
 
 	if(!tokenList || !(*tokenList)){
-		return 0.0;
+		return errBadInput;
 	}
 
 	for(precedence = 5; precedence >= 0; precedence--){
@@ -141,7 +149,11 @@ double process(tokenItem **tokenList)
 				case tkOpenBracket:
 				case tkCOpenBracket:
 					if(item->next){
-						retval = process(&(item->next));
+						double retval;
+						err = process(&(item->next), &retval);
+						if(err != errNoError){
+							return err;
+						}
 						insertNumberAfterToken(item, retval);
 						deletePreviousToken(item->next); // delete open bracket
 						item = (*tokenList); /* Reset to the beginning */
@@ -166,7 +178,8 @@ double process(tokenItem **tokenList)
 							item = NULL;
 						}
 						(*tokenList) = item;
-						return value;
+						*result = value;
+						return err;
 					}else{
 						/* If we see a close bracket, the loop should decrement
 						 * rather than carry on. Simulate end of list.
@@ -188,17 +201,16 @@ double process(tokenItem **tokenList)
 								|| operator == tkCos || operator == tkTan || operator == tkSqrt \
 								|| operator == tkASin || operator == tkACos || operator == tkATan) \
 								&& tokenPrecedence == precedence){
-							retval = doCalculation(valueOne, valueTwo, operator);
+							double retval = doCalculation(valueOne, valueTwo, operator, &err);
 							insertNumberAfterToken(item, retval);
 							deletePreviousToken(item); /* Delete operator */
 							deletePreviousToken(item->next); /* Delete the old number */
 							item = (*tokenList); /* Reset to the beginning */
 							precedence++;
 							value = 0.0;
-							retval = 0.0;
 						}else{
 							if(operator != tkEndToken && tokenPrecedence == precedence){
-								retval = doCalculation(valueOne, valueTwo, operator);
+								double retval = doCalculation(valueOne, valueTwo, operator, &err);
 								insertNumberAfterToken(item, retval);
 								deletePreviousToken(item); /* Delete operator */
 								deletePreviousToken(item); /* Delete number */
@@ -206,7 +218,6 @@ double process(tokenItem **tokenList)
 								item = (*tokenList); /* Reset to the beginning */
 								precedence++;
 								value = 0.0;
-								retval = 0.0;
 							}
 						}
 						valueOne = valueTwo;
@@ -249,7 +260,6 @@ double process(tokenItem **tokenList)
 							item = (*tokenList);
 							precedence++;
 							value = 0.0;
-							retval = 0.0;
 							operator = tkEndToken;
 						}else{
 							/* FIXME - could do with an error code here */
@@ -267,6 +277,7 @@ double process(tokenItem **tokenList)
 		}
 	}
 
-	return value;
+	*result = value;
+	return err;
 }
 

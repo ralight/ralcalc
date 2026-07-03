@@ -17,7 +17,7 @@
 
 #include "datatypes.h"
 
-double doCalculation(double valueOne, double valueTwo, cToken lastToken);
-double process(tokenItem **tokenList);
+double doCalculation(double valueOne, double valueTwo, cToken lastToken, errType *err);
+errType process(tokenItem **tokenList, double *result);
 
 #endif

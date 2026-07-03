@@ -68,6 +68,7 @@ typedef enum{
 	errInvalidBracket,
 	errInvalidOperator,
 	errUnknownToken,
+	errDomain,
 } errType;
 
 

@@ -151,5 +151,8 @@ void printError(const char *line, int pos, errType error, int quiet)
 		case errInvalidBracket:
 			fprintf(stderr, _(" invalid bracket\n"));
 			break;
+		case errDomain:
+			fprintf(stderr, _(" value out of range for function\n"));
+			break;
 	}
 }

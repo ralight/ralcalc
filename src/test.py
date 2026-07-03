@@ -265,6 +265,8 @@ tests = [
     RalcalcTest(["c"], expected_stderr="\nError: c\n       ^ unknown token", expected_rc=1),
     RalcalcTest(["t"], expected_stderr="\nError: t\n       ^ unknown token", expected_rc=1),
 
+    RalcalcTest(["log-3"], expected_stderr="\nError: log-3\n       ^ value out of range for function", expected_rc=1),
+
 
     # Last value
     RalcalcTest(["1", "/", "sqrt2"], "1 / sqrt2 = 0.707107"),
