@@ -267,7 +267,11 @@ tests = [
 
     RalcalcTest(["log-3"], expected_stderr="\nError: log-3\n       ^ value out of range for function", expected_rc=1),
     RalcalcTest(["1/0"], expected_stderr="\nError: 1/0\n       ^ division by zero", expected_rc=1),
+    RalcalcTest(["1/0+1"], expected_stderr="\nError: 1/0+1\n       ^ division by zero", expected_rc=1),
+    RalcalcTest(["1+1/0"], expected_stderr="\nError: 1+1/0\n       ^ division by zero", expected_rc=1),
     RalcalcTest(["1%0"], expected_stderr="\nError: 1%0\n       ^ division by zero", expected_rc=1),
+    RalcalcTest(["1+1%0"], expected_stderr="\nError: 1+1%0\n       ^ division by zero", expected_rc=1),
+    RalcalcTest(["1%0+1"], expected_stderr="\nError: 1%0+1\n       ^ division by zero", expected_rc=1),
 
 
     # Last value

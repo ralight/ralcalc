@@ -214,6 +214,9 @@ errType process(tokenItem **tokenList, double *result)
 								|| operator == tkASin || operator == tkACos || operator == tkATan) \
 								&& tokenPrecedence == precedence){
 							double retval = doCalculation(valueOne, valueTwo, operator, &err);
+							if(err != errNoError){
+								return err;
+							}
 							insertNumberAfterToken(item, retval);
 							deletePreviousToken(item); /* Delete operator */
 							deletePreviousToken(item->next); /* Delete the old number */
@@ -223,6 +226,9 @@ errType process(tokenItem **tokenList, double *result)
 						}else{
 							if(operator != tkEndToken && tokenPrecedence == precedence){
 								double retval = doCalculation(valueOne, valueTwo, operator, &err);
+								if(err != errNoError){
+									return err;
+								}
 								insertNumberAfterToken(item, retval);
 								deletePreviousToken(item); /* Delete operator */
 								deletePreviousToken(item); /* Delete number */
