@@ -59,9 +59,21 @@ double doCalculation(double valueOne, double valueTwo, cToken operator, errType 
 		case tkMultiply:
 		case tkMultiplyX: result = valueOne * valueTwo; break;
 
-		case tkDivide: result = valueOne / valueTwo; break;
+		case tkDivide:
+			if(valueTwo == 0.0){
+				*err = errDivisionByZero;
+				return 0.0;
+			}
+			result = valueOne / valueTwo;
+			break;
 		case tkPower: result = pow(valueOne, valueTwo); break;
-		case tkMod: result = fmod(valueOne, valueTwo); break;
+		case tkMod:
+			if(valueTwo == 0.0){
+				*err = errDivisionByZero;
+				return 0.0;
+			}
+			result = fmod(valueOne, valueTwo);
+			break;
 		case tkLn: result = log(valueTwo); break;
 		case tkLog: result = log10(valueTwo); break;
 		case tkSin: result = sin(valueTwo); break;

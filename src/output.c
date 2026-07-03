@@ -154,5 +154,8 @@ void printError(const char *line, int pos, errType error, int quiet)
 		case errDomain:
 			fprintf(stderr, _(" value out of range for function\n"));
 			break;
+		case errDivisionByZero:
+			fprintf(stderr, _(" division by zero\n"));
+			break;
 	}
 }
