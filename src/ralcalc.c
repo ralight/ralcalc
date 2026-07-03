@@ -316,18 +316,31 @@ int loadConfigPath(struct ralcalc_config *config, const char *path)
 }
 
 
-
-static int loadConfigByLocation(struct ralcalc_config *config, const char *envvar, const char *path_suffix)
+static int constructPathFromEnv(const char *envvar, const char *path_suffix, char **path)
 {
 	char *envstr = getenv(envvar);
 	if(envstr){
 		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
-		char *path = malloc(pathlen);
-		if(!path){
+		*path = malloc(pathlen);
+		if(!(*path)){
 			fprintf(stderr, "Error: Out of memory.\n");
 			return 1;
 		}
-		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
+		snprintf(*path, pathlen, "%s%s", envstr, path_suffix);
+		return 0;
+	}else{
+		*path = NULL;
+		return -1;
+	}
+}
+
+
+static int loadConfigByLocation(struct ralcalc_config *config, const char *envvar, const char *path_suffix)
+{
+	char *path;
+
+	constructPathFromEnv(envvar, path_suffix, &path);
+	if(path){
 		int rc = loadConfigPath(config, path);
 		free(path);
 		return rc;
@@ -383,15 +396,9 @@ int writeLastResultPath(double value, const char *path)
 
 static int writeLastResultByLocation(double value, const char *envvar, const char *path_suffix)
 {
-	char *envstr = getenv(envvar);
-	if(envstr){
-		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
-		char *path = malloc(pathlen);
-		if(!path){
-			fprintf(stderr, "Error: Out of memory.\n");
-			return 1;
-		}
-		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
+	char *path;
+	constructPathFromEnv(envvar, path_suffix, &path);
+	if(path){
 		int rc = writeLastResultPath(value, path);
 		free(path);
 		return rc;
@@ -442,20 +449,18 @@ int readLastResultPath(double *value, const char *path)
 
 static int readLastResultByLocation(const char *envvar, const char *path_suffix, double *value)
 {
-	char *envstr = getenv(envvar);
-	if(envstr){
-		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
-		char *path = malloc(pathlen);
-		if(!path){
-			fprintf(stderr, "Error: Out of memory.\n");
-			return 1;
-		}
-		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
+	char *path;
+	int env = constructPathFromEnv(envvar, path_suffix, &path);
+	if(env == -1){
+		return -1;
+	}
+	if(path){
 		int rc = readLastResultPath(value, path);
 		free(path);
 		return rc;
+	}else{
+		return 1;
 	}
-	return -1;
 }
 
 
