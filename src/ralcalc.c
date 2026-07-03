@@ -217,7 +217,7 @@ int doFileInput(FILE *fptr, struct ralcalc_config *config)
 	}
 
 	while(fgets(line, sizeof(line), fptr)){
-		if(line[strlen(line)-1] == 10 || line[strlen(line)-1] == 13){
+		while(line[strlen(line)-1] == '\n' || line[strlen(line)-1] == '\r'){
 			line[strlen(line)-1] = '\0';
 		}
 		/* Quit if "q" (or "quit" etc.) is an input */

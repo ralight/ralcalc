@@ -721,8 +721,8 @@ int tokenise(tokenItem *tokenList, const char *line, double lastResult, int quie
 				ts.spaces++;
 				break;
 
-			case 10:
-			case 13:
+			case '\r':
+			case '\n':
 				/* End of line, space - ignore */
 				break;
 
