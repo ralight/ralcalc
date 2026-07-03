@@ -323,11 +323,11 @@ static int loadConfigByLocation(struct ralcalc_config *config, const char *envva
 	if(envstr){
 		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
 		char *path = malloc(pathlen);
-		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
 		if(!path){
 			fprintf(stderr, "Error: Out of memory.\n");
 			return 1;
 		}
+		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
 		int rc = loadConfigPath(config, path);
 		free(path);
 		return rc;
@@ -387,11 +387,11 @@ static int writeLastResultByLocation(double value, const char *envvar, const cha
 	if(envstr){
 		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
 		char *path = malloc(pathlen);
-		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
 		if(!path){
 			fprintf(stderr, "Error: Out of memory.\n");
 			return 1;
 		}
+		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
 		int rc = writeLastResultPath(value, path);
 		free(path);
 		return rc;
@@ -446,11 +446,11 @@ static int readLastResultByLocation(const char *envvar, const char *path_suffix,
 	if(envstr){
 		size_t pathlen = strlen(envstr) + strlen(path_suffix) + 1;
 		char *path = malloc(pathlen);
-		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
 		if(!path){
 			fprintf(stderr, "Error: Out of memory.\n");
 			return 1;
 		}
+		snprintf(path, pathlen, "%s%s", envstr, path_suffix);
 		int rc = readLastResultPath(value, path);
 		free(path);
 		return rc;
