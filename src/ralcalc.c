@@ -287,7 +287,7 @@ int loadConfigPath(struct ralcalc_config *config, const char *path)
 
 	rcptr = fopen(path, "rb");
 	if(rcptr){
-		if(fgets(line, 200, rcptr)){
+		if(fgets(line, sizeof(line), rcptr)){
 			while(line[strlen(line)-1] == '\n'){
 				line[strlen(line)-1] = '\0';
 			}
