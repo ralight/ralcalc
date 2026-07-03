@@ -58,7 +58,7 @@ double doCalculation(double valueOne, double valueTwo, cToken operator)
 		case tkPower: return pow(valueOne, valueTwo);
 		case tkMod: return fmod(valueOne, valueTwo);
 		case tkLn: return log(valueTwo);
-		case tkLog: return log(valueTwo) / 2.3025850929940456840179914546844;
+		case tkLog: return log10(valueTwo);
 		case tkSin: return sin(valueTwo);
 		case tkCos: return cos(valueTwo);
 		case tkTan: return tan(valueTwo);
