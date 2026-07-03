@@ -163,38 +163,38 @@ int processLine(const char *line, struct ralcalc_config *config)
 		errType err = process(&(tokenList.next), &result);
 		if(err != errNoError){
 			printError(line, 0, err, config->quiet);
-			return 1;
-		}
-
-		switch(config->dm){
-			case dmSI:
-				doubleToString(result, resultStr, 100, config->siPrefix, config->precision);
-				break;
-			case dmExponent:
-				if(config->precision == -1){
-					snprintf(resultStr, sizeof(resultStr), "%lg", result);
-				}else{
-					snprintf(formatStr, sizeof(formatStr), "%%.%dlg", config->precision);
-					snprintf(resultStr, sizeof(resultStr), formatStr, result);
-				}
-				break;
-			case dmRaw:
-				if(config->precision == -1){
-					snprintf(resultStr, sizeof(resultStr), "%f", result);
-				}else{
-					snprintf(formatStr, sizeof(formatStr), "%%.%df", config->precision);
-					snprintf(resultStr, sizeof(resultStr), formatStr, result);
-				}
-				break;
-		}
-
-		if(!config->quiet){
-			printf("%s = %s\n", line, resultStr);
+			hasError = 1;
 		}else{
-			printf("%s\n", resultStr);
-		}
+			switch(config->dm){
+				case dmSI:
+					doubleToString(result, resultStr, 100, config->siPrefix, config->precision);
+					break;
+				case dmExponent:
+					if(config->precision == -1){
+						snprintf(resultStr, sizeof(resultStr), "%lg", result);
+					}else{
+						snprintf(formatStr, sizeof(formatStr), "%%.%dlg", config->precision);
+						snprintf(resultStr, sizeof(resultStr), formatStr, result);
+					}
+					break;
+				case dmRaw:
+					if(config->precision == -1){
+						snprintf(resultStr, sizeof(resultStr), "%f", result);
+					}else{
+						snprintf(formatStr, sizeof(formatStr), "%%.%df", config->precision);
+						snprintf(resultStr, sizeof(resultStr), formatStr, result);
+					}
+					break;
+			}
 
-		writeLastResult(result);
+			if(!config->quiet){
+				printf("%s = %s\n", line, resultStr);
+			}else{
+				printf("%s\n", resultStr);
+			}
+
+			writeLastResult(result);
+		}
 	}
 
 	if(tokenList.next){
