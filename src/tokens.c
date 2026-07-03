@@ -335,7 +335,7 @@ int assignPrecedence(tokenItem *tokenList)
 		precedence = 0;
 		switch(item->type){
 			case tkNegation:
-				precedence = 5;
+				precedence = 4;
 				break;
 			case tkPlus:
 			case tkMinus:
@@ -359,7 +359,7 @@ int assignPrecedence(tokenItem *tokenList)
 				precedence = 3;
 				break;
 			case tkPower:
-				precedence = 4;
+				precedence = 5;
 				break;
 
 			/*
