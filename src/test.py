@@ -196,6 +196,7 @@ tests = [
 
     # Stdin
     RalcalcTest(["sqrt3"], "sqrt3 = 1.73205", stdin=True),
+    RalcalcTest(["1000000", "+", "2000000"], "1000000 + 2000000 = 3M", stdin=True),
 
     # Errors
     RalcalcTest(["-s", "QR", "2"], expected_stderr="Error: Invalid SI prefix 'QR' for '-s' option.", expected_rc = 1),

@@ -209,18 +209,13 @@ int processLine(const char *line, struct ralcalc_config *config)
  */
 int doFileInput(FILE *fptr, struct ralcalc_config *config)
 {
-	char *line;
+	char line[1024];
 	int rc = errNoError;
 
 	if(!fptr){
 		return errBadInput;
 	}
 
-	line = calloc(1024, sizeof(char));
-	if(!line){
-		fprintf(stderr, _("Error: Out of memory\n"));
-		return errMemory;
-	}
 	while(fgets(line, sizeof(line), fptr)){
 		if(line[strlen(line)-1] == 10 || line[strlen(line)-1] == 13){
 			line[strlen(line)-1] = '\0';
@@ -235,7 +230,6 @@ int doFileInput(FILE *fptr, struct ralcalc_config *config)
 			break;
 		}
 	}
-	free(line);
 
 	return rc;
 }
