@@ -245,7 +245,7 @@ errType process(tokenItem **tokenList, double *result)
 				case tkPower:
 				case tkMod:
 					operator = item->type;
-					tokenPrecedence = item->precedence;
+					tokenPrecedence = getPrecedence(item->type);
 					break;
 
 				case tkLog:
@@ -260,11 +260,11 @@ errType process(tokenItem **tokenList, double *result)
 					valueOne = 1.0;
 					firstValue = 0;
 					operator = item->type;
-					tokenPrecedence = item->precedence;
+					tokenPrecedence = getPrecedence(item->type);
 					break;
 
 				case tkNegation:
-					if(precedence == item->precedence){
+					if(precedence == getPrecedence(item->type)){
 						item = item->next;
 						if(item && (item->type == tkNumber || item->type == tkLastResult)){
 							item->value *= -1.0;

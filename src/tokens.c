@@ -308,85 +308,6 @@ static errType addToken(tokenItem *tokenList, cToken token, double value, int le
 
 
 /*
- * assignPrecedence()
- *
- * Go through all tokens and assign precedence to the
- * operators in the token list.
- *
- * It's much cleaner to do this here than in tokenise()
- * because of the other error checking done there.
- *
- * Possible return values:
- *
- * errBadInput (tokenList is NULL)
- * errNoError
- */
-int assignPrecedence(tokenItem *tokenList)
-{
-	tokenItem *item;
-	int precedence;
-
-	if(!tokenList){
-		return errBadInput;
-	}
-
-	item = tokenList;
-	while(item){
-		precedence = 0;
-		switch(item->type){
-			case tkNegation:
-				precedence = 4;
-				break;
-			case tkPlus:
-			case tkMinus:
-				precedence = 1;
-				break;
-			case tkLog:
-			case tkLn:
-			case tkSin:
-			case tkCos:
-			case tkTan:
-			case tkASin:
-			case tkACos:
-			case tkATan:
-			case tkSqrt:
-				precedence = 3;
-				break;
-			case tkMultiply:
-			case tkMultiplyX:
-			case tkDivide:
-			case tkMod:
-				precedence = 3;
-				break;
-			case tkPower:
-				precedence = 5;
-				break;
-
-			/*
-			 * These tokens should never have to worry about
-			 * precedence.
-			 */
-			case tkOpenBracket:
-			case tkCloseBracket:
-			case tkCOpenBracket:
-			case tkCCloseBracket:
-			case tkNumber:
-			case tkLastResult:
-			case tkEndToken:
-				precedence = 0;
-				break;
-		}
-
-		item->precedence = precedence;
-
-		item = item->next;
-	}
-
-	return errNoError;
-}
-
-
-/*
  * deletePreviousToken()
  *
  * Delete the previous token in the list.
@@ -982,6 +903,37 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 	}
 
 	return rc;
+}
+
+
+int getPrecedence(cToken token)
+{
+	switch(token){
+		case tkLog:
+		case tkLn:
+		case tkSin:
+		case tkCos:
+		case tkTan:
+		case tkASin:
+		case tkACos:
+		case tkATan:
+		case tkSqrt:
+			return 3;
+		case tkPower:
+			return 5;
+		case tkNegation:
+			return 4;
+		case tkMultiply:
+		case tkMultiplyX:
+		case tkDivide:
+		case tkMod:
+			return 3;
+		case tkPlus:
+		case tkMinus:
+			return 2;
+		default:
+			return 0;
+	}
 }
 
 

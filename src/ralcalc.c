@@ -154,11 +154,6 @@ int processLine(const char *line, struct ralcalc_config *config)
 		hasError = 1;
 	}
 
-	rc = assignPrecedence(&tokenList);
-	if(rc != errNoError){
-		hasError = 1;
-	}
-
 	if(!hasError && tokenList.next){
 		errType err = process(&(tokenList.next), &result);
 		if(err != errNoError){
