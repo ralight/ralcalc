@@ -299,6 +299,11 @@ int loadConfigPath(struct ralcalc_config *config, const char *path)
 			}else if(!strcmp(line, "-s")){
 				config->dm = dmSI;
 				token = strtok(NULL, " ");
+				if(!token){
+					fprintf(stderr, "-s specified but without a prefix.\n");
+					fclose(rcptr);
+					return 1;
+				}
 				config->siPrefix = token[0];
 			}
 		}
