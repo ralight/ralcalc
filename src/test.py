@@ -49,7 +49,39 @@ tests = [
     RalcalcTest(["-h"], None, stdin=False),
     RalcalcTest(["-a"], None, stdin=False),
 
+    # Numbers
+    RalcalcTest(["0"], "0 = 0"),
+    RalcalcTest(["1"], "1 = 1"),
+    RalcalcTest(["42"], "42 = 42"),
+    RalcalcTest(["123456789"], "123456789 = 123.457M"),
+    RalcalcTest(["0.0"], "0.0 = 0"),
+    RalcalcTest(["0.5"], "0.5 = 0.5"),
+    RalcalcTest([".5"], ".5 = 0.5"),
+    RalcalcTest(["5."], "5. = 5"),
+    RalcalcTest(["123.456"], "123.456 = 123.456"),
+    RalcalcTest(["1e3"], "1e3 = 1k"),
+    RalcalcTest(["1e-3"], "1e-3 = 1m"),
+    RalcalcTest(["1.23e4"], "1.23e4 = 12.3k"),
+    RalcalcTest(["1.23e-4"], "1.23e-4 = 123u"),
+    RalcalcTest(["45k"], "45k = 45k"),
+    RalcalcTest(["2M"], "2M = 2M"),
+    RalcalcTest(["3.3m"], "3.3m = 3.3m"),
+    RalcalcTest(["5u"], "5u = 5u"),
+    RalcalcTest(["8n"], "8n = 8n"),
+    RalcalcTest(["10G"], "10G = 10G"),
+
+    # Constants
+    RalcalcTest(["pi"], "pi = 3.14159"),
+    RalcalcTest(["exp"], "exp = 2.71828"),
+    RalcalcTest(["pi+exp"], "pi+exp = 5.85987"),
+    RalcalcTest(["pi*2"], "pi*2 = 6.28319"),
+    RalcalcTest(["2*pi"], "2*pi = 6.28319"),
     RalcalcTest(["2xpi"], "2xpi = 6.28319"),
+    RalcalcTest(["pi^2"], "pi^2 = 9.8696"),
+    RalcalcTest(["sqrt(pi)"], "sqrt(pi) = 1.77245"),
+    RalcalcTest(["ln[exp]"], "ln[exp] = 1"),
+
+    # Prefixes
     RalcalcTest(["1e33"], "1e33 = 1000Q"),
     RalcalcTest(["1e32"], "1e32 = 100Q"),
     RalcalcTest(["1e31"], "1e31 = 10Q"),
@@ -130,11 +162,69 @@ tests = [
     RalcalcTest(["1Mx1u"], "1Mx1u = 1"),
     RalcalcTest(["1kx1m"], "1kx1m = 1"),
 
-    RalcalcTest(["-s", "k", "1"], "1 = 0.001k"),
+    # Unary operators
+    RalcalcTest(["-1"], "-1 = -1"),
+    RalcalcTest(["1+-1"], "1+-1 = 0"),
+    RalcalcTest(["1--1"], "1--1 = 2"),
+    RalcalcTest(["-(-1)"], "-(-1) = 1"),
+    RalcalcTest(["-(2+3)"], "-(2+3) = -5"),
+    RalcalcTest(["-sqrt(4)"], "-sqrt(4) = -2"),
 
-    RalcalcTest(["exp"], "exp = 2.71828"),
-    RalcalcTest(["pi"], "pi = 3.14159"),
+    # Binary operators
+    RalcalcTest(["1+2"], "1+2 = 3"),
+    RalcalcTest(["5-3"], "5-3 = 2"),
+    RalcalcTest(["6*7"], "6*7 = 42"),
+    RalcalcTest(["6x7"], "6x7 = 42"),
+    RalcalcTest(["8/2"], "8/2 = 4"),
+    RalcalcTest(["9%4"], "9%4 = 1"),
+    RalcalcTest(["2^8"], "2^8 = 256"),
 
+    # Precedence
+    RalcalcTest(["1+2*3"], "1+2*3 = 7"),
+    RalcalcTest(["(1+2)*3"], "(1+2)*3 = 9"),
+    RalcalcTest(["2*3+4"], "2*3+4 = 10"),
+    RalcalcTest(["2+3*4+5"], "2+3*4+5 = 19"),
+    RalcalcTest(["2^3*4"], "2^3*4 = 32"),
+    RalcalcTest(["2*3^4"], "2*3^4 = 162"),
+    RalcalcTest(["2+3^4*5"], "2+3^4*5 = 407"),
+    RalcalcTest(["2^3^2"], "2^3^2 = 512"),
+    RalcalcTest(["(2^3)^2"], "(2^3)^2 = 64"),
+    RalcalcTest(["2^(3^2)"], "2^(3^2) = 512"),
+    RalcalcTest(["10-3-2"], "10-3-2 = 5"),
+    RalcalcTest(["10-(3-2)"], "10-(3-2) = 9"),
+    RalcalcTest(["20/4/5"], "20/4/5 = 1"),
+    RalcalcTest(["20/(4/5)"], "20/(4/5) = 25"),
+
+    # Complicated
+    RalcalcTest(["-q", "3+[[4x2]/[[1-5]^[2^3]]]"], "3.00012"),
+    RalcalcTest(["-q", "3+4x2/[1-5]^2^3"], "3.00012"),
+    RalcalcTest(["-q", "sin[cos 2 / 3 x pi]"], "-0.422125"),
+    RalcalcTest(["-q", "2^3^4"], "2.41785Y"),
+
+    RalcalcTest(["1+2+3+4+5"], "1+2+3+4+5 = 15"),
+    RalcalcTest(["1x2x3x4x5"], "1x2x3x4x5 = 120"),
+    RalcalcTest(["1+2x3-4/5^6"], "1+2x3-4/5^6 = 6.99974"),
+    RalcalcTest(["1+[2x[3+[4x[5+6]]]]"], "1+[2x[3+[4x[5+6]]]] = 95"),
+    RalcalcTest(["2^3^2^2"], "2^3^2^2 = 2.41785Y"),
+    RalcalcTest(["10%3"], "10%3 = 1"),
+    RalcalcTest(["10%3+1"], "10%3+1 = 2"),
+    RalcalcTest(["20%[3+2]"], "20%[3+2] = 0"),
+    RalcalcTest(["[20%7]x4"], "[20%7]x4 = 24"),
+    RalcalcTest(["2^0"], "2^0 = 1"),
+    RalcalcTest(["2^1"], "2^1 = 2"),
+    RalcalcTest(["2^[-1]"], "2^[-1] = 0.5"),
+    RalcalcTest(["2^-1"], "2^-1 = 0.5"),
+    RalcalcTest(["[-2]^2"], "[-2]^2 = 4"),
+    RalcalcTest(["[-2]^3"], "[-2]^3 = -8"),
+    RalcalcTest(["2^[1+2]"], "2^[1+2] = 8"),
+    RalcalcTest(["sqrt[2^8]"], "sqrt[2^8] = 16"),
+    RalcalcTest(["1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1"], "1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1 = 20"),
+    RalcalcTest(["[[[[[[[[[[[[[[[[[[42]]]]]]]]]]]]]]]]]]"], "[[[[[[[[[[[[[[[[[[42]]]]]]]]]]]]]]]]]] = 42"),
+    RalcalcTest(["sin[sin[sin[sin[sin[sin[1]]]]]]"], "sin[sin[sin[sin[sin[sin[1]]]]]] = 0.554016"),
+    RalcalcTest(["2^2^2^2"], "2^2^2^2 = 65.536k"),
+    RalcalcTest(["1+2x3^4/5-6+7x8-9/10+11^12"], "1+2x3^4/5-6+7x8-9/10+11^12 = 3.13843T"),
+
+    # Functions
     RalcalcTest(["-r", "sin0"], "sin0 = 0.000000"),
     RalcalcTest(["-r", "cos0"], "cos0 = 1.000000"),
     RalcalcTest(["-r", "tan0"], "tan0 = 0.000000"),
@@ -149,6 +239,9 @@ tests = [
     RalcalcTest(["-r", "sqrt2"], "sqrt2 = 1.414214"),
     RalcalcTest(["-r", "2^2"], "2^2 = 4.000000"),
 
+    # Prefix outputs
+    RalcalcTest(["-s", "k", "1"], "1 = 0.001k"),
+
     # Exponent output
     RalcalcTest(["-e", "1n"], "1n = 1e-09"),
     RalcalcTest(["-e", "-p", "2", "pi/100000"], "pi/100000 = 3.1e-05"),
@@ -162,7 +255,6 @@ tests = [
     RalcalcTest(["-[1-2]"], "-[1-2] = 1"),
     RalcalcTest(["[1+2][3+4]"], "[1+2][3+4] = 21"),
     RalcalcTest(["[1+2]log2"], "[1+2]log2 = 0.90309"),
-
 
     # Precision
     RalcalcTest(["-p", "1", "pi"], "pi = 3"),

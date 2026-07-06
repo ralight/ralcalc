@@ -29,6 +29,102 @@
 #include "tokens.h"
 
 
+static bool isRightAssociative(cToken token)
+{
+	return token == tkNegation || token == tkPower;
+}
+
+static bool isNumber(cToken token)
+{
+	return token == tkNumber || token == tkLastResult;
+}
+
+
+static bool isBinary(cToken token)
+{
+	return token == tkMod
+		|| token == tkMultiply
+		|| token == tkPlus
+		|| token == tkMinus
+		|| token == tkDivide
+		|| token == tkPower
+		|| token == tkMultiplyX;
+}
+
+static bool isFunction(cToken token)
+{
+	return token == tkLog
+		|| token == tkLn
+		|| token == tkSin
+		|| token == tkCos
+		|| token == tkTan
+		|| token == tkASin
+		|| token == tkACos
+		|| token == tkATan
+		|| token == tkSqrt;
+}
+
+static bool isOperator(cToken token)
+{
+	return token == tkMod
+		|| token == tkMultiply
+		|| token == tkPlus
+		|| token == tkMinus
+		|| token == tkDivide
+		|| token == tkPower
+		|| token == tkMultiplyX
+		|| token == tkNegation;
+}
+
+static bool isOpenBracket(cToken token)
+{
+	return token == tkOpenBracket || token == tkCOpenBracket;
+}
+
+static bool isCloseBracket(cToken token)
+{
+	return token == tkCloseBracket || token == tkCCloseBracket;
+}
+
+
+static double popOperator(cToken *stack, int *idx)
+{
+	cToken token = tkEndToken;
+	if(*idx > 0){
+		token = stack[(*idx) - 1];
+		(*idx)--;
+	}
+	//printf("pop op %s\n", ctoken_to_string(token));
+	return token;
+}
+
+
+static void pushOperator(cToken *stack, int *idx, cToken token)
+{
+	stack[*idx] = token;
+	(*idx)++;
+	//printf("push op %s\n", ctoken_to_string(token));
+}
+
+static double popValue(double *stack, int *idx)
+{
+	double v = 0.0;
+	if(*idx > 0){
+		v = stack[(*idx) - 1];
+		(*idx)--;
+	}
+	//printf("pop v %g\n", v);
+	return v;
+}
+
+
+static void pushValue(double *stack, int *idx, double value)
+{
+	stack[*idx] = value;
+	(*idx)++;
+	//printf("push v %g\n", value);
+}
+
 /*
  * doCalculation()
  *
@@ -54,7 +150,7 @@ double doCalculation(double valueOne, double valueTwo, cToken operator, errType 
 	switch(operator){
 		case tkPlus: result = valueOne + valueTwo; break;
 		case tkMinus: result = valueOne - valueTwo; break;
-		case tkNegation: result = valueOne * -1.0; break;
+		case tkNegation: result = valueTwo * -1.0; break;
 
 		case tkMultiply:
 		case tkMultiplyX: result = valueOne * valueTwo; break;
@@ -103,6 +199,19 @@ double doCalculation(double valueOne, double valueTwo, cToken operator, errType 
 }
 
 
+static errType reduce(double *valueStack, int *valueIndex, cToken operator)
+{
+	errType err;
+	double rhs = popValue(valueStack, valueIndex);
+	double lhs = 0.0;
+	if(isBinary(operator)){
+		lhs = popValue(valueStack, valueIndex);
+	}
+	double result = doCalculation(lhs, rhs, operator, &err);
+	pushValue(valueStack, valueIndex, result);
+	return err;
+}
+
 /*
  * process()
  *
@@ -122,180 +231,81 @@ double doCalculation(double valueOne, double valueTwo, cToken operator, errType 
  */
 errType process(tokenItem **tokenList, double *result)
 {
-	double value = 0.0;
 	tokenItem *item;
-	int precedence;
-	double valueOne;
-	double valueTwo;
-	int firstValue;
-	cToken operator = tkEndToken;
-	int tokenPrecedence = 0;
 	errType err = errNoError;
+
+	cToken *operatorStack = NULL;
+	double *valueStack = NULL;
+	int operatorIndex = 0;
+	int valueIndex = 0;
 
 	if(!tokenList || !(*tokenList)){
 		return errBadInput;
 	}
 
-	for(precedence = 5; precedence >= 0; precedence--){
+	int tokenCount = 0;
+	for(item = *tokenList; item; item = item->next){
+		tokenCount++;
+	}
 
-#ifdef DEBUG
-		item = (*tokenList);
-		fprintf(stderr, "Tokens:");
-		while(item){
-			if(item->type == tkNumber){
-				fprintf(stderr, " (%g)", item->value);
+	operatorStack = calloc(tokenCount, sizeof(cToken));
+	valueStack = calloc(tokenCount, sizeof(double));
+	if(!operatorStack || !valueStack){
+		free(operatorStack);
+		free(valueStack);
+		return errMemory;
+	}
+
+	for(item = *tokenList; item; item = item->next){
+		if(isNumber(item->type)){
+			pushValue(valueStack, &valueIndex, item->value);
+		}else if(isFunction(item->type)){
+			pushOperator(operatorStack, &operatorIndex, item->type);
+		}else if(isOperator(item->type) || isCloseBracket(item->type)){
+			cToken optop = tkEndToken;
+			while(operatorIndex > 0 && (optop = operatorStack[operatorIndex-1])
+					&& !isOpenBracket(optop)
+					&& (getPrecedence(optop) > getPrecedence(item->type)
+					|| (getPrecedence(optop) == getPrecedence(item->type)
+							&& !isRightAssociative(optop)))){
+
+				err = reduce(valueStack, &valueIndex, optop);
+				if(err != errNoError){
+					return err;
+				}
+				operatorIndex--;
+			}
+			if(isCloseBracket(item->type)){
+				if(isOpenBracket(optop)){
+					popOperator(operatorStack, &operatorIndex);
+				}else{
+					return errBadInput;
+				}
 			}else{
-				fprintf(stderr, " %s", ctoken_to_string(item->type));
+				pushOperator(operatorStack, &operatorIndex, item->type);
 			}
-			item = item->next;
-		}
-		fprintf(stderr, "\n");
-#endif
-
-		firstValue = 1;
-		valueOne = 0.0;
-		valueTwo = 0.0;
-		item = (*tokenList);
-		while(item){
-			switch(item->type){
-				case tkOpenBracket:
-				case tkCOpenBracket:
-					if(item->next){
-						double retval;
-						err = process(&(item->next), &retval);
-						if(err != errNoError){
-							return err;
-						}
-						insertNumberAfterToken(item, retval);
-						deletePreviousToken(item->next); // delete open bracket
-						item = (*tokenList); /* Reset to the beginning */
-						precedence = 5; /* Always start with new precedence after brackets have been found */
-					}
-					break;
-
-				case tkCloseBracket:
-				case tkCCloseBracket:
-					if(!precedence){
-						while(item->prev->type != tkOpenBracket && item->prev->type != tkCOpenBracket){
-							deletePreviousToken(item); // delete contents of brackets
-						}
-						if(item->next){
-							item = item->next;
-							deletePreviousToken(item);
-						}else{
-							if(item->prev){
-								item->prev = NULL;
-							}
-							free(item);
-							item = NULL;
-						}
-						(*tokenList) = item;
-						*result = value;
-						return err;
-					}else{
-						/* If we see a close bracket, the loop should decrement
-						 * rather than carry on. Simulate end of list.
-						 */
-						item = NULL;
-					}
-					break;
-
-				case tkNumber:
-				case tkLastResult:
-					if(firstValue){
-						valueOne = item->value;
-						firstValue = 0;
-						value = valueOne;
-					}else{
-						valueTwo = item->value;
-
-						if((operator == tkLog || operator == tkLn || operator == tkSin \
-								|| operator == tkCos || operator == tkTan || operator == tkSqrt \
-								|| operator == tkASin || operator == tkACos || operator == tkATan) \
-								&& tokenPrecedence == precedence){
-							double retval = doCalculation(valueOne, valueTwo, operator, &err);
-							if(err != errNoError){
-								return err;
-							}
-							insertNumberAfterToken(item, retval);
-							deletePreviousToken(item); /* Delete operator */
-							deletePreviousToken(item->next); /* Delete the old number */
-							item = (*tokenList); /* Reset to the beginning */
-							precedence++;
-							value = 0.0;
-						}else{
-							if(operator != tkEndToken && tokenPrecedence == precedence){
-								double retval = doCalculation(valueOne, valueTwo, operator, &err);
-								if(err != errNoError){
-									return err;
-								}
-								insertNumberAfterToken(item, retval);
-								deletePreviousToken(item); /* Delete operator */
-								deletePreviousToken(item); /* Delete number */
-								deletePreviousToken(item->next); /* deletes the old number */
-								item = (*tokenList); /* Reset to the beginning */
-								precedence++;
-								value = 0.0;
-							}
-						}
-						valueOne = valueTwo;
-						operator = tkEndToken;
-					}
-					break;
-
-				case tkPlus:
-				case tkMinus:
-				case tkMultiply:
-				case tkMultiplyX:
-				case tkDivide:
-				case tkPower:
-				case tkMod:
-					operator = item->type;
-					tokenPrecedence = getPrecedence(item->type);
-					break;
-
-				case tkLog:
-				case tkLn:
-				case tkSin:
-				case tkCos:
-				case tkTan:
-				case tkASin:
-				case tkACos:
-				case tkATan:
-				case tkSqrt:
-					valueOne = 1.0;
-					firstValue = 0;
-					operator = item->type;
-					tokenPrecedence = getPrecedence(item->type);
-					break;
-
-				case tkNegation:
-					if(precedence == getPrecedence(item->type)){
-						item = item->next;
-						if(item && (item->type == tkNumber || item->type == tkLastResult)){
-							item->value *= -1.0;
-							deletePreviousToken(item); /* Delete negation */
-							item = (*tokenList);
-							precedence++;
-							value = 0.0;
-							operator = tkEndToken;
-						}else{
-							/* FIXME - could do with an error code here */
-						}
-					}
-					break;
-
-				case tkEndToken:
-					/* FIXME - error condition */
-					break;
-			}
-			if(item){
-				item = item->next;
-			}
+		}else if(isOpenBracket(item->type)){
+			pushOperator(operatorStack, &operatorIndex, item->type);
 		}
 	}
 
-	*result = value;
+	while(operatorIndex > 0){
+		cToken optop = operatorStack[operatorIndex-1];
+		operatorIndex--;
+		if(valueIndex > 0){
+			err = reduce(valueStack, &valueIndex, optop);
+			if(err != errNoError){
+				return err;
+			}
+		}else{
+			return errBadInput;
+		}
+	}
+
+	*result = popValue(valueStack, &valueIndex);
+	free(operatorStack);
+	free(valueStack);
+
 	return err;
 }
 

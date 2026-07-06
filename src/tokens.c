@@ -918,11 +918,11 @@ int getPrecedence(cToken token)
 		case tkACos:
 		case tkATan:
 		case tkSqrt:
-			return 3;
-		case tkPower:
 			return 5;
-		case tkNegation:
+		case tkPower:
 			return 4;
+		case tkNegation:
+			return 6;
 		case tkMultiply:
 		case tkMultiplyX:
 		case tkDivide:
