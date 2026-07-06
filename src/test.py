@@ -227,6 +227,7 @@ tests = [
     # Functions
     RalcalcTest(["-r", "sin0"], "sin0 = 0.000000"),
     RalcalcTest(["-r", "cos0"], "cos0 = 1.000000"),
+    RalcalcTest(["-r", "2cos0"], "2cos0 = 2.000000"),
     RalcalcTest(["-r", "tan0"], "tan0 = 0.000000"),
 
     RalcalcTest(["-r", "asin0"], "asin0 = 0.000000"),
@@ -300,8 +301,6 @@ tests = [
     RalcalcTest(["e"], expected_stderr="\nError: e\n       ^ bad number", expected_rc=1),
     RalcalcTest(["1.2.3"], expected_stderr="\nError: 1.2.3\n           ^ bad number", expected_rc=1),
     RalcalcTest(["1e3e"], expected_stderr="\nError: 1e3e\n          ^ bad number", expected_rc=1),
-
-    RalcalcTest(["2pi"], expected_stderr="\nError: 2pi\n          ^ duplicate number", expected_rc=1),
 
     RalcalcTest(["[2+]"], expected_stderr="\nError: [2+]\n          ^ invalid bracket", expected_rc=1),
     RalcalcTest(["[1]]"], expected_stderr="\nError: [1]]\n          ^ invalid bracket\n\nError: [1]]\n           ^ mismatched brackets", expected_rc=1),

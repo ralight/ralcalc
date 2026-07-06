@@ -773,18 +773,14 @@ int validate(tokenItem *tokenList, const char *line, int quiet)
 		switch(item->type){
 			case tkNumber:
 			case tkLastResult:
-				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket){
+				if(lastToken == tkCloseBracket || lastToken == tkCCloseBracket || lastToken == tkNumber || lastToken == tkLastResult){
+					/* Number followed by number could occur for e.g. 2pi, so is valid even though it sounds odd.
+					 * Perhaps __ shouldn't be allowed, but it is. */
 					err = insertBeforeToken(item, tkMultiply, 0.0, 1);
 					if(err != errNoError){
 						printError(line, currentPos, err, quiet);
 						rc = err;
 					}
-				}else if(lastToken == tkNumber || lastToken == tkLastResult){
-					/* Should never happen because tokenise() will produce
-					 * an "invalid number" error.
-					 */
-					printError(line, currentPos, errDuplicateNumber, quiet);
-					rc = errBadNumber;
 				}else if(lastToken == tkMinus){
 					if(negateValue == 1){
 						/* Negate the value by changing the
